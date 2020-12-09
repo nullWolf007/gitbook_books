@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
 * 输出结果
 
-<img src="..\..\images\自定义UI\自定义View\自定义View实例显示1.PNG" alt="自定义View实例显示1.PNG" style="zoom: 50%;" />
+<img src="..\..\images\高级UI\自定义View\自定义View实例显示1.PNG" alt="自定义View实例显示1.PNG" style="zoom: 50%;" />
 
 * 好了，至此，一个基本的自定义View已经实现了。
   * 如何手动支持padding属性
@@ -253,7 +253,7 @@ public class CircleView extends View {
 
 * 输出结果
 
-<img src="..\..\images\自定义UI\自定义View\自定义View实例显示2.PNG" alt="自定义View实例显示2.PNG" style="zoom: 50%;" />
+<img src="..\..\images\高级UI\自定义View\自定义View实例显示2.PNG" alt="自定义View实例显示2.PNG" style="zoom: 50%;" />
 
 #### 4.7 提供自定义属性
 
@@ -366,6 +366,6 @@ public class CircleView extends View {
 
 * 显示结果
 
-<img src="..\..\images\自定义UI\自定义View\自定义View实例显示3.PNG" alt="自定义View实例显示3.PNG" style="zoom: 50%;" />
+<img src="..\..\images\高级UI\自定义View\自定义View实例显示3.PNG" alt="自定义View实例显示3.PNG" style="zoom: 50%;" />
 
 * 至此，一个较为规范的自定义View已经完成了。

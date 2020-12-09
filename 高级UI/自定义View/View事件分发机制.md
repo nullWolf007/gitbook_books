@@ -170,7 +170,7 @@ public boolean shouldCloseOnTouch(Context context, MotionEvent event) {
 
 ##### 2.1.8 总结
 
-![Activity事件分发机制流程图](..\..\images\自定义UI\自定义View\Activity事件分发机制流程图.png)
+![Activity事件分发机制流程图](..\..\images\高级UI\自定义View\Activity事件分发机制流程图.png)
 
 
 
@@ -495,7 +495,7 @@ private boolean dispatchTransformedTouchEvent(MotionEvent event, boolean cancel,
 
 * View.java#dispatchTouchEvent 或者 子View的dispatchTouchEvent 
 
-![ViewGroup事件分发机制流程图](..\..\images\自定义UI\自定义View\ViewGroup事件分发机制流程图.png)
+![ViewGroup事件分发机制流程图](..\..\images\高级UI\自定义View\ViewGroup事件分发机制流程图.png)
 
 #### 2.3 View事件分发机制
 
@@ -700,7 +700,7 @@ public boolean performClick() {
 * 如果来到 onTouchEvent 方法，那么就会执行performClick，进而有机会去执行 OnClickListener.onClick 方法，除非你执行了长按之类的操作；
 * 最后回调到 onClick；
 
-![View事件分发机制流程图](..\..\images\自定义UI\自定义View\View事件分发机制流程图.png)
+![View事件分发机制流程图](..\..\images\高级UI\自定义View\View事件分发机制流程图.png)
 
 ### 三、总结
 
