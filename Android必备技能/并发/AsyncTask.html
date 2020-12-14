@@ -1,0 +1,3525 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>AsyncTask · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="4.2.1" data-path="AsyncTask.html">
+            
+                <a href="AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../Hook/代理模式.html">
+            
+                <a href="../Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../Hook/Hook.html">
+            
+                <a href="../Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../高级UI/自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../高级UI/自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../高级UI/Webview/Webview.html">
+            
+                <a href="../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >AsyncTask</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="asynctask">AsyncTask</h2>
+<h4 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h4>
+<ul>
+<li><a href="https://juejin.im/post/6844903842841100295#heading-8" target="_blank">AsyncTask &#x9762;&#x8BD5;&#x89E3;&#x6790;</a></li>
+<li><a href="https://juejin.im/post/6844903784968093704#heading-3" target="_blank">&#x7406;&#x89E3; AsyncTask &#x539F;&#x7406;</a></li>
+</ul>
+<h4 id="&#x6CE8;&#x610F;&#x70B9;">&#x6CE8;&#x610F;&#x70B9;</h4>
+<ul>
+<li>&#x57FA;&#x4E8E;Android8.0</li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="11-&#x6982;&#x8FF0;">1.1 &#x6982;&#x8FF0;</h4>
+<ul>
+<li><p>AsyncTask&#x662F;&#x4E00;&#x79CD;&#x8F7B;&#x91CF;&#x7EA7;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x7C7B;&#xFF0C;&#x5C01;&#x88C5;&#x4E86;Thread&#x548C;Handle&#x3002;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x6267;&#x884C;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x5BF9;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x66F4;&#x65B0;UI</p>
+</li>
+<li><p>AsyncTask&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">Params</span>, <span class="hljs-title">Progress</span>, <span class="hljs-title">Result</span>&gt; </span>{
+</code></pre>
+</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;&#x4E3B;&#x8981;&#x65B9;&#x6CD5;">&#x4E8C;&#x3001;&#x4E3B;&#x8981;&#x65B9;&#x6CD5;</h3>
+<h4 id="21-&#x53C2;&#x6570;">2.1 &#x53C2;&#x6570;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">Params</span>, <span class="hljs-title">Progress</span>, <span class="hljs-title">Result</span>&gt; </span>{
+</code></pre>
+<ul>
+<li>&#x8FD9;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x6CDB;&#x578B;&#x3002;</li>
+</ul>
+<h5 id="211-params">2.1.1 Params</h5>
+<ul>
+<li>&#x8F93;&#x5165;&#x53C2;&#x6570;</li>
+<li>&#x4EFB;&#x52A1;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x5F00;&#x59CB;&#x53C2;&#x6570;</li>
+<li>execute()&#x4E2D;&#x53D1;&#x9001;&#xFF0C;&#x5728;doInBackground()&#x4E2D;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<h5 id="212-progress">2.1.2 Progress</h5>
+<ul>
+<li>&#x8FC7;&#x7A0B;&#x53C2;&#x6570;</li>
+<li>&#x4EFB;&#x52A1;&#x540E;&#x53F0;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x5E03;&#x7684;&#x5F53;&#x524D;&#x6267;&#x884C;&#x8FDB;&#x5EA6;</li>
+<li>&#x5728;doInBackground()&#x4E2D;&#x4EA7;&#x751F;&#x5E76;&#x901A;&#x8FC7;publishProgess()&#x53D1;&#x9001;&#xFF0C;&#x5728;onProgressUpdate()&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<h5 id="213-result">2.1.3 Result</h5>
+<ul>
+<li>&#x7ED3;&#x679C;&#x53C2;&#x6570;</li>
+<li>&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;</li>
+<li>&#x5728;doInBackground()&#x4E2D;&#x4EA7;&#x751F;&#x5E76;&#x5728;onPostExecute()&#x4E2D;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<h4 id="21-onpreexecute">2.1 onPreExecute</h4>
+<h5 id="211-&#x6982;&#x8FF0;">2.1.1 &#x6982;&#x8FF0;</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@MainThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPreExecute</span><span class="hljs-params">()</span> </span>{
+}
+</code></pre>
+<ul>
+<li>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x4E4B;&#x524D;&#x8FDB;&#x884C;&#x67D0;&#x4E9B;UI&#x7684;&#x521D;&#x59CB;&#x5316;</li>
+<li>&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x6B64;&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="22-doinbackground">2.2 doInBackground</h4>
+<h5 id="222-&#x6982;&#x8FF0;">2.2.2 &#x6982;&#x8FF0;</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@WorkerThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> Result <span class="hljs-title">doInBackground</span><span class="hljs-params">(Params... params)</span></span>;
+</code></pre>
+<ul>
+<li>&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x63A5;&#x6536;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x540E;&#x53F0;&#x6267;&#x884C;&#x8017;&#x65F6;&#x4EFB;&#x52A1;&#x5E76;&#x53D1;&#x5E03;&#x6267;&#x884C;&#x8FDB;&#x5EA6;&#x548C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x4F8B;&#x5982;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x4EFB;&#x52A1;&#xFF0C;&#x662F;&#x5728;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;</li>
+<li>&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x6B64;&#x65B9;&#x6CD5;</li>
+<li>params&#x53C2;&#x6570;&#x8868;&#x793A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x7684;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x3002;&#x9700;&#x8981;&#x8FD4;&#x56DE;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x7ED9;onPostExecute()&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x901A;&#x8FC7;publishProgress&#x65B9;&#x6CD5;&#x6765;&#x66F4;&#x65B0;&#x4EFB;&#x52A1;&#x7684;&#x8FDB;&#x5EA6;&#xFF0C;publishProgress&#x65B9;&#x6CD5;&#x4F1A;&#x8C03;&#x7528;onProgressUpdate&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="23-publishprogress">2.3 publishProgress</h4>
+<h5 id="231-&#x6982;&#x8FF0;">2.3.1 &#x6982;&#x8FF0;</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@WorkerThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">publishProgress</span><span class="hljs-params">(Progress... values)</span> </span>{
+    <span class="hljs-keyword">if</span> (!isCancelled()) {
+        getHandler().obtainMessage(MESSAGE_POST_PROGRESS,
+                <span class="hljs-keyword">new</span> AsyncTaskResult&lt;Progress&gt;(<span class="hljs-keyword">this</span>, values)).sendToTarget();
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x53D1;&#x5E03;&#x4EFB;&#x52A1;&#x7684;&#x5F53;&#x524D;&#x6267;&#x884C;&#x8FDB;&#x5EA6;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x663E;&#x793A;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5B9E;&#x73B0;&#x76F4;&#x63A5;&#x8C03;&#x7528;</li>
+<li>&#x4E0D;&#x53EF;&#x91CD;&#x5199;</li>
+</ul>
+<h4 id="24-onprogressupdate">2.4 onProgressUpdate</h4>
+<h5 id="241-&#x6982;&#x8FF0;">2.4.1 &#x6982;&#x8FF0;</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@SuppressWarnings</span>({<span class="hljs-string">&quot;UnusedDeclaration&quot;</span>})
+<span class="hljs-meta">@MainThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProgressUpdate</span><span class="hljs-params">(Progress... values)</span> </span>{
+}
+</code></pre>
+<ul>
+<li>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x7684;&#x6267;&#x884C;&#x8FDB;&#x5EA6;&#xFF0C;&#x4F8B;&#x5982;&#x66F4;&#x65B0;&#x8FDB;&#x5EA6;&#x6761;&#x8FDB;&#x5EA6;&#xFF0C;&#x53EF;&#x9009;&#x62E9;&#x5B9E;&#x73B0;</li>
+<li>&#x53EF;&#x91CD;&#x5199;</li>
+</ul>
+<h4 id="25-onpostexecute">2.5 onPostExecute</h4>
+<h5 id="251-&#x6982;&#x8FF0;">2.5.1 &#x6982;&#x8FF0;</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@SuppressWarnings</span>({<span class="hljs-string">&quot;UnusedDeclaration&quot;</span>})
+<span class="hljs-meta">@MainThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPostExecute</span><span class="hljs-params">(Result result)</span> </span>{
+}
+</code></pre>
+<ul>
+<li>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x63A5;&#x6536;<code>doInBackground</code>&#x8FD4;&#x56DE;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5E76;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x663E;&#x793A;&#xFF0C;&#x4F8B;&#x5982;&#x663E;&#x793A;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x5927;&#x5C0F;</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;&#x5B9E;&#x4F8B;">&#x4E09;&#x3001;&#x5B9E;&#x4F8B;</h3>
+<ul>
+<li>R.layout.activity_main</li>
+</ul>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/main_tv_download&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;&#x6A21;&#x62DF;&#x4E0B;&#x8F7D;&quot;</span>
+        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;20sp&quot;</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ProgressBar</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/main_progress_bar&quot;</span>
+        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@android:style/Widget.ProgressBar.Horizontal&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+        <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">&quot;10dp&quot;</span>
+        <span class="hljs-attr">android:max</span>=<span class="hljs-string">&quot;100&quot;</span>
+        <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">&quot;gone&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">FrameLayout</span>&gt;</span>
+</code></pre>
+<ul>
+<li>MainActivity.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+
+    <span class="hljs-keyword">private</span> ProgressBar progressBar;
+    <span class="hljs-keyword">private</span> DownLoadAsyncTask downLoadAsyncTask;
+    <span class="hljs-keyword">private</span> String[] testStrs = <span class="hljs-keyword">new</span> String[<span class="hljs-number">10</span>];
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        progressBar = findViewById(R.id.main_progress_bar);
+        downLoadAsyncTask = <span class="hljs-keyword">new</span> DownLoadAsyncTask(progressBar);
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+            testStrs[i] = <span class="hljs-string">&quot;test&quot;</span> + i;
+        }
+
+        findViewById(R.id.main_tv_download).setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+                downLoadAsyncTask.execute(testStrs);
+            }
+        });
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DownLoadAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Integer</span>, <span class="hljs-title">Integer</span>&gt; </span>{
+        <span class="hljs-keyword">private</span> WeakReference&lt;ProgressBar&gt; weakReference;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DownLoadAsyncTask</span><span class="hljs-params">(ProgressBar progressBar)</span> </span>{
+            weakReference = <span class="hljs-keyword">new</span> WeakReference&lt;&gt;(progressBar);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPreExecute</span><span class="hljs-params">()</span> </span>{
+            ProgressBar progressBar = weakReference.get();
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.setMax(<span class="hljs-number">100</span>);
+            progressBar.setProgress(<span class="hljs-number">0</span>);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> Integer <span class="hljs-title">doInBackground</span><span class="hljs-params">(String... strings)</span> </span>{
+            <span class="hljs-keyword">int</span> count = strings.length;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= count; i++) {
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-comment">// &#x4F11;&#x7720;2&#x79D2;&#x6A21;&#x62DF;&#x4E0B;&#x8F7D;&#x8FC7;&#x7A0B;</span>
+                    Thread.sleep(<span class="hljs-number">2</span> * <span class="hljs-number">1000</span>);
+                    <span class="hljs-comment">// &#x53D1;&#x5E03;&#x8FDB;&#x5EA6;&#x66F4;&#x65B0;</span>
+                    publishProgress((<span class="hljs-number">100</span> * i) / count);
+                } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
+                    ie.printStackTrace();
+                }
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProgressUpdate</span><span class="hljs-params">(Integer... values)</span> </span>{
+            ProgressBar progressBar = weakReference.get();
+            progressBar.setProgress(values[<span class="hljs-number">0</span>]);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPostExecute</span><span class="hljs-params">(Integer integer)</span> </span>{
+            ProgressBar progressBar = weakReference.get();
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5176;&#x4E2D;&#x91C7;&#x53D6;&#x4E86;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;+&#x5F31;&#x5F15;&#x7528;&#x9632;&#x6B62;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;</li>
+<li>&#x5176;&#x4ED6;&#x7684;&#x5C31;&#x662F;AsyncTask&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8BF4;&#x660E;&#x4E86;</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-&#x4E3B;&#x8981;&#x6210;&#x5458;&#x53D8;&#x91CF;">&#x56DB;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-&#x4E3B;&#x8981;&#x6210;&#x5458;&#x53D8;&#x91CF;</h3>
+<h4 id="41-&#x7EBF;&#x7A0B;&#x6C60;&#x90E8;&#x5206;">4.1 &#x7EBF;&#x7A0B;&#x6C60;&#x90E8;&#x5206;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CPU_COUNT = Runtime.getRuntime().availableProcessors();
+<span class="hljs-comment">// We want at least 2 threads and at most 4 threads in the core pool,</span>
+<span class="hljs-comment">// preferring to have 1 less than the CPU count to avoid saturating</span>
+<span class="hljs-comment">// the CPU with background work</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CORE_POOL_SIZE = Math.max(<span class="hljs-number">2</span>, Math.min(CPU_COUNT - <span class="hljs-number">1</span>, <span class="hljs-number">4</span>));
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MAXIMUM_POOL_SIZE = CPU_COUNT * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> KEEP_ALIVE_SECONDS = <span class="hljs-number">30</span>;
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> ThreadFactory sThreadFactory = <span class="hljs-keyword">new</span> ThreadFactory() {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> AtomicInteger mCount = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">1</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Thread <span class="hljs-title">newThread</span><span class="hljs-params">(Runnable r)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Thread(r, <span class="hljs-string">&quot;AsyncTask #&quot;</span> + mCount.getAndIncrement());
+    }
+};
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> BlockingQueue&lt;Runnable&gt; sPoolWorkQueue =
+    <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;(<span class="hljs-number">128</span>);
+
+<span class="hljs-comment">/**
+* An {<span class="hljs-doctag">@link</span> Executor} that can be used to execute tasks in parallel.
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Executor THREAD_POOL_EXECUTOR;
+
+<span class="hljs-keyword">static</span> {
+    ThreadPoolExecutor threadPoolExecutor = <span class="hljs-keyword">new</span> ThreadPoolExecutor(
+            CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_SECONDS, TimeUnit.SECONDS,
+            sPoolWorkQueue, sThreadFactory);
+    threadPoolExecutor.allowCoreThreadTimeOut(<span class="hljs-keyword">true</span>);
+    THREAD_POOL_EXECUTOR = threadPoolExecutor;
+}
+</code></pre>
+<h4 id="42-status">4.2 Status</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Status {
+    <span class="hljs-comment">/**
+    * Indicates that the task has not been executed yet.
+    */</span>
+    PENDING,
+    <span class="hljs-comment">/**
+    * Indicates that the task is running.
+    */</span>
+    RUNNING,
+    <span class="hljs-comment">/**
+    * Indicates that {<span class="hljs-doctag">@link</span> AsyncTask#onPostExecute} has finished.
+    */</span>
+    FINISHED,
+}
+</code></pre>
+<ul>
+<li>PENDING&#xFF1A;&#x7B49;&#x5F85;&#x4E2D;</li>
+<li>RUNNING&#xFF1A;&#x8FD0;&#x884C;&#x4E2D;</li>
+<li>FINISHED&#xFF1A;&#x5DF2;&#x5B8C;&#x6210;</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-&#x6784;&#x9020;&#x65B9;&#x6CD5;">&#x4E94;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-&#x6784;&#x9020;&#x65B9;&#x6CD5;</h3>
+<h4 id="51-&#x6784;&#x9020;&#x65B9;&#x6CD5;">5.1 &#x6784;&#x9020;&#x65B9;&#x6CD5;</h4>
+<ul>
+<li>&#x6211;&#x4E48;&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x64CD;&#x4F5C;</li>
+<li>&#x8FD9;&#x91CC;&#x6709;&#x51E0;&#x4E2A;&#x91CD;&#x8F7D;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x5982;&#x4E0B;&#x8FD9;&#x4E2A;&#x6784;&#x9020;&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AsyncTask</span><span class="hljs-params">(@Nullable Looper callbackLooper)</span> </span>{
+    <span class="hljs-comment">//&#x5224;&#x65AD;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x4E3B;&#x7EBF;&#x7A0B;Handler&#x6216;&#x8005;new&#x4E00;&#x4E2A;Handler</span>
+    mHandler = callbackLooper == <span class="hljs-keyword">null</span> || callbackLooper == Looper.getMainLooper()
+        ? getMainHandler()
+        : <span class="hljs-keyword">new</span> Handler(callbackLooper);
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;WorkerRunnable&#x5B9E;&#x4F8B; &#x5E76;&#x5B9E;&#x73B0;&#x4E86;call&#x65B9;&#x6CD5;</span>
+    mWorker = <span class="hljs-keyword">new</span> WorkerRunnable&lt;Params, Result&gt;() {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> Result <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            mTaskInvoked.set(<span class="hljs-keyword">true</span>);
+            Result result = <span class="hljs-keyword">null</span>;
+            <span class="hljs-keyword">try</span> {
+                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                <span class="hljs-comment">//noinspection unchecked</span>
+                result = doInBackground(mParams);
+                Binder.flushPendingCommands();
+            } <span class="hljs-keyword">catch</span> (Throwable tr) {
+                mCancelled.set(<span class="hljs-keyword">true</span>);
+                <span class="hljs-keyword">throw</span> tr;
+            } <span class="hljs-keyword">finally</span> {
+                postResult(result);
+            }
+            <span class="hljs-keyword">return</span> result;
+        }
+    };
+
+    <span class="hljs-comment">//&#x628A;Callable&#x7684;&#x5B9E;&#x4F8B; &#x4F20;&#x9012;&#x7ED9;FutureTask&#x5B9E;&#x4F8B;</span>
+    mFuture = <span class="hljs-keyword">new</span> FutureTask&lt;Result&gt;(mWorker) {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">done</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                postResultIfNotInvoked(get());
+            }......
+        }
+    };
+}
+</code></pre>
+<ul>
+<li>&#x521B;&#x5EFA;WorkerRunnable&#x5B9E;&#x4F8B; mWorker&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x4E86;call&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;call&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x4E86;doInBackground</li>
+<li>&#x521B;&#x5EFA;&#x4E86;FutureTask&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x628A;mWorker&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x4E86;&#x8FDB;&#x53BB;</li>
+<li>&#x8FD9;&#x91CC;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;FutureTask+Callable&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x8BE6;&#x60C5;&#x53EF;&#x67E5;&#x770B;<a href="&#x5FC5;&#x5907;Java&#x77E5;&#x8BC6;/&#x5E76;&#x53D1;&#x7F16;&#x7A0B;/&#x7EBF;&#x7A0B;&#x6C60;/Callable,Future&#x548C;FutureTask.md">Callable,Future&#x548C;FutureTask</a></li>
+</ul>
+<h4 id="52-getmainhandler">5.2 getMainHandler</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Handler <span class="hljs-title">getMainHandler</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">synchronized</span> (AsyncTask.class) {
+        <span class="hljs-keyword">if</span> (sHandler == <span class="hljs-keyword">null</span>) {
+            sHandler = <span class="hljs-keyword">new</span> InternalHandler(Looper.getMainLooper());
+        }
+        <span class="hljs-keyword">return</span> sHandler;
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;callbackLooper&#x4E3A;null&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;Looper&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x8C03;&#x7528;getMainHandler&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;InternalHandler&#x5B9E;&#x4F8B;sHandler</li>
+</ul>
+<h4 id="53-workerrunnable">5.3 WorkerRunnable</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WorkerRunnable</span>&lt;<span class="hljs-title">Params</span>, <span class="hljs-title">Result</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">Result</span>&gt; </span>{
+    Params[] mParams;
+}
+</code></pre>
+<ul>
+<li>WorkerRunnable&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;implements&#x4E86;Callable&#xFF0C;&#x5173;&#x4E8E;Callable&#x8BE6;&#x60C5;&#x53EF;&#x67E5;&#x770B;<a href="&#x5FC5;&#x5907;Java&#x77E5;&#x8BC6;/&#x5E76;&#x53D1;&#x7F16;&#x7A0B;/&#x7EBF;&#x7A0B;&#x6C60;/Callable,Future&#x548C;FutureTask.md">Callable,Future&#x548C;FutureTask</a></li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-execute">&#x516D;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-execute</h3>
+<h4 id="61-execute">6.1 execute</h4>
+<ul>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x662F;&#x5F00;&#x542F;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x7684;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6545;&#x4ECE;&#x8FD9;&#x91CC;&#x5F00;&#x59CB;&#x5206;&#x6790;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@MainThread</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> AsyncTask&lt;Params, Progress, Result&gt; <span class="hljs-title">execute</span><span class="hljs-params">(Params... params)</span> </span>{
+    <span class="hljs-keyword">return</span> executeOnExecutor(sDefaultExecutor, params);
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;&#x4E86;executeOnExecutor&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="62-executeonexecutor">6.2 executeOnExecutor</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@MainThread</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> AsyncTask&lt;Params, Progress, Result&gt; <span class="hljs-title">executeOnExecutor</span><span class="hljs-params">(Executor exec,
+        Params... params)</span> </span>{
+    <span class="hljs-comment">//&#x5224;&#x65AD;&#x5F53;&#x524D;&#x7684;&#x72B6;&#x6001; &#x5982;&#x679C;&#x4E0D;&#x662F;&#x7B49;&#x5F85;&#x4E2D;&#x7684;&#x8BDD; &#x5C31;&#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
+    <span class="hljs-keyword">if</span> (mStatus != Status.PENDING) {
+        <span class="hljs-keyword">switch</span> (mStatus) {
+            <span class="hljs-keyword">case</span> RUNNING:
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Cannot execute task:&quot;</span>
+                    + <span class="hljs-string">&quot; the task is already running.&quot;</span>);
+            <span class="hljs-keyword">case</span> FINISHED:
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Cannot execute task:&quot;</span>
+                    + <span class="hljs-string">&quot; the task has already been executed &quot;</span>
+                    + <span class="hljs-string">&quot;(a task can be executed only once)&quot;</span>);
+        }
+    }
+    <span class="hljs-comment">//&#x4FEE;&#x6539;&#x72B6;&#x6001;&#x4E3A; &#x8FD0;&#x884C;&#x4E2D;</span>
+    mStatus = Status.RUNNING;
+
+    <span class="hljs-comment">//&#x6267;&#x884C;onPreExecute&#x65B9;&#x6CD5;</span>
+    onPreExecute();
+    <span class="hljs-comment">//&#x628A;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x5230;WorkRunnable&#x7684;&#x5B9E;&#x4F8B;&#x4E2D;</span>
+    mWorker.mParams = params;
+    <span class="hljs-comment">//&#x8C03;&#x7528;Executor&#x7684;&#x5B9E;&#x4F8B; &#x53BB;&#x6267;&#x884C;execute&#x65B9;&#x6CD5;</span>
+    exec.execute(mFuture);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<ul>
+<li>&#x4FEE;&#x6539;&#x4E86;Status&#x7684;&#x72B6;&#x6001;&#x503C;</li>
+<li>&#x6267;&#x884C;onPreExecute&#x65B9;&#x6CD5;</li>
+<li>exec&#x662F;Executor&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x662F;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x672C;&#x8D28;&#x662F;sDefaultExecutor&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x4E86;&#x5176;execute&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="63-sdefaultexecutor">6.3 sDefaultExecutor</h4>
+<h5 id="323-sdefaultexecutor">3.2.3 sDefaultExecutor</h5>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> Executor sDefaultExecutor = SERIAL_EXECUTOR;
+</code></pre>
+<ul>
+<li>&#x662F;SERIAL_EXECUTOR&#x8D4B;&#x503C;&#x8FC7;&#x6765;&#x7684;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Executor SERIAL_EXECUTOR = <span class="hljs-keyword">new</span> SerialExecutor();
+</code></pre>
+<ul>
+<li>&#x521B;&#x5EFA;&#x4E86;SerialExecutor&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;exec.execute(mFuture);&#x5B9E;&#x9645;&#x4E0A;&#x8C03;&#x7528;&#x7684;&#x662F;SerialExecutor&#x7684;execute&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="64-serialexecutor">6.4 SerialExecutor</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SerialExecutor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Executor</span> </span>{
+    <span class="hljs-keyword">final</span> ArrayDeque&lt;Runnable&gt; mTasks = <span class="hljs-keyword">new</span> ArrayDeque&lt;Runnable&gt;();
+    Runnable mActive;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(<span class="hljs-keyword">final</span> Runnable r)</span> </span>{
+        mTasks.offer(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                <span class="hljs-keyword">try</span> {
+                    r.run();
+                } <span class="hljs-keyword">finally</span> {
+                    scheduleNext();
+                }
+            }
+        });
+        <span class="hljs-keyword">if</span> (mActive == <span class="hljs-keyword">null</span>) {
+            scheduleNext();
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">scheduleNext</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> ((mActive = mTasks.poll()) != <span class="hljs-keyword">null</span>) {
+            THREAD_POOL_EXECUTOR.execute(mActive);
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>SerialExecutor&#x7684;execute&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4F7F;&#x7528;&#x521B;&#x5EFA;&#x4E86;Runnable&#x7684;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x5E76;&#x52A0;&#x5165;&#x5230;&#x4E86;ArrayDeque&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x3002;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E86;synchronized&#xFF0C;&#x4FDD;&#x8BC1;&#x5176;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x540C;&#x65F6;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;finally&#x91CC;&#x7684;&#x65B9;&#x6CD5;scheduleNext()</li>
+<li>scheduleNext&#x65B9;&#x6CD5;&#x53C8;&#x4F1A;&#x8C03;&#x7528;THREAD_POOL_EXECUTOR&#x7684;execute&#x65B9;&#x6CD5;</li>
+<li>&#x6240;&#x4EE5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;execute&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;THREAD_POOL_EXECUTOR&#x7684;execute&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="65-threadpoolexecutor">6.5 THREAD_POOL_EXECUTOR</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CPU_COUNT = Runtime.getRuntime().availableProcessors();
+<span class="hljs-comment">// We want at least 2 threads and at most 4 threads in the core pool,</span>
+<span class="hljs-comment">// preferring to have 1 less than the CPU count to avoid saturating</span>
+<span class="hljs-comment">// the CPU with background work</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CORE_POOL_SIZE = Math.max(<span class="hljs-number">2</span>, Math.min(CPU_COUNT - <span class="hljs-number">1</span>, <span class="hljs-number">4</span>));
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MAXIMUM_POOL_SIZE = CPU_COUNT * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> KEEP_ALIVE_SECONDS = <span class="hljs-number">30</span>;
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> ThreadFactory sThreadFactory = <span class="hljs-keyword">new</span> ThreadFactory() {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> AtomicInteger mCount = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">1</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Thread <span class="hljs-title">newThread</span><span class="hljs-params">(Runnable r)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Thread(r, <span class="hljs-string">&quot;AsyncTask #&quot;</span> + mCount.getAndIncrement());
+    }
+};
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> BlockingQueue&lt;Runnable&gt; sPoolWorkQueue =
+    <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;(<span class="hljs-number">128</span>);
+
+<span class="hljs-comment">/**
+* An {<span class="hljs-doctag">@link</span> Executor} that can be used to execute tasks in parallel.
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Executor THREAD_POOL_EXECUTOR;
+
+<span class="hljs-keyword">static</span> {
+    ThreadPoolExecutor threadPoolExecutor = <span class="hljs-keyword">new</span> ThreadPoolExecutor(
+            CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_SECONDS, TimeUnit.SECONDS,
+            sPoolWorkQueue, sThreadFactory);
+    threadPoolExecutor.allowCoreThreadTimeOut(<span class="hljs-keyword">true</span>);
+    THREAD_POOL_EXECUTOR = threadPoolExecutor;
+}
+</code></pre>
+<ul>
+<li>THREAD_POOL_EXECUTOR&#x662F;&#x4E00;&#x4E2A;final&#x4E0D;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x5728;static&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x91CC;&#x8D4B;&#x503C;&#x7684;&#xFF0C;&#x628A;threadPoolExecutor&#x8D4B;&#x503C;&#x7ED9;&#x4E86;THREAD_POOL_EXECUTOR&#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x8D28;&#x4E0A;&#x662F;threadPoolExecutor&#xFF0C;threadPoolExecutor&#x662F;&#x4E00;&#x4E2A;ThreadPoolExecutor&#x5B9E;&#x4F8B;</li>
+<li>ThreadPoolExecutor&#x8BE6;&#x7EC6;&#x77E5;&#x8BC6;&#x8BF7;&#x67E5;&#x770B;<a href="&#x5FC5;&#x5907;Java&#x77E5;&#x8BC6;/&#x5E76;&#x53D1;&#x7F16;&#x7A0B;/&#x7EBF;&#x7A0B;&#x6C60;/&#x7EBF;&#x7A0B;&#x6C60;&#x57FA;&#x672C;&#x89E3;&#x6790;.md">&#x7EBF;&#x7A0B;&#x6C60;&#x57FA;&#x672C;&#x89E3;&#x6790;</a></li>
+<li>&#x4E0A;&#x9762;&#x7684;&#x90FD;&#x662F;ThreadPoolExecutor&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8BF4;&#x660E;&#x4E5F;&#x53EF;&#x4EE5;&#x67E5;&#x770B;<a href="&#x5FC5;&#x5907;Java&#x77E5;&#x8BC6;/&#x5E76;&#x53D1;&#x7F16;&#x7A0B;/&#x7EBF;&#x7A0B;&#x6C60;/&#x7EBF;&#x7A0B;&#x6C60;&#x57FA;&#x672C;&#x89E3;&#x6790;.md">&#x7EBF;&#x7A0B;&#x6C60;&#x57FA;&#x672C;&#x89E3;&#x6790;</a></li>
+<li>&#x603B;&#x4F53;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;&#x7684;execute&#x5176;&#x5B9E;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;execute&#x65B9;&#x6CD5;&#xFF0C;AsyncTask&#x53EA;&#x662F;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;</li>
+</ul>
+<h4 id="66-&#x90E8;&#x5206;&#x5C0F;&#x7ED3;">6.6 &#x90E8;&#x5206;&#x5C0F;&#x7ED3;</h4>
+<ul>
+<li><p>&#x603B;&#x4F53;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;&#x7684;execute&#x5176;&#x5B9E;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;execute&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p>&#x7531;&#x4E8E;&#x4F20;&#x5165;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x662F;Runnable&#x5BF9;&#x8C61;&#xFF0C;&#x89C1;6.4 SerialExecutor&#x3002;&#x6240;&#x4EE5;&#x6700;&#x540E;&#x4F1A;&#x6267;&#x884C;&#x5176;&#x4E2D;&#x7684;run&#x65B9;&#x6CD5;</p>
+</li>
+</ul>
+<pre><code class="lang-java">mTasks.offer(<span class="hljs-keyword">new</span> Runnable() {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            r.run();
+        } <span class="hljs-keyword">finally</span> {
+            scheduleNext();
+        }
+    }
+});
+</code></pre>
+<ul>
+<li>run&#x65B9;&#x6CD5;&#x4E2D;&#x53C8;&#x4F1A;&#x6267;&#x884C;r.run&#xFF0C;&#x5176;&#x4E2D;r&#x662F;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x4E2D;&#x7684;mFuture&#xFF0C;&#x5373;FutureTask&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6267;&#x884C;mFuture&#x7684;run&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java">exec.execute(mFuture);
+</code></pre>
+<ul>
+<li>&#x5176;&#x4E2D;mFuture&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x89C1;5.1</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x628A;Callable&#x7684;&#x5B9E;&#x4F8B; &#x4F20;&#x9012;&#x7ED9;FutureTask&#x5B9E;&#x4F8B;</span>
+mFuture = <span class="hljs-keyword">new</span> FutureTask&lt;Result&gt;(mWorker) {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">done</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            postResultIfNotInvoked(get());
+        }......
+    }
+};
+</code></pre>
+<ul>
+<li>&#x540C;&#x65F6;&#x521B;&#x5EFA;mFuture&#x5B9E;&#x4F8B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x628A;Callable&#x7684;&#x5B9E;&#x4F8B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x4E86;</li>
+</ul>
+<h4 id="67-run">6.7 run</h4>
+<ul>
+<li>FutureTask.java#run</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (state != NEW ||
+        !UNSAFE.compareAndSwapObject(<span class="hljs-keyword">this</span>, runnerOffset,<span class="hljs-keyword">null</span>, Thread.currentThread())){
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">try</span> {
+        Callable&lt;V&gt; c = callable;
+        <span class="hljs-keyword">if</span> (c != <span class="hljs-keyword">null</span> &amp;&amp; state == NEW) {
+            V result;
+            <span class="hljs-keyword">boolean</span> ran;
+            <span class="hljs-keyword">try</span> {
+                result = c.call();
+                ran = <span class="hljs-keyword">true</span>;
+            } <span class="hljs-keyword">catch</span> (Throwable ex) {
+                result = <span class="hljs-keyword">null</span>;
+                ran = <span class="hljs-keyword">false</span>;
+                setException(ex);
+                }
+            <span class="hljs-keyword">if</span> (ran)
+                set(result);
+        }
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-comment">// runner must be non-null until state is settled to</span>
+        <span class="hljs-comment">// prevent concurrent calls to run()</span>
+        runner = <span class="hljs-keyword">null</span>;
+        <span class="hljs-comment">// state must be re-read after nulling runner to prevent</span>
+        <span class="hljs-comment">// leaked interrupts</span>
+        <span class="hljs-keyword">int</span> s = state;
+        <span class="hljs-keyword">if</span> (s &gt;= INTERRUPTING)
+            handlePossibleCancellationInterrupt(s);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4ECE;run&#x65B9;&#x6CD5;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528;c.call&#xFF0C;&#x4E5F;&#x5C31;&#x662F;Callable&#x7684;&#x5B9E;&#x4F8B;&#x7684;call&#x65B9;&#x6CD5;</li>
+<li>&#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x56DE;&#x8C03;&#x7528;Callable&#x7684;&#x5B9E;&#x4F8B;&#x7684;call&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x89C1;5.1 </li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x521B;&#x5EFA;WorkerRunnable&#x5B9E;&#x4F8B; &#x5E76;&#x5B9E;&#x73B0;&#x4E86;call&#x65B9;&#x6CD5;</span>
+mWorker = <span class="hljs-keyword">new</span> WorkerRunnable&lt;Params, Result&gt;() {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Result <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        mTaskInvoked.set(<span class="hljs-keyword">true</span>);
+        Result result = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> {
+            Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+            <span class="hljs-comment">//noinspection unchecked</span>
+            result = doInBackground(mParams);
+            Binder.flushPendingCommands();
+        } <span class="hljs-keyword">catch</span> (Throwable tr) {
+            mCancelled.set(<span class="hljs-keyword">true</span>);
+            <span class="hljs-keyword">throw</span> tr;
+        } <span class="hljs-keyword">finally</span> {
+            postResult(result);
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+};
+</code></pre>
+<ul>
+<li>&#x5728;call&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8C03;&#x7528;&#x4E86;doInBackground&#x65B9;&#x6CD5;&#xFF0C;&#x5230;&#x6B64;&#x5C31;&#x6267;&#x884C;&#x4E86;doInBackground&#x65B9;&#x6CD5;</li>
+<li>finally&#x6700;&#x7EC8;&#x6267;&#x884C;&#x4E86;postResult(result);&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="68-postresult">6.8 postResult</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> Result <span class="hljs-title">postResult</span><span class="hljs-params">(Result result)</span> </span>{
+    <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">&quot;unchecked&quot;</span>)
+    Message message = getHandler().obtainMessage(MESSAGE_POST_RESULT,
+            <span class="hljs-keyword">new</span> AsyncTaskResult&lt;Result&gt;(<span class="hljs-keyword">this</span>, result));
+    message.sendToTarget();
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684;&#x662F;&#xFF0C;Handler+Looper+Message+MessageQueue&#x7684;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;</li>
+<li>&#x53D1;&#x9001;&#x7684;&#x6D88;&#x606F;&#x7684;what&#x503C;&#x4E3A;MESSAGE_POST_RESULT&#xFF0C;&#x5728;Handler&#x7684;handleMessage&#x4E2D;&#x5904;&#x7406;&#x6D88;&#x606F;</li>
+</ul>
+<h4 id="69-handlemessage">6.9 handleMessage</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InternalHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Handler</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">InternalHandler</span><span class="hljs-params">(Looper looper)</span> </span>{
+        <span class="hljs-keyword">super</span>(looper);
+    }
+
+    <span class="hljs-meta">@SuppressWarnings</span>({<span class="hljs-string">&quot;unchecked&quot;</span>, <span class="hljs-string">&quot;RawUseOfParameterizedType&quot;</span>})
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(Message msg)</span> </span>{
+        AsyncTaskResult&lt;?&gt; result = (AsyncTaskResult&lt;?&gt;) msg.obj;
+        <span class="hljs-keyword">switch</span> (msg.what) {
+            <span class="hljs-keyword">case</span> MESSAGE_POST_RESULT:
+                <span class="hljs-comment">// There is only one result</span>
+                result.mTask.finish(result.mData[<span class="hljs-number">0</span>]);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> MESSAGE_POST_PROGRESS:
+                result.mTask.onProgressUpdate(result.mData);
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;what&#x503C;&#xFF0C;&#x8C03;&#x7528;&#x4E86; result.mTask.finish(result.mData[0]);&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;result&#x662F;&#x6211;&#x4EEC;doInBackground&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x628A;&#x5B83;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x6210;AsyncTaskResult&lt;?&gt;&#x5BF9;&#x8C61;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@SuppressWarnings</span>({<span class="hljs-string">&quot;RawUseOfParameterizedType&quot;</span>})
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncTaskResult</span>&lt;<span class="hljs-title">Data</span>&gt; </span>{
+    <span class="hljs-keyword">final</span> AsyncTask mTask;
+    <span class="hljs-keyword">final</span> Data[] mData;
+
+    AsyncTaskResult(AsyncTask task, Data... data) {
+        mTask = task;
+        mData = data;
+    }
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x7C7B;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x53EF;&#x77E5; result.mTask&#x5C31;&#x662F;AsyncTask&#x5B9E;&#x4F8B;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x5176;finish&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="610-finish">6.10 finish</h4>
+<ul>
+<li>AsyncTask#finish</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">(Result result)</span> </span>{
+    <span class="hljs-keyword">if</span> (isCancelled()) {
+        onCancelled(result);
+    } <span class="hljs-keyword">else</span> {
+        onPostExecute(result);
+    }
+    mStatus = Status.FINISHED;
+}
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x5224;&#x65AD;&#x6CA1;&#x6709;&#x53D6;&#x6D88;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;onPostExecute&#x65B9;&#x6CD5;&#xFF0C;&#x540C;&#x65F6;&#x628A;&#x72B6;&#x6001;&#x53D8;&#x6210;&quot;&#x5DF2;&#x5B8C;&#x6210;&quot;</li>
+</ul>
+<h3 id="&#x4E03;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;-publishprogress">&#x4E03;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;-publishProgress</h3>
+<h4 id="71-publishprogress">7.1 publishProgress</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@WorkerThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">publishProgress</span><span class="hljs-params">(Progress... values)</span> </span>{
+    <span class="hljs-keyword">if</span> (!isCancelled()) {
+        getHandler().obtainMessage(MESSAGE_POST_PROGRESS,
+                <span class="hljs-keyword">new</span> AsyncTaskResult&lt;Progress&gt;(<span class="hljs-keyword">this</span>, values)).sendToTarget();
+    }
+}
+</code></pre>
+<ul>
+<li>&#x548C;&#x4E0A;&#x9762;&#x4E00;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x8981;&#x627E;&#x5230;Handler&#x7684;handleMessage&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="72-handlemessage">7.2 handleMessage</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InternalHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Handler</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">InternalHandler</span><span class="hljs-params">(Looper looper)</span> </span>{
+        <span class="hljs-keyword">super</span>(looper);
+    }
+
+    <span class="hljs-meta">@SuppressWarnings</span>({<span class="hljs-string">&quot;unchecked&quot;</span>, <span class="hljs-string">&quot;RawUseOfParameterizedType&quot;</span>})
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(Message msg)</span> </span>{
+        AsyncTaskResult&lt;?&gt; result = (AsyncTaskResult&lt;?&gt;) msg.obj;
+        <span class="hljs-keyword">switch</span> (msg.what) {
+            <span class="hljs-keyword">case</span> MESSAGE_POST_RESULT:
+                <span class="hljs-comment">// There is only one result</span>
+                result.mTask.finish(result.mData[<span class="hljs-number">0</span>]);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> MESSAGE_POST_PROGRESS:
+                result.mTask.onProgressUpdate(result.mData);
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5BF9;&#x5176;what&#x503C;MESSAGE_POST_PROGRESS&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x4E00;&#x6837;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;AscyncTask&#x7684;onProgressUpdate&#x65B9;&#x6CD5;</li>
+<li>&#x81F3;&#x6B64;&#x6211;&#x4EEC;&#x91CD;&#x5199;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#x3002;</li>
+</ul>
+<h3 id="&#x516B;&#x3001;&#x603B;&#x7ED3;">&#x516B;&#x3001;&#x603B;&#x7ED3;</h3>
+<h4 id="81-execute&#x4E3B;&#x8981;&#x6D41;&#x7A0B;">8.1 execute&#x4E3B;&#x8981;&#x6D41;&#x7A0B;</h4>
+<ul>
+<li>&#x5BA2;&#x6237;&#x7AEF;.execute</li>
+<li><p>AsyncTask.executeOnExecutor</p>
+<ul>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x91CC;&#x4F1A;&#x6267;&#x884C;onPreExecute</li>
+</ul>
+</li>
+<li><p>sDefaultExecutor.execute</p>
+<ul>
+<li>sDefaultExecutor=SERIAL_EXECUTOR</li>
+<li>SERIAL_EXECUTOR = new SerialExecutor()</li>
+</ul>
+</li>
+<li>sDefaultExecutor.execute&#x7B49;&#x540C;&#x4E8E;SerialExecutor.execute</li>
+<li><p>THREAD_POOL_EXECUTOR.execute(Runnable)</p>
+<ul>
+<li>THREAD_POOL_EXECUTOR=threadPoolExecutor</li>
+<li>threadPoolExecutor=new ThreadPoolExecutor()</li>
+</ul>
+</li>
+<li>THREAD_POOL_EXECUTOR.execute&#x7B49;&#x540C;&#x4E8E;ThreadPoolExecutor.execute(Runable)</li>
+<li>Runable.run</li>
+<li><p>r.run </p>
+<ul>
+<li>r=mFuture</li>
+<li>mFuture = new FutureTask<result>(mWorker)</result></li>
+</ul>
+</li>
+<li>r.run&#x7B49;&#x540C;&#x4E8E;FutureTask&#x5B9E;&#x4F8B;mFuture .run</li>
+<li><p>mWorker.call</p>
+<ul>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x8C03;&#x7528;doInBackground</li>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x8C03;&#x7528;postResult</li>
+</ul>
+</li>
+<li><p>message.sendToTarget</p>
+<ul>
+<li>message.what=MESSAGE_POST_RESULT</li>
+</ul>
+</li>
+<li>mHandler.handleMessage</li>
+<li><p>result.mTask.finish(result.mData[0])</p>
+<ul>
+<li>result.mTask&#x662F;AsyncTask&#x7684;&#x5B9E;&#x4F8B;</li>
+</ul>
+</li>
+<li>AsyncTask.finish</li>
+<li>AsyncTask.onPostExecute</li>
+</ul>
+<h3 id="&#x4E5D;&#x3001;&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x4E5D;&#x3001;&#x5E38;&#x89C1;&#x95EE;&#x9898;</h3>
+<h4 id="91-&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;">9.1 &#x5E38;&#x7528;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;</h4>
+<ul>
+<li>AsyncTask &#x76EE;&#x524D;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x662F;&#x9690;&#x85CF;&#x7684;&#xFF0C;&#x6240;&#x4EE5;Looper&#x4E00;&#x5B9A;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;Looper&#xFF0C;Handler&#x4E5F;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;Handler</li>
+<li>onPreExecute&#x65B9;&#x6CD5;&#x5728;AsyncTask&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;(AsyncTask&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x5C31;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;AsyncTask&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x5C31;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x3002;&#x4F46;&#x662F;AsyncTask&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x81EA;&#x7136;&#x5C31;&#x65E0;&#x6CD5;&#x5BF9;UI&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;)</li>
+<li>doInBackground&#x65B9;&#x6CD5;&#x5728;AsyncTask&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x5B50;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#xFF0C;(&#x56E0;&#x4E3A;&#x662F;FutureTask+Callable+ThreadPoolExecutor&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x7684;)</li>
+<li>onProgressUpdate&#x65B9;&#x6CD5;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;(&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x662F;Handler+Looper&#x65B9;&#x5F0F;&#xFF0C;&#x90FD;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x5BF9;&#x8C61;)</li>
+<li>onPostExecute&#x65B9;&#x6CD5;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;(&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x662F;Handler+Looper&#x65B9;&#x5F0F;&#xFF0C;&#x90FD;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x5BF9;&#x8C61;)</li>
+</ul>
+<h4 id="92-&#x4E3A;&#x4EC0;&#x4E48;-asynctask-&#x7684;&#x5BF9;&#x8C61;&#x53EA;&#x80FD;&#x88AB;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#xFF1F;&#xFF08;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x53EA;&#x80FD;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;">9.2 &#x4E3A;&#x4EC0;&#x4E48; AsyncTask &#x7684;&#x5BF9;&#x8C61;&#x53EA;&#x80FD;&#x88AB;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#xFF1F;&#xFF08;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x53EA;&#x80FD;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;</h4>
+<ul>
+<li>&#x4ECE;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;AsyncTask &#x6709; 3 &#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x5206;&#x522B;&#x4E3A; PENDING&#x3001;RUNNING&#x3001;FINSHED&#xFF0C;&#x800C;&#x4E14;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x5728; AsyncTask &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x6709;&#x4E14;&#x53EA;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x3002;&#x7531;&#x4E8E;&#x5728;&#x6267;&#x884C;&#x5B8C; execute &#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;&#x5BF9; AsyncTask &#x7684;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x662F; PENDING&#xFF08;&#x7B49;&#x5F85;&#x4E2D;&#xFF09;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x4F1A;&#x5F80;&#x4E0B;&#x6267;&#x884C;&#x5E76;&#x5C06; AsyncTask &#x7684;&#x72B6;&#x6001;&#x8BBE;&#x7F6E;&#x4E3A; RUNNING&#xFF08;&#x8FD0;&#x884C;&#x4E2D;&#xFF09;&#x7684;&#x72B6;&#x6001;&#xFF1B;&#x5426;&#x5219;&#x4F1A;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x3002;AsyncTask finish &#x7684;&#x65F6;&#x5019;&#xFF0C;AsyncTask &#x7684;&#x72B6;&#x6001;&#x4F1A;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; FINSHED &#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x5224;&#x65AD;&#x5F53;&#x524D;&#x7684;&#x72B6;&#x6001; &#x5982;&#x679C;&#x4E0D;&#x662F;&#x7B49;&#x5F85;&#x4E2D;&#x7684;&#x8BDD; &#x5C31;&#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
+<span class="hljs-keyword">if</span> (mStatus != Status.PENDING) {
+    <span class="hljs-keyword">switch</span> (mStatus) {
+        <span class="hljs-keyword">case</span> RUNNING:
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Cannot execute task:&quot;</span>
+                + <span class="hljs-string">&quot; the task is already running.&quot;</span>);
+        <span class="hljs-keyword">case</span> FINISHED:
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Cannot execute task:&quot;</span>
+                + <span class="hljs-string">&quot; the task has already been executed &quot;</span>
+                + <span class="hljs-string">&quot;(a task can be executed only once)&quot;</span>);
+    }
+}
+<span class="hljs-comment">//&#x4FEE;&#x6539;&#x72B6;&#x6001;&#x4E3A; &#x8FD0;&#x884C;&#x4E2D;</span>
+mStatus = Status.RUNNING;
+</code></pre>
+<h4 id="93-asynctask-&#x8C03;&#x7528;-cancel-&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x7ACB;&#x5373;&#x505C;&#x6B62;&#x6267;&#x884C;&#xFF1F;onpostexecute-&#x8FD8;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x5417;&#xFF1F;oncancelled-&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x88AB;&#x8C03;&#x7528;&#xFF1F;">9.3 AsyncTask &#x8C03;&#x7528; cancel() &#x4EFB;&#x52A1;&#x662F;&#x5426;&#x7ACB;&#x5373;&#x505C;&#x6B62;&#x6267;&#x884C;&#xFF1F;onPostExecute() &#x8FD8;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x5417;&#xFF1F;onCancelled() &#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x88AB;&#x8C03;&#x7528;&#xFF1F;</h4>
+<ul>
+<li>&#x4EFB;&#x52A1;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x505C;&#x6B62;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x7528; cancel &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x662F;&#x5C06; AsyncTask &#x8BBE;&#x7F6E;&#x4E3A; canceled&#xFF08;&#x53EF;&#x53D6;&#x6D88;&#xFF09;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;AsyncTask &#x8BBE;&#x7F6E;&#x4E3A;&#x5DF2;&#x53D6;&#x6D88;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x90A3;&#x4E48;&#x4E4B;&#x540E; onProgressUpdate &#x548C; onPostExecute &#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x8C03;&#x7528;&#x4E86; onCancelled() &#x65B9;&#x6CD5;&#x3002;onCancelled() &#x65B9;&#x6CD5;&#x662F;&#x5728;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#x624D;&#x8C03;&#x7528;&#x7684;&#x3002;&#x65F6;&#x673A;&#x662F;&#x548C; onPostExecute &#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E92;&#x65A5;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x3002;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@WorkerThread</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">publishProgress</span><span class="hljs-params">(Progress... values)</span> </span>{
+    <span class="hljs-keyword">if</span> (!isCancelled()) {
+        getHandler().obtainMessage(MESSAGE_POST_PROGRESS,
+            <span class="hljs-keyword">new</span> AsyncTaskResult&lt;Progress&gt;(<span class="hljs-keyword">this</span>, values)).sendToTarget();
+    }
+}
+
+<span class="hljs-comment">// &#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">(Result result)</span> </span>{
+    <span class="hljs-keyword">if</span> (isCancelled()) {
+        onCancelled(result);
+    } <span class="hljs-keyword">else</span> {
+        onPostExecute(result);
+    }
+    mStatus = Status.FINISHED;
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"AsyncTask","level":"4.2.1","depth":2,"next":{"title":"3.3 Hook","level":"4.3","depth":1,"ref":"","articles":[{"title":"代理模式","level":"4.3.1","depth":2,"path":"Android必备技能/Hook/代理模式.md","ref":"Android必备技能/Hook/代理模式.md","articles":[]},{"title":"Hook","level":"4.3.2","depth":2,"path":"Android必备技能/Hook/Hook.md","ref":"Android必备技能/Hook/Hook.md","articles":[]}]},"previous":{"title":"3.2 并发","level":"4.2","depth":1,"ref":"","articles":[{"title":"AsyncTask","level":"4.2.1","depth":2,"path":"Android必备技能/并发/AsyncTask.md","ref":"Android必备技能/并发/AsyncTask.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android必备技能/并发/AsyncTask.md","mtime":"2020-11-17T07:07:34.642Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

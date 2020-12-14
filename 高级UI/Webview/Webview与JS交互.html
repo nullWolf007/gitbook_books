@@ -1,0 +1,3289 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Webview与JS交互 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Webview.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../系统布局/ConstraintLayout.html">
+            
+                <a href="../系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../系统布局/RemoteViews解析.html">
+            
+                <a href="../系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../自定义View/一、基础知识.html">
+            
+                <a href="../自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../自定义View/三、Measure过程.html">
+            
+                <a href="../自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../自定义View/四、Layout过程.html">
+            
+                <a href="../自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../自定义View/五、Draw过程.html">
+            
+                <a href="../自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../自定义View/六、自定义View实例.html">
+            
+                <a href="../自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="6.3.1" data-path="Webview与JS交互.html">
+            
+                <a href="Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="Webview.html">
+            
+                <a href="Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Webview与JS交互</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="webview&#x4E0E;js&#x4EA4;&#x4E92;">Webview&#x4E0E;JS&#x4EA4;&#x4E92;</h2>
+<h4 id="&#x8F6C;&#x8F7D;">&#x8F6C;&#x8F7D;</h4>
+<ul>
+<li><a href="http://blog.csdn.net/carson_ho/article/details/64904691" target="_blank">Android&#xFF1A;&#x4F60;&#x8981;&#x7684;WebView&#x4E0E; JS &#x4EA4;&#x4E92;&#x65B9;&#x5F0F; &#x90FD;&#x5728;&#x8FD9;&#x91CC;&#x4E86;</a></li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x603B;&#x7ED3;">&#x4E00;&#x3001;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x603B;&#x7ED3;</h3>
+<h4 id="11-&#x4E24;&#x79CD;&#x65B9;&#x5F0F;">1.1 &#x4E24;&#x79CD;&#x65B9;&#x5F0F;</h4>
+<ul>
+<li><p>Android&#x4E0E;JS&#x901A;&#x8FC7;WebView&#x4E92;&#x76F8;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#xFF1A;</p>
+<ul>
+<li>Android&#x53BB;&#x8C03;&#x7528;JS&#x7684;&#x4EE3;&#x7801;</li>
+<li>JS&#x53BB;&#x8C03;&#x7528;Android&#x7684;&#x4EE3;&#x7801;</li>
+</ul>
+</li>
+<li><p>&#x4E8C;&#x8005;&#x6C9F;&#x901A;&#x7684;&#x6865;&#x6881;&#x662F;WebView</p>
+</li>
+</ul>
+<h4 id="12-android&#x8C03;&#x7528;js&#x4EE3;&#x7801;">1.2 Android&#x8C03;&#x7528;JS&#x4EE3;&#x7801;</h4>
+<ul>
+<li><p>&#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>loadUrl&#xFF08;&#xFF09;</code></p>
+</li>
+<li><p>&#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>evaluateJavascript&#xFF08;&#xFF09;</code></p>
+</li>
+</ul>
+<h4 id="13-js&#x8C03;&#x7528;android&#x4EE3;&#x7801;">1.3 JS&#x8C03;&#x7528;Android&#x4EE3;&#x7801;</h4>
+<ul>
+<li><p>&#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>addJavascriptInterface&#xFF08;&#xFF09;</code>&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x6620;&#x5C04;</p>
+</li>
+<li><p>&#x901A;&#x8FC7; <code>WebViewClient</code> &#x7684;<code>shouldOverrideUrlLoading ()</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A; url</p>
+</li>
+<li><p>&#x901A;&#x8FC7; <code>WebChromeClient</code> &#x7684;<code>onJsAlert()</code>&#x3001;<code>onJsConfirm()</code>&#x3001;<code>onJsPrompt&#xFF08;&#xFF09;</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A;JS&#x5BF9;&#x8BDD;&#x6846;<code>alert()</code>&#x3001;<code>confirm()</code>&#x3001;<code>prompt&#xFF08;&#xFF09;</code> &#x6D88;&#x606F;</p>
+</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;android&#x901A;&#x8FC7;webview&#x8C03;&#x7528;-js-&#x4EE3;&#x7801;">&#x4E8C;&#x3001;Android&#x901A;&#x8FC7;WebView&#x8C03;&#x7528; JS &#x4EE3;&#x7801;</h3>
+<h4 id="21-&#x901A;&#x8FC7;webview&#x7684;loadurl">2.1 &#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>loadUrl()</code></h4>
+<ul>
+<li>&#x5B9E;&#x4F8B;&#x4ECB;&#x7ECD;&#xFF1A;&#x70B9;&#x51FB;Android&#x6309;&#x94AE;&#xFF0C;&#x5373;&#x8C03;&#x7528;WebView JS&#xFF08;&#x6587;&#x672C;&#x540D;&#x4E3A;<code>javascript</code>&#xFF09;&#x4E2D;callJS&#xFF08;&#xFF09;</li>
+<li>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF1A;</li>
+</ul>
+<h5 id="211-&#x6B65;&#x9AA4;1&#xFF1A;&#x5C06;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;js&#x4EE3;&#x7801;&#x4EE5;html&#x683C;&#x5F0F;&#x653E;&#x5230;srcmainassets&#x6587;&#x4EF6;&#x5939;&#x91CC;">2.1.1 &#x6B65;&#x9AA4;1&#xFF1A;&#x5C06;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;JS&#x4EE3;&#x7801;&#x4EE5;<code>.html</code>&#x683C;&#x5F0F;&#x653E;&#x5230;src/main/assets&#x6587;&#x4EF6;&#x5939;&#x91CC;</h5>
+<ul>
+<li><p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5C55;&#x793A;&#xFF0C;&#x672C;&#x6587;&#x662F;&#x91C7;&#x7528;Andorid&#x8C03;&#x7528;&#x672C;&#x5730;JS&#x4EE3;&#x7801;&#x8BF4;&#x660E;&#xFF1B;</p>
+</li>
+<li><p>&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;Android&#x66F4;&#x591A;&#x7684;&#x662F;&#x8C03;&#x7528;&#x8FDC;&#x7A0B;JS&#x4EE3;&#x7801;&#xFF0C;&#x5373;&#x5C06;&#x52A0;&#x8F7D;&#x7684;JS&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x6539;&#x6210;url&#x5373;&#x53EF;</p>
+</li>
+<li><p>&#x9700;&#x8981;&#x52A0;&#x8F7D;JS&#x4EE3;&#x7801;&#xFF1A;index.html</p>
+</li>
+</ul>
+<pre><code class="lang-javascript">&lt;!--&#x6587;&#x672C;&#x540D;&#xFF1A;javascript--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Carson_Ho&lt;/title&gt;
+
+    &lt;!--JS&#x4EE3;&#x7801;--&gt;
+    &lt;script&gt;
+        &lt;!--Android&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;--&gt;
+        function callJS(){
+            alert(&quot;Android&#x8C03;&#x7528;&#x4E86;JS&#x7684;callJS&#x65B9;&#x6CD5;&quot;);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="212-&#x6B65;&#x9AA4;2&#xFF1A;&#x5728;android&#x91CC;&#x901A;&#x8FC7;webview&#x8BBE;&#x7F6E;&#x8C03;&#x7528;js&#x4EE3;&#x7801;">2.1.2 &#x6B65;&#x9AA4;2&#xFF1A;&#x5728;Android&#x91CC;&#x901A;&#x8FC7;WebView&#x8BBE;&#x7F6E;&#x8C03;&#x7528;JS&#x4EE3;&#x7801;</h5>
+<ul>
+<li>activity_main.xml</li>
+</ul>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+    <span class="hljs-attr">android:padding</span>=<span class="hljs-string">&quot;10dp&quot;</span>
+    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">WebView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/webview&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;400dp&quot;</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;&#x70B9;&#x51FB;&#x8C03;&#x7528;JS&#x4EE3;&#x7801;&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Android&#x4EE3;&#x7801;&#xFF1A;MainActivity.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+    WebView mWebView;
+    Button button;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        button = (Button) findViewById(R.id.button);
+        mWebView =(WebView) findViewById(R.id.webview);
+        WebSettings webSettings = mWebView.getSettings();
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0E;Js&#x4EA4;&#x4E92;&#x7684;&#x6743;&#x9650;</span>
+        webSettings.setJavaScriptEnabled(<span class="hljs-keyword">true</span>);
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5141;&#x8BB8;JS&#x5F39;&#x7A97;</span>
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(<span class="hljs-keyword">true</span>);
+        <span class="hljs-comment">// &#x5148;&#x8F7D;&#x5165;JS&#x4EE3;&#x7801;</span>
+        <span class="hljs-comment">// &#x683C;&#x5F0F;&#x89C4;&#x5B9A;&#x4E3A;:file:///android_asset/&#x6587;&#x4EF6;&#x540D;.html</span>
+        mWebView.loadUrl(<span class="hljs-string">&quot;file:///android_asset/index.html&quot;</span>);
+
+        button.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+                <span class="hljs-comment">// &#x901A;&#x8FC7;Handler&#x53D1;&#x9001;&#x6D88;&#x606F;</span>
+                mWebView.post(<span class="hljs-keyword">new</span> Runnable() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                        <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8C03;&#x7528;&#x7684;JS&#x65B9;&#x6CD5;&#x540D;&#x8981;&#x5BF9;&#x5E94;&#x4E0A;</span>
+                        <span class="hljs-comment">// &#x8C03;&#x7528;javascript&#x7684;callJS()&#x65B9;&#x6CD5;</span>
+                        mWebView.loadUrl(<span class="hljs-string">&quot;javascript:callJS()&quot;</span>);
+                    }
+                });
+            }
+        });
+
+        <span class="hljs-comment">// &#x7531;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E86;&#x5F39;&#x7A97;&#x68C0;&#x9A8C;&#x8C03;&#x7528;&#x7ED3;&#x679C;,&#x6240;&#x4EE5;&#x9700;&#x8981;&#x652F;&#x6301;js&#x5BF9;&#x8BDD;&#x6846;</span>
+        <span class="hljs-comment">// webview&#x53EA;&#x662F;&#x8F7D;&#x4F53;&#xFF0C;&#x5185;&#x5BB9;&#x7684;&#x6E32;&#x67D3;&#x9700;&#x8981;&#x4F7F;&#x7528;webviewChromClient&#x7C7B;&#x53BB;&#x5B9E;&#x73B0;</span>
+        <span class="hljs-comment">// &#x901A;&#x8FC7;&#x8BBE;&#x7F6E;WebChromeClient&#x5BF9;&#x8C61;&#x5904;&#x7406;JavaScript&#x7684;&#x5BF9;&#x8BDD;&#x6846;</span>
+        <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x54CD;&#x5E94;js &#x7684;Alert()&#x51FD;&#x6570;</span>
+        mWebView.setWebChromeClient(<span class="hljs-keyword">new</span> WebChromeClient() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onJsAlert</span><span class="hljs-params">(WebView view, String url, String message, <span class="hljs-keyword">final</span> JsResult result)</span> </span>{
+                AlertDialog.Builder b = <span class="hljs-keyword">new</span> AlertDialog.Builder(MainActivity.<span class="hljs-keyword">this</span>);
+                b.setTitle(<span class="hljs-string">&quot;Alert&quot;</span>);
+                b.setMessage(message);
+                b.setPositiveButton(android.R.string.ok, <span class="hljs-keyword">new</span> DialogInterface.OnClickListener() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(DialogInterface dialog, <span class="hljs-keyword">int</span> which)</span> </span>{
+                        result.confirm();
+                    }
+                });
+                b.setCancelable(<span class="hljs-keyword">false</span>);
+                b.create().show();
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        });
+    }
+}
+</code></pre>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MjZkMGFhMDY1ZjcwY2IxLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" alt="&#x6548;&#x679C;&#x56FE;"></p>
+<ul>
+<li><p><strong>&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF1A;JS&#x4EE3;&#x7801;&#x8C03;&#x7528;&#x4E00;&#x5B9A;&#x8981;&#x5728; <code>onPageFinished&#xFF08;&#xFF09;</code> &#x56DE;&#x8C03;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x8C03;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#x3002;</strong></p>
+</li>
+<li><p><code>onPageFinished()</code>&#x5C5E;&#x4E8E;WebViewClient&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E3B;&#x8981;&#x5728;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x7ED3;&#x675F;&#x65F6;&#x8C03;&#x7528;</p>
+</li>
+</ul>
+<h4 id="22-&#x901A;&#x8FC7;webview&#x7684;evaluatejavascript">2.2 &#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>evaluateJavascript()</code></h4>
+<h5 id="221-&#x4F18;&#x70B9;">2.2.1 &#x4F18;&#x70B9;</h5>
+<ul>
+<li>&#x8BE5;&#x65B9;&#x6CD5;&#x6BD4;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3001;&#x4F7F;&#x7528;&#x66F4;&#x7B80;&#x6D01;&#x3002;<ul>
+<li>&#x56E0;&#x4E3A;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x4E0D;&#x4F1A;&#x4F7F;&#x9875;&#x9762;&#x5237;&#x65B0;&#xFF0C;&#x800C;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF08;loadUrl &#xFF09;&#x7684;&#x6267;&#x884C;&#x5219;&#x4F1A;&#x3002;</li>
+<li>Android 4.4 &#x540E;&#x624D;&#x53EF;&#x4F7F;&#x7528;</li>
+</ul>
+</li>
+</ul>
+<h5 id="222-&#x4F7F;&#x7528;">2.2.2 &#x4F7F;&#x7528;</h5>
+<ul>
+<li>&#x53EA;&#x9700;&#x8981;&#x5C06;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x7684;loadUrl()&#x6362;&#x6210;&#x4E0B;&#x9762;&#x8BE5;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#xFF0C;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4EE3;&#x7801;&#x4FEE;&#x6539;&#x5982;&#x4E0B;</li>
+</ul>
+<pre><code class="lang-java">button.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+        <span class="hljs-comment">// &#x901A;&#x8FC7;Handler&#x53D1;&#x9001;&#x6D88;&#x606F;</span>
+        mWebView.post(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8C03;&#x7528;&#x7684;JS&#x65B9;&#x6CD5;&#x540D;&#x8981;&#x5BF9;&#x5E94;&#x4E0A;</span>
+                <span class="hljs-comment">// &#x8C03;&#x7528;javascript&#x7684;callJS()&#x65B9;&#x6CD5;</span>
+                mWebView.evaluateJavascript(<span class="hljs-string">&quot;javascript:callJS()&quot;</span>, <span class="hljs-keyword">new</span> ValueCallback&lt;String&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceiveValue</span><span class="hljs-params">(String value)</span> </span>{
+                        <span class="hljs-comment">//&#x6B64;&#x5904;&#x4E3A; js &#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;</span>
+                    }
+                });
+            }
+        });
+    }
+});
+</code></pre>
+<h4 id="23-&#x65B9;&#x6CD5;&#x5BF9;&#x6BD4;">2.3 &#x65B9;&#x6CD5;&#x5BF9;&#x6BD4;</h4>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0zMGYwOTVkNGM5ZTYzOGZkLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" alt="&#x65B9;&#x5F0F;&#x5BF9;&#x6BD4;&#x56FE;"></p>
+<h4 id="24-&#x4F7F;&#x7528;&#x5EFA;&#x8BAE;">2.4 &#x4F7F;&#x7528;&#x5EFA;&#x8BAE;</h4>
+<ul>
+<li>&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x6DF7;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x5373;Android 4.4&#x4EE5;&#x4E0B;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;1&#xFF0C;Android 4.4&#x4EE5;&#x4E0A;&#x65B9;&#x6CD5;2</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Android&#x7248;&#x672C;&#x53D8;&#x91CF;</span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> version = Build.VERSION.SDK_INT;
+<span class="hljs-comment">// &#x56E0;&#x4E3A;&#x8BE5;&#x65B9;&#x6CD5;&#x5728; Android 4.4 &#x7248;&#x672C;&#x624D;&#x53EF;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8FDB;&#x884C;&#x7248;&#x672C;&#x5224;&#x65AD;</span>
+<span class="hljs-keyword">if</span> (version &lt; <span class="hljs-number">18</span>) {
+    mWebView.loadUrl(<span class="hljs-string">&quot;javascript:callJS()&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    mWebView.evaluateJavascript&#xFF08;<span class="hljs-string">&quot;javascript:callJS()&quot;</span>, <span class="hljs-keyword">new</span> ValueCallback&lt;String&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceiveValue</span><span class="hljs-params">(String value)</span> </span>{
+            <span class="hljs-comment">//&#x6B64;&#x5904;&#x4E3A; js &#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;</span>
+        }
+    });
+}
+</code></pre>
+<h3 id="&#x4E09;&#x3001;js&#x901A;&#x8FC7;webview&#x8C03;&#x7528;-android-&#x4EE3;&#x7801;">&#x4E09;&#x3001;JS&#x901A;&#x8FC7;WebView&#x8C03;&#x7528; Android &#x4EE3;&#x7801;</h3>
+<ul>
+<li><p>&#x5BF9;&#x4E8E;JS&#x8C03;&#x7528;Android&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x6CD5;&#x6709;3&#x79CD;&#xFF1A;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;<code>WebView</code>&#x7684;<code>addJavascriptInterface&#xFF08;&#xFF09;</code>&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x6620;&#x5C04;</p>
+</li>
+<li>&#x901A;&#x8FC7; <code>WebViewClient</code> &#x7684;<code>shouldOverrideUrlLoading ()</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A; url</li>
+<li>&#x901A;&#x8FC7; <code>WebChromeClient</code> &#x7684;<code>onJsAlert()</code>&#x3001;<code>onJsConfirm()</code>&#x3001;<code>onJsPrompt&#xFF08;&#xFF09;</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A;JS&#x5BF9;&#x8BDD;&#x6846;<code>alert()</code>&#x3001;<code>confirm()</code>&#x3001;<code>prompt&#xFF08;&#xFF09;</code> &#x6D88;&#x606F;</li>
+</ul>
+<h4 id="31-&#x901A;&#x8FC7;-webview&#x7684;addjavascriptinterface&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x6620;&#x5C04;">3.1 &#x901A;&#x8FC7; <code>WebView</code>&#x7684;<code>addJavascriptInterface()</code>&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x6620;&#x5C04;</h4>
+<h5 id="311-&#x6B65;&#x9AA4;1&#xFF1A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E0E;js&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;android&#x7C7B;&#xFF1A;androidtojs">3.1.1 &#x6B65;&#x9AA4;1&#xFF1A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E0E;JS&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;Android&#x7C7B;&#xFF1A;AndroidToJs</h5>
+<ul>
+<li>AndroidToJs.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AndroidToJs</span> </span>{
+    <span class="hljs-comment">// &#x5B9A;&#x4E49;JS&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-comment">// &#x88AB;JS&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x52A0;&#x5165;@JavascriptInterface&#x6CE8;&#x89E3;</span>
+    <span class="hljs-meta">@JavascriptInterface</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">hello</span><span class="hljs-params">(String msg)</span> </span>{
+        Log.e(<span class="hljs-string">&quot;AndroidToJs&quot;</span>, <span class="hljs-string">&quot;JS&#x8C03;&#x7528;&#x4E86;Android&#x7684;hello&#x65B9;&#x6CD5;&quot;</span>);
+    }
+}
+</code></pre>
+<h5 id="312-&#x6B65;&#x9AA4;2&#xFF1A;&#x5C06;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;js&#x4EE3;&#x7801;&#x4EE5;html&#x683C;&#x5F0F;&#x653E;&#x5230;srcmainassets&#x6587;&#x4EF6;&#x5939;&#x91CC;">3.1.2 &#x6B65;&#x9AA4;2&#xFF1A;&#x5C06;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;JS&#x4EE3;&#x7801;&#x4EE5;<code>.html</code>&#x683C;&#x5F0F;&#x653E;&#x5230;src/main/assets&#x6587;&#x4EF6;&#x5939;&#x91CC;</h5>
+<ul>
+<li>&#x9700;&#x8981;&#x52A0;&#x8F7D;JS&#x4EE3;&#x7801;&#xFF1A;index.html</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Carson<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
+         function callAndroid(){
+            <span class="hljs-comment">&lt;!--&#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;test&#x5BF9;&#x8C61;&#x7B49;&#x4E8E;&#x8C03;&#x7528;Android&#x6620;&#x5C04;&#x7684;&#x5BF9;&#x8C61;&#x5373;AndroidToJs&#x5B9E;&#x4F8B;--&gt;</span>
+            test.hello(&quot;js&#x8C03;&#x7528;&#x4E86;android&#x4E2D;&#x7684;hello&#x65B9;&#x6CD5;&quot;);
+         }
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--&#x70B9;&#x51FB;&#x6309;&#x94AE;&#x5219;&#x8C03;&#x7528;callAndroid&#x51FD;&#x6570;--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;button1&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;callAndroid()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x8C03;&#x7528;Android&#x4EE3;&#x7801;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h5 id="313-&#x6B65;&#x9AA4;3&#xFF1A;&#x5728;android&#x91CC;&#x901A;&#x8FC7;webview&#x8BBE;&#x7F6E;android&#x7C7B;&#x4E0E;js&#x4EE3;&#x7801;&#x7684;&#x6620;&#x5C04;">3.1.3 &#x6B65;&#x9AA4;3&#xFF1A;&#x5728;Android&#x91CC;&#x901A;&#x8FC7;WebView&#x8BBE;&#x7F6E;Android&#x7C7B;&#x4E0E;JS&#x4EE3;&#x7801;&#x7684;&#x6620;&#x5C04;</h5>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+    WebView mWebView;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mWebView = (WebView) findViewById(R.id.webview);
+        WebSettings webSettings = mWebView.getSettings();
+
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0E;Js&#x4EA4;&#x4E92;&#x7684;&#x6743;&#x9650;</span>
+        webSettings.setJavaScriptEnabled(<span class="hljs-keyword">true</span>);
+
+        <span class="hljs-comment">// &#x901A;&#x8FC7;addJavascriptInterface()&#x5C06;Java&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x5230;JS&#x5BF9;&#x8C61;</span>
+        <span class="hljs-comment">//&#x53C2;&#x6570;1&#xFF1A;Javascript&#x5BF9;&#x8C61;&#x540D;</span>
+        <span class="hljs-comment">//&#x53C2;&#x6570;2&#xFF1A;Java&#x5BF9;&#x8C61;&#x540D;</span>
+        mWebView.addJavascriptInterface(<span class="hljs-keyword">new</span> AndroidToJs(), <span class="hljs-string">&quot;test&quot;</span>);<span class="hljs-comment">//AndroidToJS&#x7C7B;&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x5230;js&#x7684;test&#x5BF9;&#x8C61;</span>
+
+        <span class="hljs-comment">// &#x52A0;&#x8F7D;JS&#x4EE3;&#x7801;</span>
+        <span class="hljs-comment">// &#x683C;&#x5F0F;&#x89C4;&#x5B9A;&#x4E3A;:file:///android_asset/&#x6587;&#x4EF6;&#x540D;.html</span>
+        mWebView.loadUrl(<span class="hljs-string">&quot;file:///android_asset/index.html&quot;</span>);
+    }
+}
+</code></pre>
+<p><img src="../../images/&#x9AD8;&#x7EA7;UI/Webview/addJavascriptInterface&#x5B9E;&#x4F8B;&#x663E;&#x793A;.PNG" alt="addJavascriptInterface&#x5B9E;&#x4F8B;&#x663E;&#x793A;" style="zoom: 50%;"></p>
+<ul>
+<li>&#x70B9;&#x51FB;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</li>
+</ul>
+<pre><code class="lang-java">com.example.study E/AndroidToJs: JS&#x8C03;&#x7528;&#x4E86;Android&#x7684;hello&#x65B9;&#x6CD5;
+</code></pre>
+<h5 id="314-&#x7279;&#x70B9;">3.1.4 &#x7279;&#x70B9;</h5>
+<ul>
+<li>&#x4F18;&#x70B9;&#xFF1A;&#x4F7F;&#x7528;&#x7B80;&#x5355;<ul>
+<li>&#x4EC5;&#x5C06;Android&#x5BF9;&#x8C61;&#x548C;JS&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x5373;&#x53EF;</li>
+</ul>
+</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;&#x5B58;&#x5728;&#x4E25;&#x91CD;&#x7684;&#x6F0F;&#x6D1E;&#x95EE;&#x9898;&#xFF0C;&#x5177;&#x4F53;&#x8BF7;&#x770B;&#x6587;&#x7AE0;&#xFF1A;<a href="http://www.jianshu.com/p/3a345d27cd42" target="_blank">&#x4F60;&#x4E0D;&#x77E5;&#x9053;&#x7684; Android WebView &#x4F7F;&#x7528;&#x6F0F;&#x6D1E;</a></li>
+</ul>
+<h4 id="32-&#x901A;&#x8FC7;-webviewclient-&#x7684;&#x65B9;&#x6CD5;shouldoverrideurlloading&#x56DE;&#x8C03;&#x62E6;&#x622A;-url">3.2 &#x901A;&#x8FC7; <code>WebViewClient</code> &#x7684;&#x65B9;&#x6CD5;<code>shouldOverrideUrlLoading()</code>&#x56DE;&#x8C03;&#x62E6;&#x622A; url</h4>
+<h5 id="321-&#x5177;&#x4F53;&#x539F;&#x7406;">3.2.1 &#x5177;&#x4F53;&#x539F;&#x7406;</h5>
+<ul>
+<li><p>Android&#x901A;&#x8FC7; <code>WebViewClient</code> &#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;<code>shouldOverrideUrlLoading()</code>&#x62E6;&#x622A; url</p>
+</li>
+<li><p>&#x89E3;&#x6790;&#x8BE5; url &#x7684;&#x534F;&#x8BAE;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x662F;&#x9884;&#x5148;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x5C31;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x65B9;&#x6CD5;</p>
+<ul>
+<li>&#x5373;JS&#x9700;&#x8981;&#x8C03;&#x7528;Android&#x7684;&#x65B9;&#x6CD5;</li>
+</ul>
+</li>
+</ul>
+<h5 id="322-&#x6B65;&#x9AA4;&#xFF1A;&#x5728;js&#x7EA6;&#x5B9A;&#x6240;&#x9700;&#x8981;&#x7684;url&#x534F;&#x8BAE;">3.2.2 &#x6B65;&#x9AA4;&#xFF1A;&#x5728;JS&#x7EA6;&#x5B9A;&#x6240;&#x9700;&#x8981;&#x7684;Url&#x534F;&#x8BAE;</h5>
+<ul>
+<li>JS&#x4EE3;&#x7801;&#xFF1A;index.html</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Carson_Ho<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
+         function callAndroid(){
+            <span class="hljs-comment">&lt;!--&#x7EA6;&#x5B9A;&#x7684;url&#x534F;&#x8BAE;&#x4E3A;&#xFF1A;js://webview?arg1=111&amp;arg2=222*/ --&gt;</span>
+            document.location = &quot;js://webview?arg1=111&amp;arg2=222&quot;;
+         }
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- &#x70B9;&#x51FB;&#x6309;&#x94AE;&#x5219;&#x8C03;&#x7528;callAndroid&#xFF08;&#xFF09;&#x65B9;&#x6CD5;  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;button1&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;callAndroid()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x8C03;&#x7528;Android&#x4EE3;&#x7801;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<ul>
+<li>&#x5F53;&#x8BE5;JS&#x901A;&#x8FC7;Android&#x7684;<code>mWebView.loadUrl(&quot;file:///android_asset/javascript.html&quot;)</code>&#x52A0;&#x8F7D;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x56DE;&#x8C03;<code>shouldOverrideUrlLoading()</code>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7EE7;&#x7EED;&#x770B;&#x6B65;&#x9AA4;2&#xFF1A;</li>
+</ul>
+<h5 id="323-&#x6B65;&#x9AA4;2&#xFF1A;&#x5728;android&#x901A;&#x8FC7;webviewclient&#x590D;&#x5199;shouldoverrideurlloading">3.2.3 &#x6B65;&#x9AA4;2&#xFF1A;&#x5728;Android&#x901A;&#x8FC7;WebViewClient&#x590D;&#x5199;shouldOverrideUrlLoading()</h5>
+<ul>
+<li>MainActivity.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+    WebView mWebView;
+
+    WebViewClient webViewClient = <span class="hljs-keyword">new</span> WebViewClient() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldOverrideUrlLoading</span><span class="hljs-params">(WebView view, String url)</span> </span>{
+            <span class="hljs-comment">// &#x6B65;&#x9AA4;2&#xFF1A;&#x6839;&#x636E;&#x534F;&#x8BAE;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x6240;&#x9700;&#x8981;&#x7684;url</span>
+            <span class="hljs-comment">// &#x4E00;&#x822C;&#x6839;&#x636E;scheme&#xFF08;&#x534F;&#x8BAE;&#x683C;&#x5F0F;&#xFF09; &amp; authority&#xFF08;&#x534F;&#x8BAE;&#x540D;&#xFF09;&#x5224;&#x65AD;&#xFF08;&#x524D;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF09;</span>
+            <span class="hljs-comment">//&#x5047;&#x5B9A;&#x4F20;&#x5165;&#x8FDB;&#x6765;&#x7684; url = &quot;js://webview?arg1=111&amp;arg2=222&quot;&#xFF08;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x9700;&#x8981;&#x62E6;&#x622A;&#x7684;&#xFF09;</span>
+            Uri uri = Uri.parse(url);
+            <span class="hljs-comment">// &#x5982;&#x679C;url&#x7684;&#x534F;&#x8BAE; = &#x9884;&#x5148;&#x7EA6;&#x5B9A;&#x7684; js &#x534F;&#x8BAE;</span>
+            <span class="hljs-comment">// &#x5C31;&#x89E3;&#x6790;&#x5F80;&#x4E0B;&#x89E3;&#x6790;&#x53C2;&#x6570;</span>
+            <span class="hljs-keyword">if</span> (uri.getScheme().equals(<span class="hljs-string">&quot;js&quot;</span>)) {
+                <span class="hljs-comment">// &#x5982;&#x679C; authority  = &#x9884;&#x5148;&#x7EA6;&#x5B9A;&#x534F;&#x8BAE;&#x91CC;&#x7684; webview&#xFF0C;&#x5373;&#x4EE3;&#x8868;&#x90FD;&#x7B26;&#x5408;&#x7EA6;&#x5B9A;&#x7684;&#x534F;&#x8BAE;</span>
+                <span class="hljs-comment">// &#x6240;&#x4EE5;&#x62E6;&#x622A;url,&#x4E0B;&#x9762;JS&#x5F00;&#x59CB;&#x8C03;&#x7528;Android&#x9700;&#x8981;&#x7684;&#x65B9;&#x6CD5;</span>
+                <span class="hljs-keyword">if</span> (uri.getAuthority().equals(<span class="hljs-string">&quot;webview&quot;</span>)) {
+                    <span class="hljs-comment">//  &#x6B65;&#x9AA4;3&#xFF1A;</span>
+                    <span class="hljs-comment">// &#x6267;&#x884C;JS&#x6240;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x903B;&#x8F91;</span>
+                    Log.e(<span class="hljs-string">&quot;MainActivity&quot;</span>, <span class="hljs-string">&quot;js&#x8C03;&#x7528;&#x4E86;Android&#x7684;&#x65B9;&#x6CD5;&quot;</span>);
+                    <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x5728;&#x534F;&#x8BAE;&#x4E0A;&#x5E26;&#x6709;&#x53C2;&#x6570;&#x5E76;&#x4F20;&#x9012;&#x5230;Android&#x4E0A;</span>
+                    HashMap&lt;String, String&gt; params = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+                    Set&lt;String&gt; collection = uri.getQueryParameterNames();
+                }
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.shouldOverrideUrlLoading(view, url);
+        }
+    };
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mWebView = (WebView) findViewById(R.id.webview);
+        WebSettings webSettings = mWebView.getSettings();
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0E;Js&#x4EA4;&#x4E92;&#x7684;&#x6743;&#x9650;</span>
+        webSettings.setJavaScriptEnabled(<span class="hljs-keyword">true</span>);
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5141;&#x8BB8;JS&#x5F39;&#x7A97;</span>
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(<span class="hljs-keyword">true</span>);
+
+        <span class="hljs-comment">// &#x6B65;&#x9AA4;1&#xFF1A;&#x52A0;&#x8F7D;JS&#x4EE3;&#x7801;</span>
+        <span class="hljs-comment">// &#x683C;&#x5F0F;&#x89C4;&#x5B9A;&#x4E3A;:file:///android_asset/&#x6587;&#x4EF6;&#x540D;.html</span>
+        mWebView.loadUrl(<span class="hljs-string">&quot;file:///android_asset/index.html&quot;</span>);
+
+        <span class="hljs-comment">// &#x590D;&#x5199;WebViewClient&#x7C7B;&#x7684;shouldOverrideUrlLoading&#x65B9;&#x6CD5;</span>
+        mWebView.setWebViewClient(webViewClient);
+    }
+}
+</code></pre>
+<p><img src="../../images/&#x9AD8;&#x7EA7;UI/Webview/shouldOverrideUrlLoading&#x5B9E;&#x4F8B;&#x663E;&#x793A;.PNG" alt="shouldOverrideUrlLoading&#x5B9E;&#x4F8B;&#x663E;&#x793A;" style="zoom: 50%;"></p>
+<h5 id="324-&#x7279;&#x70B9;">3.2.4 &#x7279;&#x70B9;</h5>
+<ul>
+<li>&#x4F18;&#x70B9;&#xFF1A;&#x4E0D;&#x5B58;&#x5728;&#x65B9;&#x5F0F;1&#x7684;&#x6F0F;&#x6D1E;&#xFF1B;</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;JS&#x83B7;&#x53D6;Android&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x590D;&#x6742;&#x3002;<ul>
+<li>&#x5982;&#x679C;JS&#x60F3;&#x8981;&#x5F97;&#x5230;Android&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x53EA;&#x80FD;&#x901A;&#x8FC7; WebView &#x7684; <code>loadUrl()</code>&#x53BB;&#x6267;&#x884C; JS &#x65B9;&#x6CD5;&#x628A;&#x8FD4;&#x56DE;&#x503C;&#x4F20;&#x9012;&#x56DE;&#x53BB;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Android&#xFF1A;MainActivity.java</span>
+mWebView.loadUrl(<span class="hljs-string">&quot;javascript:returnResult(&quot;</span> + result + <span class="hljs-string">&quot;)&quot;</span>);
+
+<span class="hljs-comment">// JS&#xFF1A;javascript.html</span>
+<span class="hljs-function">function <span class="hljs-title">returnResult</span><span class="hljs-params">(result)</span></span>{
+    alert(<span class="hljs-string">&quot;result is&quot;</span> + result);
+}
+</code></pre>
+<h4 id="33-&#x901A;&#x8FC7;-webchromeclient-&#x7684;onjsalert&#x3001;onjsconfirm&#x3001;onjsprompt&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A;js&#x5BF9;&#x8BDD;&#x6846;alert&#x3001;confirm&#x3001;prompt-&#x6D88;&#x606F;">3.3 &#x901A;&#x8FC7; <code>WebChromeClient</code> &#x7684;<code>onJsAlert()</code>&#x3001;<code>onJsConfirm()</code>&#x3001;<code>onJsPrompt()</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x62E6;&#x622A;JS&#x5BF9;&#x8BDD;&#x6846;<code>alert()</code>&#x3001;<code>confirm()</code>&#x3001;<code>prompt()</code> &#x6D88;&#x606F;</h4>
+<h5 id="331-&#x5E38;&#x7528;&#x65B9;&#x6CD5;">3.3.1 &#x5E38;&#x7528;&#x65B9;&#x6CD5;</h5>
+<ul>
+<li>&#x5728;JS&#x4E2D;&#xFF0C;&#x6709;&#x4E09;&#x4E2A;&#x5E38;&#x7528;&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#x65B9;&#x6CD5;&#xFF1A;</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xMzg1Zjc0ODYxOGFmODg2LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" alt="Paste_Image.png"></p>
+<h5 id="332-&#x539F;&#x7406;">3.3.2 &#x539F;&#x7406;</h5>
+<ul>
+<li>Android&#x901A;&#x8FC7; <code>WebChromeClient</code> &#x7684;<code>onJsAlert()</code>&#x3001;<code>onJsConfirm()</code>&#x3001;<code>onJsPrompt&#xFF08;&#xFF09;</code>&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x5206;&#x522B;&#x62E6;&#x622A;JS&#x5BF9;&#x8BDD;&#x6846;&#xFF08;&#x5373;&#x4E0A;&#x8FF0;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x5F97;&#x5230;&#x4ED6;&#x4EEC;&#x7684;&#x6D88;&#x606F;&#x5185;&#x5BB9;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x6790;&#x5373;&#x53EF;&#x3002;</li>
+</ul>
+<h5 id="333-&#x8BF4;&#x660E;">3.3.3 &#x8BF4;&#x660E;</h5>
+<ul>
+<li>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5C06;&#x7528;<strong>&#x62E6;&#x622A; JS&#x7684;&#x8F93;&#x5165;&#x6846;&#xFF08;&#x5373;<code>prompt&#xFF08;&#xFF09;</code>&#x65B9;&#x6CD5;&#xFF09;</strong>&#x8BF4;&#x660E; &#xFF1A;<ul>
+<li>&#x5E38;&#x7528;&#x7684;&#x62E6;&#x622A;&#x662F;&#xFF1A;&#x62E6;&#x622A; JS&#x7684;&#x8F93;&#x5165;&#x6846;&#xFF08;&#x5373;<code>prompt&#xFF08;&#xFF09;</code>&#x65B9;&#x6CD5;&#xFF09;</li>
+<li>&#x56E0;&#x4E3A;&#x53EA;&#x6709;<code>prompt&#xFF08;&#xFF09;</code>&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x64CD;&#x4F5C;&#x6700;&#x5168;&#x9762;&#x65B9;&#x4FBF;&#x3001;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#xFF1B;&#x800C;alert&#xFF08;&#xFF09;&#x5BF9;&#x8BDD;&#x6846;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF1B;confirm&#xFF08;&#xFF09;&#x5BF9;&#x8BDD;&#x6846;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#xFF08;&#x786E;&#x5B9A; / &#x53D6;&#x6D88;&#xFF09;&#x4E24;&#x4E2A;&#x503C;</li>
+</ul>
+</li>
+</ul>
+<h5 id="334-&#x6B65;&#x9AA4;1&#xFF1A;&#x52A0;&#x8F7D;js&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;">3.3.4 &#x6B65;&#x9AA4;1&#xFF1A;&#x52A0;&#x8F7D;JS&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</h5>
+<ul>
+<li>index.html</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Carson_Ho<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
+        function clickprompt(){
+            <span class="hljs-comment">&lt;!--  &#x8C03;&#x7528;prompt&#xFF08;&#xFF09; --&gt;</span>
+            var result=prompt(&quot;js://webview?arg1=111&amp;arg2=222&quot;);
+            alert(&quot;demo &quot; + result);
+        }
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- &#x70B9;&#x51FB;&#x6309;&#x94AE;&#x5219;&#x8C03;&#x7528;clickprompt()  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;button1&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;clickprompt()&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x8C03;&#x7528;Android&#x4EE3;&#x7801;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<ul>
+<li><p>&#x5982;&#x679C;&#x662F;&#x62E6;&#x622A;&#x8B66;&#x544A;&#x6846;&#xFF08;&#x5373;<code>alert()</code>&#xFF09;&#xFF0C;&#x5219;&#x89E6;&#x53D1;&#x56DE;&#x8C03;<code>onJsAlert&#xFF08;&#xFF09;</code>&#xFF1B;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;&#x62E6;&#x622A;&#x786E;&#x8BA4;&#x6846;&#xFF08;&#x5373;<code>confirm()</code>&#xFF09;&#xFF0C;&#x5219;&#x89E6;&#x53D1;&#x56DE;&#x8C03;<code>onJsConfirm&#xFF08;&#xFF09;</code>&#xFF1B;</p>
+</li>
+</ul>
+<h5 id="335-&#x6B65;&#x9AA4;2&#xFF1A;&#x5728;android&#x901A;&#x8FC7;webchromeclient&#x590D;&#x5199;onjsprompt">3.3.5 &#x6B65;&#x9AA4;2&#xFF1A;&#x5728;Android&#x901A;&#x8FC7;<code>WebChromeClient</code>&#x590D;&#x5199;<code>onJsPrompt()</code></h5>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+
+    WebView mWebView;
+    <span class="hljs-comment">//    Button button;</span>
+    WebChromeClient webChromeClient = <span class="hljs-keyword">new</span> WebChromeClient() {
+        <span class="hljs-comment">// &#x62E6;&#x622A;&#x8F93;&#x5165;&#x6846;(&#x539F;&#x7406;&#x540C;&#x65B9;&#x5F0F;2)</span>
+        <span class="hljs-comment">// &#x53C2;&#x6570;message:&#x4EE3;&#x8868;promt&#xFF08;&#xFF09;&#x7684;&#x5185;&#x5BB9;&#xFF08;&#x4E0D;&#x662F;url&#xFF09;</span>
+        <span class="hljs-comment">// &#x53C2;&#x6570;result:&#x4EE3;&#x8868;&#x8F93;&#x5165;&#x6846;&#x7684;&#x8FD4;&#x56DE;&#x503C;</span>
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onJsPrompt</span><span class="hljs-params">(WebView view, String url, String message, String defaultValue, JsPromptResult result)</span> </span>{
+            <span class="hljs-comment">// &#x6839;&#x636E;&#x534F;&#x8BAE;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x6240;&#x9700;&#x8981;&#x7684;url(&#x539F;&#x7406;&#x540C;&#x65B9;&#x5F0F;2)</span>
+            <span class="hljs-comment">// &#x4E00;&#x822C;&#x6839;&#x636E;scheme&#xFF08;&#x534F;&#x8BAE;&#x683C;&#x5F0F;&#xFF09; &amp; authority&#xFF08;&#x534F;&#x8BAE;&#x540D;&#xFF09;&#x5224;&#x65AD;&#xFF08;&#x524D;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF09;</span>
+            <span class="hljs-comment">//&#x5047;&#x5B9A;&#x4F20;&#x5165;&#x8FDB;&#x6765;&#x7684; url = &quot;js://webview?arg1=111&amp;arg2=222&quot;&#xFF08;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x9700;&#x8981;&#x62E6;&#x622A;&#x7684;&#xFF09;</span>
+
+            Uri uri = Uri.parse(message);
+            <span class="hljs-comment">// &#x5982;&#x679C;url&#x7684;&#x534F;&#x8BAE; = &#x9884;&#x5148;&#x7EA6;&#x5B9A;&#x7684; js &#x534F;&#x8BAE;</span>
+            <span class="hljs-comment">// &#x5C31;&#x89E3;&#x6790;&#x5F80;&#x4E0B;&#x89E3;&#x6790;&#x53C2;&#x6570;</span>
+            <span class="hljs-keyword">if</span> (uri.getScheme().equals(<span class="hljs-string">&quot;js&quot;</span>)) {
+                <span class="hljs-comment">// &#x5982;&#x679C; authority  = &#x9884;&#x5148;&#x7EA6;&#x5B9A;&#x534F;&#x8BAE;&#x91CC;&#x7684; webview&#xFF0C;&#x5373;&#x4EE3;&#x8868;&#x90FD;&#x7B26;&#x5408;&#x7EA6;&#x5B9A;&#x7684;&#x534F;&#x8BAE;</span>
+                <span class="hljs-comment">// &#x6240;&#x4EE5;&#x62E6;&#x622A;url,&#x4E0B;&#x9762;JS&#x5F00;&#x59CB;&#x8C03;&#x7528;Android&#x9700;&#x8981;&#x7684;&#x65B9;&#x6CD5;</span>
+                <span class="hljs-keyword">if</span> (uri.getAuthority().equals(<span class="hljs-string">&quot;webview&quot;</span>)) {
+                    <span class="hljs-comment">// &#x6267;&#x884C;JS&#x6240;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x903B;&#x8F91;</span>
+                    System.out.println(<span class="hljs-string">&quot;js&#x8C03;&#x7528;&#x4E86;Android&#x7684;&#x65B9;&#x6CD5;&quot;</span>);
+                    <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x5728;&#x534F;&#x8BAE;&#x4E0A;&#x5E26;&#x6709;&#x53C2;&#x6570;&#x5E76;&#x4F20;&#x9012;&#x5230;Android&#x4E0A;</span>
+                    HashMap&lt;String, String&gt; params = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+                    Set&lt;String&gt; collection = uri.getQueryParameterNames();
+                    <span class="hljs-comment">//&#x53C2;&#x6570;result:&#x4EE3;&#x8868;&#x6D88;&#x606F;&#x6846;&#x7684;&#x8FD4;&#x56DE;&#x503C;(&#x8F93;&#x5165;&#x503C;)</span>
+                    result.confirm(<span class="hljs-string">&quot;js&#x8C03;&#x7528;&#x4E86;Android&#x7684;&#x65B9;&#x6CD5;&#x6210;&#x529F;&#x5566;&quot;</span>);
+                }
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onJsPrompt(view, url, message, defaultValue, result);
+        }
+
+        <span class="hljs-comment">// &#x62E6;&#x622A;JS&#x7684;&#x8B66;&#x544A;&#x6846;</span>
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onJsAlert</span><span class="hljs-params">(WebView view, String url, String message, JsResult result)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onJsAlert(view, url, message, result);
+        }
+
+        <span class="hljs-comment">// &#x62E6;&#x622A;JS&#x7684;&#x786E;&#x8BA4;&#x6846;</span>
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onJsConfirm</span><span class="hljs-params">(WebView view, String url, String message, JsResult result)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onJsConfirm(view, url, message, result);
+        }
+    };
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mWebView = (WebView) findViewById(R.id.webview);
+        WebSettings webSettings = mWebView.getSettings();
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0E;Js&#x4EA4;&#x4E92;&#x7684;&#x6743;&#x9650;</span>
+        webSettings.setJavaScriptEnabled(<span class="hljs-keyword">true</span>);
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5141;&#x8BB8;JS&#x5F39;&#x7A97;</span>
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(<span class="hljs-keyword">true</span>);
+
+        <span class="hljs-comment">// &#x683C;&#x5F0F;&#x89C4;&#x5B9A;&#x4E3A;:file:///android_asset/&#x6587;&#x4EF6;&#x540D;.html</span>
+        mWebView.loadUrl(<span class="hljs-string">&quot;file:///android_asset/index.html&quot;</span>);
+
+        mWebView.setWebChromeClient(webChromeClient);
+    }
+}
+</code></pre>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0wMThkZTNmMmJhMTgyOGMwLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" alt="&#x6548;&#x679C;&#x56FE;"></p>
+<h5 id="336-&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4;--&#x4F7F;&#x7528;&#x573A;&#x666F;">3.3.6 &#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4; &amp; &#x4F7F;&#x7528;&#x573A;&#x666F;</h5>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04YzkxNDgxMzI1YTUyNTNlLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" alt="&#x793A;&#x610F;&#x56FE;"></p>
+<h3 id="&#x56DB;&#x3001;&#x603B;&#x7ED3;">&#x56DB;&#x3001;&#x603B;&#x7ED3;</h3>
+<ul>
+<li>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x5BF9;<strong>Android&#x901A;&#x8FC7;WebView&#x4E0E;JS&#x7684;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x4E86;&#x5168;&#x9762;&#x4ECB;&#x7ECD;</strong></li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85NDQzNjUtNjEzYjU3YzkzZGZmMmViOC5wbmc_aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDA" alt="&#x793A;&#x610F;&#x56FE;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="Webview.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Webview">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Webview与JS交互","level":"6.3.1","depth":2,"next":{"title":"Webview","level":"6.3.2","depth":2,"path":"高级UI/Webview/Webview.md","ref":"高级UI/Webview/Webview.md","articles":[]},"previous":{"title":"5.3 Webview","level":"6.3","depth":1,"ref":"","articles":[{"title":"Webview与JS交互","level":"6.3.1","depth":2,"path":"高级UI/Webview/Webview与JS交互.md","ref":"高级UI/Webview/Webview与JS交互.md","articles":[]},{"title":"Webview","level":"6.3.2","depth":2,"path":"高级UI/Webview/Webview.md","ref":"高级UI/Webview/Webview.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"高级UI/Webview/Webview与JS交互.md","mtime":"2020-11-23T16:41:07.556Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

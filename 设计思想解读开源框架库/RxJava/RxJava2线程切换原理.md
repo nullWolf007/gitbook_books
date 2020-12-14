@@ -103,7 +103,7 @@ implements Observer<T>, Runnable {
 ```java
 void schedule() {
 	if (getAndIncrement() == 0) {
-        ////直接调用了 worker 的 schedule 方法，需要注意的是这里他把自己传了进去
+        //直接调用了 worker 的 schedule 方法，需要注意的是这里他把自己传了进去
     	worker.schedule(this);
 	}
 }
@@ -286,5 +286,5 @@ public void run() {
 * 因为 RxJava 最终能影响 ObservableOnSubscribe 这个匿名实现接口的运行环境的只能是最后一次运行的 subscribeOn() ，又因为 RxJava 订阅的时候是从下往上订阅，所以从上往下第一个 subscribeOn() 就是最后运行的，这就造成了写多个 subscribeOn() 并没有什么乱用的现象。
 
 
-  
+
 

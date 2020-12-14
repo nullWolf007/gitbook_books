@@ -1,0 +1,3897 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>二、OkHttp连接池复用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="一、OkHttp大体流程.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../../必备Java知识/关键字/static.html">
+            
+                <a href="../../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../../必备Java知识/关键字/final.html">
+            
+                <a href="../../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../../高级UI/自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../../高级UI/自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../../高级UI/Webview/Webview.html">
+            
+                <a href="../../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../网络基础/Socket解析.html">
+            
+                <a href="../网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="一、OkHttp大体流程.html">
+            
+                <a href="一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="9.3.2.2" data-path="二、OkHttp连接池复用.html">
+            
+                <a href="二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../Retrofit/Retrofit的使用.html">
+            
+                <a href="../../Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >二、OkHttp连接池复用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="okhttp&#x8FDE;&#x63A5;&#x6C60;&#x590D;&#x7528;">OkHttp&#x8FDE;&#x63A5;&#x6C60;&#x590D;&#x7528;</h2>
+<h4 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h4>
+<ul>
+<li><a href="https://juejin.cn/post/6898145227765186567#heading-0" target="_blank">&#x9762;&#x8BD5;&#x5B98;:Okhttp&#x8FDE;&#x63A5;&#x6C60;&#x662F;&#x548B;&#x5B9E;&#x73B0;&#x7684;?</a></li>
+<li><a href="https://www.jianshu.com/p/32de43ce0252" target="_blank">Okhttp&#x8FDE;&#x63A5;&#x6C60;</a></li>
+<li><a href="https://blog.csdn.net/finley_feng/article/details/104467506" target="_blank">OkHttp&#x62E6;&#x622A;&#x5668; (&#x56DB;) ConnectInterceptor&#x62E6;&#x622A;&#x5668;&#x5206;&#x6790;</a></li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="11-&#x524D;&#x63D0;&#x9605;&#x8BFB;">1.1 &#x524D;&#x63D0;&#x9605;&#x8BFB;</h4>
+<ul>
+<li><a href="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x89E3;&#x8BFB;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x5E93;/OkHttp/&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;.md">&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;</a></li>
+<li>&#x672C;&#x6587;&#x662F;&#x57FA;&#x4E8E;OkHttp3.9&#x7248;&#x672C;&#x7684;</li>
+</ul>
+<h4 id="12-&#x8FDE;&#x63A5;&#x6C60;">1.2 &#x8FDE;&#x63A5;&#x6C60;</h4>
+<h5 id="121-&#x65E0;&#x8FDE;&#x63A5;&#x6C60;">1.2.1 &#x65E0;&#x8FDE;&#x63A5;&#x6C60;</h5>
+<p><strong>&#x5927;&#x6982;&#x6D41;&#x7A0B;</strong></p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x8FDB;&#x884C;TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</p>
+</li>
+<li><p>&#x5199;&#x5165;&#x8BF7;&#x6C42;&#x6570;&#x636E;</p>
+</li>
+<li><p>&#x8BFB;&#x53D6;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;</p>
+</li>
+<li><p>&#x6700;&#x540E;&#x8FDB;&#x884C;TCP&#x56DB;&#x6B21;&#x6325;&#x624B;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/19956127-4ea0889b80991291.png?imageMogr2/auto-orient/strip|imageView2/2/w/741/format/webp" alt="img"></p>
+</li>
+</ul>
+<p><strong>&#x7F3A;&#x70B9;</strong></p>
+<ul>
+<li>&#x6BCF;&#x6B21;&#x90FD;&#x5F97;&#x8FDB;&#x884C;TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;&#xFF0C;TCP&#x56DB;&#x6B21;&#x6325;&#x624B;&#xFF0C;&#x662F;&#x975E;&#x5E38;&#x6D88;&#x8017;&#x7F51;&#x7EDC;&#x8D44;&#x6E90;&#x548C;&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x7684;&#x3002;</li>
+</ul>
+<h5 id="122-&#x6709;&#x8FDE;&#x63A5;&#x6C60;">1.2.2 &#x6709;&#x8FDE;&#x63A5;&#x6C60;</h5>
+<p><strong>&#x5927;&#x6982;&#x6D41;&#x7A0B;</strong></p>
+<ul>
+<li>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4F7F;&#x7528;keep-alive</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/19956127-9733ad1c06a77aa4.png?imageMogr2/auto-orient/strip|imageView2/2/w/746/format/webp" alt="img"></p>
+<p><strong>&#x4F18;&#x70B9;</strong></p>
+<ul>
+<li>&#x5728;timeout&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x8FDE;&#x63A5;&#x4E0D;&#x4F1A;&#x5173;&#x95ED;&#xFF0C;&#x76F8;&#x540C;&#x91CD;&#x590D;&#x7684;request&#x5C06;&#x590D;&#x7528;&#x539F;&#x5148;&#x7684;connection&#xFF0C;&#x51CF;&#x5C11;&#x63E1;&#x624B;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x5927;&#x5E45;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x3002;</li>
+<li>&#x5E76;&#x975E;keep-alive&#x7684;timeout&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x8D8A;&#x957F;&#xFF0C;&#x5C31;&#x8D8A;&#x80FD;&#x63D0;&#x5347;&#x6027;&#x80FD;&#x3002;&#x957F;&#x4E45;&#x4E0D;&#x5173;&#x95ED;&#x4F1A;&#x9020;&#x6210;&#x8FC7;&#x591A;&#x7684;&#x50F5;&#x5C38;&#x8FDE;&#x63A5;&#x548C;&#x6CC4;&#x9732;&#x8FDE;&#x63A5;&#x51FA;&#x73B0;&#x3002;</li>
+<li>Okhttp&#x652F;&#x6301;5&#x4E2A;&#x5E76;&#x53D1;KeepAlive&#xFF0C;&#x9ED8;&#x8BA4;&#x94FE;&#x8DEF;&#x751F;&#x547D;&#x4E3A;5&#x5206;&#x949F;(&#x94FE;&#x8DEF;&#x7A7A;&#x95F2;&#x540E;&#xFF0C;&#x4FDD;&#x6301;&#x5B58;&#x6D3B;&#x7684;&#x65F6;&#x95F4;)&#xFF0C;&#x8FDE;&#x63A5;&#x6C60;&#x6709;ConectionPool&#x5B9E;&#x73B0;&#xFF0C;&#x5BF9;&#x8FDE;&#x63A5;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x548C;&#x7BA1;&#x7406;&#x3002;</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x5F15;&#x8A00;">&#x4E8C;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x5F15;&#x8A00;</h3>
+<h4 id="21-realcallgetresponsewithinterceptorchain">2.1 RealCall#getResponseWithInterceptorChain</h4>
+<ul>
+<li>&#x7531;<a href="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x89E3;&#x8BFB;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x5E93;/OkHttp/&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;.md">&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;</a>&#x53EF;&#x77E5;&#xFF0C;&#x4F1A;&#x8FDB;&#x884C;&#x5230;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x6838;&#x5FC3;&#x4EE3;&#x7801; &#x5F00;&#x59CB;&#x771F;&#x6B63;&#x7684;&#x6267;&#x884C;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</span>
+  <span class="hljs-function">Response <span class="hljs-title">getResponseWithInterceptorChain</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    <span class="hljs-comment">// Build a full stack of interceptors.</span>
+    <span class="hljs-comment">//&#x8D23;&#x4EFB;&#x94FE;</span>
+    List&lt;Interceptor&gt; interceptors = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-comment">//&#x5728;&#x914D;&#x7F6E;okhttpClient &#x65F6;&#x8BBE;&#x7F6E;&#x7684;intercept &#x7531;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x8BBE;&#x7F6E;</span>
+    interceptors.addAll(client.interceptors());
+    <span class="hljs-comment">//&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x5931;&#x8D25;&#x540E;&#x7684;&#x91CD;&#x8BD5;&#x4E0E;&#x91CD;&#x5B9A;&#x5411;</span>
+    interceptors.add(retryAndFollowUpInterceptor);
+    <span class="hljs-comment">//&#x8D1F;&#x8D23;&#x628A;&#x7528;&#x6237;&#x6784;&#x9020;&#x7684;&#x8BF7;&#x6C42;&#x8F6C;&#x6362;&#x4E3A;&#x53D1;&#x9001;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8BF7;&#x6C42; &#x3001;&#x628A;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x8F6C;&#x6362;&#x4E3A;&#x7528;&#x6237;&#x53CB;&#x597D;&#x7684;&#x54CD;&#x5E94; &#x5904;&#x7406; &#x914D;&#x7F6E;&#x8BF7;&#x6C42;&#x5934;&#x7B49;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment">//&#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x5230;&#x7F51;&#x7EDC;&#x4EE3;&#x7801;&#x7684;&#x6865;&#x6881;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x5B83;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x6784;&#x5EFA;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3002;&#x7136;&#x540E;&#x5B83;&#x7EE7;&#x7EED;&#x547C;&#x53EB;&#x7F51;&#x7EDC;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5B83;&#x6839;&#x636E;&#x7F51;&#x7EDC;&#x54CD;&#x5E94;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x54CD;&#x5E94;&#x3002;</span>
+    interceptors.add(<span class="hljs-keyword">new</span> BridgeInterceptor(client.cookieJar()));
+    <span class="hljs-comment">//&#x5904;&#x7406; &#x7F13;&#x5B58;&#x914D;&#x7F6E; &#x6839;&#x636E;&#x6761;&#x4EF6;(&#x5B58;&#x5728;&#x54CD;&#x5E94;&#x7F13;&#x5B58;&#x5E76;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E0D;&#x53D8;&#x7684;&#x6216;&#x8005;&#x54CD;&#x5E94;&#x5728;&#x6709;&#x6548;&#x671F;&#x5185;)&#x8FD4;&#x56DE;&#x7F13;&#x5B58;&#x54CD;&#x5E94;</span>
+    <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x8BF7;&#x6C42;&#x5934;(If-None-Match&#x3001;If-Modified-Since&#x7B49;) &#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x8FD4;&#x56DE;304(&#x672A;&#x4FEE;&#x6539;)</span>
+    <span class="hljs-comment">//&#x53EF;&#x914D;&#x7F6E;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x8BBE;&#x7F6E;&#x7684;&#x7F13;&#x5B58;&#x62E6;&#x622A;&#x5668;</span>
+    interceptors.add(<span class="hljs-keyword">new</span> CacheInterceptor(client.internalCache()));
+    <span class="hljs-comment">//&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668; &#x8D1F;&#x8D23;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5; &#x8FD9;&#x91CC;&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x8BF7;&#x6C42;&#x7F51;&#x7EDC;</span>
+    interceptors.add(<span class="hljs-keyword">new</span> ConnectInterceptor(client));
+    <span class="hljs-keyword">if</span> (!forWebSocket) {
+      <span class="hljs-comment">//&#x914D;&#x7F6E;okhttpClient &#x65F6;&#x8BBE;&#x7F6E;&#x7684;networkInterceptors</span>
+      <span class="hljs-comment">//&#x8FD4;&#x56DE;&#x89C2;&#x5BDF;&#x5355;&#x4E2A;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x7684;&#x4E0D;&#x53EF;&#x53D8;&#x62E6;&#x622A;&#x5668;&#x5217;&#x8868;&#x3002;</span>
+      interceptors.addAll(client.networkInterceptors());
+    }
+    <span class="hljs-comment">//&#x6267;&#x884C;&#x6D41;&#x64CD;&#x4F5C;(&#x5199;&#x51FA;&#x8BF7;&#x6C42;&#x4F53;&#x3001;&#x83B7;&#x5F97;&#x54CD;&#x5E94;&#x6570;&#x636E;) &#x8D1F;&#x8D23;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x3001;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8BFB;&#x53D6;&#x54CD;&#x5E94;&#x6570;&#x636E;</span>
+    <span class="hljs-comment">//&#x8FDB;&#x884C;http&#x8BF7;&#x6C42;&#x62A5;&#x6587;&#x7684;&#x5C01;&#x88C5;&#x4E0E;&#x8BF7;&#x6C42;&#x62A5;&#x6587;&#x7684;&#x89E3;&#x6790;</span>
+    interceptors.add(<span class="hljs-keyword">new</span> CallServerInterceptor(forWebSocket));
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x8D23;&#x4EFB;&#x94FE;</span>
+      <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    Interceptor.Chain chain = <span class="hljs-keyword">new</span> RealInterceptorChain(interceptors, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-number">0</span>,
+        originalRequest, <span class="hljs-keyword">this</span>, eventListener, client.connectTimeoutMillis(),
+        client.readTimeoutMillis(), client.writeTimeoutMillis());
+
+    <span class="hljs-comment">//&#x6267;&#x884C;&#x8D23;&#x4EFB;&#x94FE;</span>
+      <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+    <span class="hljs-keyword">return</span> chain.proceed(originalRequest);
+  }
+</code></pre>
+<ul>
+<li>&#x5176;&#x4E2D;ConnectInterceptor&#x62E6;&#x622A;&#x5668;&#x662F;&#x5173;&#x952E;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x6B63;&#x53BB;&#x548C;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#x7684;&#x90E8;&#x5206;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x91CD;&#x70B9;&#x5C06;&#x8FD9;&#x4E2A;ConnectInterceptor</li>
+</ul>
+<h4 id="22-connectinterceptor&#x6784;&#x9020;&#x65B9;&#x6CD5;">2.2 ConnectInterceptor#&#x6784;&#x9020;&#x65B9;&#x6CD5;</h4>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConnectInterceptor</span><span class="hljs-params">(OkHttpClient client)</span> </span>{
+    <span class="hljs-keyword">this</span>.client = client;
+  }
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x4F20;&#x5165;&#x4E86;OkHttpClient&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="23-connectinterceptorintercept">2.3 ConnectInterceptor#intercept</h4>
+<ul>
+<li>&#x7531;<a href="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x89E3;&#x8BFB;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x5E93;/OkHttp/&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;.md">&#x4E00;&#x3001;OkHttp&#x5927;&#x4F53;&#x6D41;&#x7A0B;</a>&#x53EF;&#x77E5;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x62E6;&#x622A;&#x5668;&#x7684;intercept&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Response <span class="hljs-title">intercept</span><span class="hljs-params">(Chain chain)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    RealInterceptorChain realChain = (RealInterceptorChain) chain;
+    <span class="hljs-comment">//&#x83B7;&#x53D6;Requset&#x5BF9;&#x8C61;</span>
+    <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    Request request = realChain.request();
+    <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+    StreamAllocation streamAllocation = realChain.streamAllocation();
+    <span class="hljs-comment">//&#x5206;&#x6790;3 &#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;GET&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</span>
+    <span class="hljs-keyword">boolean</span> doExtensiveHealthChecks = !request.method().equals(<span class="hljs-string">&quot;GET&quot;</span>);
+    <span class="hljs-comment">//&#x5206;&#x6790;4</span>
+    HttpCodec httpCodec = streamAllocation.newStream(client, chain, doExtensiveHealthChecks);
+    <span class="hljs-comment">//&#x5206;&#x6790;5</span>
+    RealConnection connection = streamAllocation.connection();
+
+    <span class="hljs-keyword">return</span> realChain.proceed(request, streamAllocation, httpCodec, connection);
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x4ECE;RealInterceptorChain&#x4E2D;&#x83B7;&#x53D6;Request&#x5BF9;&#x8C61;&#xFF0C;Requset&#x5BF9;&#x8C61;&#x5C01;&#x88C5;&#x4E86;&#x8BF7;&#x6C42;&#xFF08;&#x8DEF;&#x5F84;&#xFF0C;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF0C;body&#x7B49;&#xFF09;</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x4ECE;RealInterceptorChain&#x4E2D;&#x83B7;&#x53D6;StreamAllocation&#x5BF9;&#x8C61;&#xFF0C;&#x5728;RetryAndFollowUpInterceptor&#x4E2D;&#x521B;&#x5EFA;&#x7684;StreamAllocation&#xFF0C;&#x6B64;&#x5904;&#x4ECE;&#x62E6;&#x622A;&#x5668;&#x94FE;&#x4E2D;&#x83B7;&#x53D6;</li>
+<li>&#x5206;&#x6790;3&#xFF1A;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;GET&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</li>
+<li>&#x5206;&#x6790;4&#xFF1A;&#x751F;&#x6210;HttpCodec&#x5BF9;&#x8C61;&#xFF1B;HttpCodec&#xFF1A;&#x7528;&#x6765;&#x7F16;&#x7801;HTTP requests&#x548C;&#x89E3;&#x7801;HTTP responses</li>
+<li>&#x5206;&#x6790;5&#xFF1A;&#x8C03;&#x7528;StreamAllocation&#x7684;connection&#x65B9;&#x6CD5;&#xFF0C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF1B;RealConnection&#xFF1A;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#xFF0C;&#x8D1F;&#x8D23;&#x53D1;&#x8D77;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x4E2A;RealConnection&#x5BF9;&#x8C61;&#x662F;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x5B9E;&#x9645;&#x7684;&#x7F51;&#x7EDC;IO&#x4F20;&#x8F93;&#x7684;</li>
+</ul>
+<h4 id="24-realinterceptorchainstreamallocation">2.4 RealInterceptorChain#StreamAllocation</h4>
+<ul>
+<li>&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x5728;&#x54EA;&#x8D4B;&#x503C;&#x7684;&#x5462;&#xFF1F;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x62E6;&#x622A;&#x5668;&#x800C;&#x8A00;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x62E6;&#x622A;&#x5668;&#x662F;RetryAndFollowUpInterceptor&#x3002;&#x5176;&#x5B9E;RealInterceptorChain&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5C31;&#x662F;&#x5728;RetryAndFollowUpInterceptor&#x7684;intercept&#x65B9;&#x6CD5;&#x4E2D;&#x8D4B;&#x503C;&#x7684;&#x3002;</li>
+<li>RetryAndFollowUpInterceptor#intercept</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Response <span class="hljs-title">intercept</span><span class="hljs-params">(Chain chain)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    Request request = chain.request();
+    RealInterceptorChain realChain = (RealInterceptorChain) chain;
+    Call call = realChain.call();
+    EventListener eventListener = realChain.eventListener();
+       ......
+    streamAllocation = <span class="hljs-keyword">new</span> StreamAllocation(client.connectionPool(), 
+                                            createAddress(request.url()),call,
+                                            eventListener, callStackTrace);
+    ......
+        response = realChain.proceed(request, streamAllocation, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+    ......
+}
+</code></pre>
+<ul>
+<li>&#x4E3A;&#x5176;&#x8D4B;&#x503C;&#x4E86;ConnectionPool&#x5BF9;&#x8C61;&#xFF0C;Address&#x5BF9;&#x8C61;&#xFF0C;Call&#x5BF9;&#x8C61;&#x7B49;</li>
+</ul>
+<h4 id="25-&#x5C0F;&#x7ED3;">2.5 &#x5C0F;&#x7ED3;</h4>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;ConnectInterceptor#intercept&#x4E2D;&#x4E3B;&#x8981;&#x90FD;&#x662F;&#x5BF9;StreamAllocation&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x8BB2;&#x89E3;StreamAllocation</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;streamallocation">&#x4E09;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;StreamAllocation</h3>
+<h4 id="31-streamallocation&#x6210;&#x5458;&#x53D8;&#x91CF;">3.1 StreamAllocation#&#x6210;&#x5458;&#x53D8;&#x91CF;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamAllocation</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Address address;<span class="hljs-comment">//&#x5730;&#x5740;</span>
+  <span class="hljs-keyword">private</span> RouteSelector.Selection routeSelection;<span class="hljs-comment">//&#x9009;&#x4E2D;&#x7684;&#x8DEF;&#x7531;&#x96C6;&#x5408;</span>
+  <span class="hljs-keyword">private</span> Route route;<span class="hljs-comment">//&#x8DEF;&#x7531;</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ConnectionPool connectionPool;<span class="hljs-comment">//&#x8FDE;&#x63A5;&#x6C60;</span>
+  <span class="hljs-comment">/**
+   *Calls&#xFF1A;Stream&#x7684;&#x903B;&#x8F91;&#x987A;&#x5E8F;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x521D;&#x59CB;&#x8BF7;&#x6C42;&#x4EE5;&#x53CA;&#x91CD;&#x5B9A;&#x5411;&#x8BF7;&#x6C42;&#x3002;
+   * &#x5E76;&#x4E14;&#x5E0C;&#x671B;&#x5355;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x6240;&#x6709;&#x6D41;&#x90FD;&#x88AB;&#x4FDD;&#x5B58;&#x5728;&#x540C;&#x4E00;&#x4E2A;Connection&#x4E0A;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x597D;&#x7684;&#x884C;&#x4E3A;
+   */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Call call;<span class="hljs-comment">//&#x8BF7;&#x6C42;&#x5BF9;&#x8C61;</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> EventListener eventListener;<span class="hljs-comment">//&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Object callStackTrace;<span class="hljs-comment">//&#x65E5;&#x5FD7;</span>
+
+  <span class="hljs-comment">// State guarded by connectionPool.</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> RouteSelector routeSelector;<span class="hljs-comment">//&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x5668;</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> refusedStreamCount;
+  <span class="hljs-comment">/**
+   * Connection&#xFF1A;&#x8FDE;&#x63A5;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7269;&#x7406;Socket&#x8FDE;&#x63A5;&#xFF0C;Connection&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x4F1A;&#x6BD4;&#x8F83;&#x6162;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x53D6;&#x6D88;&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#x7684;Connection
+   */</span>
+  <span class="hljs-keyword">private</span> RealConnection connection;<span class="hljs-comment">//HTTP&#x8FDE;&#x63A5;</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> reportedAcquired;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> released;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> canceled;
+  <span class="hljs-keyword">private</span> HttpCodec codec;<span class="hljs-comment">//HTTP&#x8BF7;&#x6C42;&#x7684;&#x7F16;&#x7801;&#x548C;&#x54CD;&#x5E94;&#x89E3;&#x7801;</span>
+    ......
+}
+</code></pre>
+<h4 id="32-streamallocationnewstream">3.2 StreamAllocation#newStream</h4>
+<h5 id="251-streamallocationnewstream">2.5.1 StreamAllocation#newStream</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> HttpCodec <span class="hljs-title">newStream</span><span class="hljs-params">(OkHttpClient client, Interceptor.Chain chain, 
+                           <span class="hljs-keyword">boolean</span> doExtensiveHealthChecks)</span> </span>{
+    <span class="hljs-keyword">int</span> connectTimeout = chain.connectTimeoutMillis();<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x7684;&#x8FDE;&#x63A5;&#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
+    <span class="hljs-keyword">int</span> readTimeout = chain.readTimeoutMillis();<span class="hljs-comment">//&#x8BFB;&#x53D6;&#x8D85;&#x65F6;</span>
+    <span class="hljs-keyword">int</span> writeTimeout = chain.writeTimeoutMillis();<span class="hljs-comment">//&#x5199;&#x5165;&#x8D85;&#x65F6;</span>
+    <span class="hljs-keyword">boolean</span> connectionRetryEnabled = client.retryOnConnectionFailure();<span class="hljs-comment">//&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x662F;&#x5426;&#x91CD;&#x8BD5;&#x6807;&#x5FD7;</span>
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x5206;&#x6790;1 &#x91CD;&#x70B9;</span>
+      RealConnection resultConnection = findHealthyConnection(connectTimeout, 
+                                            readTimeout,writeTimeout,                                                                 connectionRetryEnabled, 
+                                            doExtensiveHealthChecks);
+        <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+      HttpCodec resultCodec = resultConnection.newCodec(client, chain, <span class="hljs-keyword">this</span>);
+
+      <span class="hljs-keyword">synchronized</span> (connectionPool) {
+        codec = resultCodec;
+        <span class="hljs-keyword">return</span> resultCodec;
+      }
+    } <span class="hljs-keyword">catch</span> (IOException e) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RouteException(e);
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x8C03;&#x7528;findHealthyConnection&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;&#x7B56;&#x7565;&#x5BFB;&#x627E;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;RealConnection&#x8FDE;&#x63A5;&#xFF0C;&#x751F;&#x6210;&#x5B9E;&#x9645;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x7C7B;&#xFF0C;RealConnection&#x5229;&#x7528;Socket&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x8C03;&#x7528;RealConnection&#x7684;newCodec&#x65B9;&#x6CD5;&#xFF0C;&#x521B;&#x5EFA;HttpCodec&#x5BF9;&#x8C61;&#xFF08;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x7684;&#x5B9E;&#x9645;&#x7C7B;&#x751F;&#x6210;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x548C;&#x7F51;&#x7EDC;&#x54CD;&#x5E94;&#x7684;&#x7F16;&#x7801;&#x7C7B;&#xFF09;</li>
+</ul>
+<h5 id="322-realconnectionnewcodec">3.2.2 RealConnection#newCodec</h5>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> HttpCodec <span class="hljs-title">newCodec</span><span class="hljs-params">(OkHttpClient client, Interceptor.Chain chain,
+      StreamAllocation streamAllocation)</span> <span class="hljs-keyword">throws</span> SocketException </span>{
+    <span class="hljs-keyword">if</span> (http2Connection != <span class="hljs-keyword">null</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Http2Codec(client, chain, streamAllocation, http2Connection);
+    } <span class="hljs-keyword">else</span> {
+      socket.setSoTimeout(chain.readTimeoutMillis());
+      source.timeout().timeout(chain.readTimeoutMillis(), MILLISECONDS);
+      sink.timeout().timeout(chain.writeTimeoutMillis(), MILLISECONDS);
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Http1Codec(client, streamAllocation, source, sink);
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x82E5;&#x91C7;&#x7528;Protocol.HTTP_2&#x534F;&#x8BAE;&#xFF0C;&#x5373;Http2Connection&#x5B58;&#x5728;&#xFF0C;&#x521B;&#x5EFA;Http2Codec&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x521B;&#x5EFA;Http1Codec&#xFF0C;&#x5C01;&#x88C5;BufferedSource&#x548C;BufferedSink&#x3002;</li>
+</ul>
+<h5 id="323-httpcodec">3.2.3 HttpCodec</h5>
+<ul>
+<li>&#x521B;&#x5EFA;&#x8BF7;&#x6C42;&#x548C;&#x89E3;&#x6790;&#x76F8;&#x5E94;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">HttpCodec</span> </span>{
+  <span class="hljs-comment">/**
+   * The timeout to use while discarding a stream of input data. Since this is used for connection
+   * reuse, this timeout should be significantly less than the time it takes to establish a new
+   * connection.
+   */</span>
+  <span class="hljs-keyword">int</span> DISCARD_STREAM_TIMEOUT_MILLIS = <span class="hljs-number">100</span>;
+
+  <span class="hljs-comment">//&#x4E3A;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x800C;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x521B;&#x5EFA;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x4EE5;&#x7528;&#x4E8E;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x4F53;&#x6570;&#x636E;&#x3002;</span>
+  <span class="hljs-function">Sink <span class="hljs-title">createRequestBody</span><span class="hljs-params">(Request request, <span class="hljs-keyword">long</span> contentLength)</span></span>;
+
+  <span class="hljs-comment">//&#x4E3A;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x800C;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x5199;&#x5165;&#x8BF7;&#x6C42;&#x5934;&#x90E8;&#x3002;</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writeRequestHeaders</span><span class="hljs-params">(Request request)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+
+  <span class="hljs-comment">//&#x5C06;&#x8BF7;&#x6C42;&#x5237;&#x65B0;&#x5230;&#x57FA;&#x7840;&#x5957;&#x63A5;&#x5B57;</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flushRequest</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;
+
+  <span class="hljs-comment">//&#x5C06;&#x8BF7;&#x6C42;&#x5237;&#x65B0;&#x5230;&#x5E95;&#x5C42;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x5E76;&#x53D1;&#x51FA;&#x4E0D;&#x518D;&#x4F20;&#x8F93;&#x5B57;&#x8282;&#x7684;&#x4FE1;&#x53F7;</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finishRequest</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;
+
+  <span class="hljs-comment">//&#x4ECE;HTTP&#x4F20;&#x8F93;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x5934;&#x7684;&#x5B57;&#x8282;&#x3002;</span>
+  Response.<span class="hljs-function">Builder <span class="hljs-title">readResponseHeaders</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> expectContinue)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+
+  <span class="hljs-comment">//&#x4E3A;&#x83B7;&#x5F97;&#x54CD;&#x5E94;&#x800C;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x6253;&#x5F00;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x4EE5;&#x7528;&#x4E8E;&#x540E;&#x7EED;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x4F53;&#x6570;&#x636E;&#x3002;</span>
+  <span class="hljs-function">ResponseBody <span class="hljs-title">openResponseBody</span><span class="hljs-params">(Response response)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+
+  <span class="hljs-comment">//&#x53D6;&#x6D88;&#x8BF7;&#x6C42;&#x6267;&#x884C;&#x3002;</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cancel</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<h4 id="33-streamallocationfindhealthyconnection">3.3 StreamAllocation#findHealthyConnection</h4>
+<ul>
+<li>&#x7531;3.2.1&#x53EF;&#x77E5;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86;StreamAllocation#findHealthyConnection&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> RealConnection <span class="hljs-title">findHealthyConnection</span><span class="hljs-params">(<span class="hljs-keyword">int</span> connectTimeout, <span class="hljs-keyword">int</span> readTimeout,
+      <span class="hljs-keyword">int</span> writeTimeout, <span class="hljs-keyword">boolean</span> connectionRetryEnabled, <span class="hljs-keyword">boolean</span> doExtensiveHealthChecks)</span>
+      <span class="hljs-keyword">throws</span> IOException </span>{
+    <span class="hljs-comment">//&#x5206;&#x6790;1 &#x5F00;&#x542F;while&#x5FAA;&#x73AF;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;findConnection&#x65B9;&#x6CD5;&#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;cadidat</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+        <span class="hljs-comment">//&#x5206;&#x6790;2 &#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;</span>
+      RealConnection candidate = findConnection(connectTimeout, readTimeout,
+                                                writeTimeout,connectionRetryEnabled);
+
+      <span class="hljs-comment">//&#x5982;&#x679C;candidate&#x7684;successCount==0,&#x76F4;&#x63A5;&#x8FD4;&#x56DE;candidate&#xFF0C;while&#x5FAA;&#x73AF;&#x7ED3;&#x675F;;</span>
+      <span class="hljs-keyword">synchronized</span> (connectionPool) {
+          <span class="hljs-comment">//&#x7B49;&#x4E8E;0&#x7684;&#x65F6;&#x5019;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x4E86;</span>
+        <span class="hljs-keyword">if</span> (candidate.successCount == <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">return</span> candidate;
+        }
+      }
+
+      <span class="hljs-comment">//&#x8C03;&#x7528;candidate&#x7684;isHealthy()&#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x884C;&#x201C;&#x5065;&#x5EB7;&#x68C0;&#x67E5;&#x201D;&#xFF0C;&#x5982;&#x679C;candidate&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x201C;&#x5065;&#x5EB7;&#x201D;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;</span>
+      <span class="hljs-comment">//&#x5176;&#x4E2D;&#x4E0D;&#x201C;&#x5065;&#x5EB7;&#x201D;&#x6307;&#x7684;&#x662F;Socket&#x6CA1;&#x6709;&#x5173;&#x95ED;&#x3001;&#x6216;&#x8005;&#x5B83;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x6D41;&#x6CA1;&#x6709;&#x5173;&#x95ED;&#xFF0C;</span>
+      <span class="hljs-comment">//&#x5219;&#x5BF9;&#x8C03;&#x7528;noNewStreams()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x9500;&#x6BC1;&#x5904;&#x7406;&#xFF0C;&#x63A5;&#x7740;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;&#x3002;</span>
+      <span class="hljs-keyword">if</span> (!candidate.isHealthy(doExtensiveHealthChecks)) {
+        noNewStreams();
+        <span class="hljs-keyword">continue</span>;
+      }
+
+      <span class="hljs-keyword">return</span> candidate;
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x5F00;&#x542F;while&#x5FAA;&#x73AF;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;findConnection&#x65B9;&#x6CD5;&#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;cadidat</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x8C03;&#x7528;findConnection&#x65B9;&#x6CD5;&#x53BB;&#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;&#xFF08;&#x5F53;&#x524D;keep-alive&#x6709;&#x6548;&#x65F6;&#x95F4;&#x5185;&#x7684;&#x8FDE;&#x63A5;&#xFF09;</li>
+</ul>
+<h4 id="34-streamallocationfindconnection">3.4 StreamAllocation#findConnection</h4>
+<ul>
+<li><p>&#x6B65;&#x9AA4;1&#xFF1A;StreamAllocation&#x7684;connection&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x5219;&#x590D;&#x7528;;</p>
+</li>
+<li><p>&#x6B65;&#x9AA4;2&#xFF1A;&#x5982;&#x679C;StreamAllocation&#x7684;connection&#x4E0D;&#x80FD;&#x590D;&#x7528;&#xFF0C;&#x5219;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;&#xFF0C;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x5219;&#x8FD4;&#x56DE;;</p>
+</li>
+<li><p>&#x6B65;&#x9AA4;3&#xFF1A;&#x5982;&#x679C;&#x8FDE;&#x63A5;&#x6C60;&#x91CC;&#x6CA1;&#x6709;&#xFF0C;&#x5219;new&#x4E00;&#x4E2A;RealConnection&#x5BF9;&#x8C61;&#xFF1B;</p>
+</li>
+<li><p>&#x6B65;&#x9AA4;4&#xFF1A;&#x8C03;&#x7528;RealConnection&#x7684;connect&#xFF08;&#xFF09;&#x65B9;&#x6CD5;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF1B;connect--&gt;connectSocket()&#x8FDB;&#x884C;socket&#x8FDE;&#x63A5;--&gt;Platform.get().connectSocket()--&gt;socket.connect(address, connectTimeout);(&#x6B64;&#x65F6;&#x8FDB;&#x884C;&#x4E86;&#x4E09;&#x6B21;&#x63E1;&#x624B;),&#x63E1;&#x624B;&#x5B8C;&#x6210;&#x540E;&#x8C03;&#x7528;establishProtocol()&#x3002;</p>
+</li>
+<li><p>&#x6B65;&#x9AA4;5&#xFF1A;&#x5C06;RealConnection&#x5BF9;&#x8C61;&#x5B58;&#x8FDB;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E0B;&#x6B21;&#x590D;&#x7528;</p>
+</li>
+<li>&#x6B65;&#x9AA4;6&#xFF1A;&#x8FD4;&#x56DE;RealConnection&#x5BF9;&#x8C61;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> RealConnection <span class="hljs-title">findConnection</span><span class="hljs-params">(<span class="hljs-keyword">int</span> connectTimeout, <span class="hljs-keyword">int</span> readTimeout, 
+        <span class="hljs-keyword">int</span> writeTimeout,<span class="hljs-keyword">boolean</span> connectionRetryEnabled)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    <span class="hljs-keyword">boolean</span> foundPooledConnection = <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">//&#x5B9A;&#x4E49;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x7684;RealConnection</span>
+    RealConnection result = <span class="hljs-keyword">null</span>;
+    Route selectedRoute = <span class="hljs-keyword">null</span>;
+    <span class="hljs-comment">//&#x7528;&#x6765;&#x6807;&#x8BC6;&#x6709;&#x6CA1;&#x6709;&#x5206;&#x914D;&#x7684;&#x8FDE;&#x63A5;</span>
+    Connection releasedConnection;
+    Socket toClose;
+    <span class="hljs-keyword">synchronized</span> (connectionPool) {
+         ......
+         <span class="hljs-comment">//&#x6B65;&#x9AA4;1</span>
+        <span class="hljs-comment">//&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x5DF2;&#x5206;&#x914D;&#x7684;&#x8FDE;&#x63A5;&#xFF08;StreamAllocation&#x5185;&#x90E8;&#x4FDD;&#x5B58;&#x7684;RealConnection&#xFF09;</span>
+        <span class="hljs-comment">//&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5C0F;&#x5FC3;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x7684;&#x8FDE;&#x63A5;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x88AB;&#x9650;&#x5236;&#x5728;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x6D41;&#x4E2D;</span>
+      releasedConnection = <span class="hljs-keyword">this</span>.connection;
+      toClose = releaseIfNoNewStreams();
+        <span class="hljs-comment">// &#x5982;&#x679C;connection &#x4E0D;&#x4E3A;null&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6709;&#x5B8C;&#x597D;&#x7684;&#x8FDE;&#x63A5;(RealConnection),&#x5219;&#x590D;&#x7528;&#xFF0C;&#x8D4B;&#x503C;&#x7ED9;result</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.connection != <span class="hljs-keyword">null</span>) {
+        result = <span class="hljs-keyword">this</span>.connection;
+        releasedConnection = <span class="hljs-keyword">null</span>;
+      }
+      <span class="hljs-keyword">if</span> (!reportedAcquired) {
+        releasedConnection = <span class="hljs-keyword">null</span>;
+      }
+        <span class="hljs-comment">//&#x6B65;&#x9AA4;2</span>
+        <span class="hljs-comment">//&#x5982;&#x679C;result==null,&#x4E5F;&#x5C31;&#x662F;&#x8BF4;this.connection==null</span>
+        <span class="hljs-comment">//&#x8BF4;&#x660E;&#x4E0A;&#x9762;&#x627E;&#x4E0D;&#x5230;&#x53EF;&#x7528;&#x590D;&#x7528;&#x7684;  &#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;&#x53EF;&#x7528;&#x7684;&#x8FDE;&#x63A5;</span>
+      <span class="hljs-keyword">if</span> (result == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x8C03;&#x7528;&#x5176;get&#x65B9;&#x6CD5;</span>
+        Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, <span class="hljs-keyword">null</span>);
+          <span class="hljs-comment">// &#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;RealConnection&#x5BF9;&#x8C61;</span>
+        <span class="hljs-keyword">if</span> (connection != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">//&#x66F4;&#x6539;&#x6807;&#x5FD7;&#x4F4D;&#xFF0C;&#x8D4B;&#x503C;&#x7ED9;result</span>
+          foundPooledConnection = <span class="hljs-keyword">true</span>;
+          result = connection;
+        } <span class="hljs-keyword">else</span> {
+          selectedRoute = route;
+        }
+      }
+    }
+    closeQuietly(toClose);
+
+    <span class="hljs-keyword">if</span> (releasedConnection != <span class="hljs-keyword">null</span>) {
+      eventListener.connectionReleased(call, releasedConnection);
+    }
+    <span class="hljs-keyword">if</span> (foundPooledConnection) {
+      eventListener.connectionAcquired(call, result);
+    }
+    <span class="hljs-keyword">if</span> (result != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x627E;&#x5230;RealConnection&#x5BF9;&#x8C61;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;</span>
+      <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-comment">// If we need a route selection, make one. This is a blocking operation.</span>
+    <span class="hljs-comment">//&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x9009;&#x62E9;&#x4E00;&#x6761;&#x8DEF;&#x7EBF;&#xFF0C;&#x5C31;&#x9009;&#x4E00;&#x6761;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x963B;&#x585E;&#x64CD;&#x4F5C;</span>
+    <span class="hljs-keyword">boolean</span> newRouteSelection = <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// &#x7EBF;&#x8DEF;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x591A;IP&#x64CD;&#x4F5C;</span>
+    <span class="hljs-keyword">if</span> (selectedRoute == <span class="hljs-keyword">null</span> &amp;&amp; (routeSelection == <span class="hljs-keyword">null</span> || !routeSelection.hasNext())) {
+      newRouteSelection = <span class="hljs-keyword">true</span>;
+      routeSelection = routeSelector.next();
+    }
+
+    <span class="hljs-comment">//&#x6B65;&#x9AA4;3</span>
+    <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x7528;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;</span>
+    <span class="hljs-keyword">synchronized</span> (connectionPool) {
+      <span class="hljs-keyword">if</span> (canceled) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(<span class="hljs-string">&quot;Canceled&quot;</span>);
+
+      <span class="hljs-keyword">if</span> (newRouteSelection) {
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x7684;&#x4FE1;&#x606F;</span>
+        <span class="hljs-comment">// &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x7EC4;IP&#x5730;&#x5740;&#xFF0C;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x4ECE;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x53EF;&#x80FD;&#x7531;&#x8FDE;&#x63A5;&#x5408;&#x5E76;&#x800C;&#x5339;&#x914D;</span>
+        List&lt;Route&gt; routes = routeSelection.getAll();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, size = routes.size(); i &lt; size; i++) {
+          Route route = routes.get(i);
+          Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, route);
+            <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5230;&#x8FDE;&#x63A5;</span>
+          <span class="hljs-keyword">if</span> (connection != <span class="hljs-keyword">null</span>) {
+            foundPooledConnection = <span class="hljs-keyword">true</span>;
+            result = connection;
+            <span class="hljs-keyword">this</span>.route = route;
+            <span class="hljs-keyword">break</span>;
+          }
+        }
+      }
+
+        <span class="hljs-comment">//&#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;</span>
+      <span class="hljs-keyword">if</span> (!foundPooledConnection) {
+        <span class="hljs-keyword">if</span> (selectedRoute == <span class="hljs-keyword">null</span>) {
+          selectedRoute = routeSelection.next();
+        }
+
+       <span class="hljs-comment">//&#x5EFA;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x5E76;&#x7ACB;&#x5373;&#x5C06;&#x5176;&#x5206;&#x914D;&#x7ED9;&#x8BE5;&#x5206;&#x914D;&#x3002; &#x8FD9;&#x4F7F;&#x5F97;&#x5F02;&#x6B65;cancel&#xFF08;&#xFF09;&#x53EF;&#x4EE5;&#x4E2D;&#x65AD;&#x6211;&#x4EEC;&#x5373;&#x5C06;&#x8FDB;&#x884C;&#x7684;&#x63E1;&#x624B;</span>
+        route = selectedRoute;
+        refusedStreamCount = <span class="hljs-number">0</span>;
+          <span class="hljs-comment">//&#x5982;&#x679C;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; new&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8FDE;&#x63A5;</span>
+        result = <span class="hljs-keyword">new</span> RealConnection(connectionPool, selectedRoute);
+        acquire(result, <span class="hljs-keyword">false</span>);
+      }
+    }
+
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x6211;&#x4EEC;&#x7B2C;&#x4E8C;&#x6B21;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5B8C;&#x6210;&#x4E86;.</span>
+    <span class="hljs-keyword">if</span> (foundPooledConnection) {
+      eventListener.connectionAcquired(call, result);
+      <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-comment">// Do TCP + TLS handshakes. This is a blocking operation.</span>
+    <span class="hljs-comment">//&#x8FDE;&#x63A5;&#x5177;&#x4F53;&#x65B9;&#x6CD5; &#x5F00;&#x59CB;TCP&#x4EE5;&#x53CA;TLS&#x63E1;&#x624B;&#x64CD;&#x4F5C;,&#x8FD9;&#x662F;&#x963B;&#x585E;&#x64CD;&#x4F5C;  http&#x7684;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x64CD;&#x4F5C;</span>
+    result.connect(
+        connectTimeout, readTimeout, writeTimeout, connectionRetryEnabled, call, eventListener);
+    routeDatabase().connected(result.route());
+
+    <span class="hljs-comment">// &#x5C06;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x653E;&#x5165;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;</span>
+    Socket socket = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">synchronized</span> (connectionPool) {
+      reportedAcquired = <span class="hljs-keyword">true</span>;
+
+        <span class="hljs-comment">// &#x5C06;RealConnection &#x8FDE;&#x63A5;&#x653E;&#x5165;&#x8FDE;&#x63A5;&#x6C60;</span>
+      <span class="hljs-comment">// Pool the connection.</span>
+      Internal.instance.put(connectionPool, result);
+
+      <span class="hljs-comment">// If another multiplexed connection to the same address was created concurrently, then</span>
+      <span class="hljs-comment">// release this connection and acquire that one.</span>
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x540C;&#x65F6;&#x521B;&#x5EFA;&#x4E86;&#x5230;&#x540C;&#x4E00;&#x5730;&#x5740;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x591A;&#x8DEF;&#x590D;&#x7528;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x91CA;&#x653E;&#x6B64;&#x8FDE;&#x63A5;&#x5E76;&#x83B7;&#x53D6;&#x8BE5;&#x8FDE;&#x63A5;</span>
+      <span class="hljs-keyword">if</span> (result.isMultiplexed()) {
+        socket = Internal.instance.deduplicate(connectionPool, address, <span class="hljs-keyword">this</span>);
+        result = connection;
+      }
+    }
+    closeQuietly(socket);
+
+    eventListener.connectionAcquired(call, result);
+    <span class="hljs-keyword">return</span> result;
+  }
+</code></pre>
+<ul>
+<li><p>&#x4EE3;&#x7801;&#x7684;&#x6D41;&#x7A0B;&#x90FD;&#x5728;&#x524D;&#x9762;&#x8FDB;&#x884C;&#x4E86;&#x8BF4;&#x660E;&#xFF0C;&#x540C;&#x65F6;&#x4EE3;&#x7801;&#x90FD;&#x8FDB;&#x884C;&#x4E86;&#x8BE6;&#x7EC6;&#x7684;&#x6CE8;&#x91CA;&#x4E86;</p>
+</li>
+<li><p>&#x6709;&#x5173;&#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x662F;</p>
+</li>
+</ul>
+<pre><code class="lang-java">Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, <span class="hljs-keyword">null</span>);
+Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, route);
+Internal.instance.put(connectionPool, result);
+</code></pre>
+<ul>
+<li>&#x8FD9;&#x90E8;&#x5206;&#x5C06;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;</li>
+</ul>
+<h4 id="35-streamallocationacquire">3.5 StreamAllocation#acquire</h4>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acquire</span><span class="hljs-params">(RealConnection connection, <span class="hljs-keyword">boolean</span> reportedAcquired)</span> </span>{
+    <span class="hljs-keyword">assert</span> (Thread.holdsLock(connectionPool));
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.connection != <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException();
+    <span class="hljs-comment">//&#x8D4B;&#x503C;&#x7ED9;&#x5168;&#x5C40;&#x53D8;&#x91CF; StreamAllocation&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;connection</span>
+    <span class="hljs-keyword">this</span>.connection = connection;
+    <span class="hljs-keyword">this</span>.reportedAcquired = reportedAcquired;
+      <span class="hljs-comment">//&#x521B;&#x5EFA;StreamAllocationReference&#x5BF9;&#x8C61;&#x5E76;&#x6DFB;&#x52A0;&#x5230;allocations&#x96C6;&#x5408;&#x4E2D;</span>
+    connection.allocations.add(<span class="hljs-keyword">new</span> StreamAllocationReference(<span class="hljs-keyword">this</span>, callStackTrace));
+  }
+</code></pre>
+<h3 id="&#x56DB;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;-connectionpool&#x8FDE;&#x63A5;&#x6C60;">&#x56DB;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;-ConnectionPool&#x8FDE;&#x63A5;&#x6C60;</h3>
+<h4 id="41-internalinstance">4.1 Internal#instance</h4>
+<ul>
+<li>&#x4ECE;3.2&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x4E3B;&#x8981;&#x5BF9;&#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x5982;&#x4E0B;</li>
+</ul>
+<pre><code class="lang-java">Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, <span class="hljs-keyword">null</span>);
+Internal.instance.get(connectionPool, address, <span class="hljs-keyword">this</span>, route);
+Internal.instance.put(connectionPool, result);
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x6D89;&#x53CA;Internal&#x6210;&#x5458;&#x53D8;&#x91CF;instance&#xFF0C;&#x4EE5;&#x53CA;&#x5B83;&#x7684;get&#x548C;put&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="411-internalinstance">4.1.1 Internal#instance</h5>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Internal</span> </span>{
+    ......
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Internal instance;
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;instance&#x662F;Internal&#x7684;&#x9759;&#x6001;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x540C;&#x65F6;instance&#x662F;Internal&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6;Internal&#x662F;&#x62BD;&#x8C61;&#x7C7B;&#x3002;&#x5176;&#x5B9E;&#x5F88;&#x5BB9;&#x6613;&#x770B;&#x51FA;&#x6765;&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x7684;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x90A3;&#x4E48;instance&#x662F;&#x5728;&#x54EA;&#x8FDB;&#x884C;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x662F;&#x5728;OkHttpClient&#x7684;&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x6267;&#x884C;&#x7684;</li>
+</ul>
+<h5 id="412-okhttpclient&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x5B9E;&#x4F8B;instance">4.1.2 OkHttpClient#&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x5B9E;&#x4F8B;instance</h5>
+<ul>
+<li>&#x6709;&#x5173;static&#x53EF;&#x70B9;&#x51FB;&#x67E5;&#x770B;<a href="&#x5FC5;&#x5907;Java&#x77E5;&#x8BC6;/&#x5173;&#x952E;&#x5B57;/static.md">static</a></li>
+<li>&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x53EA;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">static</span> {
+    Internal.instance = <span class="hljs-keyword">new</span> Internal() {
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addLenient</span><span class="hljs-params">(Headers.Builder builder, String line)</span> </span>{
+        builder.addLenient(line);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addLenient</span><span class="hljs-params">(Headers.Builder builder, String name, String value)</span> </span>{
+        builder.addLenient(name, value);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setCache</span><span class="hljs-params">(OkHttpClient.Builder builder, InternalCache internalCache)</span> </span>{
+        builder.setInternalCache(internalCache);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">connectionBecameIdle</span><span class="hljs-params">(
+          ConnectionPool pool, RealConnection connection)</span> </span>{
+        <span class="hljs-keyword">return</span> pool.connectionBecameIdle(connection);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> RealConnection <span class="hljs-title">get</span><span class="hljs-params">(ConnectionPool pool, Address address,
+          StreamAllocation streamAllocation, Route route)</span> </span>{
+        <span class="hljs-keyword">return</span> pool.get(address, streamAllocation, route);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equalsNonHost</span><span class="hljs-params">(Address a, Address b)</span> </span>{
+        <span class="hljs-keyword">return</span> a.equalsNonHost(b);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Socket <span class="hljs-title">deduplicate</span><span class="hljs-params">(
+          ConnectionPool pool, Address address, StreamAllocation streamAllocation)</span> </span>{
+        <span class="hljs-keyword">return</span> pool.deduplicate(address, streamAllocation);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(ConnectionPool pool, RealConnection connection)</span> </span>{
+        pool.put(connection);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> RouteDatabase <span class="hljs-title">routeDatabase</span><span class="hljs-params">(ConnectionPool connectionPool)</span> </span>{
+        <span class="hljs-keyword">return</span> connectionPool.routeDatabase;
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">code</span><span class="hljs-params">(Response.Builder responseBuilder)</span> </span>{
+        <span class="hljs-keyword">return</span> responseBuilder.code;
+      }
+
+      <span class="hljs-meta">@Override</span>
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">apply</span><span class="hljs-params">(ConnectionSpec tlsConfiguration, SSLSocket sslSocket, <span class="hljs-keyword">boolean</span> isFallback)</span> </span>{
+        tlsConfiguration.apply(sslSocket, isFallback);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> HttpUrl <span class="hljs-title">getHttpUrlChecked</span><span class="hljs-params">(String url)</span>
+          <span class="hljs-keyword">throws</span> MalformedURLException, UnknownHostException </span>{
+        <span class="hljs-keyword">return</span> HttpUrl.getChecked(url);
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> StreamAllocation <span class="hljs-title">streamAllocation</span><span class="hljs-params">(Call call)</span> </span>{
+        <span class="hljs-keyword">return</span> ((RealCall) call).streamAllocation();
+      }
+
+      <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Call <span class="hljs-title">newWebSocketCall</span><span class="hljs-params">(OkHttpClient client, Request originalRequest)</span> </span>{
+        <span class="hljs-keyword">return</span> RealCall.newRealCall(client, originalRequest, <span class="hljs-keyword">true</span>);
+      }
+    };
+  }
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;&#x533F;&#x540D;&#x7684;&#x65B9;&#x5F0F;&#x5BF9;Internal&#x62BD;&#x8C61;&#x7C7B;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x7531;&#x4E8E;put&#x548C;get&#x90FD;&#x662F;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;Internal&#x5BF9;&#x8C61;&#x7684;get&#x65B9;&#x6CD5;&#x548C;put&#x65B9;&#x6CD5;&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684;get&#x548C;put&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="413-internalget">4.1.3 Internal#get</h5>
+<ul>
+<li>Internal#get&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;OkHttpClient#&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x533F;&#x540D;&#x5B9E;&#x73B0;&#x7684;&#x5176;get&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> RealConnection <span class="hljs-title">get</span><span class="hljs-params">(ConnectionPool pool, Address address,
+          StreamAllocation streamAllocation, Route route)</span> </span>{
+        <span class="hljs-keyword">return</span> pool.get(address, streamAllocation, route);
+}
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;pool&#x7684;get&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;pool&#x662F;ConnectionPool&#x5BF9;&#x8C61;</li>
+</ul>
+<h5 id="414-internalput">4.1.4 Internal#put</h5>
+<ul>
+<li>Internal#put&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;OkHttpClient#&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x533F;&#x540D;&#x5B9E;&#x73B0;&#x7684;&#x5176;put&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(ConnectionPool pool, RealConnection connection)</span> </span>{
+        pool.put(connection);
+}
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;pool&#x7684;put&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;pool&#x662F;ConnectionPool&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="42-connectionpool&#x6210;&#x5458;&#x53D8;&#x91CF;">4.2 ConnectionPool#&#x6210;&#x5458;&#x53D8;&#x91CF;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Deque&lt;RealConnection&gt; connections = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();
+</code></pre>
+<ul>
+<li>connections&#xFF1A;&#x7528;&#x4E8E;&#x5B58;&#x653E;RealConnection&#x7684;ArrayDeque&#x961F;&#x5217;</li>
+</ul>
+<h4 id="43-connectionpoolget">4.3 ConnectionPool#get</h4>
+<h5 id="431-connectionpoolget">4.3.1 ConnectionPool#get</h5>
+<pre><code class="lang-java"><span class="hljs-meta">@Nullable</span> <span class="hljs-function">RealConnection <span class="hljs-title">get</span><span class="hljs-params">(Address address, StreamAllocation streamAllocation, Route route)</span> </span>{
+    <span class="hljs-keyword">assert</span> (Thread.holdsLock(<span class="hljs-keyword">this</span>));
+    <span class="hljs-keyword">for</span> (RealConnection connection : connections) {
+        <span class="hljs-comment">//isEligible&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x662F;&#x5426;&#x53EF;&#x7528;</span>
+      <span class="hljs-keyword">if</span> (connection.isEligible(address, route)) {
+          <span class="hljs-comment">//&#x8C03;&#x7528;acquire</span>
+        streamAllocation.acquire(connection, <span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">return</span> connection;
+      }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+  }
+</code></pre>
+<p><strong>&#x6982;&#x8FF0;</strong></p>
+<ul>
+<li>&#x901A;&#x8FC7;&#x904D;&#x5386;connections(&#x7528;&#x4E8E;&#x5B58;&#x653E;RealConnection&#x7684;ArrayDeque&#x961F;&#x5217;)</li>
+<li>&#x8C03;&#x7528;RealConnection&#x7684;isEligible()&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5176;&#x662F;&#x5426;&#x53EF;&#x7528;&#xFF0C;RealConnection&#x4F1A;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;</li>
+<li>&#x5982;&#x679C;&#x53EF;&#x7528;&#x5C31;&#x4F1A;&#x8C03;&#x7528;streamAllocation&#x7684;acquire()&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;connection&#x3002;</li>
+</ul>
+<h5 id="432-realconnectioniseligible">4.3.2 RealConnection#isEligible</h5>
+<ul>
+<li>&#x5224;&#x65AD;connection&#x662F;&#x5426;&#x53EF;&#x7528;</li>
+</ul>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEligible</span><span class="hljs-params">(Address address, @Nullable Route route)</span> </span>{
+    <span class="hljs-comment">// If this connection is not accepting new streams, we&apos;re done.</span>
+    <span class="hljs-keyword">if</span> (allocations.size() &gt;= allocationLimit || noNewStreams) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">// If the non-host fields of the address don&apos;t overlap, we&apos;re done.</span>
+    <span class="hljs-keyword">if</span> (!Internal.instance.equalsNonHost(<span class="hljs-keyword">this</span>.route.address(), address)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+
+      <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    <span class="hljs-comment">// If the host exactly matches, we&apos;re done: this connection can carry the address.</span>
+    <span class="hljs-keyword">if</span> (address.url().host().equals(<span class="hljs-keyword">this</span>.route().address().url().host())) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// This connection is a perfect match.</span>
+    }
+
+    <span class="hljs-comment">// At this point we don&apos;t have a hostname match. But we still be able to carry the request if</span>
+    <span class="hljs-comment">// our connection coalescing requirements are met. See also:</span>
+    <span class="hljs-comment">// https://hpbn.co/optimizing-application-delivery/#eliminate-domain-sharding</span>
+    <span class="hljs-comment">// https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/</span>
+
+    <span class="hljs-comment">// 1. This connection must be HTTP/2.</span>
+    <span class="hljs-keyword">if</span> (http2Connection == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">// 2. The routes must share an IP address. This requires us to have a DNS address for both</span>
+    <span class="hljs-comment">// hosts, which only happens after route planning. We can&apos;t coalesce connections that use a</span>
+    <span class="hljs-comment">// proxy, since proxies don&apos;t tell us the origin server&apos;s IP address.</span>
+    <span class="hljs-keyword">if</span> (route == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (route.proxy().type() != Proxy.Type.DIRECT) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.route.proxy().type() != Proxy.Type.DIRECT) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.route.socketAddress().equals(route.socketAddress())) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">// 3. This connection&apos;s server certificate&apos;s must cover the new host.</span>
+    <span class="hljs-keyword">if</span> (route.address().hostnameVerifier() != OkHostnameVerifier.INSTANCE) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (!supportsUrl(address.url())) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">// 4. Certificate pinning must match the host.</span>
+    <span class="hljs-keyword">try</span> {
+      address.certificatePinner().check(address.url().host(), handshake().peerCertificates());
+    } <span class="hljs-keyword">catch</span> (SSLPeerUnverifiedException e) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// The caller&apos;s address can be carried by this connection.</span>
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x5982;&#x679C;&#x4E24;&#x4E2A;host&#x76F8;&#x540C;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8FD4;&#x56DE;true</li>
+<li>host&#x7684;&#x503C;</li>
+</ul>
+<pre><code>* &lt;ul&gt;
+*   &lt;li&gt;A regular host name, like {@code android.com}.
+*   &lt;li&gt;An IPv4 address, like {@code 127.0.0.1}.
+*   &lt;li&gt;An IPv6 address, like {@code ::1}. Note that there are no square braces.
+*   &lt;li&gt;An encoded IDN, like {@code xn--n3h.net}.
+* &lt;/ul&gt;
+*
+* &lt;p&gt;&lt;table summary=&quot;&quot;&gt;
+*   &lt;tr&gt;&lt;th&gt;URL&lt;/th&gt;&lt;th&gt;{@code host()}&lt;/th&gt;&lt;/tr&gt;
+*   &lt;tr&gt;&lt;td&gt;{@code http://android.com/}&lt;/td&gt;&lt;td&gt;{@code &quot;android.com&quot;}&lt;/td&gt;&lt;/tr&gt;
+*   &lt;tr&gt;&lt;td&gt;{@code http://127.0.0.1/}&lt;/td&gt;&lt;td&gt;{@code &quot;127.0.0.1&quot;}&lt;/td&gt;&lt;/tr&gt;
+*   &lt;tr&gt;&lt;td&gt;{@code http://[::1]/}&lt;/td&gt;&lt;td&gt;{@code &quot;::1&quot;}&lt;/td&gt;&lt;/tr&gt;
+*   &lt;tr&gt;&lt;td&gt;{@code http://xn--n3h.net/}&lt;/td&gt;&lt;td&gt;{@code &quot;xn--n3h.net&quot;}&lt;/td&gt;&lt;/tr&gt;
+* &lt;/table&gt;
+</code></pre><ul>
+<li>&#x5B98;&#x65B9;&#x7684;&#x6CE8;&#x91CA;&#x5DF2;&#x7ECF;&#x5F88;&#x660E;&#x767D;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;&#x540C;&#x4E00;&#x4E2A;ip&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x7B49;</li>
+</ul>
+<h5 id="433-streamallocationacquire">4.3.3 StreamAllocation#acquire</h5>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acquire</span><span class="hljs-params">(RealConnection connection, <span class="hljs-keyword">boolean</span> reportedAcquired)</span> </span>{
+    <span class="hljs-keyword">assert</span> (Thread.holdsLock(connectionPool));
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.connection != <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException();
+    <span class="hljs-comment">//&#x8D4B;&#x503C;&#x7ED9;&#x5168;&#x5C40;&#x53D8;&#x91CF; StreamAllocation&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;connection</span>
+    <span class="hljs-keyword">this</span>.connection = connection;
+    <span class="hljs-keyword">this</span>.reportedAcquired = reportedAcquired;
+      <span class="hljs-comment">//&#x521B;&#x5EFA;StreamAllocationReference&#x5BF9;&#x8C61;&#x5E76;&#x6DFB;&#x52A0;&#x5230;allocations&#x96C6;&#x5408;&#x4E2D;</span>
+    connection.allocations.add(<span class="hljs-keyword">new</span> StreamAllocationReference(<span class="hljs-keyword">this</span>, callStackTrace));
+  }
+</code></pre>
+<ul>
+<li>&#x5148;&#x662F;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;&#x7684;RealConnection&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;StreamAllocation&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;connection&#xFF1B;</li>
+<li>&#x521B;&#x5EFA;StreamAllocationReference&#x5BF9;&#x8C61;(StreamAllocation&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;)&#xFF0C;
+&#x5E76;&#x6DFB;&#x52A0;&#x5230;RealConnection&#x7684;allocations&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x5230;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;allocations&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;&#x6765;&#x5224;&#x65AD;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x6B21;&#x6570;&#x662F;&#x5426;&#x8D85;&#x8FC7;OkHttp&#x6307;&#x5B9A;&#x7684;&#x8FDE;&#x63A5;&#x6B21;&#x6570;&#x3002;</li>
+</ul>
+<h4 id="44-connectionpoolput">4.4 ConnectionPool#put</h4>
+<h5 id="441-connectionpoolput">4.4.1 ConnectionPool#put</h5>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(RealConnection connection)</span> </span>{
+    <span class="hljs-keyword">assert</span> (Thread.holdsLock(<span class="hljs-keyword">this</span>));
+      <span class="hljs-comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x6267;&#x884C;&#x6E05;&#x7406;&#x4EFB;&#x52A1;</span>
+    <span class="hljs-keyword">if</span> (!cleanupRunning) {
+      cleanupRunning = <span class="hljs-keyword">true</span>;
+        <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+      executor.execute(cleanupRunnable);
+    }
+      <span class="hljs-comment">//&#x5C06;&#x8FDE;&#x63A5;&#x6DFB;&#x52A0;&#x5230;&#x8FDE;&#x63A5;&#x6C60;</span>
+    connections.add(connection);
+  }
+</code></pre>
+<ul>
+<li>put()&#x65B9;&#x6CD5;&#x5728;&#x5C06;&#x8FDE;&#x63A5;&#x6DFB;&#x52A0;&#x5230;&#x8FDE;&#x63A5;&#x6C60;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5148;&#x6267;&#x884C;&#x6E05;&#x7406;&#x4EFB;&#x52A1;&#xFF0C;&#x901A;&#x8FC7;&#x5224;&#x65AD;cleanupRunning&#x662F;&#x5426;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x6E05;&#x7406;&#x4EFB;&#x52A1;&#x6CA1;&#x6709;&#x6267;&#x884C;&#xFF0C;&#x5219;&#x66F4;&#x6539;cleanupRunning&#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x6267;&#x884C;&#x6E05;&#x7406;&#x4EFB;&#x52A1;cleanupRunnable&#x3002;</li>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6C60;executor&#xFF0C;&#x8C03;&#x7528;execute&#xFF0C;&#x901A;&#x8FC7;&#x540D;&#x5B57;&#x6211;&#x4EEC;&#x77E5;&#x9053;cleanupRunnable&#x7EE7;&#x627F;&#x81EA;Runnable&#xFF0C;&#x6240;&#x4EE5;&#x5C06;&#x4F1A;&#x6267;&#x884C;cleanupRunnable&#x7684;run&#x65B9;&#x6CD5;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53BB;&#x4EE3;&#x7801;&#x4E2D;&#x8BC1;&#x660E;&#x4E00;&#x4E0B;&#x81EA;&#x5DF1;&#x7684;&#x731C;&#x60F3;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x53EF;&#x4EE5;&#x770B;&#x5230;executor&#x662F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6C60;&#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Executor executor = <span class="hljs-keyword">new</span> ThreadPoolExecutor(<span class="hljs-number">0</span> <span class="hljs-comment">/* corePoolSize */</span>,
+      Integer.MAX_VALUE <span class="hljs-comment">/* maximumPoolSize */</span>, <span class="hljs-number">60L</span> <span class="hljs-comment">/* keepAliveTime */</span>, TimeUnit.SECONDS,
+      <span class="hljs-keyword">new</span> SynchronousQueue&lt;Runnable&gt;(), Util.threadFactory(<span class="hljs-string">&quot;OkHttp ConnectionPool&quot;</span>, <span class="hljs-keyword">true</span>));
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x8FD8;&#x662F;&#x5C06;&#x8FDE;&#x63A5;&#x6DFB;&#x52A0;&#x5230;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;</li>
+</ul>
+<h5 id="442-connectionpoolcleanuprunnablerun">4.4.2 ConnectionPool#cleanupRunnable#run</h5>
+<ul>
+<li>&#x7528;&#x6765;&#x6267;&#x884C;&#x6E05;&#x7406;&#x4EFB;&#x52A1;&#x7684;</li>
+</ul>
+<pre><code class="lang-java">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Runnable cleanupRunnable = <span class="hljs-keyword">new</span> Runnable() {
+    <span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+          <span class="hljs-comment">//cleanup&#x65B9;&#x6CD5;&#x5BF9;&#x8FDE;&#x63A5;&#x6C60;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#xFF0C;&#x8FD4;&#x56DE;&#x8FDB;&#x884C;&#x4E0B;&#x6B21;&#x6E05;&#x7406;&#x7684;&#x95F4;&#x9694;&#x65F6;&#x95F4;</span>
+        <span class="hljs-keyword">long</span> waitNanos = cleanup(System.nanoTime());
+          <span class="hljs-comment">//&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x95F4;&#x9694;&#x4E3A;-1&#xFF0C;&#x5219;&#x4F1A;&#x63A5;&#x53D7;&#x5FAA;&#x73AF;</span>
+        <span class="hljs-keyword">if</span> (waitNanos == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;
+          <span class="hljs-comment">//&#x5982;&#x679C;&#x5927;&#x4E8E;1&#x4F1A;&#x8C03;&#x7528;wait&#x8FDB;&#x884C;&#x7B49;&#x5F85;</span>
+        <span class="hljs-keyword">if</span> (waitNanos &gt; <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">long</span> waitMillis = waitNanos / <span class="hljs-number">1000000L</span>;
+          waitNanos -= (waitMillis * <span class="hljs-number">1000000L</span>);
+          <span class="hljs-keyword">synchronized</span> (ConnectionPool.<span class="hljs-keyword">this</span>) {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">//&#x8FDB;&#x884C;&#x7B49;&#x5F85;</span>
+              ConnectionPool.<span class="hljs-keyword">this</span>.wait(waitMillis, (<span class="hljs-keyword">int</span>) waitNanos);
+            } <span class="hljs-keyword">catch</span> (InterruptedException ignored) {
+            }
+          }
+        }
+      }
+    }
+  };
+</code></pre>
+<ul>
+<li>cleanupRunnable&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x8C03;&#x7528;cleanup()&#x5BF9;&#x8FDE;&#x63A5;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#xFF0C;</li>
+</ul>
+<h5 id="443-connectionpoolcleanup">4.4.3 ConnectionPool#cleanup</h5>
+<ul>
+<li>cleanup()&#x65B9;&#x6CD5;&#x901A;&#x8FC7;for&#x5FAA;&#x73AF;&#x904D;&#x5386;connections&#x961F;&#x5217;&#xFF0C;&#x8BB0;&#x5F55;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x548C;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x6700;&#x957F;&#x7684;&#x8FDE;&#x63A5;&#xFF1B;&#x5982;&#x679C;&#x5B58;&#x5728;&#x8D85;&#x8FC7;&#x7A7A;&#x95F2;&#x4FDD;&#x6D3B;&#x65F6;&#x95F4;&#x6216;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;&#x8D85;&#x8FC7;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;&#x9650;&#x5236;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x4ECE;connections&#x4E2D;&#x79FB;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x6267;&#x884C;&#x5173;&#x95ED;&#x8BE5;&#x8FDE;&#x63A5;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
+</ul>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">cleanup</span><span class="hljs-params">(<span class="hljs-keyword">long</span> now)</span> </span>{
+    <span class="hljs-keyword">int</span> inUseConnectionCount = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> idleConnectionCount = <span class="hljs-number">0</span>;
+    RealConnection longestIdleConnection = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">long</span> longestIdleDurationNs = Long.MIN_VALUE;
+
+    <span class="hljs-comment">// Find either a connection to evict, or the time that the next eviction is due.</span>
+    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) {
+      <span class="hljs-keyword">for</span> (Iterator&lt;RealConnection&gt; i = connections.iterator(); i.hasNext(); ) {
+        RealConnection connection = i.next();
+
+        <span class="hljs-comment">//&#x5224;&#x65AD;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x6709;&#x6CA1;&#x6709;&#x6B63;&#x5728;&#x4F7F;&#x7528;</span>
+        <span class="hljs-keyword">if</span> (pruneAndGetAllocationCount(connection, now) &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">//&#x5982;&#x679C;&#x771F;&#x5728;&#x4F7F;&#x7528;&#x4E86;inUseConnectionCount&#x52A0;1&#xFF0C;&#x5E76;&#x4E14;&#x76F4;&#x63A5;&#x8DF3;&#x51FA;&#x8BE5;&#x6B21;&#x5FAA;&#x73AF;</span>
+          inUseConnectionCount++;
+          <span class="hljs-keyword">continue</span>;
+        }
+
+          <span class="hljs-comment">//&#x5982;&#x679C;&#x4E0D;&#x662F;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x628A;&#x8BE5;&#x53D8;&#x91CF;&#x52A0;1</span>
+        idleConnectionCount++;
+
+        <span class="hljs-comment">//&#x7B97;&#x51FA;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x5DF2;&#x7ECF;&#x5B58;&#x6D3B;&#x7684;&#x65F6;&#x95F4;</span>
+        <span class="hljs-keyword">long</span> idleDurationNs = now - connection.idleAtNanos;
+          <span class="hljs-comment">//&#x627E;&#x51FA;&#x5B58;&#x6D3B;&#x6700;&#x4E45;&#x7684;&#x90A3;&#x4E2A;&#x8FDE;&#x63A5;</span>
+        <span class="hljs-keyword">if</span> (idleDurationNs &gt; longestIdleDurationNs) {
+          longestIdleDurationNs = idleDurationNs;
+          longestIdleConnection = connection;
+        }
+      }
+
+      <span class="hljs-comment">//&#x5982;&#x679C;&#x6700;&#x5927;&#x5B58;&#x6D3B;&#x7684;&#x8FDE;&#x63A5;&#x8D85;&#x8FC7;&#x4E86;keep-alive&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;</span>
+        <span class="hljs-comment">//&#x6216;&#x8005;&#x6CA1;&#x6709;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#x6570;&#x8D85;&#x8FC7;&#x4E86;maxIdleConnections</span>
+        <span class="hljs-comment">//&#x5219;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x79FB;&#x9664;</span>
+      <span class="hljs-keyword">if</span> (longestIdleDurationNs &gt;= <span class="hljs-keyword">this</span>.keepAliveDurationNs
+          || idleConnectionCount &gt; <span class="hljs-keyword">this</span>.maxIdleConnections) {
+        <span class="hljs-comment">//&#x5220;&#x9664;&#x8FDE;&#x63A5;</span>
+        connections.remove(longestIdleConnection);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (idleConnectionCount &gt; <span class="hljs-number">0</span>) {
+          <span class="hljs-comment">//&#x5982;&#x679C;&#x8FD8;&#x5B58;&#x5728;&#x6CA1;&#x6709;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x4F46;&#x662F;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;&#x6CA1;&#x8D85;&#x8FC7;keep-alive&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#x5E76;&#x4E14;&#x4E2A;&#x6570;&#x6CA1;&#x8D85;&#x8FC7;&#x6700;&#x5927;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x8FD8;&#x8981;&#x7B49;&#x591A;&#x4E45;&#x7684;&#x65F6;&#x95F4;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x4E0B;&#x6B21;&#x6E05;&#x9664;&#x64CD;&#x4F5C;</span>
+        <span class="hljs-keyword">return</span> keepAliveDurationNs - longestIdleDurationNs;
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (inUseConnectionCount &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-comment">//&#x5982;&#x679C;&#x90FD;&#x662F;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;keep-alive&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;5&#x5206;&#x949F;</span>
+        <span class="hljs-keyword">return</span> keepAliveDurationNs;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">//&#x5982;&#x679C;&#x8FDE;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;-1&#xFF0C;&#x8BF4;&#x660E;&#x4E0D;&#x9700;&#x8981;&#x4E0B;&#x6B21;&#x7684;&#x6E05;&#x9664;&#x64CD;&#x4F5C;</span>
+        cleanupRunning = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+      }
+    }
+
+      <span class="hljs-comment">//&#x5173;&#x95ED;Socket</span>
+    closeQuietly(longestIdleConnection.socket());
+
+    <span class="hljs-comment">// Cleanup again immediately.</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+</code></pre>
+<ul>
+<li>&#x904D;&#x5386;&#x8FDE;&#x63A5;&#xFF0C;pruneAndGetAllocationCount()&#x65B9;&#x6CD5;&#x67E5;&#x770B;&#x8FDE;&#x63A5;&#x662F;&#x5426;&#x5728;&#x4F7F;&#x7528;&#x3002;</li>
+<li>inUseConnectionCount&#xFF0C;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x6570;&#x91CF;</li>
+<li>idleConnectionCount&#xFF0C;&#x7A7A;&#x95F2;&#x6570;&#x91CF;</li>
+<li>idleDurationNs&#xFF0C;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#xFF0C;&#x8BA1;&#x7B97;&#x5DF2;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#xFF0C;&#x67E5;&#x627E;&#x5230;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x6700;&#x957F;&#x7684;&#x3002;</li>
+</ul>
+<p><strong>&#x6E05;&#x7406;&#x7B97;&#x6CD5;</strong></p>
+<ul>
+<li>longestIdleDurationNs(&#x6700;&#x957F;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;)&#xFF0C;&#x5927;&#x4E8E;5min&#x6216;&#x7A7A;&#x95F2;&#x6570;&#x91CF;&#x8D85;&#x8FC7;5&#x4E2A;(&#x9ED8;&#x8BA4;)&#xFF0C;&#x5C06;&#x5BF9;&#x5E94;longestIdleConnection&#x8FDE;&#x63A5;&#x5220;&#x9664;&#xFF0C;&#x8FD4;&#x56DE;0&#xFF0C;&#x4E0B;&#x4E00;&#x6B21;&#x7ACB;&#x5373;&#x6E05;&#x7406;&#x3002;</li>
+<li>&#x4E0D;&#x8DB3;5min&#xFF0C;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;&#x91CF;&lt;5&#xFF0C;&#x8FD4;&#x56DE;timeout(&#x8DDD;&#x79BB;5min&#x8FD8;&#x6709;&#x591A;&#x4E45;)&#xFF0C;&#x7EBF;&#x7A0B;&#x963B;&#x585E;timeout&#x540E;&#xFF0C;&#x518D;&#x6B21;&#x6E05;&#x7406;&#x3002;</li>
+<li>&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;=0&#xFF0C;&#x4E14;&#x6B63;&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&gt;0&#xFF0C;&#x8FD4;&#x56DE;5min&#xFF0C;&#x6700;&#x957F;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x7A7A;&#x95F2;&#x548C;&#x6B63;&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x90FD;0&#xFF0C;&#x8FD4;&#x56DE;-1&#xFF0C;&#x4E0D;&#x6E05;&#x7406;&#xFF0C;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x3002;&#x8BBE;&#x7F6E;cleanupRunning&#x6807;&#x5FD7;&#x4F4D;&#xFF0C;&#x4E0B;&#x6B21;put()&#x65B9;&#x6CD5;&#x91CD;&#x65B0;&#x5524;&#x8D77;cleanupRunnable&#x4EFB;&#x52A1;&#x3002;</li>
+</ul>
+<p><strong>&#x6E05;&#x7406;&#x8FC7;&#x7A0B;</strong></p>
+<ul>
+<li>&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x961F;&#x5217;ArrayDeque&#x4E2D;&#x5220;&#x9664;&#x8BE5;&#x9879;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>closeQuietly()&#x65B9;&#x6CD5;&#x5173;&#x95ED;Socket&#x3002;</li>
+</ul>
+<p><strong>using&#x8FDE;&#x63A5;&#x5224;&#x65AD;</strong></p>
+<ul>
+<li>&#x904D;&#x5386;RealConnection&#x5185;&#x90E8;Reference<streamallocation>&#x5217;&#x8868;</streamallocation></li>
+<li>reference.get()&#x4E0D;&#x7A7A;&#xFF0C;&#x8BF4;&#x660E;&#x6709;StreamAllocation&#x6B63;&#x5F15;&#x7528;RealConnection&#x3002;</li>
+<li>reference.get()&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BF4;&#x660E;StreamAllocation&#x5DF2;&#x88AB;Jvm&#x6E05;&#x7406;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x4ECE;references&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x8BE5;&#x9879;reference&#x3002;</li>
+<li>&#x82E5;references&#x5217;&#x8868;&#x662F;&#x7A7A;&#xFF0C;&#x8BF4;&#x660E;references&#x5F31;&#x5F15;&#x7528;&#x90FD;&#x662F;&#x7A7A;&#xFF0C;&#x6CA1;&#x6709;StreamAllocation&#x4F7F;&#x7528;&#x8BE5;&#x8FDE;&#x63A5;&#x3002;</li>
+</ul>
+<h4 id="45-&#x6D41;&#x7A0B;">4.5 &#x6D41;&#x7A0B;</h4>
+<h5 id="451-streamallocationfindconnection">4.5.1 StreamAllocation#findConnection</h5>
+<ul>
+<li><p>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x8C03;&#x7528;StreamAllocation#findConnection&#x53BB;&#x83B7;&#x53D6;&#x8FDE;&#x63A5;</p>
+<ul>
+<li>&#x6B65;&#x9AA4;1&#xFF1A;StreamAllocation&#x7684;connection&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x5219;&#x590D;&#x7528;;</li>
+<li>&#x6B65;&#x9AA4;2&#xFF1A;&#x5982;&#x679C;StreamAllocation&#x7684;connection&#x4E0D;&#x80FD;&#x590D;&#x7528;&#xFF0C;&#x5219;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x83B7;&#x53D6;RealConnection&#x5BF9;&#x8C61;&#xFF0C;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x5219;&#x8FD4;&#x56DE;;</li>
+<li>&#x6B65;&#x9AA4;3&#xFF1A;&#x5982;&#x679C;&#x8FDE;&#x63A5;&#x6C60;&#x91CC;&#x6CA1;&#x6709;&#xFF0C;&#x5219;new&#x4E00;&#x4E2A;RealConnection&#x5BF9;&#x8C61;&#xFF1B;</li>
+<li>&#x6B65;&#x9AA4;4&#xFF1A;&#x8C03;&#x7528;RealConnection&#x7684;connect&#xFF08;&#xFF09;&#x65B9;&#x6CD5;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF1B;connect--&gt;connectSocket()&#x8FDB;&#x884C;socket&#x8FDE;&#x63A5;--&gt;Platform.get().connectSocket()--&gt;socket.connect(address, connectTimeout);(&#x6B64;&#x65F6;&#x8FDB;&#x884C;&#x4E86;&#x4E09;&#x6B21;&#x63E1;&#x624B;),&#x63E1;&#x624B;&#x5B8C;&#x6210;&#x540E;&#x8C03;&#x7528;establishProtocol()&#x3002;</li>
+<li>&#x6B65;&#x9AA4;5&#xFF1A;&#x5C06;RealConnection&#x5BF9;&#x8C61;&#x5B58;&#x8FDB;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E0B;&#x6B21;&#x590D;&#x7528;</li>
+<li>&#x6B65;&#x9AA4;6&#xFF1A;&#x8FD4;&#x56DE;RealConnection&#x5BF9;&#x8C61;</li>
+</ul>
+</li>
+</ul>
+<h5 id="452-&#x8FDE;&#x63A5;&#x6C60;&#x5DF1;&#x89C1;">4.5.2 &#x8FDE;&#x63A5;&#x6C60;&#x5DF1;&#x89C1;</h5>
+<ul>
+<li>&#x9996;&#x5148;&#x4ECE;StreamAllocation&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x80FD;&#x7528;&#x5C31;&#x590D;&#x7528;</li>
+<li>&#x4E0D;&#x80FD;&#x6709;&#x5C31;&#x4ECE;ConnectionPool&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;ConnectionPool&#x5BF9;&#x8C61;&#x7684;get&#x65B9;&#x6CD5;&#x53BB;&#x83B7;&#x53D6;&#x3002;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x5C31;&#x590D;&#x7528;&#xFF0C;ConnectionPool&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;&#x7740;&#x8FDE;&#x63A5;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x53CC;&#x5411;&#x961F;&#x5217;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Deque&lt;RealConnection&gt; connections = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;ConnectionPool&#x5BF9;&#x8C61;&#x7684;put&#x65B9;&#x6CD5;&#xFF0C;&#x628A;&#x8FDE;&#x63A5;&#x653E;&#x5165;&#x5230;connections&#x5BF9;&#x8C61;&#x4E2D;&#x3002;put&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6E05;&#x7406;&#xFF0C;&#x6E05;&#x7406;&#x8D85;&#x8FC7;&#x7A7A;&#x95F2;&#x4FDD;&#x6D3B;&#x65F6;&#x95F4;&#x6216;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;&#x8D85;&#x8FC7;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;&#x9650;&#x5236;&#x7684;&#x8FDE;&#x63A5;</li>
+</ul>
+<h5 id="453-&#x603B;&#x7ED3;">4.5.3 &#x603B;&#x7ED3;</h5>
+<ul>
+<li><p>&#x5BF9;&#x4E8E;ConnectionPool&#x8FDE;&#x63A5;&#x6C60;&#x800C;&#x8A00;&#xFF0C;&#x5C31;&#x662F;&#x5185;&#x90E8;&#x5B58;&#x5728;Deque&#x53CC;&#x5411;&#x961F;&#x5217;&#xFF0C;&#x5B58;&#x50A8;&#x7740;RealConnection&#xFF0C;&#x4F18;&#x5148;&#x8FDB;&#x884C;&#x590D;&#x7528;connections&#x4E2D;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x590D;&#x7528;&#x4E0D;&#x4E86;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E76;&#x653E;&#x5165;&#x5230;connections&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x653E;&#x5165;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x6267;&#x884C;&#x6E05;&#x7406;&#x4EFB;&#x52A1;&#xFF0C;&#x6E05;&#x7406;&#x6389;&#x4E0D;&#x7B26;&#x5408;&#x8981;&#x6C42;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+</li>
+<li><p>&#x4E00;&#x4E2A;OkHttpClient&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x53EA;&#x6709;&#x4E00;&#x4E2A;ConnectionPool&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;OkHttpClient&#x5B9E;&#x4F8B;&#xFF0C;&#x590D;&#x7528;&#x7684;&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;connections</p>
+</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-realconnection">&#x4E94;&#x3001;&#x6E90;&#x7801;&#x5206;&#x6790;-RealConnection</h3>
+<h4 id="51-realconnection&#x6210;&#x5458;&#x53D8;&#x91CF;">5.1 RealConnection#&#x6210;&#x5458;&#x53D8;&#x91CF;</h4>
+<h4 id="52-realconnectionconnect">5.2 RealConnection#connect</h4>
+<ul>
+<li>&#x5728;3.4 StreamAllocation#findConnection&#x4E2D;&#x4F1A;&#x8C03;&#x7528;result.connect&#xFF0C;&#x5176;&#x4E2D;result&#x5C31;&#x662F;RealConnection&#x5BF9;&#x8C61;</li>
+<li>RealConnection#connect&#x8FD9;&#x91CC;&#x662F;&#x771F;&#x6B63;&#x548C;&#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connect</span><span class="hljs-params">(<span class="hljs-keyword">int</span> connectTimeout, <span class="hljs-keyword">int</span> readTimeout, <span class="hljs-keyword">int</span> writeTimeout,
+      <span class="hljs-keyword">int</span> pingIntervalMillis, <span class="hljs-keyword">boolean</span> connectionRetryEnabled, Call call,
+      EventListener eventListener)</span> </span>{
+    <span class="hljs-keyword">if</span> (protocol != <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;already connected&quot;</span>);
+    <span class="hljs-comment">// &#x8DEF;&#x7EBF;&#x9009;&#x62E9;</span>
+    RouteException routeException = <span class="hljs-keyword">null</span>;
+    List&lt;ConnectionSpec&gt; connectionSpecs = route.address().connectionSpecs();
+    ConnectionSpecSelector connectionSpecSelector = <span class="hljs-keyword">new</span> ConnectionSpecSelector(connectionSpecs);
+
+    <span class="hljs-keyword">if</span> (route.address().sslSocketFactory() == <span class="hljs-keyword">null</span>) {
+      <span class="hljs-keyword">if</span> (!connectionSpecs.contains(ConnectionSpec.CLEARTEXT)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RouteException(<span class="hljs-keyword">new</span> UnknownServiceException(
+            <span class="hljs-string">&quot;CLEARTEXT communication not enabled for client&quot;</span>));
+      }
+      String host = route.address().url().host();
+      <span class="hljs-keyword">if</span> (!Platform.get().isCleartextTrafficPermitted(host)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RouteException(<span class="hljs-keyword">new</span> UnknownServiceException(
+            <span class="hljs-string">&quot;CLEARTEXT communication to &quot;</span> + host + <span class="hljs-string">&quot; not permitted by network security policy&quot;</span>));
+      }
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">if</span> (route.address().protocols().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RouteException(<span class="hljs-keyword">new</span> UnknownServiceException(
+            <span class="hljs-string">&quot;H2_PRIOR_KNOWLEDGE cannot be used with HTTPS&quot;</span>));
+      }
+    }
+    <span class="hljs-comment">// &#x5F00;&#x59CB;&#x8FDE;&#x63A5;</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x8FDE;&#x63A5;</span>
+        <span class="hljs-keyword">if</span> (route.requiresTunnel()) {
+          connectTunnel(connectTimeout, readTimeout, writeTimeout, call, eventListener);
+          <span class="hljs-keyword">if</span> (rawSocket == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">// We were unable to connect the tunnel but properly closed down our resources.</span>
+            <span class="hljs-comment">// &#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x8FDE;&#x63A5;&#x96A7;&#x9053;&#xFF0C;&#x4F46;&#x6B63;&#x786E;&#x5173;&#x95ED;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x8D44;&#x6E90;</span>
+            <span class="hljs-keyword">break</span>;
+          }
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-comment">// &#x5EFA;&#x7ACB;&#x666E;&#x901A;&#x8FDE;&#x63A5;</span>
+          connectSocket(connectTimeout, readTimeout, call, eventListener);
+        }
+        <span class="hljs-comment">//&#x5EFA;&#x7ACB;&#x534F;&#x8BAE;</span>
+        <span class="hljs-comment">// &#x4E0D;&#x7BA1;&#x662F;&#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD8;&#x662F;&#x5EFA;&#x7ACB;&#x666E;&#x901A;&#x8FDE;&#x63A5;&#xFF0C;&#x90FD;&#x5C11;&#x4E0D;&#x4E86;&#x5EFA;&#x7ACB;&#x534F;&#x8BAE;&#x8FD9;&#x4E00;&#x6B65;&#x3002;</span>
+        <span class="hljs-comment">// &#x8FD9;&#x4E00;&#x6B65;&#x662F;&#x5728;&#x5EFA;&#x7ACB;&#x597D;&#x4E86;TCP&#x8FDE;&#x63A5;&#x4E4B;&#x540E;&#xFF0C;&#x800C;&#x5728;TCP&#x80FD;&#x88AB;&#x62FF;&#x6765;&#x6536;&#x53D1;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x7684;&#x3002;</span>
+        <span class="hljs-comment">// &#x5B83;&#x4E3B;&#x8981;&#x4E3A;&#x6570;&#x636E;&#x7684;&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#x505A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6BD4;&#x5982;TLS&#x63E1;&#x624B;&#xFF0C;HTTP/2&#x7684;&#x534F;&#x8BAE;&#x534F;&#x5546;&#x7B49;</span>
+        establishProtocol(connectionSpecSelector, pingIntervalMillis, call, eventListener);
+        eventListener.connectEnd(call, route.socketAddress(), route.proxy(), protocol);
+        <span class="hljs-comment">//&#x5B8C;&#x6210;&#x8FDE;&#x63A5;</span>
+        <span class="hljs-keyword">break</span>;
+      } <span class="hljs-keyword">catch</span> (IOException e) {
+        closeQuietly(socket);
+        closeQuietly(rawSocket);
+        socket = <span class="hljs-keyword">null</span>;
+        rawSocket = <span class="hljs-keyword">null</span>;
+        source = <span class="hljs-keyword">null</span>;
+        sink = <span class="hljs-keyword">null</span>;
+        handshake = <span class="hljs-keyword">null</span>;
+        protocol = <span class="hljs-keyword">null</span>;
+        http2Connection = <span class="hljs-keyword">null</span>;
+
+        eventListener.connectFailed(call, route.socketAddress(), route.proxy(), <span class="hljs-keyword">null</span>, e);
+
+        <span class="hljs-keyword">if</span> (routeException == <span class="hljs-keyword">null</span>) {
+          routeException = <span class="hljs-keyword">new</span> RouteException(e);
+        } <span class="hljs-keyword">else</span> {
+          routeException.addConnectException(e);
+        }
+
+        <span class="hljs-keyword">if</span> (!connectionRetryEnabled || !connectionSpecSelector.connectionFailed(e)) {
+          <span class="hljs-keyword">throw</span> routeException;
+        }
+      }
+    }
+
+    <span class="hljs-keyword">if</span> (route.requiresTunnel() &amp;&amp; rawSocket == <span class="hljs-keyword">null</span>) {
+      ProtocolException exception = <span class="hljs-keyword">new</span> ProtocolException(<span class="hljs-string">&quot;Too many tunnel connections attempted: &quot;</span>
+          + MAX_TUNNEL_ATTEMPTS);
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RouteException(exception);
+    }
+
+    <span class="hljs-keyword">if</span> (http2Connection != <span class="hljs-keyword">null</span>) {
+      <span class="hljs-keyword">synchronized</span> (connectionPool) {
+        allocationLimit = http2Connection.maxConcurrentStreams();
+      }
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x4E86;connectTunnel()&#x65B9;&#x6CD5;&#x548C;connectSocket()&#xFF0C;&#x8FD9;&#x662F;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x6A21;&#x5F0F;&#x3002;</li>
+<li>connectSocket()&#x662F;&#x666E;&#x901A;&#x8FDE;&#x63A5;</li>
+<li>connectTunnel()&#x662F;&#x96A7;&#x9053;&#x8FDE;&#x63A5;</li>
+</ul>
+<h4 id="53-realconnectionconnectsocket&#x666E;&#x901A;&#x8FDE;&#x63A5;">5.3 RealConnection#connectSocket&#x666E;&#x901A;&#x8FDE;&#x63A5;</h4>
+<h5 id="531-realconnectionconnectsocket&#x666E;&#x901A;&#x8FDE;&#x63A5;">5.3.1 RealConnection#connectSocket&#x666E;&#x901A;&#x8FDE;&#x63A5;</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectSocket</span><span class="hljs-params">(<span class="hljs-keyword">int</span> connectTimeout, <span class="hljs-keyword">int</span> readTimeout, Call call,
+      EventListener eventListener)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    Proxy proxy = route.proxy();
+    Address address = route.address();
+    <span class="hljs-comment">//&#x6839;&#x636E;&#x4EE3;&#x7406;&#x7C7B;&#x578B;&#x7684;&#x4E0D;&#x540C;&#x5904;&#x7406;Socket</span>
+    rawSocket = proxy.type() == Proxy.Type.DIRECT || proxy.type() == Proxy.Type.HTTP
+        ? address.socketFactory().createSocket()
+        : <span class="hljs-keyword">new</span> Socket(proxy);
+
+    eventListener.connectStart(call, route.socketAddress(), proxy);
+
+    <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
+    rawSocket.setSoTimeout(readTimeout);
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+      <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x7684;&#x5E73;&#x53F0;&#x53BB;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;</span>
+      Platform.get().connectSocket(rawSocket, route.socketAddress(), connectTimeout);
+    } <span class="hljs-keyword">catch</span> (ConnectException e) {
+      ConnectException ce = <span class="hljs-keyword">new</span> ConnectException(<span class="hljs-string">&quot;Failed to connect to &quot;</span> + route.socketAddress());
+      ce.initCause(e);
+      <span class="hljs-keyword">throw</span> ce;
+    }
+
+    <span class="hljs-comment">// The following try/catch block is a pseudo hacky way to get around a crash on Android 7.0</span>
+    <span class="hljs-comment">// More details:</span>
+    <span class="hljs-comment">// https://github.com/square/okhttp/issues/3245</span>
+    <span class="hljs-comment">// https://android-review.googlesource.com/#/c/271775/</span>
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">//&#x5F97;&#x5230;&#x8FDE;&#x63A5;&#x5668;&#x7684;&#x8F93;&#x5165;&#x6D41;&#x5BF9;&#x8C61;</span>
+      source = Okio.buffer(Okio.source(rawSocket));
+      <span class="hljs-comment">//&#x5F97;&#x5230;&#x8FDE;&#x63A5;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x6D41;&#x5BF9;&#x8C61;</span>
+      sink = Okio.buffer(Okio.sink(rawSocket));
+    } <span class="hljs-keyword">catch</span> (NullPointerException npe) {
+      <span class="hljs-keyword">if</span> (NPE_THROW_WITH_NULL.equals(npe.getMessage())) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(npe);
+      }
+    }
+  }
+</code></pre>
+<ul>
+<li><p>&#x5B8C;&#x6210;&#x5728;&#x539F;&#x59CB;&#x5957;&#x63A5;&#x5B57;&#x4E0A;&#x6784;&#x5EFA;&#x5B8C;&#x6574;&#x7684;HTTP&#x6216;HTTPS&#x8FDE;&#x63A5;&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x5DE5;&#x4F5C;&#x3002;</p>
+</li>
+<li><p>&#x5206;&#x6790;1&#xFF1A;&#x8C03;&#x7528;Platform.get().connectSocket&#x65B9;&#x6CD5;&#x53BB;&#x8FDE;&#x63A5;</p>
+</li>
+</ul>
+<h5 id="532-platformget">5.3.2 Platform#get</h5>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Platform <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> PLATFORM;
+  }
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Platform PLATFORM = findPlatform();
+</code></pre>
+<ul>
+<li>Platform.get()&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x4E86;&#x4E00;&#x4E2A;Platform&#x5BF9;&#x8C61;</li>
+</ul>
+<h5 id="533-platformconnectsocket">5.3.3 Platform#connectSocket</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectSocket</span><span class="hljs-params">(Socket socket, InetSocketAddress address,
+      <span class="hljs-keyword">int</span> connectTimeout)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    socket.connect(address, connectTimeout);
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;Socket&#x7684;connect&#x65B9;&#x6CD5;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x6240;&#x4EE5;OkHttp&#x5E95;&#x5C42;&#x7528;&#x7684;&#x4E5F;&#x662F;Socket&#x3002;</li>
+<li>&#x6709;&#x5173;Socket&#x8BE6;&#x7EC6;&#x53EF;&#x70B9;&#x51FB;&#x67E5;&#x770B;<a href="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x89E3;&#x8BFB;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x5E93;/&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6846;&#x67B6;/&#x7F51;&#x7EDC;&#x57FA;&#x7840;/Socket&#x89E3;&#x6790;.md">Socket&#x89E3;&#x6790;</a></li>
+</ul>
+<h4 id="54-realconnectionconnecttunnel&#x96A7;&#x9053;&#x8FDE;&#x63A5;">5.4 RealConnection#connectTunnel&#x96A7;&#x9053;&#x8FDE;&#x63A5;</h4>
+<h5 id="541-realconnectionconnecttunnel">5.4.1 RealConnection#connectTunnel</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectTunnel</span><span class="hljs-params">(<span class="hljs-keyword">int</span> connectTimeout, <span class="hljs-keyword">int</span> readTimeout, <span class="hljs-keyword">int</span> writeTimeout, 
+                           Call call,EventListener eventListener)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    <span class="hljs-comment">//&#x5206;&#x6790;1 &#x6784;&#x9020;&#x4E00;&#x4E2A; &#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;</span>
+    Request tunnelRequest = createTunnelRequest();
+    HttpUrl url = tunnelRequest.url();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; MAX_TUNNEL_ATTEMPTS; i++) {
+        <span class="hljs-comment">// &#x4E0E;HTTP&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;TCP&#x8FDE;&#x63A5;</span>
+      connectSocket(connectTimeout, readTimeout, call, eventListener);
+        <span class="hljs-comment">//&#x5206;&#x6790;3</span>
+        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x96A7;&#x9053;&#x3002;&#x8FD9;&#x4E3B;&#x8981;&#x662F;&#x5C06; &#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x8FDE;&#x63A5; &#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7ED9;HTTP&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x5904;&#x7406;&#x5B83;&#x7684;&#x54CD;&#x5E94;</span>
+      tunnelRequest = createTunnel(readTimeout, writeTimeout, tunnelRequest, url);
+
+      <span class="hljs-keyword">if</span> (tunnelRequest == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// Tunnel successfully created.</span>
+
+      <span class="hljs-comment">// The proxy decided to close the connection after an auth challenge. We need to create a new</span>
+      <span class="hljs-comment">// connection, but this time with the auth credentials.</span>
+      closeQuietly(rawSocket);
+      rawSocket = <span class="hljs-keyword">null</span>;
+      sink = <span class="hljs-keyword">null</span>;
+      source = <span class="hljs-keyword">null</span>;
+      eventListener.connectEnd(call, route.socketAddress(), route.proxy(), <span class="hljs-keyword">null</span>);
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x662F;&#x5426;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x96A7;&#x9053;&#x5EFA;&#x7ACB;HTTPS&#x8FDE;&#x63A5;&#x7684;&#x6240;&#x6709;&#x5DE5;&#x4F5C;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x9A8C;&#x8BC1;&#x8D28;&#x8BE2;&#xFF0C;&#x7136;&#x540E;&#x5173;&#x95ED;&#x8FDE;&#x63A5;</li>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x8C03;&#x7528;createTunnelRequest&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x96A7;&#x9053;&#x8FDE;&#x63A5;&#x7684;Request</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x5C31;&#x662F;5.3&#x5206;&#x6790;&#x7684;</li>
+<li>&#x5206;&#x6790;3&#xFF1A;&#x901A;&#x8FC7;createTunnel&#x65B9;&#x6CD5;&#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD9;&#x662F;&#x91CD;&#x70B9;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x8981;&#x4E86;&#x89E3;&#x96A7;&#x9053;&#x4EE3;&#x7406;&#x53EF;&#x70B9;&#x51FB;&#x67E5;&#x770B;<a href="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x89E3;&#x8BFB;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x5E93;/&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6846;&#x67B6;/&#x7F51;&#x7EDC;&#x57FA;&#x7840;/SOCKS&#x4EE3;&#x7406;&#x548C;HTTP&#x666E;&#x901A;&#x4EE3;&#x7406;&#x96A7;&#x9053;&#x4EE3;&#x7406;.md">SOCKS&#x4EE3;&#x7406;&#x548C;HTTP&#x666E;&#x901A;&#x4EE3;&#x7406;&#x96A7;&#x9053;&#x4EE3;&#x7406;</a></li>
+</ul>
+<h5 id="542-realconnectioncreatetunnel">5.4.2 RealConnection#createTunnel</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> Request <span class="hljs-title">createTunnel</span><span class="hljs-params">(<span class="hljs-keyword">int</span> readTimeout, <span class="hljs-keyword">int</span> writeTimeout, Request tunnelRequest,
+      HttpUrl url)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+    <span class="hljs-comment">// Make an SSL Tunnel on the first message pair of each SSL + proxy connection.</span>
+    <span class="hljs-comment">// &#x5728;&#x6BCF;&#x4E2A;SSL + &#x4EE3;&#x7406;&#x8FDE;&#x63A5;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x5BF9;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SSL&#x96A7;&#x9053;&#x3002;</span>
+    String requestLine = <span class="hljs-string">&quot;CONNECT &quot;</span> + Util.hostHeader(url, <span class="hljs-keyword">true</span>) + <span class="hljs-string">&quot; HTTP/1.1&quot;</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+      Http1Codec tunnelConnection = <span class="hljs-keyword">new</span> Http1Codec(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, source, sink);
+      source.timeout().timeout(readTimeout, MILLISECONDS);
+      sink.timeout().timeout(writeTimeout, MILLISECONDS);
+      tunnelConnection.writeRequest(tunnelRequest.headers(), requestLine);
+      tunnelConnection.finishRequest();
+      Response response = tunnelConnection.readResponseHeaders(<span class="hljs-keyword">false</span>)
+          .request(tunnelRequest)
+          .build();
+      <span class="hljs-comment">// The response body from a CONNECT should be empty, but if it is not then we should consume</span>
+      <span class="hljs-comment">// it before proceeding.</span>
+      <span class="hljs-keyword">long</span> contentLength = HttpHeaders.contentLength(response);
+      <span class="hljs-keyword">if</span> (contentLength == -<span class="hljs-number">1L</span>) {
+        contentLength = <span class="hljs-number">0L</span>;
+      }
+      Source body = tunnelConnection.newFixedLengthSource(contentLength);
+      Util.skipAll(body, Integer.MAX_VALUE, TimeUnit.MILLISECONDS);
+      body.close();
+
+      <span class="hljs-keyword">switch</span> (response.code()) {
+        <span class="hljs-keyword">case</span> HTTP_OK:
+          <span class="hljs-comment">// Assume the server won&apos;t send a TLS ServerHello until we send a TLS ClientHello. If</span>
+          <span class="hljs-comment">// that happens, then we will have buffered bytes that are needed by the SSLSocket!</span>
+          <span class="hljs-comment">// This check is imperfect: it doesn&apos;t tell us whether a handshake will succeed, just</span>
+          <span class="hljs-comment">// that it will almost certainly fail because the proxy has sent unexpected data.</span>
+          <span class="hljs-keyword">if</span> (!source.buffer().exhausted() || !sink.buffer().exhausted()) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(<span class="hljs-string">&quot;TLS tunnel buffered too many bytes!&quot;</span>);
+          }
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+        <span class="hljs-keyword">case</span> HTTP_PROXY_AUTH:
+          tunnelRequest = route.address().proxyAuthenticator().authenticate(route, response);
+          <span class="hljs-keyword">if</span> (tunnelRequest == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(<span class="hljs-string">&quot;Failed to authenticate with proxy&quot;</span>);
+
+          <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;close&quot;</span>.equalsIgnoreCase(response.header(<span class="hljs-string">&quot;Connection&quot;</span>))) {
+            <span class="hljs-keyword">return</span> tunnelRequest;
+          }
+          <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-keyword">default</span>:
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(
+              <span class="hljs-string">&quot;Unexpected response code for CONNECT: &quot;</span> + response.code());
+      }
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x8981;&#x901A;&#x8FC7;HTTP&#x4EE3;&#x7406;&#x5EFA;&#x7ACB;HTTPS&#x8FDE;&#x63A5;&#xFF0C;&#x8BF7;&#x53D1;&#x9001;&#x672A;&#x52A0;&#x5BC6;&#x7684;CONNECT&#x8BF7;&#x6C42;&#x4EE5;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x8FDE;&#x63A5;&#x3002; &#x5982;&#x679C;&#x4EE3;&#x7406;&#x9700;&#x8981;&#x6388;&#x6743;&#xFF0C;&#x5219;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x91CD;&#x8BD5;</li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;">&#x516D;&#x3001;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;</h3>
+<h4 id="61-&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x7684;&#x63A5;&#x53E3;&#x4E00;&#x76F4;&#x8C03;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x4F1A;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x8FDE;&#x63A5;">6.1 &#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x7684;&#x63A5;&#x53E3;&#x4E00;&#x76F4;&#x8C03;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x4F1A;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x8FDE;&#x63A5;</h4>
+<ul>
+<li>&#x4E00;&#x822C;&#x91C7;&#x7528;&#x7684;&#x65F6;&#x5F02;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x540C;&#x65F6;&#x597D;&#x591A;&#x4E2A;&#x8C03;&#x7528;&#xFF0C;&#x5047;&#x8BBE;&#x662F;k&#x4E2A;&#xFF0C;&#x6B64;&#x65F6;&#x7531;&#x4E8E;&#x5E76;&#x53D1;&#x95EE;&#x9898;&#xFF0C;&#x7531;&#x4E8E;&#x4ECE;&#x8FDE;&#x63A5;&#x6C60;connections&#x83B7;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x5E76;&#x6CA1;&#x6709;put&#x8FDE;&#x63A5;&#x8FDB;&#x53BB;&#xFF08;put&#x662F;&#x5728;connect&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x662F;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x65F6;&#x95F4;&#x8F83;&#x957F;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x81F3;&#x591A;k&#x4E2A;&#x90FD;&#x4F1A;&#x4ECE;connections&#x53D6;&#x4E0D;&#x5230;&#xFF0C;&#x7136;&#x540E;&#x5404;&#x81EA;&#x53C8;put&#x81EA;&#x5DF1;&#x7684;&#x8FDE;&#x63A5;&#x8FDB;&#x53BB;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x5B58;&#x5728;&#x597D;&#x591A;&#x76F8;&#x540C;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>&#x5F53;&#x6709;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x901A;&#x8FC7;&#x4E86;connect&#xFF0C;&#x7136;&#x540E;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x8FDE;&#x63A5;&#x653E;&#x8FDB;&#x53BB;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5B58;&#x5728;&#x7F13;&#x5B58;&#x4E86;&#xFF0C;&#x90A3;&#x6837;&#x540E;&#x9762;&#x7684;&#x63A5;&#x53E3;&#x4ECE;connections&#x5C31;&#x53EF;&#x4EE5;&#x53D6;&#x5230;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x4E86;&#x3002;</li>
+</ul>
+<h4 id="62-&#x8FDE;&#x63A5;&#x6C60;&#x89C4;&#x5219;">6.2 &#x8FDE;&#x63A5;&#x6C60;&#x89C4;&#x5219;</h4>
+<ul>
+<li><p>&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;host&#x7684;&#x90FD;&#x4F1A;&#x590D;&#x7528;</p>
+</li>
+<li><p>&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x7684;&#x4F1A;&#x590D;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#xFF0C;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#xFF0C;&#x7531;&#x4E8E;host&#x90FD;&#x662F;zhidao.baidu.com&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x590D;&#x7528;</p>
+<ul>
+<li><p>&#x201C;<a href="https://zhidao.baidu.com/question/536751608.html&#x201D;" target="_blank">https://zhidao.baidu.com/question/536751608.html&#x201D;</a></p>
+</li>
+<li><p>&quot;<a href="https://zhidao.baidu.com/question/1604078665855807427.html?fr=iks&amp;word=123456789&amp;ie=gbk" target="_blank">https://zhidao.baidu.com/question/1604078665855807427.html?fr=iks&amp;word=123456789&amp;ie=gbk</a>&quot;</p>
+</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="一、OkHttp大体流程.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 一、OkHttp大体流程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"二、OkHttp连接池复用","level":"9.3.2.2","depth":3,"next":{"title":"8.3.3 Retrofit","level":"9.4","depth":1,"ref":"","articles":[{"title":"Retrofit的使用","level":"9.4.1","depth":2,"path":"设计思想解读开源框架库/Retrofit/Retrofit的使用.md","ref":"设计思想解读开源框架库/Retrofit/Retrofit的使用.md","articles":[]},{"title":"Retrofit源码解析","level":"9.4.2","depth":2,"path":"设计思想解读开源框架库/Retrofit/Retrofit源码解析.md","ref":"设计思想解读开源框架库/Retrofit/Retrofit源码解析.md","articles":[]}]},"previous":{"title":"一、OkHttp大体流程","level":"9.3.2.1","depth":3,"path":"设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.md","ref":"设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.md","mtime":"2020-12-14T13:53:21.838Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,3514 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>三、Measure过程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="四、Layout过程.html" />
+    
+    
+    <link rel="prev" href="二、绘制前的准备：DecorView创建和显示.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../系统布局/ConstraintLayout.html">
+            
+                <a href="../系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../系统布局/RemoteViews解析.html">
+            
+                <a href="../系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="一、基础知识.html">
+            
+                <a href="一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.2.3" data-path="三、Measure过程.html">
+            
+                <a href="三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="四、Layout过程.html">
+            
+                <a href="四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="五、Draw过程.html">
+            
+                <a href="五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="六、自定义View实例.html">
+            
+                <a href="六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../Webview/Webview与JS交互.html">
+            
+                <a href="../Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../Webview/Webview.html">
+            
+                <a href="../Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >三、Measure过程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="measure&#x8FC7;&#x7A0B;">Measure&#x8FC7;&#x7A0B;</h2>
+<h4 id="&#x8F6C;&#x8F7D;">&#x8F6C;&#x8F7D;</h4>
+<ul>
+<li><a href="https://www.jianshu.com/p/1dab927b2f36" target="_blank">&#x81EA;&#x5B9A;&#x4E49;View Measure&#x8FC7;&#x7A0B; - &#x6700;&#x6613;&#x61C2;&#x7684;&#x81EA;&#x5B9A;&#x4E49;View&#x539F;&#x7406;&#x7CFB;&#x5217;&#xFF08;2&#xFF09;</a></li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-64faaebdceacd3ba.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+<h3 id="&#x4E00;&#x3001;&#x6982;&#x8FF0;">&#x4E00;&#x3001;&#x6982;&#x8FF0;</h3>
+<h4 id="11-measure&#x7684;&#x4F5C;&#x7528;">1.1 Measure&#x7684;&#x4F5C;&#x7528;</h4>
+<ul>
+<li>&#x6D4B;&#x91CF;<code>View</code>&#x7684;&#x5BBD; / &#x9AD8;<ul>
+<li>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x6B21;&#x6D4B;&#x91CF;<code>&#xFF08;measure&#xFF09;</code>&#x624D;&#x80FD;&#x786E;&#x5B9A;<code>View</code>&#x6700;&#x7EC8;&#x7684;&#x5BBD;/&#x9AD8;&#xFF1B;</li>
+<li>&#x8BE5;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>measure</code>&#x8FC7;&#x7A0B;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5BBD; / &#x9AD8;&#x53EF;&#x80FD;&#x4E0D;&#x51C6;&#x786E;&#xFF1B;</li>
+<li>&#x6B64;&#x5904;&#x5EFA;&#x8BAE;&#xFF1A;&#x5728;<code>layout</code>&#x8FC7;&#x7A0B;&#x4E2D;<code>onLayout()</code>&#x53BB;&#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x7684;&#x5BBD; / &#x9AD8;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;-&#x50A8;&#x5907;&#x77E5;&#x8BC6;">&#x4E8C;&#x3001; &#x50A8;&#x5907;&#x77E5;&#x8BC6;</h3>
+<p>&#x4E86;&#x89E3;<code>measure</code>&#x8FC7;&#x7A0B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4F20;&#x9012;&#x5C3A;&#x5BF8;&#xFF08;&#x5BBD; / &#x9AD8;&#x6D4B;&#x91CF;&#x503C;&#xFF09;&#x7684;2&#x4E2A;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li><code>ViewGroup.LayoutParams</code>&#x7C7B;&#xFF08;&#xFF09;</li>
+<li><code>MeasureSpecs</code> &#x7C7B;&#xFF08;&#x7236;&#x89C6;&#x56FE;&#x5BF9;&#x5B50;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x8981;&#x6C42;&#xFF09;</li>
+</ul>
+<h4 id="21-viewgrouplayoutparams">2.1 ViewGroup.LayoutParams</h4>
+<h5 id="211-&#x7B80;&#x4ECB;">2.1.1 &#x7B80;&#x4ECB;</h5>
+<ul>
+<li><p>&#x5E03;&#x5C40;&#x53C2;&#x6570;&#x7C7B;</p>
+</li>
+<li><p><code>ViewGroup</code> &#x7684;&#x5B50;&#x7C7B;<code>&#xFF08;RelativeLayout&#x3001;LinearLayout&#xFF09;</code>&#x6709;&#x5176;&#x5BF9;&#x5E94;&#x7684; <code>ViewGroup.LayoutParams</code> &#x5B50;&#x7C7B;&#xFF0C;&#x5982;&#xFF1A;<code>RelativeLayout</code>&#x7684; <code>ViewGroup.LayoutParams</code>&#x5B50;&#x7C7B; <code>RelativeLayoutParams</code></p>
+</li>
+</ul>
+<h5 id="212-&#x4F5C;&#x7528;">2.1.2 &#x4F5C;&#x7528;</h5>
+<ul>
+<li>&#x6307;&#x5B9A;&#x89C6;&#x56FE;<code>View</code> &#x7684;&#x9AD8;&#x5EA6;<code>&#xFF08;height&#xFF09;</code>  &#x548C; &#x5BBD;&#x5EA6;<code>&#xFF08;width&#xFF09;</code>&#x7B49;&#x5E03;&#x5C40;&#x53C2;&#x6570;&#x3002;</li>
+</ul>
+<h5 id="213-&#x5177;&#x4F53;&#x4F7F;&#x7528;">2.1.3 &#x5177;&#x4F53;&#x4F7F;&#x7528;</h5>
+<ul>
+<li>&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;&#x6307;&#x5B9A;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th style="text-align:center">&#x89E3;&#x91CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5177;&#x4F53;&#x503C;</td>
+<td style="text-align:center">dp / px</td>
+</tr>
+<tr>
+<td>fill_parent</td>
+<td style="text-align:center">&#x5F3A;&#x5236;&#x6027;&#x4F7F;&#x5B50;&#x89C6;&#x56FE;&#x7684;&#x5927;&#x5C0F;&#x6269;&#x5C55;&#x81F3;&#x4E0E;&#x7236;&#x89C6;&#x56FE;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#xFF08;&#x4E0D;&#x542B; padding )</td>
+</tr>
+<tr>
+<td>match_parent</td>
+<td style="text-align:center">&#x4E0E;fill_parent&#x76F8;&#x540C;&#xFF0C;&#x7528;&#x4E8E;Android 2.3 &amp; &#x4E4B;&#x540E;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>wrap_content</td>
+<td style="text-align:center">&#x81EA;&#x9002;&#x5E94;&#x5927;&#x5C0F;&#xFF0C;&#x5F3A;&#x5236;&#x6027;&#x5730;&#x4F7F;&#x89C6;&#x56FE;&#x6269;&#x5C55;&#x4EE5;&#x4FBF;&#x663E;&#x793A;&#x5176;&#x5168;&#x90E8;&#x5185;&#x5BB9;(&#x542B; padding )</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">android:layout_height=&quot;wrap_content&quot;   //&#x81EA;&#x9002;&#x5E94;&#x5927;&#x5C0F;  
+android:layout_height=&quot;match_parent&quot;   //&#x4E0E;&#x7236;&#x89C6;&#x56FE;&#x7B49;&#x9AD8;  
+android:layout_height=&quot;fill_parent&quot;    //&#x4E0E;&#x7236;&#x89C6;&#x56FE;&#x7B49;&#x9AD8;  
+android:layout_height=&quot;100dp&quot;         //&#x7CBE;&#x786E;&#x8BBE;&#x7F6E;&#x9AD8;&#x5EA6;&#x503C;&#x4E3A; 100dp
+</code></pre>
+<h5 id="214-&#x6784;&#x9020;&#x51FD;&#x6570;">2.1.4 &#x6784;&#x9020;&#x51FD;&#x6570;</h5>
+<ul>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570; = <code>View</code>&#x7684;&#x5165;&#x53E3;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x521D;&#x59CB;&#x5316; &amp; &#x83B7;&#x53D6;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x5982;&#x679C;View&#x662F;&#x5728;Java&#x4EE3;&#x7801;&#x91CC;&#x9762;new&#x7684;&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CarsonView</span><span class="hljs-params">(Context context)</span> </span>{
+    <span class="hljs-keyword">super</span>(context);
+}
+
+<span class="hljs-comment">// &#x5982;&#x679C;View&#x662F;&#x5728;.xml&#x91CC;&#x58F0;&#x660E;&#x7684;&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+<span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x662F;&#x4ECE;AttributeSet&#x53C2;&#x6570;&#x4F20;&#x8FDB;&#x6765;&#x7684;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CarsonView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span> </span>{
+    <span class="hljs-keyword">super</span>(context, attrs);
+}
+
+<span class="hljs-comment">// &#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;</span>
+<span class="hljs-comment">// &#x4E00;&#x822C;&#x662F;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x4E3B;&#x52A8;&#x8C03;&#x7528;</span>
+<span class="hljs-comment">// &#x5982;View&#x6709;style&#x5C5E;&#x6027;&#x65F6;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CarsonView</span><span class="hljs-params">(Context context, AttributeSet attrs, <span class="hljs-keyword">int</span> defStyleAttr)</span> </span>{
+    <span class="hljs-keyword">super</span>(context, attrs, defStyleAttr);
+}
+
+<span class="hljs-comment">//API21&#x4E4B;&#x540E;&#x624D;&#x4F7F;&#x7528;</span>
+<span class="hljs-comment">// &#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;</span>
+<span class="hljs-comment">// &#x4E00;&#x822C;&#x662F;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x4E3B;&#x52A8;&#x8C03;&#x7528;</span>
+<span class="hljs-comment">// &#x5982;View&#x6709;style&#x5C5E;&#x6027;&#x65F6;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span>  <span class="hljs-title">CarsonView</span><span class="hljs-params">(Context context, AttributeSet attrs, <span class="hljs-keyword">int</span> defStyleAttr, <span class="hljs-keyword">int</span> defStyleRes)</span> </span>{
+    <span class="hljs-keyword">super</span>(context, attrs, defStyleAttr, defStyleRes);
+}
+</code></pre>
+<h4 id="22-measurespec">2.2 MeasureSpec</h4>
+<h5 id="221-&#x7B80;&#x4ECB;">2.2.1 &#x7B80;&#x4ECB;</h5>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-0cf0a1ffd083cad1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+<h5 id="222-&#x7EC4;&#x6210;">2.2.2 &#x7EC4;&#x6210;</h5>
+<ul>
+<li>&#x6D4B;&#x91CF;&#x89C4;&#x683C;<code>&#xFF08;MeasureSpec&#xFF09;</code> = &#x6D4B;&#x91CF;&#x6A21;&#x5F0F;<code>&#xFF08;mode&#xFF09;</code> + &#x6D4B;&#x91CF;&#x5927;&#x5C0F;<code>&#xFF08;size&#xFF09;</code></li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-7d0f873cee3912bb.png?imageMogr2/auto-orient/strip|imageView2/2/w/380/format/webp" alt="img"></p>
+<ul>
+<li>&#x5176;&#x4E2D;&#xFF0C;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;<code>&#xFF08;Mode&#xFF09;</code>&#x7684;&#x7C7B;&#x578B;&#x6709;3&#x79CD;&#xFF1A;UNSPECIFIED&#x3001;EXACTLY &#x548C; AT_MOST&#x3002;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-e631b96ea1906e34.png?imageMogr2/auto-orient/strip|imageView2/2/w/960/format/webp" alt="img"></p>
+<h5 id="223-&#x5177;&#x4F53;&#x4F7F;&#x7528;">2.2.3 &#x5177;&#x4F53;&#x4F7F;&#x7528;</h5>
+<ul>
+<li><code>MeasureSpec</code> &#x88AB;&#x5C01;&#x88C5;&#x5728;<code>View</code>&#x7C7B;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;&#x91CC;&#xFF1A;<code>MeasureSpec</code>&#x7C7B;</li>
+<li>MeasureSpec&#x7C7B; &#x7528;1&#x4E2A;&#x53D8;&#x91CF;&#x5C01;&#x88C5;&#x4E86;2&#x4E2A;&#x6570;&#x636E;<code>&#xFF08;size&#xFF0C;mode&#xFF09;</code>&#xFF1A;<strong>&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E8C;&#x8FDB;&#x5236;</strong>&#xFF0C;&#x5C06;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;<code>&#xFF08;mode&#xFF09;</code> &amp; &#x6D4B;&#x91CF;&#x5927;&#x5C0F;<code>(size&#xFF09;</code>&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;<code>int</code>&#x503C;&#x6765;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E86;&#x6253;&#x5305; &amp; &#x89E3;&#x5305;&#x7684;&#x65B9;&#x6CD5;<ul>
+<li>&#x8BE5;&#x63AA;&#x65BD;&#x7684;&#x76EE;&#x7684; = &#x51CF;&#x5C11;&#x5BF9;&#x8C61;&#x5185;&#x5B58;&#x5206;&#x914D;</li>
+</ul>
+</li>
+<li>&#x5B9E;&#x9645;&#x4F7F;&#x7528;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">/**
+  * MeasureSpec&#x7C7B;&#x7684;&#x5177;&#x4F53;&#x4F7F;&#x7528;
+  **/</span>
+<span class="hljs-comment">// 1. &#x83B7;&#x53D6;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;Mode&#xFF09;</span>
+<span class="hljs-keyword">int</span> specMode = MeasureSpec.getMode(measureSpec)
+
+<span class="hljs-comment">// 2. &#x83B7;&#x53D6;&#x6D4B;&#x91CF;&#x5927;&#x5C0F;&#xFF08;Size&#xFF09;</span>
+<span class="hljs-keyword">int</span> specSize = MeasureSpec.getSize(measureSpec)
+
+<span class="hljs-comment">// 3. &#x901A;&#x8FC7;Mode &#x548C; Size &#x751F;&#x6210;&#x65B0;&#x7684;SpecMode</span>
+<span class="hljs-keyword">int</span> measureSpec=MeasureSpec.makeMeasureSpec(size, mode);
+</code></pre>
+<ul>
+<li>&#x6E90;&#x7801;&#x5206;&#x6790;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * MeasureSpec&#x7C7B;&#x7684;&#x6E90;&#x7801;&#x5206;&#x6790;
+  **/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MeasureSpec</span> </span>{
+
+    <span class="hljs-comment">// &#x8FDB;&#x4F4D;&#x5927;&#x5C0F; = 2&#x7684;30&#x6B21;&#x65B9;</span>
+    <span class="hljs-comment">// int&#x7684;&#x5927;&#x5C0F;&#x4E3A;32&#x4F4D;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x4F4D;30&#x4F4D; = &#x4F7F;&#x7528;int&#x7684;32&#x548C;31&#x4F4D;&#x505A;&#x6807;&#x5FD7;&#x4F4D;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MODE_SHIFT = <span class="hljs-number">30</span>;  
+
+    <span class="hljs-comment">// &#x8FD0;&#x7B97;&#x906E;&#x7F69;&#xFF1A;0x3&#x4E3A;16&#x8FDB;&#x5236;&#xFF0C;10&#x8FDB;&#x5236;&#x4E3A;3&#xFF0C;&#x4E8C;&#x8FDB;&#x5236;&#x4E3A;11</span>
+    <span class="hljs-comment">// 3&#x5411;&#x5DE6;&#x8FDB;&#x4F4D;30 = 11 00000000000(11&#x540E;&#x8DDF;30&#x4E2A;0)  </span>
+    <span class="hljs-comment">// &#x4F5C;&#x7528;&#xFF1A;&#x7528;1&#x6807;&#x6CE8;&#x9700;&#x8981;&#x7684;&#x503C;&#xFF0C;0&#x6807;&#x6CE8;&#x4E0D;&#x8981;&#x7684;&#x503C;&#x3002;&#x56E0;1&#x4E0E;&#x4EFB;&#x4F55;&#x6570;&#x505A;&#x4E0E;&#x8FD0;&#x7B97;&#x90FD;&#x5F97;&#x4EFB;&#x4F55;&#x6570;&#x3001;0&#x4E0E;&#x4EFB;&#x4F55;&#x6570;&#x505A;&#x4E0E;&#x8FD0;&#x7B97;&#x90FD;&#x5F97;0</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MODE_MASK  = <span class="hljs-number">0x3</span> &lt;&lt; MODE_SHIFT;  
+
+    <span class="hljs-comment">// UNSPECIFIED&#x7684;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#xFF1A;0&#x5411;&#x5DE6;&#x8FDB;&#x4F4D;30 = 00&#x540E;&#x8DDF;30&#x4E2A;0&#xFF0C;&#x5373;00 00000000000</span>
+    <span class="hljs-comment">// &#x901A;&#x8FC7;&#x9AD8;2&#x4F4D;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> UNSPECIFIED = <span class="hljs-number">0</span> &lt;&lt; MODE_SHIFT;  
+
+    <span class="hljs-comment">// EXACTLY&#x7684;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#xFF1A;1&#x5411;&#x5DE6;&#x8FDB;&#x4F4D;30 = 01&#x540E;&#x8DDF;30&#x4E2A;0 &#xFF0C;&#x5373;01 00000000000</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> EXACTLY = <span class="hljs-number">1</span> &lt;&lt; MODE_SHIFT;  
+
+    <span class="hljs-comment">// AT_MOST&#x7684;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#xFF1A;2&#x5411;&#x5DE6;&#x8FDB;&#x4F4D;30 = 10&#x540E;&#x8DDF;30&#x4E2A;0&#xFF0C;&#x5373;10 00000000000</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> AT_MOST = <span class="hljs-number">2</span> &lt;&lt; MODE_SHIFT;  
+
+    <span class="hljs-comment">/**
+    * makeMeasureSpec&#xFF08;&#xFF09;&#x65B9;&#x6CD5;
+    * &#x4F5C;&#x7528;&#xFF1A;&#x6839;&#x636E;&#x63D0;&#x4F9B;&#x7684;size&#x548C;mode&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x8BE6;&#x7EC6;&#x7684;&#x6D4B;&#x91CF;&#x7ED3;&#x679C;&#x5417;&#xFF0C;&#x5373;measureSpec
+    **/</span> 
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">makeMeasureSpec</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size, <span class="hljs-keyword">int</span> mode)</span> </span>{  
+        <span class="hljs-keyword">return</span> size + mode;  
+        <span class="hljs-comment">// measureSpec = size + mode&#xFF1B;&#x6B64;&#x4E3A;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x52A0;&#x6CD5; &#x800C;&#x4E0D;&#x662F;&#x5341;&#x8FDB;&#x5236;</span>
+        <span class="hljs-comment">// &#x8BBE;&#x8BA1;&#x76EE;&#x7684;&#xFF1A;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;32&#x4F4D;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x5176;&#x4E2D;&#xFF1A;32&#x548C;31&#x4F4D;&#x4EE3;&#x8868;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;mode&#xFF09;&#x3001;&#x540E;30&#x4F4D;&#x4EE3;&#x8868;&#x6D4B;&#x91CF;&#x5927;&#x5C0F;&#xFF08;size&#xFF09;</span>
+        <span class="hljs-comment">// &#x4F8B;&#x5982;size=100(4)&#xFF0C;mode=AT_MOST&#xFF0C;&#x5219;measureSpec=100+10000...00=10000..00100  </span>
+    }  
+
+    <span class="hljs-comment">/**
+    * getMode&#xFF08;&#xFF09;&#x65B9;&#x6CD5;
+    * &#x4F5C;&#x7528;&#xFF1A;&#x901A;&#x8FC7;measureSpec&#x83B7;&#x5F97;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;mode&#xFF09;
+    **/</span>    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> measureSpec)</span> </span>{  
+        <span class="hljs-keyword">return</span> (measureSpec &amp; MODE_MASK);  
+        <span class="hljs-comment">// &#x5373;&#xFF1A;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;mode&#xFF09; = measureSpec &amp; MODE_MASK;  </span>
+        <span class="hljs-comment">// MODE_MASK = &#x8FD0;&#x7B97;&#x906E;&#x7F69; = 11 00000000000(11&#x540E;&#x8DDF;30&#x4E2A;0)</span>
+        <span class="hljs-comment">//&#x539F;&#x7406;&#xFF1A;&#x4FDD;&#x7559;measureSpec&#x7684;&#x9AD8;2&#x4F4D;&#xFF08;&#x5373;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;&#xFF09;&#x3001;&#x4F7F;&#x7528;0&#x66FF;&#x6362;&#x540E;30&#x4F4D;</span>
+        <span class="hljs-comment">// &#x4F8B;&#x5982;10 00..00100 &amp; 11 00..00(11&#x540E;&#x8DDF;30&#x4E2A;0) = 10 00..00(AT_MOST)&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5F97;&#x5230;&#x4E86;mode&#x7684;&#x503C;</span>
+    }  
+
+    <span class="hljs-comment">/**
+    * getSize&#x65B9;&#x6CD5;
+    * &#x4F5C;&#x7528;&#xFF1A;&#x901A;&#x8FC7;measureSpec&#x83B7;&#x5F97;&#x6D4B;&#x91CF;&#x5927;&#x5C0F;size
+    **/</span>       
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> measureSpec)</span> </span>{  
+        <span class="hljs-keyword">return</span> (measureSpec &amp; ~MODE_MASK);  
+        <span class="hljs-comment">// size = measureSpec &amp; ~MODE_MASK;  </span>
+        <span class="hljs-comment">// &#x539F;&#x7406;&#x7C7B;&#x4F3C;&#x4E0A;&#x9762;&#xFF0C;&#x5373; &#x5C06;MODE_MASK&#x53D6;&#x53CD;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53D8;&#x6210;&#x4E86;00 111111(00&#x540E;&#x8DDF;30&#x4E2A;1)&#xFF0C;&#x5C06;32,31&#x66FF;&#x6362;&#x6210;0&#x4E5F;&#x5C31;&#x662F;&#x53BB;&#x6389;mode&#xFF0C;&#x4FDD;&#x7559;&#x540E;30&#x4F4D;&#x7684;size  </span>
+    } 
+}
+</code></pre>
+<h5 id="224-measurespec&#x503C;&#x7684;&#x8BA1;&#x7B97;">2.2.4 MeasureSpec&#x503C;&#x7684;&#x8BA1;&#x7B97;</h5>
+<ul>
+<li>&#x4E0A;&#x9762;&#x8BB2;&#x4E86;&#x90A3;&#x4E48;&#x4E45;<code>MeasureSpec</code>&#xFF0C;&#x90A3;&#x4E48;<code>MeasureSpec</code>&#x503C;&#x5230;&#x5E95;&#x662F;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x5F97;&#x6765;?</li>
+<li>&#x7ED3;&#x8BBA;&#xFF1A;&#x5B50;View&#x7684;<code>MeasureSpec</code>&#x503C;&#x6839;&#x636E;<strong>&#x5B50;View&#x7684;&#x5E03;&#x5C40;&#x53C2;&#x6570;&#xFF08;LayoutParams&#xFF09;&#x548C;&#x7236;&#x5BB9;&#x5668;&#x7684;MeasureSpec&#x503C;</strong>&#x8BA1;&#x7B97;&#x5F97;&#x6765;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x5C01;&#x88C5;&#x5728;<code>getChildMeasureSpec()</code>&#x91CC;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-d059b1afdeae0256.png?imageMogr2/auto-orient/strip|imageView2/2/w/470/format/webp" alt="img"></p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x666E;&#x901A;View<ul>
+<li>&#x5373;&#xFF1A;&#x5B50;<code>view</code>&#x7684;&#x5927;&#x5C0F;&#x7531;&#x7236;<code>view</code>&#x7684;<code>MeasureSpec</code>&#x503C; &#x548C; &#x5B50;<code>view</code>&#x7684;<code>LayoutParams</code>&#x5C5E;&#x6027; &#x5171;&#x540C;&#x51B3;&#x5B9A;</li>
+</ul>
+</li>
+<li>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;<code>getChildMeasureSpec()</code>&#x7684;&#x6E90;&#x7801;&#x5206;&#x6790;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-dart"><span class="hljs-comment"><span class="markdown">/**
+<span class="hljs-bullet">* </span>&#x6E90;&#x7801;&#x5206;&#x6790;&#xFF1A;getChildMeasureSpec&#xFF08;&#xFF09;
+<span class="hljs-bullet">* </span>&#x4F5C;&#x7528;&#xFF1A;&#x6839;&#x636E;&#x7236;&#x89C6;&#x56FE;&#x7684;MeasureSpec &amp; &#x5E03;&#x5C40;&#x53C2;&#x6570;LayoutParams&#xFF0C;&#x8BA1;&#x7B97;&#x5355;&#x4E2A;&#x5B50;View&#x7684;MeasureSpec
+<span class="hljs-bullet">* </span>&#x6CE8;&#xFF1A;&#x5B50;view&#x7684;&#x5927;&#x5C0F;&#x7531;&#x7236;view&#x7684;MeasureSpec&#x503C; &#x548C; &#x5B50;view&#x7684;LayoutParams&#x5C5E;&#x6027; &#x5171;&#x540C;&#x51B3;&#x5B9A;
+**/</span></span>
+public <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> getChildMeasureSpec(<span class="hljs-built_in">int</span> spec, <span class="hljs-built_in">int</span> padding, <span class="hljs-built_in">int</span> childDimension) {  
+    <span class="hljs-comment">//&#x53C2;&#x6570;&#x8BF4;&#x660E;</span>
+    * <span class="hljs-meta">@param</span> spec &#x7236;view&#x7684;&#x8BE6;&#x7EC6;&#x6D4B;&#x91CF;&#x503C;(MeasureSpec) 
+    * <span class="hljs-meta">@param</span> padding view&#x5F53;&#x524D;&#x5C3A;&#x5BF8;&#x7684;&#x7684;&#x5185;&#x8FB9;&#x8DDD;&#x548C;&#x5916;&#x8FB9;&#x8DDD;(padding,margin) 
+    * <span class="hljs-meta">@param</span> childDimension &#x5B50;&#x89C6;&#x56FE;&#x7684;&#x5E03;&#x5C40;&#x53C2;&#x6570;&#xFF08;&#x5BBD;/&#x9AD8;&#xFF09;
+
+    <span class="hljs-comment">//&#x7236;view&#x7684;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F;</span>
+    <span class="hljs-built_in">int</span> specMode = MeasureSpec.getMode(spec);     
+
+    <span class="hljs-comment">//&#x7236;view&#x7684;&#x5927;&#x5C0F;</span>
+    <span class="hljs-built_in">int</span> specSize = MeasureSpec.getSize(spec);     
+
+    <span class="hljs-comment">//&#x901A;&#x8FC7;&#x7236;view&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x5B50;view = &#x7236;&#x5927;&#x5C0F;-&#x8FB9;&#x8DDD;&#xFF08;&#x7236;&#x8981;&#x6C42;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F46;&#x5B50;view&#x4E0D;&#x4E00;&#x5B9A;&#x7528;&#x8FD9;&#x4E2A;&#x503C;&#xFF09;   </span>
+    <span class="hljs-built_in">int</span> size = Math.max(<span class="hljs-number">0</span>, specSize - padding);  
+
+    <span class="hljs-comment">//&#x5B50;view&#x60F3;&#x8981;&#x7684;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#x548C;&#x6A21;&#x5F0F;&#xFF08;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#xFF09;  </span>
+    <span class="hljs-built_in">int</span> resultSize = <span class="hljs-number">0</span>;  
+    <span class="hljs-built_in">int</span> resultMode = <span class="hljs-number">0</span>;  
+
+    <span class="hljs-comment">//&#x901A;&#x8FC7;&#x7236;view&#x7684;MeasureSpec&#x548C;&#x5B50;view&#x7684;LayoutParams&#x786E;&#x5B9A;&#x5B50;view&#x7684;&#x5927;&#x5C0F;  </span>
+     <span class="hljs-keyword">switch</span> (specMode) {  
+         <span class="hljs-keyword">case</span> MeasureSpec.EXACTLY:  
+            <span class="hljs-comment">//&#x5F53;&#x7236;view&#x7684;&#x6A21;&#x5F0F;&#x4E3A;EXACITY&#x65F6;&#xFF0C;&#x7236;view&#x5F3A;&#x52A0;&#x7ED9;&#x5B50;view&#x786E;&#x5207;&#x7684;&#x503C;</span>
+            <span class="hljs-comment">//&#x4E00;&#x822C;&#x662F;&#x7236;view&#x8BBE;&#x7F6E;&#x4E3A;match_parent&#x6216;&#x8005;&#x56FA;&#x5B9A;&#x503C;&#x7684;ViewGroup  </span>
+            <span class="hljs-keyword">if</span> (childDimension &gt;= <span class="hljs-number">0</span>) {  
+                <span class="hljs-comment">//&#x5F53;&#x5B50;view&#x7684;LayoutParams&gt;0&#xFF0C;&#x5373;&#x6709;&#x786E;&#x5207;&#x7684;&#x503C;  </span>
+                <span class="hljs-comment">//&#x5B50;view&#x5927;&#x5C0F;&#x4E3A;&#x5B50;&#x81EA;&#x8EAB;&#x6240;&#x8D4B;&#x7684;&#x503C;&#xFF0C;&#x6A21;&#x5F0F;&#x5927;&#x5C0F;&#x4E3A;EXACTLY  </span>
+                resultSize = childDimension;  
+                resultMode = MeasureSpec.EXACTLY;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) {  
+                <span class="hljs-comment">// &#x5F53;&#x5B50;view&#x7684;LayoutParams&#x4E3A;MATCH_PARENT&#x65F6;(-1)  </span>
+                <span class="hljs-comment">//&#x5B50;view&#x5927;&#x5C0F;&#x4E3A;&#x7236;view&#x5927;&#x5C0F;&#xFF0C;&#x6A21;&#x5F0F;&#x4E3A;EXACTLY  </span>
+                resultSize = size;  
+                resultMode = MeasureSpec.EXACTLY;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) {  
+                <span class="hljs-comment">//&#x5F53;&#x5B50;view&#x7684;LayoutParams&#x4E3A;WRAP_CONTENT&#x65F6;(-2)      </span>
+                <span class="hljs-comment">//&#x5B50;view&#x51B3;&#x5B9A;&#x81EA;&#x5DF1;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F46;&#x6700;&#x5927;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;&#x7236;view&#xFF0C;&#x6A21;&#x5F0F;&#x4E3A;AT_MOST  </span>
+                resultSize = size;  
+                resultMode = MeasureSpec.AT_MOST;  
+            }  
+            <span class="hljs-keyword">break</span>;  
+
+        <span class="hljs-keyword">case</span> MeasureSpec.AT_MOST:  
+             <span class="hljs-comment">// &#x5F53;&#x7236;view&#x7684;&#x6A21;&#x5F0F;&#x4E3A;AT_MOST&#x65F6;&#xFF0C;&#x7236;view&#x5F3A;&#x52A0;&#x7ED9;&#x5B50;view&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x7684;&#x503C;&#x3002;&#xFF08;&#x4E00;&#x822C;&#x662F;&#x7236;view&#x8BBE;&#x7F6E;&#x4E3A;wrap_content&#xFF09;</span>
+            <span class="hljs-comment">// &#x9053;&#x7406;&#x540C;&#x4E0A;  </span>
+            <span class="hljs-keyword">if</span> (childDimension &gt;= <span class="hljs-number">0</span>) {  
+                resultSize = childDimension;  
+                resultMode = MeasureSpec.EXACTLY;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) {  
+                resultSize = size;  
+                resultMode = MeasureSpec.AT_MOST;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) {  
+                resultSize = size;  
+                resultMode = MeasureSpec.AT_MOST;  
+            }  
+            <span class="hljs-keyword">break</span>;  
+
+        <span class="hljs-keyword">case</span> MeasureSpec.UNSPECIFIED:  
+             <span class="hljs-comment">// &#x5F53;&#x7236;view&#x7684;&#x6A21;&#x5F0F;&#x4E3A;UNSPECIFIED&#x65F6;&#xFF0C;&#x7236;&#x5BB9;&#x5668;&#x4E0D;&#x5BF9;view&#x6709;&#x4EFB;&#x4F55;&#x9650;&#x5236;&#xFF0C;&#x8981;&#x591A;&#x5927;&#x7ED9;&#x591A;&#x5927;</span>
+             <span class="hljs-comment">// &#x591A;&#x89C1;&#x4E8E;ListView&#x3001;GridView  </span>
+            <span class="hljs-keyword">if</span> (childDimension &gt;= <span class="hljs-number">0</span>) {  
+                <span class="hljs-comment">// &#x5B50;view&#x5927;&#x5C0F;&#x4E3A;&#x5B50;&#x81EA;&#x8EAB;&#x6240;&#x8D4B;&#x7684;&#x503C;  </span>
+                resultSize = childDimension;  
+                resultMode = MeasureSpec.EXACTLY;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) {  
+                <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x7236;view&#x4E3A;UNSPECIFIED&#xFF0C;&#x6240;&#x4EE5;MATCH_PARENT&#x7684;&#x8BDD;&#x5B50;&#x7C7B;&#x5927;&#x5C0F;&#x4E3A;0  </span>
+                resultSize = <span class="hljs-number">0</span>;  
+                resultMode = MeasureSpec.UNSPECIFIED;  
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) {  
+                <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x7236;view&#x4E3A;UNSPECIFIED&#xFF0C;&#x6240;&#x4EE5;WRAP_CONTENT&#x7684;&#x8BDD;&#x5B50;&#x7C7B;&#x5927;&#x5C0F;&#x4E3A;0  </span>
+                resultSize = <span class="hljs-number">0</span>;  
+                resultMode = MeasureSpec.UNSPECIFIED;  
+            }  
+            <span class="hljs-keyword">break</span>;  
+    }  
+    <span class="hljs-keyword">return</span> MeasureSpec.makeMeasureSpec(resultSize, resultMode);  
+}
+</code></pre>
+<ul>
+<li>&#x5173;&#x4E8E;<code>getChildMeasureSpec()</code>&#x91CC;&#x5BF9;&#x5B50;<code>View</code>&#x7684;&#x6D4B;&#x91CF;&#x6A21;&#x5F0F; &amp; &#x5927;&#x5C0F;&#x7684;&#x5224;&#x65AD;&#x903B;&#x8F91;&#x6709;&#x70B9;&#x590D;&#x6742;&#xFF1B;</li>
+<li>&#x522B;&#x62C5;&#x5FC3;&#xFF0C;&#x6211;&#x5DF2;&#x5E2E;&#x5927;&#x5BB6;&#x603B;&#x7ED3;&#x597D;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x770B;&#x4E0B;&#x8868;&#xFF1A;</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-76261325e6576361.png?imageMogr2/auto-orient/strip|imageView2/2/w/751/format/webp" alt="img"></p>
+<ul>
+<li>&#x5176;&#x4E2D;&#x7684;&#x89C4;&#x5F8B;&#x603B;&#x7ED3;&#xFF1A;&#xFF08;&#x4EE5;&#x5B50;<code>View</code>&#x4E3A;&#x6807;&#x51C6;&#xFF0C;&#x6A2A;&#x5411;&#x89C2;&#x5BDF;&#xFF09;</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-6088d2d291bbae09.png?imageMogr2/auto-orient/strip|imageView2/2/w/660/format/webp" alt="img"></p>
+<ul>
+<li>&#x7531;&#x4E8E;<code>UNSPECIFIED</code>&#x6A21;&#x5F0F;&#x9002;&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x5185;&#x90E8;&#x591A;&#x6B21;<code>measure</code>&#x60C5;&#x51B5;&#xFF0C;&#x5F88;&#x5C11;&#x7528;&#x5230;&#xFF0C;&#x6545;&#x6B64;&#x5904;&#x4E0D;&#x8BA8;&#x8BBA;</li>
+</ul>
+<h4 id="23-&#x8865;&#x5145;&#x603B;&#x7ED3;">2.3 &#x8865;&#x5145;/&#x603B;&#x7ED3;</h4>
+<h5 id="231-&#x9876;&#x7EA7;view">2.3.1 &#x9876;&#x7EA7;View</h5>
+<ul>
+<li>&#x9876;&#x7EA7;<code>View</code>&#xFF08;&#x5373;<code>DecorView</code>&#xFF09;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;<code>MeasureSpec</code>&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#xFF1A;&#x53D6;&#x51B3;&#x4E8E; <strong>&#x81EA;&#x8EAB;&#x5E03;&#x5C40;&#x53C2;&#x6570; &amp; &#x7A97;&#x53E3;&#x5C3A;&#x5BF8;</strong></li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-560312570515aef4.png?imageMogr2/auto-orient/strip|imageView2/2/w/470/format/webp" alt="img"></p>
+<h3 id="&#x4E09;&#x3001;measure&#x8FC7;&#x7A0B;">&#x4E09;&#x3001;Measure&#x8FC7;&#x7A0B;</h3>
+<h4 id="31-&#x5206;&#x7C7B;">3.1 &#x5206;&#x7C7B;</h4>
+<ul>
+<li><code>measure</code>&#x8FC7;&#x7A0B; &#x6839;&#x636E;<strong>View&#x7684;&#x7C7B;&#x578B;</strong>&#x5206;&#x4E3A;2&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-556bf094df91b9de.png?imageMogr2/auto-orient/strip|imageView2/2/w/550/format/webp" alt="img"></p>
+<ul>
+<li>&#x4E0B;&#x9762;&#x5C06;&#x5206;&#x6790;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;&#x5355;&#x4E00;view&#x7684;measure&#x8FC7;&#x7A0B;">&#x56DB;&#x3001;&#x5355;&#x4E00;View&#x7684;Measure&#x8FC7;&#x7A0B;</h3>
+<h4 id="41-&#x5E94;&#x7528;&#x573A;&#x666F;">4.1 &#x5E94;&#x7528;&#x573A;&#x666F;</h4>
+<ul>
+<li>&#x5728;&#x65E0;&#x73B0;&#x6210;&#x7684;&#x63A7;&#x4EF6;<code>View</code>&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3001;&#x9700;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x5355;&#x4E00;<code>View</code><ul>
+<li>&#x5982;&#xFF1A;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x52A0;&#x8F7D;&#x7F51;&#x7EDC;&#x56FE;&#x7247;&#x7684;<code>ImageView</code>&#x63A7;&#x4EF6;</li>
+<li>&#x6CE8;&#xFF1A;&#x81EA;&#x5B9A;&#x4E49;<code>View</code>&#x5728;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x90FD;&#x6709;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#xFF1A;&#x56FE;&#x7247; / &#x7EC4;&#x5408;&#x52A8;&#x753B;&#xFF0C;&#x4F46;&#x4E8C;&#x8005;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x8017;&#x8D39;&#x8FC7;&#x5927;&#xFF0C;&#x4ECE;&#x800C;&#x5F15;&#x8D77;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x7B49;&#x95EE;&#x9898;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h4 id="42-&#x5177;&#x4F53;&#x4F7F;&#x7528;">4.2 &#x5177;&#x4F53;&#x4F7F;&#x7528;</h4>
+<ul>
+<li>&#x7EE7;&#x627F;&#x81EA;<code>View</code>&#x3001;<code>SurfaceView</code> &#x6216; &#x5176;&#x4ED6;<code>View</code>&#xFF1B;&#x4E0D;&#x5305;&#x542B;&#x5B50;<code>View</code></li>
+</ul>
+<h4 id="43-&#x5177;&#x4F53;&#x6D41;&#x7A0B;">4.3 &#x5177;&#x4F53;&#x6D41;&#x7A0B;</h4>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-6fd614936d045071.png?imageMogr2/auto-orient/strip|imageView2/2/w/150/format/webp" alt="img"></p>
+<h4 id="44--&#x6E90;&#x7801;&#x5206;&#x6790;">4.4  &#x6E90;&#x7801;&#x5206;&#x6790;</h4>
+<h5 id="441-viewmeasure">4.4.1 View#measure</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x6E90;&#x7801;&#x5206;&#x6790;&#xFF1A;measure&#xFF08;&#xFF09;
+  * &#x5B9A;&#x4E49;&#xFF1A;Measure&#x8FC7;&#x7A0B;&#x7684;&#x5165;&#x53E3;&#xFF1B;&#x5C5E;&#x4E8E;View.java&#x7C7B; &amp; final&#x7C7B;&#x578B;&#xFF0C;&#x5373;&#x5B50;&#x7C7B;&#x4E0D;&#x80FD;&#x91CD;&#x5199;&#x6B64;&#x65B9;&#x6CD5;
+  * &#x4F5C;&#x7528;&#xFF1A;&#x57FA;&#x672C;&#x6D4B;&#x91CF;&#x903B;&#x8F91;&#x7684;&#x5224;&#x65AD;
+**/</span> 
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">measure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;View&#x7684;&#x5BBD; / &#x9AD8;&#x6D4B;&#x91CF;&#x89C4;&#x683C;</span>
+    ......
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> forceLayout = (mPrivateFlags &amp; PFLAG_FORCE_LAYOUT) == PFLAG_FORCE_LAYOUT;
+    ......
+    <span class="hljs-keyword">int</span> cacheIndex = forceLayout ? -<span class="hljs-number">1</span> : mMeasureCache.indexOfKey(key);
+    <span class="hljs-keyword">if</span> (cacheIndex &lt; <span class="hljs-number">0</span> || sIgnoreMeasureCache) {
+        <span class="hljs-comment">//&#x8BA1;&#x7B97;&#x89C6;&#x56FE;&#x5927;&#x5C0F;</span>
+        onMeasure(widthMeasureSpec, heightMeasureSpec);
+        mPrivateFlags3 &amp;= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+    } <span class="hljs-keyword">else</span> {
+        .....
+    }
+    ......
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;&#x8C03;&#x7528;&#x4E86;onMeasure&#x65B9;&#x6CD5;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x662F;&#x8BA1;&#x7B97;&#x89C6;&#x56FE;&#x5927;&#x5C0F;&#x7684;</li>
+</ul>
+<h5 id="442-viewonmeasure">4.4.2 View#onMeasure</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;1&#xFF1A;onMeasure&#xFF08;&#xFF09;
+  * &#x4F5C;&#x7528;&#xFF1A;a. &#x6839;&#x636E;View&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#x8BA1;&#x7B97;View&#x7684;&#x5BBD;/&#x9AD8;&#x503C;&#xFF1A;getDefaultSize()
+  *      b. &#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;&#x7684;View&#x5BBD; / &#x9AD8;&#xFF1A;setMeasuredDimension()
+**/</span> 
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onMeasure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{  
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;View&#x7684;&#x5BBD; / &#x9AD8;&#x6D4B;&#x91CF;&#x89C4;&#x683C;</span>
+    setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),  
+                         getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));  
+    <span class="hljs-comment">// setMeasuredDimension() &#xFF1A;&#x83B7;&#x5F97;View&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x503C; -&gt;&gt;&#x5206;&#x6790;2</span>
+    <span class="hljs-comment">// &#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x901A;&#x8FC7;getDefaultSize()&#x83B7;&#x5F97; -&gt;&gt;&#x5206;&#x6790;3</span>
+}
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x4E86;getDefaultSize&#x65B9;&#x6CD5;&#x53BB;&#x83B7;&#x53D6;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;setMeasuredDimension&#x53BB;&#x8BBE;&#x7F6E;</li>
+</ul>
+<h5 id="443-viewgetdefaultsize">4.4.3 View#getDefaultSize</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;3&#xFF1A;getDefaultSize()
+  * &#x4F5C;&#x7528;&#xFF1A;&#x6839;&#x636E;View&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#x8BA1;&#x7B97;View&#x7684;&#x5BBD;/&#x9AD8;&#x503C;
+**/</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDefaultSize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size, <span class="hljs-keyword">int</span> measureSpec)</span> </span>{  
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;</span>
+    <span class="hljs-comment">// size&#xFF1A;&#x63D0;&#x4F9B;&#x7684;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;</span>
+    <span class="hljs-comment">// measureSpec&#xFF1A;&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#xFF08;&#x542B;&#x6A21;&#x5F0F; &amp; &#x6D4B;&#x91CF;&#x5927;&#x5C0F;&#xFF09;</span>
+
+    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;</span>
+    <span class="hljs-keyword">int</span> result = size; 
+
+    <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5BBD;/&#x9AD8;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#x7684;&#x6A21;&#x5F0F; &amp; &#x6D4B;&#x91CF;&#x5927;&#x5C0F;</span>
+    <span class="hljs-keyword">int</span> specMode = MeasureSpec.getMode(measureSpec);  
+    <span class="hljs-keyword">int</span> specSize = MeasureSpec.getSize(measureSpec);  
+
+    <span class="hljs-keyword">switch</span> (specMode) {  
+        <span class="hljs-comment">// &#x6A21;&#x5F0F;&#x4E3A;UNSPECIFIED&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x63D0;&#x4F9B;&#x7684;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F; = &#x53C2;&#x6570;Size</span>
+        <span class="hljs-keyword">case</span> MeasureSpec.UNSPECIFIED:  
+            result = size;  
+            <span class="hljs-keyword">break</span>;  
+        <span class="hljs-comment">// &#x6A21;&#x5F0F;&#x4E3A;AT_MOST,EXACTLY&#x65F6;&#xFF0C;&#x4F7F;&#x7528;View&#x6D4B;&#x91CF;&#x540E;&#x7684;&#x5BBD;/&#x9AD8;&#x503C; = measureSpec&#x4E2D;&#x7684;Size</span>
+        <span class="hljs-keyword">case</span> MeasureSpec.AT_MOST:  
+        <span class="hljs-keyword">case</span> MeasureSpec.EXACTLY:  
+            result = specSize;  
+            <span class="hljs-keyword">break</span>;  
+    }  
+
+    <span class="hljs-comment">// &#x8FD4;&#x56DE;View&#x7684;&#x5BBD;/&#x9AD8;&#x503C;</span>
+    <span class="hljs-keyword">return</span> result;  
+}
+</code></pre>
+<h5 id="444-viewsetmeasureddimension">4.4.4 View#setMeasuredDimension</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;2&#xFF1A;setMeasuredDimension()
+  * &#x4F5C;&#x7528;&#xFF1A;&#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;&#x7684;View&#x5BBD; / &#x9AD8;
+  * &#x6CE8;&#xFF1A;&#x8BE5;&#x65B9;&#x6CD5;&#x5373;&#x4E3A;&#x6211;&#x4EEC;&#x91CD;&#x5199;onMeasure()&#x6240;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x6700;&#x7EC8;&#x76EE;&#x7684;
+  **/</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMeasuredDimension</span><span class="hljs-params">(<span class="hljs-keyword">int</span> measuredWidth, <span class="hljs-keyword">int</span> measuredHeight)</span> </span>{
+    <span class="hljs-keyword">boolean</span> optical = isLayoutModeOptical(<span class="hljs-keyword">this</span>);
+    <span class="hljs-comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x5BF9;measuredWidth&#x548C;measuredHeight&#x8FDB;&#x884C;&#x5904;&#x7406;</span>
+    <span class="hljs-keyword">if</span> (optical != isLayoutModeOptical(mParent)) {
+        Insets insets = getOpticalInsets();
+        <span class="hljs-keyword">int</span> opticalWidth  = insets.left + insets.right;
+        <span class="hljs-keyword">int</span> opticalHeight = insets.top  + insets.bottom;
+
+        measuredWidth  += optical ? opticalWidth  : -opticalWidth;
+        measuredHeight += optical ? opticalHeight : -opticalHeight;
+    }
+    setMeasuredDimensionRaw(measuredWidth, measuredHeight);
+}
+
+<span class="hljs-comment">//&#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;&#x6D4B;&#x91CF;&#x540E;&#x5B50;View&#x7684;&#x5BBD; / &#x9AD8;&#x503C;</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMeasuredDimensionRaw</span><span class="hljs-params">(<span class="hljs-keyword">int</span> measuredWidth, <span class="hljs-keyword">int</span> measuredHeight)</span> </span>{
+    <span class="hljs-comment">// &#x5C06;&#x6D4B;&#x91CF;&#x540E;&#x5B50;View&#x7684;&#x5BBD; / &#x9AD8;&#x503C;&#x8FDB;&#x884C;&#x4F20;&#x9012;</span>
+    mMeasuredWidth = measuredWidth;
+    mMeasuredHeight = measuredHeight;
+
+    mPrivateFlags |= PFLAG_MEASURED_DIMENSION_SET;
+}
+</code></pre>
+<h5 id="445-viewgetsuggestedminimumwidth">4.4.5 View#getSuggestedMinimumWidth</h5>
+<ul>
+<li>&#x5728;4.4.2&#x4E2D;&#x8C03;&#x7528;&#x4E86;&#x6B64;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x9ED8;&#x8BA4;&#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x83B7;&#x53D6;&#x9ED8;&#x8BA4;&#x7684;&#x9AD8;&#x5EA6;&#x540C;&#x7406;&#xFF0C;&#x5C31;&#x4E0D;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x4E86;</li>
+<li>&#x5728;4.4.3&#x4E2D;&#xFF0C;&#x5F53;specMode&#x4E3A;UNSPECIFIED&#x4E0D;&#x7EA6;&#x675F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x5927;&#x5C0F;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSuggestedMinimumWidth</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (mBackground == <span class="hljs-keyword">null</span>) ? mMinWidth : max(mMinWidth, mBackground.getMinimumWidth());
+}
+</code></pre>
+<ul>
+<li>&#x82E5;mBackground&#x7B49;&#x4E8E;null&#xFF0C;&#x5373;&#x6B64;View&#x6CA1;&#x6709;&#x80CC;&#x666F;&#x7684;&#x8BDD;&#xFF0C;&#x9ED8;&#x8BA4;&#x5BBD;&#x5EA6;&#x5C31;&#x662F;mMinWidth<ul>
+<li>mMinWidth= <code>android:minWidth</code>&#x5C5E;&#x6027;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x503C;&#xFF1B;</li>
+<li>&#x82E5;<code>android:minWidth</code>&#x6CA1;&#x6307;&#x5B9A;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x4E3A;0</li>
+</ul>
+</li>
+<li>&#x82E5;&#x8BBE;&#x7F6E;&#x4E86;&#x80CC;&#x666F;&#xFF0C;&#x6B64;View&#x7684;&#x5BBD;&#x5EA6;&#x4E3A;mMinWidth&#x548C;mBackground.getMinimumWidth()&#x4E2D;&#x7684;&#x8F83;&#x5927;&#x503C;</li>
+<li>mBackground&#x662F;Drawable&#x5BF9;&#x8C61;</li>
+</ul>
+<h5 id="446-drawablegetminimumwidth">4.4.6 Drawable#getMinimumWidth</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMinimumWidth</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> intrinsicWidth = getIntrinsicWidth();
+    <span class="hljs-comment">//&#x8FD4;&#x56DE;&#x80CC;&#x666F;&#x56FE;Drawable&#x7684;&#x539F;&#x59CB;&#x5BBD;&#x5EA6;</span>
+    <span class="hljs-keyword">return</span> intrinsicWidth &gt; <span class="hljs-number">0</span> ? intrinsicWidth : <span class="hljs-number">0</span>;
+}
+</code></pre>
+<ul>
+<li>&#x7531;&#x6E90;&#x7801;&#x53EF;&#x77E5;&#xFF1A;mBackground.getMinimumWidth()&#x7684;&#x5927;&#x5C0F; = &#x80CC;&#x666F;&#x56FE;Drawable&#x7684;&#x539F;&#x59CB;&#x5BBD;&#x5EA6;</li>
+<li>&#x82E5;&#x65E0;&#x539F;&#x59CB;&#x5BBD;&#x5EA6;&#xFF0C;&#x5219;&#x4E3A;0&#xFF1B;</li>
+<li>&#x6CE8;&#xFF1A;BitmapDrawable&#x6709;&#x539F;&#x59CB;&#x5BBD;&#x5EA6;&#xFF0C;&#x800C;ShapeDrawable&#x6CA1;&#x6709;</li>
+</ul>
+<h5 id="447-getdefaultsize&#x8BA1;&#x7B97;view&#x7684;&#x5BBD;&#x9AD8;&#x503C;&#x7684;&#x903B;&#x8F91;">4.4.7 <code>getDefaultSize()</code>&#x8BA1;&#x7B97;View&#x7684;&#x5BBD;/&#x9AD8;&#x503C;&#x7684;&#x903B;&#x8F91;</h5>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-bf6b3dc2261012dc.png?imageMogr2/auto-orient/strip|imageView2/2/w/970/format/webp" alt="img"></p>
+<h3 id="&#x4E94;&#x3001;viewgroup&#x7684;measure&#x8FC7;&#x7A0B;">&#x4E94;&#x3001;ViewGroup&#x7684;Measure&#x8FC7;&#x7A0B;</h3>
+<h4 id="51-&#x5E94;&#x7528;&#x573A;&#x666F;">5.1 &#x5E94;&#x7528;&#x573A;&#x666F;</h4>
+<ul>
+<li>&#x5229;&#x7528;&#x73B0;&#x6709;&#x7684;&#x7EC4;&#x4EF6;&#x6839;&#x636E;&#x7279;&#x5B9A;&#x7684;&#x5E03;&#x5C40;&#x65B9;&#x5F0F;&#x6765;&#x7EC4;&#x6210;&#x65B0;&#x7684;&#x7EC4;&#x4EF6; </li>
+</ul>
+<h4 id="52-&#x5177;&#x4F53;&#x4F7F;&#x7528;">5.2 &#x5177;&#x4F53;&#x4F7F;&#x7528;</h4>
+<ul>
+<li>&#x7EE7;&#x627F;&#x81EA;<code>ViewGroup</code> &#x6216; &#x5404;&#x79CD;<code>Layout</code>&#xFF1B;&#x542B;&#x6709;&#x5B50; <code>View</code></li>
+</ul>
+<h4 id="53-&#x5B9E;&#x4F8B;">5.3 &#x5B9E;&#x4F8B;</h4>
+<ul>
+<li>&#x5982;&#xFF1A;&#x5E95;&#x90E8;&#x5BFC;&#x822A;&#x6761;&#x4E2D;&#x7684;&#x6761;&#x76EE;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x4E0A;&#x56FE;&#x6807;(ImageView)&#x3001;&#x4E0B;&#x6587;&#x5B57;(TextView)&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x4E2A;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x81EA;&#x5B9A;&#x4E49;ViewGroup&#x7EC4;&#x5408;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;Veiw&#xFF0C;&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x5206;&#x522B;&#x7528;&#x6765;&#x8BBE;&#x7F6E;&#x6587;&#x5B57;&#x548C;&#x56FE;&#x7247;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x4F1A;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x3002;</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-3eb8d5d9d7d9e9fd.png?imageMogr2/auto-orient/strip|imageView2/2/w/504/format/webp" alt="img"></p>
+<h4 id="54-&#x539F;&#x7406;">5.4 &#x539F;&#x7406;</h4>
+<ul>
+<li><p>&#x904D;&#x5386; &#x6D4B;&#x91CF;&#x6240;&#x6709;&#x5B50;<code>View</code>&#x7684;&#x5C3A;&#x5BF8;</p>
+</li>
+<li><p>&#x5408;&#x5E76;&#x5C06;&#x6240;&#x6709;&#x5B50;<code>View</code>&#x7684;&#x5C3A;&#x5BF8;&#x8FDB;&#x884C;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;<code>ViewGroup</code>&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x503C;</p>
+<ul>
+<li>&#x81EA;&#x4E0A;&#x800C;&#x4E0B;&#x3001;&#x4E00;&#x5C42;&#x5C42;&#x5730;&#x4F20;&#x9012;&#x4E0B;&#x53BB;&#xFF0C;&#x76F4;&#x5230;&#x5B8C;&#x6210;&#x6574;&#x4E2A;<code>View</code>&#x6811;&#x7684;<code>measure&#xFF08;&#xFF09;</code>&#x8FC7;&#x7A0B;</li>
+</ul>
+</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-7133935cb1e56190.png?imageMogr2/auto-orient/strip|imageView2/2/w/661/format/webp" alt="img"></p>
+<h4 id="55-&#x6D41;&#x7A0B;">5.5 &#x6D41;&#x7A0B;</h4>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-1438a7fbd93d0987.png?imageMogr2/auto-orient/strip|imageView2/2/w/569/format/webp" alt="img"></p>
+<h4 id="56-&#x6E90;&#x7801;">5.6 &#x6E90;&#x7801;</h4>
+<ul>
+<li>&#x82E5;&#x9700;&#x8FDB;&#x884C;&#x81EA;&#x5B9A;&#x4E49;<code>ViewGroup</code>&#xFF0C;&#x5219;&#x9700;&#x91CD;&#x5199;<code>onMeasure()</code></li>
+<li>&#x5165;&#x53E3; = <code>measure&#xFF08;&#xFF09;</code></li>
+</ul>
+<h5 id="561-viewmeasure">5.6.1 View#measure</h5>
+<ul>
+<li>&#x7531;&#x4E8E;ViewGroup&#x7EE7;&#x627F;&#x81EA;View&#xFF0C;&#x540C;&#x65F6;ViewGroup&#x4E2D;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;measure&#x65B9;&#x6CD5;&#x800C;&#x4E14;&#x4E5F;&#x65E0;&#x6CD5;&#x91CD;&#x5199;(&#x7531;&#x4E8E;final)&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x7684;&#x662F;View&#x7684;measure&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@UiThread</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewGroup</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">View</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ViewParent</span>, <span class="hljs-title">ViewManager</span> </span>{
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x6E90;&#x7801;&#x5206;&#x6790;&#xFF1A;measure&#xFF08;&#xFF09;
+  * &#x5B9A;&#x4E49;&#xFF1A;Measure&#x8FC7;&#x7A0B;&#x7684;&#x5165;&#x53E3;&#xFF1B;&#x5C5E;&#x4E8E;View.java&#x7C7B; &amp; final&#x7C7B;&#x578B;&#xFF0C;&#x5373;&#x5B50;&#x7C7B;&#x4E0D;&#x80FD;&#x91CD;&#x5199;&#x6B64;&#x65B9;&#x6CD5;
+  * &#x4F5C;&#x7528;&#xFF1A;&#x57FA;&#x672C;&#x6D4B;&#x91CF;&#x903B;&#x8F91;&#x7684;&#x5224;&#x65AD;
+**/</span> 
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">measure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;View&#x7684;&#x5BBD; / &#x9AD8;&#x6D4B;&#x91CF;&#x89C4;&#x683C;</span>
+    ......
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> forceLayout = (mPrivateFlags &amp; PFLAG_FORCE_LAYOUT) == PFLAG_FORCE_LAYOUT;
+    ......
+    <span class="hljs-keyword">int</span> cacheIndex = forceLayout ? -<span class="hljs-number">1</span> : mMeasureCache.indexOfKey(key);
+    <span class="hljs-keyword">if</span> (cacheIndex &lt; <span class="hljs-number">0</span> || sIgnoreMeasureCache) {
+        <span class="hljs-comment">//&#x8BA1;&#x7B97;&#x89C6;&#x56FE;&#x5927;&#x5C0F;</span>
+        onMeasure(widthMeasureSpec, heightMeasureSpec);
+        mPrivateFlags3 &amp;= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+    } <span class="hljs-keyword">else</span> {
+        .....
+    }
+    ......
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;onMeasure&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="562-viewonmeasure">5.6.2 View#onMeasure</h5>
+<ul>
+<li><p>ViewGroup&#x4E5F;&#x6CA1;&#x6709;&#x91CD;&#x5199;onMeasure&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x7684;View&#x7684;onMeasure&#x65B9;&#x6CD5;</p>
+</li>
+<li><p>&#x4F46;&#x662F;LinearLayout&#x7B49;&#x5E03;&#x5C40;&#x7EE7;&#x627F;&#x81EA;ViewGroup&#x90FD;&#x81EA;&#x5DF1;&#x91CD;&#x5199;&#x4E86;onMeasure&#x65B9;&#x6CD5;&#x7684;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;1&#xFF1A;onMeasure&#xFF08;&#xFF09;
+  * &#x4F5C;&#x7528;&#xFF1A;a. &#x6839;&#x636E;View&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#x8BA1;&#x7B97;View&#x7684;&#x5BBD;/&#x9AD8;&#x503C;&#xFF1A;getDefaultSize()
+  *      b. &#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;&#x7684;View&#x5BBD; / &#x9AD8;&#xFF1A;setMeasuredDimension()
+**/</span> 
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onMeasure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{  
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;View&#x7684;&#x5BBD; / &#x9AD8;&#x6D4B;&#x91CF;&#x89C4;&#x683C;</span>
+    setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),  
+                         getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));  
+    <span class="hljs-comment">// setMeasuredDimension() &#xFF1A;&#x83B7;&#x5F97;View&#x5BBD;/&#x9AD8;&#x7684;&#x6D4B;&#x91CF;&#x503C; -&gt;&gt;&#x5206;&#x6790;2</span>
+    <span class="hljs-comment">// &#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x901A;&#x8FC7;getDefaultSize()&#x83B7;&#x5F97; -&gt;&gt;&#x5206;&#x6790;3</span>
+}
+</code></pre>
+<ul>
+<li>onMeasure&#x5728;ViewGroup&#x4E2D;&#x662F;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x540C;&#x7684;<code>ViewGroup</code>&#x5B50;&#x7C7B;&#xFF08;<code>LinearLayout</code>&#x3001;<code>RelativeLayout</code> / &#x81EA;&#x5B9A;&#x4E49;<code>ViewGroup</code>&#x5B50;&#x7C7B;&#x7B49;&#xFF09;&#x5177;&#x5907;&#x4E0D;&#x540C;&#x7684;&#x5E03;&#x5C40;&#x7279;&#x6027;&#xFF0C;&#x8FD9;&#x5BFC;&#x81F4;&#x4ED6;&#x4EEC;&#x5B50;<code>View</code>&#x7684;&#x6D4B;&#x91CF;&#x65B9;&#x6CD5;&#x5404;&#x6709;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x540C;&#x4E00;&#x89C4;&#x5B9A;onMeasure&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="563-viewgroup&#x548C;view&#x7684;onmeasure&#x533A;&#x522B;">5.6.3 ViewGroup&#x548C;View&#x7684;onMeasure&#x533A;&#x522B;</h5>
+<ul>
+<li><p><strong>ViewGroup&#x65E0;&#x6CD5;&#x5BF9;onMeasure&#xFF08;&#xFF09;&#x4F5C;&#x7EDF;&#x4E00;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x4E2A;&#x4E5F;&#x662F;&#x5355;&#x4E00;View&#x7684;measure&#x8FC7;&#x7A0B;&#x4E0E;ViewGroup&#x8FC7;&#x7A0B;&#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x3002;</strong></p>
+</li>
+<li><p>&#x5355;&#x4E00;<code>View measure</code>&#x8FC7;&#x7A0B;&#x7684;<code>onMeasure&#xFF08;&#xFF09;</code>&#x5177;&#x6709;&#x7EDF;&#x4E00;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;<code>ViewGroup</code>&#x5219;&#x6CA1;&#x6709;</p>
+</li>
+<li><p>&#x5176;&#x5B9E;&#xFF0C;&#x5728;&#x5355;&#x4E00;<code>View measure</code>&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<code>getDefaultSize()</code>&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x6D4B;&#x91CF;&#x4E86;&#x5BBD;&#x9AD8;&#x503C;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x6709;&#x65F6;&#x9700;&#x66F4;&#x7CBE;&#x7EC6;&#x7684;&#x6D4B;&#x91CF;&#x3002;&#x6240;&#x4EE5;&#x6709;&#x65F6;&#x5019;&#x4E5F;&#x9700;&#x91CD;&#x5199;<code>onMeasure&#xFF08;&#xFF09;</code></p>
+</li>
+</ul>
+<h5 id="564-&#x91CD;&#x5199;onmeasure">5.6.4 &#x91CD;&#x5199;onMeasure</h5>
+<ul>
+<li>&#x5728;&#x81EA;&#x5B9A;&#x4E49;<code>ViewGroup</code>&#x4E2D;&#xFF0C;&#x5173;&#x952E;&#x5728;&#x4E8E;&#xFF1A;<strong>&#x6839;&#x636E;&#x9700;&#x6C42;&#x91CD;&#x5199;<code>onMeasure()</code>&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x4F60;&#x7684;&#x5B50;View&#x6D4B;&#x91CF;&#x903B;&#x8F91;</strong>&#x3002;&#x91CD;&#x5199;<code>onMeasure()</code>&#x7684;&#x5957;&#x8DEF;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x6839;&#x636E;&#x81EA;&#x8EAB;&#x7684;&#x6D4B;&#x91CF;&#x903B;&#x8F91;&#x590D;&#x5199;onMeasure&#xFF08;&#xFF09;&#xFF0C;&#x5206;&#x4E3A;3&#x6B65;
+  * 1. &#x904D;&#x5386;&#x6240;&#x6709;&#x5B50;View &amp; &#x6D4B;&#x91CF;&#xFF1A;measureChildren&#xFF08;&#xFF09;
+  * 2. &#x5408;&#x5E76;&#x6240;&#x6709;&#x5B50;View&#x7684;&#x5C3A;&#x5BF8;&#x5927;&#x5C0F;,&#x6700;&#x7EC8;&#x5F97;&#x5230;ViewGroup&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x503C;&#xFF08;&#x81EA;&#x8EAB;&#x5B9E;&#x73B0;&#xFF09;
+  * 3. &#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;View&#x5BBD;/&#x9AD8;&#x7684;&#x503C;&#xFF1A;&#x8C03;&#x7528;setMeasuredDimension()  
+  **/</span> 
+
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onMeasure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{  
+
+    <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5B58;&#x653E;&#x6D4B;&#x91CF;&#x540E;&#x7684;View&#x5BBD;/&#x9AD8;&#x7684;&#x53D8;&#x91CF;</span>
+    <span class="hljs-keyword">int</span> widthMeasure ;
+    <span class="hljs-keyword">int</span> heightMeasure ;
+
+    <span class="hljs-comment">// 1. &#x904D;&#x5386;&#x6240;&#x6709;&#x5B50;View &amp; &#x6D4B;&#x91CF;(measureChildren&#xFF08;&#xFF09;)</span>
+    <span class="hljs-comment">// -&gt;&gt; &#x5206;&#x6790;1</span>
+    measureChildren(widthMeasureSpec, heightMeasureSpec)&#xFF1B;
+
+    <span class="hljs-comment">// 2. &#x5408;&#x5E76;&#x6240;&#x6709;&#x5B50;View&#x7684;&#x5C3A;&#x5BF8;&#x5927;&#x5C0F;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;ViewGroup&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x503C;</span>
+    <span class="hljs-keyword">void</span> measureCarson{
+        ... <span class="hljs-comment">// &#x81EA;&#x8EAB;&#x5B9E;&#x73B0;</span>
+    }
+
+    <span class="hljs-comment">// 3. &#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;View&#x5BBD;/&#x9AD8;&#x7684;&#x503C;&#xFF1A;&#x8C03;&#x7528;setMeasuredDimension()  </span>
+    <span class="hljs-comment">// &#x7C7B;&#x4F3C;&#x5355;&#x4E00;View&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6B64;&#x5904;&#x4E0D;&#x4F5C;&#x8FC7;&#x591A;&#x63CF;&#x8FF0;</span>
+    setMeasuredDimension(widthMeasure,  heightMeasure);  
+}
+</code></pre>
+<ul>
+<li><p>&#x6B65;&#x9AA4;</p>
+<p>1.&#x904D;&#x5386;&#x6240;&#x6709;&#x5B50;View &amp; &#x6D4B;&#x91CF;&#xFF1A;measureChildren&#xFF08;&#xFF09;</p>
+<p>2.&#x5408;&#x5E76;&#x6240;&#x6709;&#x5B50;View&#x7684;&#x5C3A;&#x5BF8;&#x5927;&#x5C0F;,&#x6700;&#x7EC8;&#x5F97;&#x5230;ViewGroup&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x503C;&#xFF08;&#x81EA;&#x8EAB;&#x5B9E;&#x73B0;&#xFF09;</p>
+<p>3.&#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;View&#x5BBD;/&#x9AD8;&#x7684;&#x503C;&#xFF1A;&#x8C03;&#x7528;setMeasuredDimension()  </p>
+</li>
+<li><p>&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x6B65;&#x548C;&#x7B2C;&#x4E09;&#x6B65;&#x8C03;&#x7528;&#x7684;&#x90FD;&#x662F;&#x7CFB;&#x7EDF;&#x7684;api&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x662F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;</p>
+</li>
+</ul>
+<h5 id="565-viewgroupmeasurechildren">5.6.5 ViewGroup#measureChildren</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;1&#xFF1A;measureChildren()
+  * &#x4F5C;&#x7528;&#xFF1A;&#x904D;&#x5386;&#x5B50;View &amp; &#x8C03;&#x7528;measureChild()&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x6B65;&#x6D4B;&#x91CF;
+  **/</span> 
+<span class="hljs-comment">// &#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x89C4;&#x683C;&#xFF08;MeasureSpec&#xFF09;</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">measureChildren</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> size = mChildrenCount;
+    <span class="hljs-keyword">final</span> View[] children = mChildren;
+
+    <span class="hljs-comment">// &#x904D;&#x5386;&#x6240;&#x6709;&#x5B50;view</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++i) {
+        <span class="hljs-keyword">final</span> View child = children[i];
+        <span class="hljs-comment">// &#x8C03;&#x7528;measureChild()&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x6D4B;&#x91CF; -&gt;&gt;&#x5206;&#x6790;1</span>
+        <span class="hljs-keyword">if</span> ((child.mViewFlags &amp; VISIBILITY_MASK) != GONE) {
+            measureChild(child, widthMeasureSpec, heightMeasureSpec);
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x5B50;view&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;measureChild&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="567-viewgroupmeasurechild">5.6.7 ViewGroup#measureChild</h5>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x5206;&#x6790;2&#xFF1A;measureChild()
+  * &#x4F5C;&#x7528;&#xFF1A;a. &#x8BA1;&#x7B97;&#x5355;&#x4E2A;&#x5B50;View&#x7684;MeasureSpec
+  *      b. &#x6D4B;&#x91CF;&#x6BCF;&#x4E2A;&#x5B50;View&#x6700;&#x540E;&#x7684;&#x5BBD; / &#x9AD8;&#xFF1A;&#x8C03;&#x7528;&#x5B50;View&#x7684;measure()
+  **/</span> 
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">measureChild</span><span class="hljs-params">(View child, <span class="hljs-keyword">int</span> parentWidthMeasureSpec,
+        <span class="hljs-keyword">int</span> parentHeightMeasureSpec)</span> </span>{
+    <span class="hljs-comment">// 1. &#x83B7;&#x53D6;&#x5B50;&#x89C6;&#x56FE;&#x7684;&#x5E03;&#x5C40;&#x53C2;&#x6570;</span>
+    <span class="hljs-keyword">final</span> LayoutParams lp = child.getLayoutParams();
+
+    <span class="hljs-comment">// 2. &#x6839;&#x636E;&#x7236;&#x89C6;&#x56FE;&#x7684;MeasureSpec &amp; &#x5E03;&#x5C40;&#x53C2;&#x6570;LayoutParams&#xFF0C;&#x8BA1;&#x7B97;&#x5355;&#x4E2A;&#x5B50;View&#x7684;MeasureSpec</span>
+    <span class="hljs-comment">// getChildMeasureSpec() &#x8BF7;&#x770B;&#x4E0A;&#x9762;&#x7B2C;2&#x8282;&#x50A8;&#x5907;&#x77E5;&#x8BC6;&#x5904;</span>
+    <span class="hljs-comment">// &#x83B7;&#x53D6; ChildView &#x7684; widthMeasureSpec</span>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,
+            mPaddingLeft + mPaddingRight, lp.width);
+    <span class="hljs-comment">// &#x83B7;&#x53D6; ChildView &#x7684; heightMeasureSpec</span>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,
+            mPaddingTop + mPaddingBottom, lp.height);
+
+    <span class="hljs-comment">// 3. &#x5C06;&#x8BA1;&#x7B97;&#x597D;&#x7684;&#x5B50;View&#x7684;MeasureSpec&#x503C;&#x4F20;&#x5165;measure()&#xFF0C;&#x8FDB;&#x884C;&#x6700;&#x540E;&#x7684;&#x6D4B;&#x91CF;</span>
+    <span class="hljs-comment">// &#x4E0B;&#x9762;&#x7684;&#x6D41;&#x7A0B;&#x5373;&#x7C7B;&#x4F3C;&#x5355;&#x4E00;View&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6B64;&#x5904;&#x4E0D;&#x4F5C;&#x8FC7;&#x591A;&#x63CF;&#x8FF0;</span>
+    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+}
+</code></pre>
+<ul>
+<li>&#x81F3;&#x6B64;&#xFF0C;<code>ViewGroup</code>&#x7684;<code>measure</code>&#x8FC7;&#x7A0B;&#x5206;&#x6790;&#x5B8C;&#x6BD5;</li>
+</ul>
+<h4 id="57-&#x5C0F;&#x7ED3;">5.7 &#x5C0F;&#x7ED3;</h4>
+<p><img src="https:////upload-images.jianshu.io/upload_images/944365-c9ea47e8b5e325bf.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+<ul>
+<li>&#x4E3A;&#x4E86;&#x8BA9;&#x5927;&#x5BB6;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;<code>ViewGroup</code>&#x7684;<code>measure</code>&#x8FC7;&#x7A0B;&#xFF08;&#x7279;&#x522B;&#x662F;&#x590D;&#x5199;<code>onMeasure()</code>&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x5C06;&#x7528;<code>ViewGroup</code>&#x7684;&#x5B50;&#x7C7B;<code>LinearLayout</code>&#x6765;&#x5206;&#x6790;&#x4E0B;<code>ViewGroup</code>&#x7684;<code>measure</code>&#x8FC7;&#x7A0B;</li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x91CD;&#x5199;onmeasure&#x5B9E;&#x4F8B;&#x4E4B;linearlayout">&#x516D;&#x3001;&#x91CD;&#x5199;onMeasure&#x5B9E;&#x4F8B;&#x4E4B;LinearLayout</h3>
+<h4 id="61-linearlayoutonmeasure">6.1 LinearLayout#onMeasure</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onMeasure</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{
+    <span class="hljs-keyword">if</span> (mOrientation == VERTICAL) {
+        measureVertical(widthMeasureSpec, heightMeasureSpec);
+    } <span class="hljs-keyword">else</span> {
+        measureHorizontal(widthMeasureSpec, heightMeasureSpec);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5E03;&#x5C40;&#x65B9;&#x5F0F;&#xFF0C;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5C31;&#x7814;&#x7A76;measureVertical&#x65B9;&#x6CD5;&#x628A;&#xFF0C;&#x5782;&#x76F4;&#x6392;&#x5E8F;</li>
+</ul>
+<h4 id="62-linearlayoutmeasurevertical">6.2 LinearLayout#measureVertical</h4>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+* &#x5206;&#x6790;1&#xFF1A;measureVertical()
+* &#x4F5C;&#x7528;&#xFF1A;&#x6D4B;&#x91CF;LinearLayout&#x5782;&#x76F4;&#x65B9;&#x5411;&#x7684;&#x6D4B;&#x91CF;&#x5C3A;&#x5BF8;
+**/</span> 
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">measureVertical</span><span class="hljs-params">(<span class="hljs-keyword">int</span> widthMeasureSpec, <span class="hljs-keyword">int</span> heightMeasureSpec)</span> </span>{
+    ......<span class="hljs-comment">//&#x5176;&#x4ED6;&#x6D4B;&#x91CF;&#x903B;&#x8F91;</span>
+
+    <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5782;&#x76F4;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5B50;View&#x4E2A;&#x6570;</span>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> count = getVirtualChildCount();
+    ......
+    <span class="hljs-comment">// &#x904D;&#x5386;&#x5B50;View&#x83B7;&#x53D6;&#x5176;&#x9AD8;&#x5EA6;&#xFF0C;&#x5E76;&#x8BB0;&#x5F55;&#x4E0B;&#x5B50;View&#x4E2D;&#x6700;&#x9AD8;&#x7684;&#x9AD8;&#x5EA6;&#x6570;&#x503C;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; ++i) {
+        <span class="hljs-keyword">final</span> View child = getVirtualChildAt(i);
+        ......
+        <span class="hljs-comment">// &#x5B50;View&#x4E0D;&#x53EF;&#x89C1;&#xFF0C;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7;&#x8BE5;View&#x7684;measure&#x8FC7;&#x7A0B;&#xFF0C;getChildrenSkipCount()&#x8FD4;&#x56DE;&#x503C;&#x6052;&#x4E3A;0</span>
+        <span class="hljs-comment">// &#x6CE8;&#xFF1A;&#x82E5;view&#x7684;&#x53EF;&#x89C1;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4E3A;VIEW.INVISIBLE&#xFF0C;&#x8FD8;&#x662F;&#x4F1A;&#x8BA1;&#x7B97;&#x8BE5;view&#x5927;&#x5C0F;</span>
+        <span class="hljs-keyword">if</span> (child.getVisibility() == View.GONE) {
+            i += getChildrenSkipCount(child, i);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x5B50;View&#x662F;&#x5426;&#x6709;weight&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#xFF0C;&#x7528;&#x4E8E;&#x540E;&#x9762;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x4E8C;&#x6B21;measure</span>
+        totalWeight += lp.weight;
+
+        <span class="hljs-keyword">if</span> (heightMode == MeasureSpec.EXACTLY &amp;&amp; lp.height == <span class="hljs-number">0</span> &amp;&amp; lp.weight &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">// &#x5982;&#x679C;LinearLayout&#x7684;specMode&#x4E3A;EXACTLY&#x4E14;&#x5B50;View&#x8BBE;&#x7F6E;&#x4E86;weight&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x4F1A;&#x8DF3;&#x8FC7;&#x5B50;View&#x7684;measure&#x8FC7;&#x7A0B;</span>
+            <span class="hljs-comment">// &#x540C;&#x65F6;&#x6807;&#x8BB0;skippedMeasure&#x5C5E;&#x6027;&#x4E3A;true&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x6839;&#x636E;&#x8BE5;&#x5C5E;&#x6027;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x7B2C;&#x4E8C;&#x6B21;measure</span>
+            <span class="hljs-comment">// &#x82E5;LinearLayout&#x7684;&#x5B50;View&#x8BBE;&#x7F6E;&#x4E86;weight&#xFF0C;&#x4F1A;&#x8FDB;&#x884C;&#x4E24;&#x6B21;measure&#x8BA1;&#x7B97;&#xFF0C;&#x6BD4;&#x8F83;&#x8017;&#x65F6;</span>
+            <span class="hljs-comment">// &#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;LinearLayout&#x7684;&#x5B50;View&#x9700;&#x8981;&#x4F7F;&#x7528;weight&#x5C5E;&#x6027;&#x65F6;&#x5019;&#xFF0C;&#x6700;&#x597D;&#x66FF;&#x6362;&#x6210;RelativeLayout&#x5E03;&#x5C40;</span>
+
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> totalLength = mTotalLength;
+            mTotalLength = Math.max(totalLength, totalLength + lp.topMargin + lp.bottomMargin);
+            skippedMeasure = <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">int</span> oldHeight = Integer.MIN_VALUE;
+
+            <span class="hljs-comment">//&#x6B65;&#x9AA4;1 &#x904D;&#x5386;&#x8C03;&#x7528;measureChildren</span>
+            <span class="hljs-comment">//&#x6CE8;&#xFF1A;&#x8BE5;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;measureChildren&#xFF08;&#xFF09;&#xFF0C;&#x4ECE;&#x800C; &#x904D;&#x5386;&#x6240;&#x6709;&#x5B50;View &amp; &#x6D4B;&#x91CF;</span>
+            measureChildBeforeLayout(
+                   child, i, widthMeasureSpec, <span class="hljs-number">0</span>, heightMeasureSpec,
+                   totalWeight == <span class="hljs-number">0</span> ? mTotalLength : <span class="hljs-number">0</span>);
+                   ...
+        }
+
+        <span class="hljs-comment">//&#x6B65;&#x9AA4;2&#xFF1A;&#x5408;&#x5E76;&#x6240;&#x6709;&#x5B50;View&#x7684;&#x5C3A;&#x5BF8;&#x5927;&#x5C0F;,&#x6700;&#x7EC8;&#x5F97;&#x5230;ViewGroup&#x7236;&#x89C6;&#x56FE;&#x7684;&#x6D4B;&#x91CF;&#x503C;&#xFF08;&#x81EA;&#x8EAB;&#x5B9E;&#x73B0;&#xFF09;     </span>
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> childHeight = child.getMeasuredHeight();
+
+        <span class="hljs-comment">// 1. mTotalLength&#x7528;&#x4E8E;&#x5B58;&#x50A8;LinearLayout&#x5728;&#x7AD6;&#x76F4;&#x65B9;&#x5411;&#x7684;&#x9AD8;&#x5EA6;</span>
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> totalLength = mTotalLength;
+
+        <span class="hljs-comment">// 2. &#x6BCF;&#x6D4B;&#x91CF;&#x4E00;&#x4E2A;&#x5B50;View&#x7684;&#x9AD8;&#x5EA6;&#xFF0C; mTotalLength&#x5C31;&#x4F1A;&#x589E;&#x52A0;</span>
+        mTotalLength = Math.max(totalLength, totalLength + childHeight + lp.topMargin +
+                     lp.bottomMargin + getNextLocationOffset(child));
+
+        <span class="hljs-comment">// 3. &#x8BB0;&#x5F55;LinearLayout&#x5360;&#x7528;&#x7684;&#x603B;&#x9AD8;&#x5EA6;</span>
+        <span class="hljs-comment">// &#x5373;&#x9664;&#x4E86;&#x5B50;View&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x8FD8;&#x6709;&#x672C;&#x8EAB;&#x7684;padding&#x5C5E;&#x6027;&#x503C;</span>
+        mTotalLength += mPaddingTop + mPaddingBottom;
+        <span class="hljs-keyword">int</span> heightSize = mTotalLength;
+        ......
+    }
+    ......
+    <span class="hljs-comment">//&#x6B65;&#x9AA4;3&#xFF1A;&#x5B58;&#x50A8;&#x6D4B;&#x91CF;&#x540E;View&#x5BBD;/&#x9AD8;&#x7684;&#x503C;&#xFF1A;&#x8C03;&#x7528;setMeasuredDimension()  </span>
+    setMeasuredDimension(resolveSizeAndState(maxWidth,width))
+    ...
+}
+</code></pre>
+<ul>
+<li>&#x81F3;&#x6B64;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;<code>View</code>&#x7684;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x3001;&#x6700;&#x590D;&#x6742;&#x7684;<code>measure</code>&#x8FC7;&#x7A0B;&#x8BB2;&#x89E3;&#x5B8C;&#x6BD5;&#x3002;</li>
+</ul>
+<h3 id="&#x4E03;&#x3001;&#x603B;&#x7ED3;">&#x4E03;&#x3001;&#x603B;&#x7ED3;</h3>
+<h4 id="71-&#x4E24;&#x79CD;measure&#x8FC7;&#x7A0B;">7.1 &#x4E24;&#x79CD;measure&#x8FC7;&#x7A0B;</h4>
+<ul>
+<li>&#x672C;&#x6587;&#x5BF9;&#x81EA;&#x5B9A;&#x4E49;View&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x3001;&#x6700;&#x590D;&#x6742;&#x7684;<code>measure</code>&#x8FC7;&#x7A0B;&#x8FDB;&#x884C;&#x4E86;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-29a36501ce27a5cb.png?imageMogr2/auto-orient/strip|imageView2/2/w/550/format/webp" alt="img"></p>
+<h4 id="72-&#x5355;&#x4E00;view&#x7684;measure&#x8FC7;&#x7A0B;&#x548C;viewgroup&#x7684;measure&#x8FC7;&#x7A0B;">7.2 &#x5355;&#x4E00;View&#x7684;measure&#x8FC7;&#x7A0B;&#x548C;ViewGroup&#x7684;measure&#x8FC7;&#x7A0B;</h4>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-1250b5f61c90147f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="二、绘制前的准备：DecorView创建和显示.html" class="navigation navigation-prev " aria-label="Previous page: 二、绘制前的准备：DecorView创建和显示">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="四、Layout过程.html" class="navigation navigation-next " aria-label="Next page: 四、Layout过程">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"三、Measure过程","level":"6.2.3","depth":2,"next":{"title":"四、Layout过程","level":"6.2.4","depth":2,"path":"高级UI/自定义View/四、Layout过程.md","ref":"高级UI/自定义View/四、Layout过程.md","articles":[]},"previous":{"title":"二、绘制前的准备：DecorView创建和显示","level":"6.2.2","depth":2,"path":"高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.md","ref":"高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"高级UI/自定义View/三、Measure过程.md","mtime":"2020-11-21T19:26:51.916Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

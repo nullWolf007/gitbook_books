@@ -1,0 +1,3604 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>应用程序进程启动过程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="根Activity启动过程.html" />
+    
+    
+    <link rel="prev" href="SystemServer进程解析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="Android系统架构.html">
+            
+                <a href="Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="Android系统启动.html">
+            
+                <a href="Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="Zygote进程解析.html">
+            
+                <a href="Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="SystemServer进程解析.html">
+            
+                <a href="SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2.5" data-path="应用程序进程启动过程.html">
+            
+                <a href="应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="根Activity启动过程.html">
+            
+                <a href="根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="ActivityThread解析.html">
+            
+                <a href="ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../跨进程通信IPC/Binder解析.html">
+            
+                <a href="../跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../高级UI/自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../高级UI/自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../高级UI/Webview/Webview.html">
+            
+                <a href="../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >应用程序进程启动过程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<ul>
+<li><!-- TOC -->
+<ul>
+<li><a href="#&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"> &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</a></li>
+<li><a href="#&#x53C2;&#x8003;"> &#x53C2;&#x8003;</a><ul>
+<li><a href="#&#x4E00;&#x3001;&#x7B80;&#x4ECB;"> &#x4E00;&#x3001;&#x7B80;&#x4ECB;</a><ul>
+<li><a href="#11-&#x542B;&#x4E49;"> 1.1 &#x542B;&#x4E49;</a></li>
+<li><a href="#12-&#x4E3B;&#x8981;&#x6B65;&#x9AA4;"> 1.2 &#x4E3B;&#x8981;&#x6B65;&#x9AA4;</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E8C;&#x3001;ams&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;"> &#x4E8C;&#x3001;AMS&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;</a><ul>
+<li><a href="#21-activitymanagerservicestartprocesslocked"> 2.1 ActivityManagerServicestartProcessLocked</a></li>
+<li><a href="#22-processstart"> 2.2 Processstart</a></li>
+<li><a href="#23-zygoteprocessstart"> 2.3 ZygoteProcessstart</a></li>
+<li><a href="#24-zygoteprocessstartviazygote"> 2.4 ZygoteProcessstartViaZygote</a></li>
+<li><a href="#25-zygoteprocesszygotesendargsandgetresult"> 2.5 ZygoteProcesszygoteSendArgsAndGetResult</a></li>
+<li><a href="#26-zygoteprocessopenzygotesocketifneeded"> 2.6 ZygoteProcessopenZygoteSocketIfNeeded</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E09;&#x3001;zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;"> &#x4E09;&#x3001;Zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</a><ul>
+<li><a href="#31-zygoteinitmain"> 3.1 ZygoteInitmain</a></li>
+<li><a href="#32-runselectloop"> 3.2 runSelectLoop</a></li>
+<li><a href="#33-runonce"> 3.3 runOnce</a></li>
+<li><a href="#34-forkandspecialize"> 3.4 forkAndSpecialize</a></li>
+<li><a href="#35-handlechildproc"> 3.5 handleChildProc</a></li>
+<li><a href="#36-zygoteinit"> 3.6 zygoteInit</a></li>
+<li><a href="#36-applicationinit"> 3.6 applicationInit</a></li>
+<li><a href="#37-invokestaticmain"> 3.7 invokeStaticMain</a></li>
+<li><a href="#38-main"> 3.8 main</a></li>
+<li><a href="#38-run"> 3.8 run</a></li>
+<li><a href="#39-main"> 3.9 main</a></li>
+</ul>
+</li>
+<li><a href="#&#x56DB;&#x3001;binder&#x7EBF;&#x7A0B;&#x6C60;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"> &#x56DB;&#x3001;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#41-zygoteinit"> 4.1 zygoteInit</a></li>
+<li><a href="#42-nativezygoteinit"> 4.2 nativeZygoteInit</a></li>
+<li><a href="#43-register_com_android_internal_os_zygoteinit"> 4.3 register_com_android_internal_os_ZygoteInit</a></li>
+<li><a href="#44-com_android_internal_os_zygoteinit_nativezygoteinit"> 4.4 com_android_internal_os_ZygoteInit_nativeZygoteInit</a></li>
+<li><a href="#45-gcurruntime"> 4.5 gCurRuntime</a></li>
+<li><a href="#46-onzygoteinit"> 4.6 onZygoteInit</a></li>
+<li><a href="#47-startthreadpool"> 4.7 startThreadPool</a></li>
+<li><a href="#48-spawnpooledthread"> 4.8 spawnPooledThread</a></li>
+<li><a href="#49-poolthread"> 4.9 PoolThread</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E94;&#x3001;&#x6D88;&#x606F;&#x5FAA;&#x73AF;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;"> &#x4E94;&#x3001;&#x6D88;&#x606F;&#x5FAA;&#x73AF;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#51-main"> 5.1 main</a><!-- /TOC -->
+<h2 id="&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;">&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</h2>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h4>
+<ul>
+<li><a href="https://book.douban.com/subject/30358046/" target="_blank">Android&#x8FDB;&#x9636;&#x89E3;&#x5BC6;</a></li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x7B80;&#x4ECB;">&#x4E00;&#x3001;&#x7B80;&#x4ECB;</h3>
+<h4 id="11-&#x542B;&#x4E49;">1.1 &#x542B;&#x4E49;</h4>
+<ul>
+<li>&#x60F3;&#x8981;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x4FDD;&#x8BC1;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x8981;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x542F;&#x52A8;&#x3002; AMS &#x5728;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#x4F1A;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x4F1A;&#x8BF7;&#x6C42; Zygote &#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x9700;&#x8981;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x3002;&#x5728; SystemServer &#x8FDB;&#x7A0B;&#x89E3;&#x6790;&#x4E2D;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728; Zygote &#x7684; Java &#x6846;&#x67B6;&#x5C42;&#x4E2D;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Server &#x7AEF;&#x7684; Socket , &#x8FD9;&#x4E2A; Socket &#x5C31;&#x662F;&#x7528;&#x6765;&#x7B49;&#x5F85; AMS &#x8BF7;&#x6C42; Zygote &#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x3002;Zygote &#x8FDB;&#x7A0B;&#x901A;&#x8FC7; fock &#x81EA;&#x8EAB;&#x521B;&#x5EFA;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD9;&#x6837;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x83B7;&#x5F97; Zygote &#x8FDB;&#x7A0B;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x521B;&#x5EFA;&#x7684;&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x9664;&#x4E86;&#x83B7;&#x53D6;&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#x5916;&#xFF0C;&#x8FD8;&#x521B;&#x5EFA;&#x4E86; Binder &#x7EBF;&#x7A0B;&#x6C60;&#x548C;&#x6D88;&#x606F;&#x5FAA;&#x73AF;&#xFF0C;&#x8FD9;&#x6837;&#x8FD0;&#x884C;&#x5728;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528; Binder &#x8FDB;&#x884C;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x4EE5;&#x53CA;&#x5904;&#x7406;&#x6D88;&#x606F;&#x4E86;&#x3002;</li>
+</ul>
+<h4 id="12-&#x4E3B;&#x8981;&#x6B65;&#x9AA4;">1.2 &#x4E3B;&#x8981;&#x6B65;&#x9AA4;</h4>
+<ul>
+<li>AMS&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;</li>
+<li>Zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;ams&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;">&#x4E8C;&#x3001;AMS&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;</h3>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/FrameWork&#x5185;&#x6838;&#x89E3;&#x6790;/AMS&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;.png" alt="AMS&#x53D1;&#x9001;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;"></p>
+<h4 id="21-activitymanagerservicestartprocesslocked">2.1 ActivityManagerService#startProcessLocked</h4>
+<ul>
+<li>ActivityManagerService.java#startProcessLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startProcessLocked</span><span class="hljs-params">(
+    ProcessRecord app, String hostingType,
+    String hostingNameStr, String abiOverride,
+    String entryPoint, String[] entryPointArgs)</span></span>{
+    ......   
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> userId = UserHandle.getUserId(app.uid);
+            AppGlobals.getPackageManager().checkPackageStartable(app.info.packageName, userId);
+        } <span class="hljs-keyword">catch</span> (RemoteException e) {
+            <span class="hljs-keyword">throw</span> e.rethrowAsRuntimeException();
+        }
+
+        <span class="hljs-comment">//1 &#x83B7;&#x53D6;&#x8981;&#x521B;&#x5EFA;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684; &#x7528;&#x6237;ID</span>
+        <span class="hljs-keyword">int</span> uid = app.uid;
+        <span class="hljs-keyword">int</span>[] gids = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">int</span> mountExternal = Zygote.MOUNT_EXTERNAL_NONE;
+        <span class="hljs-keyword">if</span> (!app.isolated) {
+            ......
+            <span class="hljs-comment">//2 &#x5BF9;gids&#x8FDB;&#x884C;&#x521B;&#x5EFA;&#x548C;&#x8D4B;&#x503C;</span>
+            <span class="hljs-keyword">if</span> (ArrayUtils.isEmpty(permGids)) {
+                gids = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">3</span>];
+            } <span class="hljs-keyword">else</span> {
+                gids = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[permGids.length + <span class="hljs-number">3</span>];
+                System.arraycopy(permGids, <span class="hljs-number">0</span>, gids, <span class="hljs-number">3</span>, permGids.length);
+            }
+            gids[<span class="hljs-number">0</span>] = UserHandle.getSharedAppGid(UserHandle.getAppId(uid));
+            gids[<span class="hljs-number">1</span>] = UserHandle.getCacheAppGid(UserHandle.getAppId(uid));
+            gids[<span class="hljs-number">2</span>] = UserHandle.getUserGid(UserHandle.getUserId(uid));
+        }
+        ......
+        <span class="hljs-keyword">boolean</span> isActivityProcess = (entryPoint == <span class="hljs-keyword">null</span>);
+        <span class="hljs-comment">//3 &#x5982;&#x679C;entryPoint==null,&#x90A3;&#x4E48;&#x5C06;ActivityThread&#x5168;&#x7C7B;&#x540D;&#x8D4B;&#x503C;&#x7ED9;entryPoint</span>
+        <span class="hljs-keyword">if</span> (entryPoint == <span class="hljs-keyword">null</span>) entryPoint = <span class="hljs-string">&quot;android.app.ActivityThread&quot;</span>;
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;Start proc: &quot;</span> +
+            app.processName);
+        checkTime(startTime, <span class="hljs-string">&quot;startProcess: asking zygote to start proc&quot;</span>);
+        ProcessStartResult startResult;
+        <span class="hljs-keyword">if</span> (hostingType.equals(<span class="hljs-string">&quot;webview_service&quot;</span>)) {
+            startResult = startWebView(entryPoint,
+                app.processName, uid, uid, gids, debugFlags, mountExternal,
+                app.info.targetSdkVersion, seInfo, requiredAbi, instructionSet,
+                app.info.dataDir, <span class="hljs-keyword">null</span>, entryPointArgs);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//4.&#x8C03;&#x7528;Process.start&#x65B9;&#x6CD5;</span>
+            startResult = Process.start(entryPoint,
+                app.processName, uid, uid, gids, debugFlags, mountExternal,
+                app.info.targetSdkVersion, seInfo, requiredAbi, instructionSet,
+                app.info.dataDir, invokeWith, entryPointArgs);
+        }
+        ......
+}
+</code></pre>
+<ul>
+<li>&#x628A;uid&#xFF0C;gids&#xFF0C;entryPoint&#x4E3A;android.app.ActivityThread&#x7B49;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E86;Process.start()&#x65B9;&#x6CD5;</li>
+<li>entryPoint&#x7684;&#x503C;&#x201C;android.app.ActivityThread&#x201D;&#xFF0C;&#x7528;&#x4E8E;&#x540E;&#x5E8F;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x627E;&#x5230;ActivityThread&#x7C7B;&#x6267;&#x884C;&#x5B83;&#x7684;main&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="22-processstart">2.2 Process#start</h4>
+<ul>
+<li>Process.java#start</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> ProcessStartResult <span class="hljs-title">start</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String processClass,
+                                            <span class="hljs-keyword">final</span> String niceName,
+                                            <span class="hljs-keyword">int</span> uid, <span class="hljs-keyword">int</span> gid, <span class="hljs-keyword">int</span>[] gids,
+                                            <span class="hljs-keyword">int</span> debugFlags, <span class="hljs-keyword">int</span> mountExternal,
+                                            <span class="hljs-keyword">int</span> targetSdkVersion,
+                                            String seInfo,
+                                            String abi,
+                                            String instructionSet,
+                                            String appDataDir,
+                                            String invokeWith,
+                                            String[] zygoteArgs)</span> </span>{
+    <span class="hljs-keyword">return</span> zygoteProcess.start(processClass, niceName, uid, gid, gids,
+        debugFlags, mountExternal, targetSdkVersion, seInfo,
+        abi, instructionSet, appDataDir, invokeWith, zygoteArgs);
+}
+</code></pre>
+<h4 id="23-zygoteprocessstart">2.3 ZygoteProcess#start</h4>
+<ul>
+<li>ZygoteProcess.java#start</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Process.<span class="hljs-function">ProcessStartResult <span class="hljs-title">start</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String processClass,
+                                            <span class="hljs-keyword">final</span> String niceName,
+                                            <span class="hljs-keyword">int</span> uid, <span class="hljs-keyword">int</span> gid, <span class="hljs-keyword">int</span>[] gids,
+                                            <span class="hljs-keyword">int</span> debugFlags, <span class="hljs-keyword">int</span> mountExternal,
+                                            <span class="hljs-keyword">int</span> targetSdkVersion,
+                                            String seInfo,
+                                            String abi,
+                                            String instructionSet,
+                                            String appDataDir,
+                                            String invokeWith,
+                                            String[] zygoteArgs)</span> </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">return</span> startViaZygote(processClass, niceName, uid, gid, gids,
+            debugFlags, mountExternal, targetSdkVersion, seInfo,
+            abi, instructionSet, appDataDir, invokeWith, zygoteArgs);
+    } <span class="hljs-keyword">catch</span> (ZygoteStartFailedEx ex) {
+        Log.e(LOG_TAG,
+            <span class="hljs-string">&quot;Starting VM process through Zygote failed&quot;</span>);
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(
+            <span class="hljs-string">&quot;Starting VM process through Zygote failed&quot;</span>, ex);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;ZygoteProcess&#x7684;startViaZygote&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="24-zygoteprocessstartviazygote">2.4 ZygoteProcess#startViaZygote</h4>
+<ul>
+<li>ZygoteProcess.java#startViaZygote</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> Process.<span class="hljs-function">ProcessStartResult <span class="hljs-title">startViaZygote</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String processClass,
+                                                <span class="hljs-keyword">final</span> String niceName,
+                                                <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> uid, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> gid,
+                                                <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span>[] gids,
+                                                <span class="hljs-keyword">int</span> debugFlags, <span class="hljs-keyword">int</span> mountExternal,
+                                                <span class="hljs-keyword">int</span> targetSdkVersion,
+                                                String seInfo,
+                                                String abi,
+                                                String instructionSet,
+                                                String appDataDir,
+                                                String invokeWith,
+                                                String[] extraArgs)</span>
+                                                <span class="hljs-keyword">throws</span> ZygoteStartFailedEx </span>{
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x5B57;&#x7B26;&#x4E32;&#x5217;&#x8868;argsForZygote&#xFF0C;&#x5E76;&#x5C06;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x4FDD;&#x5B58;&#x5728;argsForZygote&#x4E2D;</span>
+    ArrayList&lt;String&gt; argsForZygote = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+    argsForZygote.add(<span class="hljs-string">&quot;--runtime-args&quot;</span>);
+    argsForZygote.add(<span class="hljs-string">&quot;--setuid=&quot;</span> + uid);
+    argsForZygote.add(<span class="hljs-string">&quot;--setgid=&quot;</span> + gid);
+    <span class="hljs-keyword">if</span> ((debugFlags &amp; Zygote.DEBUG_ENABLE_JNI_LOGGING) != <span class="hljs-number">0</span>) {
+        argsForZygote.add(<span class="hljs-string">&quot;--enable-jni-logging&quot;</span>);
+    }
+    ......
+    <span class="hljs-keyword">synchronized</span>(mLock) {
+        <span class="hljs-keyword">return</span> zygoteSendArgsAndGetResult(openZygoteSocketIfNeeded(abi), argsForZygote);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;&#x4E86;zygoteSendArgsAndGetResult&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;openZygoteSocketIfNeeded&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4FDD;&#x5B58;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;argsForZygote</li>
+</ul>
+<h4 id="25-zygoteprocesszygotesendargsandgetresult">2.5 ZygoteProcess#zygoteSendArgsAndGetResult</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@GuardedBy</span>(<span class="hljs-string">&quot;mLock&quot;</span>)
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Process.<span class="hljs-function">ProcessStartResult <span class="hljs-title">zygoteSendArgsAndGetResult</span><span class="hljs-params">(
+    ZygoteState zygoteState, ArrayList&lt;String&gt; args)</span>
+    <span class="hljs-keyword">throws</span> ZygoteStartFailedEx </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">int</span> sz = args.size();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; sz; i++) {
+            <span class="hljs-keyword">if</span> (args.get(i).indexOf(<span class="hljs-string">&apos;\n&apos;</span>) &gt;= <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(<span class="hljs-string">&quot;embedded newlines not allowed&quot;</span>);
+            }
+        }
+
+        <span class="hljs-keyword">final</span> BufferedWriter writer = zygoteState.writer;
+        <span class="hljs-keyword">final</span> DataInputStream inputStream = zygoteState.inputStream;
+        writer.write(Integer.toString(args.size()));
+        writer.newLine();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; sz; i++) {
+            String arg = args.get(i);
+            writer.write(arg);
+            writer.newLine();
+        }
+        writer.flush();
+
+        Process.ProcessStartResult result = <span class="hljs-keyword">new</span> Process.ProcessStartResult();
+
+        result.pid = inputStream.readInt();
+        result.usingWrapper = inputStream.readBoolean();
+
+        <span class="hljs-keyword">if</span> (result.pid &lt; <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(<span class="hljs-string">&quot;fork() failed&quot;</span>);
+        }
+        <span class="hljs-keyword">return</span> result;
+    } <span class="hljs-keyword">catch</span> (IOException ex) {
+        zygoteState.close();
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(ex);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;&#x5C06;&#x4F20;&#x5165;&#x7684;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;argsForZygote&#x5199;&#x5165;&#x5230;ZygoteState&#x4E2D;&#xFF0C;ZygoteState&#x662F;ZygoteProcess&#x7684;&#x9759;&#x6001;&#x7C7B;&#xFF0C;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x4E0E;Zygote&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x7684;&#x72B6;&#x6001;</li>
+<li>ZygoteState&#x72B6;&#x6001;&#x7531;&#x4E0A;&#x53EF;&#x77E5;&#x662F;openZygoteSocketIfNeeded()&#x8FD4;&#x56DE;&#x7684;</li>
+</ul>
+<h4 id="26-zygoteprocessopenzygotesocketifneeded">2.6 ZygoteProcess#openZygoteSocketIfNeeded</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@GuardedBy</span>(<span class="hljs-string">&quot;mLock&quot;</span>)
+<span class="hljs-function"><span class="hljs-keyword">private</span> ZygoteState <span class="hljs-title">openZygoteSocketIfNeeded</span><span class="hljs-params">(String abi)</span> <span class="hljs-keyword">throws</span> ZygoteStartFailedEx </span>{
+    Preconditions.checkState(Thread.holdsLock(mLock), <span class="hljs-string">&quot;ZygoteProcess lock not held&quot;</span>);
+
+    <span class="hljs-keyword">if</span> (primaryZygoteState == <span class="hljs-keyword">null</span> || primaryZygoteState.isClosed()) {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x4E0E;Zygote&#x8FDB;&#x7A0B;&#x5EFA;&#x7ACB;Socket&#x8FDE;&#x63A5;</span>
+            primaryZygoteState = ZygoteState.connect(mSocket);
+        } <span class="hljs-keyword">catch</span> (IOException ioe) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(<span class="hljs-string">&quot;Error connecting to primary zygote&quot;</span>, ioe);
+        }
+    }
+    <span class="hljs-comment">//&#x8FDE;&#x63A5;Zygote&#x4E3B;&#x6A21;&#x5F0F;&#x8FD4;&#x56DE;&#x7684;ZygoteState&#x662F;&#x5426;&#x4E0E;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x6240;&#x9700;&#x8981;&#x7684;ABI&#x5339;&#x914D;</span>
+    <span class="hljs-keyword">if</span> (primaryZygoteState.matches(abi)) {
+        <span class="hljs-keyword">return</span> primaryZygoteState;
+    }
+
+    <span class="hljs-comment">//&#x5982;&#x679C;&#x4E0D;&#x5339;&#x914D; &#x5219;&#x5C1D;&#x8BD5;&#x8FDE;&#x63A5;Zygote&#x8F85;&#x6A21;&#x5F0F;</span>
+    <span class="hljs-keyword">if</span> (secondaryZygoteState == <span class="hljs-keyword">null</span> || secondaryZygoteState.isClosed()) {
+        <span class="hljs-keyword">try</span> {
+            secondaryZygoteState = ZygoteState.connect(mSecondarySocket);
+        } <span class="hljs-keyword">catch</span> (IOException ioe) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(<span class="hljs-string">&quot;Error connecting to secondary zygote&quot;</span>, ioe);
+        }
+    }
+    <span class="hljs-comment">//&#x8FDE;&#x63A5;Zygote&#x8F85;&#x6A21;&#x5F0F;&#x8FD4;&#x56DE;&#x7684;ZygoteState&#x662F;&#x5426;&#x4E0E;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x6240;&#x9700;&#x8981;&#x7684;ABI&#x5339;&#x914D;</span>
+    <span class="hljs-keyword">if</span> (secondaryZygoteState.matches(abi)) {
+        <span class="hljs-keyword">return</span> secondaryZygoteState;
+    }
+
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZygoteStartFailedEx(<span class="hljs-string">&quot;Unsupported zygote ABI: &quot;</span> + abi);
+}
+</code></pre>
+<ul>
+<li>&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x4E0E;Zygote&#x8FDB;&#x7A0B;&#x5EFA;&#x7ACB;Socket&#x8FDE;&#x63A5;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;">&#x4E09;&#x3001;Zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</h3>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/FrameWork&#x5185;&#x6838;&#x89E3;&#x6790;/Zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;.png" alt="Zygote&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#x5E76;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;"></p>
+<h4 id="31-zygoteinitmain">3.1 ZygoteInit#main</h4>
+<ul>
+<li>ZygoteInit.java#main</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String argv[])</span> </span>{
+    ......
+    <span class="hljs-keyword">try</span>{
+        ......
+        <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;Server&#x7AEF;&#x7684;Socket.socketName&#x7684;&#x503C;&#x4E3A;&#x201C;zygote&#x201D;</span>
+        zygoteServer.registerServerSocket(socketName);
+        <span class="hljs-keyword">if</span> (!enableLazyPreload) {
+            bootTimingsTraceLog.traceBegin(<span class="hljs-string">&quot;ZygotePreload&quot;</span>);
+            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_START,
+                SystemClock.uptimeMillis());
+            <span class="hljs-comment">//&#x9884;&#x52A0;&#x8F7D;&#x7C7B;&#x548C;&#x8D44;&#x6E90;</span>
+            preload(bootTimingsTraceLog);
+            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_END,
+                        SystemClock.uptimeMillis());
+                    bootTimingsTraceLog.traceEnd(); <span class="hljs-comment">// ZygotePreload</span>
+        } <span class="hljs-keyword">else</span> {
+            Zygote.resetNicePriority();
+        }
+        ......
+        <span class="hljs-keyword">if</span> (startSystemServer) {
+            <span class="hljs-comment">//&#x542F;&#x52A8;SystemServer&#x8FDB;&#x7A0B;</span>
+            startSystemServer(abiList, socketName, zygoteServer);
+        }
+
+        Log.i(TAG, <span class="hljs-string">&quot;Accepting command socket connections&quot;</span>);
+        <span class="hljs-comment">//&#x7B49;&#x5F85;AMS&#x8BF7;&#x6C42;</span>
+        zygoteServer.runSelectLoop(abiList);
+        zygoteServer.closeServerSocket();
+    }......
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;runSelectLoop&#x7B49;&#x5F85;AMS&#x8BF7;&#x6C42;</li>
+</ul>
+<h4 id="32-runselectloop">3.2 runSelectLoop</h4>
+<ul>
+<li>ZygoteServer.java#runSelectLoop</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">runSelectLoop</span><span class="hljs-params">(String abiList)</span> <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    ArrayList&lt;FileDescriptor&gt; fds = <span class="hljs-keyword">new</span> ArrayList&lt;FileDescriptor&gt;();
+    ArrayList&lt;ZygoteConnection&gt; peers = <span class="hljs-keyword">new</span> ArrayList&lt;ZygoteConnection&gt;();
+    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x8BE5;Socket&#x7684;fd&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x5E76;&#x6DFB;&#x52A0;fd&#x5230;fds&#x4E2D;</span>
+    fds.add(mServerSocket.getFileDescriptor());
+    peers.add(<span class="hljs-keyword">null</span>);
+
+    <span class="hljs-comment">//&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x7B49;&#x5F85;AMS&#x8BF7;&#x6C42;</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+        StructPollfd[] pollFds = <span class="hljs-keyword">new</span> StructPollfd[fds.size()];
+        <span class="hljs-comment">//&#x904D;&#x5386;fds&#x5C06;fds&#x6570;&#x7EC4;&#x590D;&#x5236;&#x5230;pollFds&#x6570;&#x7EC4;&#x4E2D;</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; pollFds.length; ++i) {
+            pollFds[i] = <span class="hljs-keyword">new</span> StructPollfd();
+            pollFds[i].fd = fds.get(i);
+            pollFds[i].events = (<span class="hljs-keyword">short</span>) POLLIN;
+        }
+        <span class="hljs-keyword">try</span> {
+            Os.poll(pollFds, -<span class="hljs-number">1</span>);
+        } <span class="hljs-keyword">catch</span> (ErrnoException ex) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;poll failed&quot;</span>, ex);
+        }
+        <span class="hljs-comment">//&#x5BF9;pollFds&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x904D;&#x5386;</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = pollFds.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+            <span class="hljs-keyword">if</span> ((pollFds[i].revents &amp; POLLIN) == <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">continue</span>;
+            }
+
+            <span class="hljs-comment">////&#x7B49;&#x4E8E;0&#x8868;&#x793A;&#x670D;&#x52A1;&#x5668;&#x7AEF;Socket&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x4E0A;&#x4E86;</span>
+            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) {
+                <span class="hljs-comment">//&#x83B7;&#x53D6;ZygoteConnection&#x5B9E;&#x4F8B; &#x5E76;&#x6DFB;&#x52A0;&#x5230;Socket&#x8FDE;&#x63A5;&#x5217;&#x8868;peers&#x4E2D;</span>
+                ZygoteConnection newPeer = acceptCommandPeer(abiList);
+                peers.add(newPeer);
+                fds.add(newPeer.getFileDesciptor());
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">//&#x5982;&#x679C;&#x4E0D;&#x7B49;&#x4E8E;0&#x5219;&#x8868;&#x793A;AMS&#x5411;Zygote&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684;&#x8BF7;&#x6C42;</span>
+                <span class="hljs-comment">//&#x8C03;&#x7528;runOnce&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</span>
+                <span class="hljs-keyword">boolean</span> done = peers.get(i).runOnce(<span class="hljs-keyword">this</span>);
+                <span class="hljs-keyword">if</span> (done) {
+                    peers.remove(i);
+                    fds.remove(i);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;runOnce&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;</li>
+</ul>
+<h4 id="33-runonce">3.3 runOnce</h4>
+<ul>
+<li>ZygoteConnection.java#runOnce</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">runOnce</span><span class="hljs-params">(ZygoteServer zygoteServer)</span> <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    String args[];
+    Arguments parsedArgs = <span class="hljs-keyword">null</span>;
+    FileDescriptor[] descriptors;
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x83B7;&#x53D6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;</span>
+        args = readArgumentList();
+        descriptors = mSocket.getAncillaryFileDescriptors();
+    } <span class="hljs-keyword">catch</span> (IOException ex) {
+        Log.w(TAG, <span class="hljs-string">&quot;IOException on command socket &quot;</span> + ex.getMessage());
+        closeSocket();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+    ......
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x5C06;args&#x5C01;&#x88C5;&#x6210;Arguments&#x5BF9;&#x8C61;parsedArgs&#x4E2D;</span>
+        parsedArgs = <span class="hljs-keyword">new</span> Arguments(args);
+        ......
+        <span class="hljs-comment">//&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B; &#x628A;parsedArgs&#x7684;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x8FC7;&#x53BB;</span>
+        pid = Zygote.forkAndSpecialize(parsedArgs.uid, parsedArgs.gid, parsedArgs.gids,
+                parsedArgs.debugFlags, rlimits, parsedArgs.mountExternal, parsedArgs.seInfo,
+                parsedArgs.niceName, fdsToClose, fdsToIgnore, parsedArgs.instructionSet,
+                parsedArgs.appDataDir);
+    }......
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">//pid==0&#x8868;&#x793A;&#x5F53;&#x524D;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x8FD0;&#x884C;&#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x4E2D; &#x4E5F;&#x5C31;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x4E2D;</span>
+            zygoteServer.closeServerSocket();
+            IoUtils.closeQuietly(serverPipeFd);
+            serverPipeFd = <span class="hljs-keyword">null</span>;
+            <span class="hljs-comment">//&#x5904;&#x7406;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</span>
+            handleChildProc(parsedArgs, descriptors, childPipeFd, newStderr);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            IoUtils.closeQuietly(childPipeFd);
+            childPipeFd = <span class="hljs-keyword">null</span>;
+            <span class="hljs-keyword">return</span> handleParentProc(pid, descriptors, serverPipeFd, parsedArgs);
+        }
+    } <span class="hljs-keyword">finally</span> {
+        IoUtils.closeQuietly(childPipeFd);
+        IoUtils.closeQuietly(serverPipeFd);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;forkAndSpecialize&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#xFF0C;&#x628A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x8FC7;&#x53BB;</li>
+<li>&#x5F53;pid==0&#x8868;&#x793A;&#x5F53;&#x524D;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x8FD0;&#x884C;&#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;handleChildProc&#x6765;&#x5904;&#x7406;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</li>
+</ul>
+<h4 id="34-forkandspecialize">3.4 forkAndSpecialize</h4>
+<ul>
+<li>Zygote.java#forkAndSpecialize</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">forkAndSpecialize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> uid, <span class="hljs-keyword">int</span> gid, <span class="hljs-keyword">int</span>[] gids, <span class="hljs-keyword">int</span> debugFlags,
+    <span class="hljs-keyword">int</span>[][] rlimits, <span class="hljs-keyword">int</span> mountExternal, String seInfo, String niceName, <span class="hljs-keyword">int</span>[] fdsToClose,
+    <span class="hljs-keyword">int</span>[] fdsToIgnore, String instructionSet, String appDataDir)</span> </span>{
+    VM_HOOKS.preFork();
+    <span class="hljs-comment">// Resets nice priority for zygote process.</span>
+    resetNicePriority();
+    <span class="hljs-comment">//&#x8C03;&#x7528;native&#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;</span>
+    <span class="hljs-keyword">int</span> pid = nativeForkAndSpecialize(
+        uid, gid, gids, debugFlags, rlimits, mountExternal, seInfo, niceName, fdsToClose,
+        fdsToIgnore, instructionSet, appDataDir);
+    <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) {
+        Trace.setTracingEnabled(<span class="hljs-keyword">true</span>);
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;PostFork&quot;</span>);
+    }
+    VM_HOOKS.postForkCommon();
+    <span class="hljs-keyword">return</span> pid;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">native</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">nativeForkAndSpecialize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> uid, <span class="hljs-keyword">int</span> gid, <span class="hljs-keyword">int</span>[] gids,
+    <span class="hljs-keyword">int</span> debugFlags,
+    <span class="hljs-keyword">int</span>[][] rlimits, <span class="hljs-keyword">int</span> mountExternal, String seInfo, String niceName, <span class="hljs-keyword">int</span>[] fdsToClose,
+    <span class="hljs-keyword">int</span>[] fdsToIgnore, String instructionSet, String appDataDir)</span></span>;
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;native&#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x7EE7;&#x7EED;&#x6DF1;&#x7A76;&#x4E86;</li>
+</ul>
+<h4 id="35-handlechildproc">3.5 handleChildProc</h4>
+<ul>
+<li>ZygoteConnection.java#handleChildProc</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleChildProc</span><span class="hljs-params">(Arguments parsedArgs,
+        FileDescriptor[] descriptors, FileDescriptor pipeFd, PrintStream newStderr)</span>
+        <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    closeSocket();
+    ......
+    <span class="hljs-keyword">if</span> (parsedArgs.invokeWith != <span class="hljs-keyword">null</span>) {
+        WrapperInit.execApplication(parsedArgs.invokeWith,
+            parsedArgs.niceName, parsedArgs.targetSdkVersion,
+            VMRuntime.getCurrentInstructionSet(),
+            pipeFd, parsedArgs.remainingArgs);
+    } <span class="hljs-keyword">else</span> {
+        ZygoteInit.zygoteInit(parsedArgs.targetSdkVersion,
+            parsedArgs.remainingArgs, <span class="hljs-keyword">null</span> <span class="hljs-comment">/* classLoader */</span>);
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;ZygoteInit.zygoteInit&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="36-zygoteinit">3.6 zygoteInit</h4>
+<ul>
+<li>ZygoteInit.java#zygoteInit</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">zygoteInit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> targetSdkVersion, String[] argv,
+    ClassLoader classLoader)</span> <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    <span class="hljs-keyword">if</span> (RuntimeInit.DEBUG) {
+        Slog.d(RuntimeInit.TAG, <span class="hljs-string">&quot;RuntimeInit: Starting application from zygote&quot;</span>);
+    }
+
+    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;ZygoteInit&quot;</span>);
+    RuntimeInit.redirectLogStreams();
+
+    RuntimeInit.commonInit();
+    <span class="hljs-comment">//&#x542F;&#x52A8;Binder&#x7EBF;&#x7A0B;&#x6C60;</span>
+    ZygoteInit.nativeZygoteInit();
+    <span class="hljs-comment">//&#x8FDB;&#x5165;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</span>
+    RuntimeInit.applicationInit(targetSdkVersion, argv, classLoader);
+}
+</code></pre>
+<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;ZygoteInit.nativeZygoteInit&#x542F;&#x52A8;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x8FDB;&#x884C;&#x89E3;&#x6790;</li>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;RuntimeInit.applicationInit&#x65B9;&#x6CD5;&#x53BB;&#x8FDB;&#x5165;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="36-applicationinit">3.6 applicationInit</h4>
+<ul>
+<li>RuntimeInit.java#applicationInit</li>
+<li>&#x7528;&#x6765;&#x542F;&#x52A8;ActivityThread</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applicationInit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> targetSdkVersion, String[] argv, ClassLoader classLoader)</span>
+    <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    ......
+
+    invokeStaticMain(args.startClass, args.startArgs, classLoader);
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;invokeStaticMain&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="37-invokestaticmain">3.7 invokeStaticMain</h4>
+<ul>
+<li>RuntimeInit.java#invokeStaticMain</li>
+<li>className&#x7684;&#x503C;&#x4E3A;&#x201C;android.app.ActivityThread&#x201D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x65B9;&#x4E3A;ActivityManagerService.java#startProcessLocked&#x4E2D;&#x5BF9;&#x5E94;&#x7684;entryPoint&#x7684;&#x503C;(entryPoint = &quot;android.app.ActivityThread&quot;)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">invokeStaticMain</span><span class="hljs-params">(String className, String[] argv, ClassLoader classLoader)</span>
+    <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    Class&lt;?&gt; cl;
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x627E;&#x5230;ActivityThread&#x7C7B;</span>
+        cl = Class.forName(className, <span class="hljs-keyword">true</span>, classLoader);
+    } <span class="hljs-keyword">catch</span> (ClassNotFoundException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(
+            <span class="hljs-string">&quot;Missing class when invoking static main &quot;</span> + className,
+            ex);
+    }
+
+    Method m;
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x627E;&#x5230;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</span>
+        m = cl.getMethod(<span class="hljs-string">&quot;main&quot;</span>, <span class="hljs-keyword">new</span> Class[] { String[].class });
+    } <span class="hljs-keyword">catch</span> (NoSuchMethodException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(
+            <span class="hljs-string">&quot;Missing static main on &quot;</span> + className, ex);
+    } <span class="hljs-keyword">catch</span> (SecurityException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(
+            <span class="hljs-string">&quot;Problem getting static main on &quot;</span> + className, ex);
+    }
+
+    ......
+    <span class="hljs-comment">//&#x542F;&#x52A8;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</span>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Zygote.MethodAndArgsCaller(m, argv);
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6280;&#x672F;&#x627E;&#x5230;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</li>
+<li>ZygoteInit.java&#x901A;&#x8FC7;&#x6355;&#x83B7;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x6267;&#x884C;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="38-main">3.8 main</h4>
+<ul>
+<li>ZygoteInit.java#main</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String argv[])</span> </span>{
+    ......
+    <span class="hljs-keyword">try</span> {
+        ......
+    } <span class="hljs-keyword">catch</span> (Zygote.MethodAndArgsCaller caller) {
+        caller.run();
+    } <span class="hljs-keyword">catch</span> (Throwable ex) {
+        Log.e(TAG, <span class="hljs-string">&quot;System zygote died with exception&quot;</span>, ex);
+        zygoteServer.closeServerSocket();
+        <span class="hljs-keyword">throw</span> ex;
+    }
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;&#x6355;&#x83B7;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x5F0F;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;MethodAndArgsCaller&#x7684;run&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="38-run">3.8 run</h4>
+<ul>
+<li>Zygote.java#MethodAndArgsCaller#run</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodAndArgsCaller</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Method mMethod;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String[] mArgs;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MethodAndArgsCaller</span><span class="hljs-params">(Method method, String[] args)</span> </span>{
+        mMethod = method;
+        mArgs = args;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x6267;&#x884C;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</span>
+            mMethod.invoke(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">new</span> Object[] { mArgs });
+        }
+        ......
+    }
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;Method&#x7684;invoke&#x65B9;&#x6CD5;&#x53BB;&#x6267;&#x884C;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="39-main">3.9 main</h4>
+<ul>
+<li>ActivityThread.java#main</li>
+<li>&#x4E3B;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x7C7B;ActivityThread</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;binder&#x7EBF;&#x7A0B;&#x6C60;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;">&#x56DB;&#x3001;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</h3>
+<ul>
+<li>Zygote&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x4E2D;&#x4F1A;&#x542F;&#x52A8;Binder&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x90A3;&#x4E48;&#x63A5;&#x4E0B;&#x6765;&#x5BF9;&#x8FD9;&#x90E8;&#x5206;&#x8FDB;&#x884C;&#x89E3;&#x6790;</li>
+</ul>
+<h4 id="41-zygoteinit">4.1 zygoteInit</h4>
+<ul>
+<li>ZygoteInit.java#zygoteInit</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">zygoteInit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> targetSdkVersion, String[] argv,
+    ClassLoader classLoader)</span> <span class="hljs-keyword">throws</span> Zygote.MethodAndArgsCaller </span>{
+    <span class="hljs-keyword">if</span> (RuntimeInit.DEBUG) {
+        Slog.d(RuntimeInit.TAG, <span class="hljs-string">&quot;RuntimeInit: Starting application from zygote&quot;</span>);
+    }
+
+    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;ZygoteInit&quot;</span>);
+    RuntimeInit.redirectLogStreams();
+
+    RuntimeInit.commonInit();
+    <span class="hljs-comment">//&#x542F;&#x52A8;Binder&#x7EBF;&#x7A0B;&#x6C60;</span>
+    ZygoteInit.nativeZygoteInit();
+    <span class="hljs-comment">//&#x8FDB;&#x5165;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</span>
+    RuntimeInit.applicationInit(targetSdkVersion, argv, classLoader);
+}
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;ZygoteInit.nativeZygoteInit&#x65B9;&#x6CD5;&#x53BB;&#x542F;&#x52A8;Binder&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x53EF;&#x77E5;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;native(JNI)&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="42-nativezygoteinit">4.2 nativeZygoteInit</h4>
+<ul>
+<li>ZygoteInit.java#nativeZygoteInit</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title">nativeZygoteInit</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<h4 id="43-registercomandroidinternaloszygoteinit">4.3 register_com_android_internal_os_ZygoteInit</h4>
+<ul>
+<li>AndroidRuntime.cpp#register_com_android_internal_os_ZygoteInit</li>
+<li>&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x77E5;&#x9053;nativeZygoteInit&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x662F;com_android_internal_os_ZygoteInit_nativeZygoteInit</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">register_com_android_internal_os_ZygoteInit</span><span class="hljs-params">(JNIEnv* env)</span>
+</span>{
+    <span class="hljs-keyword">const</span> JNINativeMethod methods[] = {
+        { <span class="hljs-string">&quot;nativeZygoteInit&quot;</span>, <span class="hljs-string">&quot;()V&quot;</span>,
+            (<span class="hljs-keyword">void</span>*) com_android_internal_os_ZygoteInit_nativeZygoteInit },
+    };
+    <span class="hljs-keyword">return</span> jniRegisterNativeMethods(env, <span class="hljs-string">&quot;com/android/internal/os/ZygoteInit&quot;</span>,
+        methods, NELEM(methods));
+}
+</code></pre>
+<h4 id="44-comandroidinternaloszygoteinitnativezygoteinit">4.4 com_android_internal_os_ZygoteInit_nativeZygoteInit</h4>
+<ul>
+<li>AndroidRuntime.cpp#com_android_internal_os_ZygoteInit_nativeZygoteInit</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">com_android_internal_os_ZygoteInit_nativeZygoteInit</span><span class="hljs-params">(JNIEnv* env, jobject clazz)</span>
+</span>{
+    gCurRuntime-&gt;onZygoteInit();
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;gCurRuntime-&gt;onZygoteInit();</li>
+</ul>
+<h4 id="45-gcurruntime">4.5 gCurRuntime</h4>
+<ul>
+<li>&#x9700;&#x8981;&#x77E5;&#x9053;gCurRuntime&#x53D8;&#x91CF;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x624D;&#x80FD;&#x627E;&#x5230;onZygoteInit&#x65B9;&#x6CD5;</li>
+<li>AndroidRuntime.cpp</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-keyword">static</span> AndroidRuntime* gCurRuntime = <span class="hljs-literal">NULL</span>;
+......
+AndroidRuntime::AndroidRuntime(<span class="hljs-keyword">char</span>* argBlockStart, <span class="hljs-keyword">const</span> <span class="hljs-keyword">size_t</span> argBlockLength) :
+        mExitWithoutCleanup(<span class="hljs-literal">false</span>),
+        mArgBlockStart(argBlockStart),
+        mArgBlockLength(argBlockLength)
+{
+    SkGraphics::Init();
+    mOptions.setCapacity(<span class="hljs-number">20</span>);
+    assert(gCurRuntime == <span class="hljs-literal">NULL</span>);
+    <span class="hljs-comment">//&#x91CD;&#x70B9;</span>
+    gCurRuntime = <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<ul>
+<li>&#x4ECE;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;gCurRuntime&#x662F;AndroidRuntime&#x7C7B;&#x578B;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5728;AndroidRuntime&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x8D4B;&#x503C;&#x7684;&#x3002;</li>
+<li>AppRuntime&#x7EE7;&#x627F;&#x81EA;AndroidRuntime&#xFF0C;AppRuntime&#x521B;&#x5EFA;&#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528;AndroidRuntime&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;gCurRuntime&#x5C31;&#x4F1A;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5B83;&#x6307;&#x5411;AppRuntime&#xFF0C;&#x6240;&#x4EE5;onZygoteInit&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;AppRuntime&#x7684;onZygoteInit&#x51FD;&#x6570;</li>
+</ul>
+<h4 id="46-onzygoteinit">4.6 onZygoteInit</h4>
+<ul>
+<li>app_main.cpp#AppRuntime#onZygoteInit</li>
+</ul>
+<pre><code class="lang-c">......
+<span class="hljs-keyword">class</span> AppRuntime : <span class="hljs-keyword">public</span> AndroidRuntime
+{
+    ......
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onZygoteInit</span><span class="hljs-params">()</span>
+    </span>{
+        sp&lt;ProcessState&gt; proc = ProcessState::self();
+        ALOGV(<span class="hljs-string">&quot;App process: starting thread pool.\n&quot;</span>);
+        <span class="hljs-comment">//&#x542F;&#x52A8;&#x7EBF;&#x7A0B;&#x6C60;</span>
+        proc-&gt;startThreadPool();
+    }
+    ......
+}
+......
+</code></pre>
+<ul>
+<li>AppRuntime&#x7C7B;&#x5728;app_main.cpp&#x4E2D;</li>
+<li>&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x4E86;proc-&gt;startThreadPool();&#x6765;&#x542F;&#x52A8;&#x7EBF;&#x7A0B;&#x6C60;</li>
+</ul>
+<h4 id="47-startthreadpool">4.7 startThreadPool</h4>
+<ul>
+<li>ProcessState.cpp#startThreadPool</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-keyword">void</span> ProcessState::startThreadPool()
+{
+    AutoMutex _l(mLock);
+    <span class="hljs-keyword">if</span> (!mThreadPoolStarted) {
+        mThreadPoolStarted = <span class="hljs-literal">true</span>;
+        spawnPooledThread(<span class="hljs-literal">true</span>);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x652F;&#x6301;Binder&#x901A;&#x4FE1;&#x7684;&#x8FDB;&#x7A0B;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A;ProcessState&#x7C7B;&#xFF0C;&#x91CC;&#x9762;&#x6709;&#x4E00;&#x4E2A;mThreadPoolStarted&#x53D8;&#x91CF;&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x542F;&#x52A8;&#x8FC7;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x65F6;false&#xFF0C;&#x5728;&#x6BCF;&#x6B21;&#x8C03;&#x7528;startThreadPool&#x4F1A;&#x68C0;&#x67E5;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x53EA;&#x4F1A;&#x88AB;&#x542F;&#x52A8;&#x4E00;&#x6B21;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x542F;&#x52A8;&#x8FC7;&#x5219;&#x628A;mThreadPoolStarted = true&#x3002;</li>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;spawnPooledThread&#x65B9;&#x6CD5;</li>
+<li>&#x6BCF;&#x4E2A;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x53EA;&#x5141;&#x8BB8;&#x542F;&#x52A8;&#x4E00;&#x4E2A;binder&#x7EBF;&#x7A0B;&#x6C60;, &#x4E14;&#x672C;&#x6B21;&#x521B;&#x5EFA;&#x7684;&#x662F;binder&#x4E3B;&#x7EBF;&#x7A0B;(isMain=true). &#x5176;&#x4F59;binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x7531;Binder&#x9A71;&#x52A8;&#x6765;&#x63A7;&#x5236;&#x521B;&#x5EFA;&#x7684;&#x3002;</li>
+</ul>
+<h4 id="48-spawnpooledthread">4.8 spawnPooledThread</h4>
+<ul>
+<li>ProcessState.cpp#spawnPooledThread</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-keyword">void</span> ProcessState::spawnPooledThread(<span class="hljs-keyword">bool</span> isMain)
+{
+    <span class="hljs-keyword">if</span> (mThreadPoolStarted) {
+        String8 name = makeBinderThreadName();
+        ALOGV(<span class="hljs-string">&quot;Spawning new pooled thread, name=%s\n&quot;</span>, name.<span class="hljs-built_in">string</span>());
+        sp&lt;Thread&gt; t = <span class="hljs-keyword">new</span> PoolThread(isMain);
+        t-&gt;run(name.<span class="hljs-built_in">string</span>());
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4ECE;&#x4EE3;&#x7801;&#x77E5;&#x9053;Binder&#x7EBF;&#x7A0B;&#x4E3A;PoolThread&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="49-poolthread">4.9 PoolThread</h4>
+<ul>
+<li>ProcessState.cpp#PoolThread</li>
+</ul>
+<pre><code class="lang-c">class PoolThread : public Thread
+{
+public:
+    explicit PoolThread(bool isMain)
+        : mIsMain(isMain)
+    {
+    }
+
+protected:
+    virtual bool threadLoop()
+    {
+        IPCThreadState::self()-&gt;joinThreadPool(mIsMain);
+        return false;
+    }
+
+    const bool mIsMain;
+};
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;IPCThreadState&#x7684;joinThreadPool&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6CE8;&#x518C;&#x5230;Binder&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x5C31;&#x52A0;&#x5165;&#x5230;&#x4E86;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x3002;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x5C31;&#x53EF;&#x4EE5;&#x652F;&#x6301;Binder&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x4E86;&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x52A0;&#x5165;&#x5230;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x53EA;&#x6709;binder&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x5230;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x662F;&#x7531;Binder&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6765;&#x63A7;&#x5236;&#x7684;</li>
+<li>&#x4F7F;&#x7528;&#xFF1A;&#x53EA;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;Binder&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x6CE8;&#x518C;&#x5230;ServiceManager&#x4E2D;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;Binder&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF0C;&#x800C;&#x4E0D;&#x5FC5;&#x5173;&#x5FC3;&#x8FDB;&#x7A0B;&#x95F4;&#x65F6;&#x5982;&#x4F55;&#x901A;&#x8FC7;Binder&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;&#x6D88;&#x606F;&#x5FAA;&#x73AF;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;">&#x4E94;&#x3001;&#x6D88;&#x606F;&#x5FAA;&#x73AF;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;</h3>
+<h4 id="51-main">5.1 main</h4>
+<ul>
+<li><p>&#x7531;&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x53EF;&#x77E5;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528;ActivityThread&#x7684;main&#x65B9;&#x6CD5;</p>
+</li>
+<li><p>ActivityThread.java#main</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;ActivityThreadMain&quot;</span>);
+    SamplingProfilerIntegration.start();
+
+    CloseGuard.setEnabled(<span class="hljs-keyword">false</span>);
+
+    Environment.initForCurrentUser();
+
+    EventLogger.setReporter(<span class="hljs-keyword">new</span> EventLoggingReporter());
+
+    <span class="hljs-keyword">final</span> File configDir = Environment.getUserConfigDirectory(UserHandle.myUserId());
+    TrustedCertificateStore.setDefaultUserDirectory(configDir);
+
+    Process.setArgV0(<span class="hljs-string">&quot;&lt;pre-initialized&gt;&quot;</span>);
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E3B;&#x7EBF;&#x7A0B;&#x6D88;&#x606F;&#x5FAA;&#x73AF;Looper</span>
+    Looper.prepareMainLooper();
+
+    ActivityThread thread = <span class="hljs-keyword">new</span> ActivityThread();
+    thread.attach(<span class="hljs-keyword">false</span>);
+
+    <span class="hljs-keyword">if</span> (sMainThreadHandler == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E3B;&#x7EBF;&#x7A0B;H&#x7C7B;</span>
+        sMainThreadHandler = thread.getHandler();
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">false</span>) {
+        Looper.myLooper().setMessageLogging(<span class="hljs-keyword">new</span>
+            LogPrinter(Log.DEBUG, <span class="hljs-string">&quot;ActivityThread&quot;</span>));
+    }
+
+    Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+    <span class="hljs-comment">//Looper&#x5F00;&#x59CB;&#x5DE5;&#x4F5C; &#x5F00;&#x59CB;&#x5FAA;&#x73AF;</span>
+    Looper.loop();
+
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;Main thread loop unexpectedly exited&quot;</span>);
+}
+</code></pre>
+<ul>
+<li>&#x8BE6;&#x7EC6;&#x53EF;&#x4EE5;&#x67E5;&#x770B;<a href="ActivityThread&#x89E3;&#x6790;.html">ActivityThread&#x89E3;&#x6790;</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="SystemServer进程解析.html" class="navigation navigation-prev " aria-label="Previous page: SystemServer进程解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="根Activity启动过程.html" class="navigation navigation-next " aria-label="Next page: 根Activity启动过程">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"应用程序进程启动过程","level":"5.2.5","depth":2,"next":{"title":"根Activity启动过程","level":"5.2.6","depth":2,"path":"Android组件内核/FrameWork内核解析/根Activity启动过程.md","ref":"Android组件内核/FrameWork内核解析/根Activity启动过程.md","articles":[]},"previous":{"title":"SystemServer进程解析","level":"5.2.4","depth":2,"path":"Android组件内核/FrameWork内核解析/SystemServer进程解析.md","ref":"Android组件内核/FrameWork内核解析/SystemServer进程解析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android组件内核/FrameWork内核解析/应用程序进程启动过程.md","mtime":"2020-11-03T06:53:30.510Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

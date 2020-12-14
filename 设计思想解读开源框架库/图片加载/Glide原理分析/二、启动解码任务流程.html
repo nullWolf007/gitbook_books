@@ -1,0 +1,3411 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>二、启动解码任务流程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Glide缓存原理之BitmapPool.html" />
+    
+    
+    <link rel="prev" href="一、Fragment感知生命周期.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../../必备Java知识/关键字/static.html">
+            
+                <a href="../../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../../必备Java知识/关键字/final.html">
+            
+                <a href="../../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../../高级UI/自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../../高级UI/自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../../高级UI/Webview/Webview.html">
+            
+                <a href="../../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../Bitmap/Bitmap解析.html">
+            
+                <a href="../Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="一、Fragment感知生命周期.html">
+            
+                <a href="一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="9.2.2.2" data-path="二、启动解码任务流程.html">
+            
+                <a href="二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="Glide缓存原理之BitmapPool.html">
+            
+                <a href="Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="Glide缓存原理之ActiveResources.html">
+            
+                <a href="Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="Glide缓存原理之LruCache.html">
+            
+                <a href="Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="Glide原理分析之磁盘缓存.html">
+            
+                <a href="Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../Retrofit/Retrofit的使用.html">
+            
+                <a href="../../Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >二、启动解码任务流程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="&#x542F;&#x52A8;&#x89E3;&#x7801;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B;">&#x542F;&#x52A8;&#x89E3;&#x7801;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B;</h2>
+<h3 id="&#x4E00;&#x3001;&#x524D;&#x8A00;">&#x4E00;&#x3001;&#x524D;&#x8A00;</h3>
+<h4 id="11-&#x4F8B;&#x5B50;">1.1 &#x4F8B;&#x5B50;</h4>
+<pre><code class="lang-java">Glide.with(<span class="hljs-keyword">this</span>).load(R.drawable.ic_launcher_background).into(imageView);
+</code></pre>
+<h3 id="&#x4E8C;&#x3001;requestbuilderinto&#x5230;singlerequestbegin">&#x4E8C;&#x3001;RequestBuilder#into&#x5230;SingleRequest#begin</h3>
+<h4 id="21-requestbuilderinto">2.1 RequestBuilder#into</h4>
+<ul>
+<li>RequestBuilder&#x6709;&#x591A;&#x4E2A;&#x91CD;&#x8F7D;&#x7684;into&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;&#x5982;&#x4E0B;&#x7684;&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> &lt;Y extends Target&lt;TranscodeType&gt;&gt; <span class="hljs-function">Y <span class="hljs-title">into</span><span class="hljs-params">(
+    @NonNull Y target,
+    @Nullable RequestListener&lt;TranscodeType&gt; targetListener,
+    BaseRequestOptions&lt;?&gt; options,
+    Executor callbackExecutor)</span> </span>{
+    ......
+    <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SingleRequest&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span>
+    Request request = buildRequest(target, targetListener, options, callbackExecutor);
+    Request previous = target.getRequest();
+    <span class="hljs-keyword">if</span> (request.isEquivalentTo(previous)
+        &amp;&amp; !isSkipMemoryCacheWithCompletePreviousRequest(options, previous)) {
+          <span class="hljs-keyword">if</span> (!Preconditions.checkNotNull(previous).isRunning()) {
+            <span class="hljs-comment">//&#x5F53;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x624D;&#x4F1A;&#x8C03;&#x7528;begin</span>
+            previous.begin();
+          }
+      <span class="hljs-keyword">return</span> target;
+    }
+
+    requestManager.clear(target);
+    target.setRequest(request);
+    <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+    requestManager.track(target, request);
+    <span class="hljs-keyword">return</span> target;
+}
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SingleRequest&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6;&#x4F1A;&#x628A;SingleRequest&#x4E2D;&#x7684;status&#x7F6E;&#x4E3A;PENDING</li>
+<li><p>&#x5206;&#x6790;2&#xFF1A;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x8C03;&#x7528;requestManager.track()&#x65B9;&#x6CD5;</p>
+</li>
+<li><p>&#x5F53;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x624D;&#x4F1A;&#x8C03;&#x7528;previous.begin()&#x65B9;&#x6CD5;&#xFF0C;previous&#x662F;Request&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x4F8B;&#x800C;&#x8A00;&#xFF0C;&#x6B64;previous&#x5C31;&#x662F;SingleRequest&#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x5B9E;&#x4F8B;&#x800C;&#x8A00;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;</p>
+</li>
+</ul>
+<h4 id="22-requestmanagertrack">2.2 RequestManager#track</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">(@NonNull Target&lt;?&gt; target, @NonNull Request request)</span> </span>{
+    targetTracker.track(target);
+    requestTracker.runRequest(request);
+}
+</code></pre>
+<ul>
+<li>&#x63A5;&#x7740;&#x4F1A;&#x8C03;&#x7528;requestTracker&#x7684;runRequest&#x65B9;&#x6CD5;</li>
+<li>requestTracker&#x662F;RequestTracker&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="23-requesttrackerrunrequest">2.3 RequestTracker#runRequest</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">runRequest</span><span class="hljs-params">(@NonNull Request request)</span> </span>{
+    requests.add(request);
+    <span class="hljs-keyword">if</span> (!isPaused) {
+        request.begin();
+    } <span class="hljs-keyword">else</span> {
+          request.clear();
+          <span class="hljs-keyword">if</span> (Log.isLoggable(TAG, Log.VERBOSE)) {
+            Log.v(TAG, <span class="hljs-string">&quot;Paused, delaying request&quot;</span>);
+          }
+          pendingRequests.add(request);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;request&#x7684;begin&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;request&#x662F;SingleRequest&#x7684;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="24-singlerequestbegin">2.4 SingleRequest#begin</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">synchronized</span> (requestLock) {
+          assertNotCallingCallbacks();
+          stateVerifier.throwIfRecycled();
+          startTime = LogTime.getLogTime();
+          <span class="hljs-keyword">if</span> (model == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">if</span> (Util.isValidDimensions(overrideWidth, overrideHeight)) {
+                  width = overrideWidth;
+                  height = overrideHeight;
+            }
+            <span class="hljs-keyword">int</span> logLevel = getFallbackDrawable() == <span class="hljs-keyword">null</span> ? Log.WARN : Log.DEBUG;
+            onLoadFailed(<span class="hljs-keyword">new</span> GlideException(<span class="hljs-string">&quot;Received null model&quot;</span>), logLevel);
+            <span class="hljs-keyword">return</span>;
+          }
+
+          <span class="hljs-keyword">if</span> (status == Status.RUNNING) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Cannot restart a running request&quot;</span>);
+          }
+
+          <span class="hljs-keyword">if</span> (status == Status.COMPLETE) {
+            onResourceReady(resource, DataSource.MEMORY_CACHE);
+            <span class="hljs-keyword">return</span>;
+          }
+
+        <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+          status = Status.WAITING_FOR_SIZE;
+          <span class="hljs-keyword">if</span> (Util.isValidDimensions(overrideWidth, overrideHeight)) {
+            onSizeReady(overrideWidth, overrideHeight);
+          } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//&#x5206;&#x6790;3</span>
+            target.getSize(<span class="hljs-keyword">this</span>);
+          }
+
+          <span class="hljs-keyword">if</span> ((status == Status.RUNNING || status == Status.WAITING_FOR_SIZE)
+              &amp;&amp; canNotifyStatusChanged()) {
+            <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+            target.onLoadStarted(getPlaceholderDrawable());
+          }
+          <span class="hljs-keyword">if</span> (IS_VERBOSE_LOGGABLE) {
+            logV(<span class="hljs-string">&quot;finished run method in &quot;</span> + LogTime.getElapsedMillis(startTime));
+          }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5176;&#x4E2D;status&#x662F;enum&#x7C7B;&#x578B;&#x503C;&#xFF0C;&#x6709;&#x516D;&#x79CD;&#x72B6;&#x6001;&#x503C;&#xFF0C;&#x4E0B;&#x4E00;&#x5C0F;&#x8282;&#x4F1A;&#x4ECB;&#x7ECD;</li>
+<li>&#x5206;&#x6790;1&#xFF1A;SingleRequest&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x662F;PENDING&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x6B21;&#x8FDB;&#x5165;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5728;&#x628A;status&#x7F6E;&#x4E3A;WAITING_FOR_SIZE</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x4F1A;&#x8C03;&#x7528;ImageViewTarget&#x7684;onLoadStarted&#x65B9;&#x6CD5;</li>
+<li>&#x5206;&#x6790;3&#xFF1A;&#x8C03;&#x7528;getSize&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x83B7;&#x53D6;size&#x503C;&#xFF0C;&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5176;&#x4E2D;target&#x5E94;&#x8BE5;&#x4E3A;ImageViewTarget&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x7684;&#x662F;ImageViewTarget&#x7684;getSize()</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;imageviewtargetgetsize&#x5230;engineload">&#x4E09;&#x3001;ImageViewTarget#getSize&#x5230;Engine#load</h3>
+<h4 id="31-imageviewtargetgetsize">3.1 ImageViewTarget#getSize</h4>
+<ul>
+<li><p>&#x5728;2.4&#x7684;&#x5206;&#x6790;3&#x4E2D;&#x8C03;&#x7528;&#x4E86;target.getSize(this)&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;ImageViewTarget#getSize&#x65B9;&#x6CD5;</p>
+</li>
+<li><p>ImageViewTarget&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ImageViewTarget</span>&lt;<span class="hljs-title">Z</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewTarget</span>&lt;<span class="hljs-title">ImageView</span>, <span class="hljs-title">Z</span>&gt;
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">Transition</span>.<span class="hljs-title">ViewAdapter</span> </span>{
+    ......
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-meta">@Deprecated</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewTarget</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">View</span>, <span class="hljs-title">Z</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseTarget</span>&lt;<span class="hljs-title">Z</span>&gt; </span>{
+    ......
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-meta">@Deprecated</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseTarget</span>&lt;<span class="hljs-title">Z</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Target</span>&lt;<span class="hljs-title">Z</span>&gt; </span>{
+    ......
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Target</span>&lt;<span class="hljs-title">R</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">LifecycleListener</span> </span>{
+    ......
+}
+</code></pre>
+<ul>
+<li>&#x7531;&#x4E8E;ImageViewTarget&#x4E2D;&#x6CA1;&#x6709;getSize&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x7EE7;&#x627F;&#x7684;&#x662F;ViewTarget&#x7684;getSize&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="32-viewtargetgetsize">3.2 ViewTarget#getSize</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@CallSuper</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getSize</span><span class="hljs-params">(@NonNull SizeReadyCallback cb)</span> </span>{
+    sizeDeterminer.getSize(cb);
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;&#x7684;SizeDeterminer&#x5BF9;&#x8C61;sizeDeterminer&#x7684;getSize&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="33-viewtargetsizedeterminergetsize">3.3 ViewTarget#SizeDeterminer#getSize</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getSize</span><span class="hljs-params">(@NonNull SizeReadyCallback cb)</span> </span>{
+    <span class="hljs-keyword">int</span> currentWidth = getTargetWidth();
+    <span class="hljs-keyword">int</span> currentHeight = getTargetHeight();
+    <span class="hljs-keyword">if</span> (isViewStateAndSizeValid(currentWidth, currentHeight)) {
+        <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+        cb.onSizeReady(currentWidth, currentHeight);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (!cbs.contains(cb)) {
+        cbs.add(cb);
+    }
+    <span class="hljs-keyword">if</span> (layoutListener == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+        ViewTreeObserver observer = view.getViewTreeObserver();
+        layoutListener = <span class="hljs-keyword">new</span> SizeDeterminerLayoutListener(<span class="hljs-keyword">this</span>);
+        observer.addOnPreDrawListener(layoutListener);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#x7684;&#x8BDD;&#x5176;&#x4E2D;&#x4F1A;&#x8C03;&#x7528;cb.onSizeReady&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;cb&#x662F;SizeReadyCallback&#x5BF9;&#x8C61;&#xFF0C;SizeReadyCallback&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7C7B;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;SingleRequest&#x6240;&#x4EE5;&#x8C03;&#x7528;cb.onSizeReady&#x7B49;&#x4E8E;&#x8C03;&#x7528;SingleRequest&#x7684;onSizeReady&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x5B9E;&#x4F8B;&#x800C;&#x8A00;&#x5206;&#x6790;1&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+<li>&#x4F1A;&#x6267;&#x884C;&#x5206;&#x6790;2&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x4E2D;&#x4F1A;&#x521B;&#x5EFA;SizeDeterminerLayoutListener&#x7684;&#x76D1;&#x542C;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;View&#x7684;addOnPreDrawListener&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x76D1;&#x542C;&#xFF0C;&#x4F7F;&#x5176;onPreDraw&#x65F6;&#x5019;&#x8C03;&#x7528;SizeDeterminerLayoutListener&#x5BF9;&#x8C61;&#x7684;onPreDraw&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="34-viewtargetsizedeterminerlayoutlisteneronpredraw">3.4 ViewTarget#SizeDeterminerLayoutListener#onPreDraw</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SizeDeterminerLayoutListener</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">ViewTreeObserver</span>.<span class="hljs-title">OnPreDrawListener</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onPreDraw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (Log.isLoggable(TAG, Log.VERBOSE)) {
+              Log.v(TAG, <span class="hljs-string">&quot;OnGlobalLayoutListener called attachStateListener=&quot;</span> + <span class="hljs-keyword">this</span>);
+        }
+        SizeDeterminer sizeDeterminer = sizeDeterminerRef.get();
+        <span class="hljs-keyword">if</span> (sizeDeterminer != <span class="hljs-keyword">null</span>) {
+              sizeDeterminer.checkCurrentDimens();
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;SizeDeterminer&#x5BF9;&#x8C61;sizeDeterminer&#x7684;checkCurrentDimens&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="35-viewtargetsizedeterminercheckcurrentdimens">3.5 ViewTarget#SizeDeterminer#checkCurrentDimens</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@Synthetic</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">checkCurrentDimens</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (cbs.isEmpty()) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">int</span> currentWidth = getTargetWidth();
+    <span class="hljs-keyword">int</span> currentHeight = getTargetHeight();
+    <span class="hljs-keyword">if</span> (!isViewStateAndSizeValid(currentWidth, currentHeight)) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    notifyCbs(currentWidth, currentHeight);
+    clearCallbacksAndListener();
+}
+</code></pre>
+<ul>
+<li>&#x7136;&#x540E;&#x4F1A;&#x8C03;&#x7528;notifyCbs&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="36-viewtargetsizedeterminernotifycbs">3.6 ViewTarget#SizeDeterminer#notifyCbs</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">notifyCbs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> width, <span class="hljs-keyword">int</span> height)</span> </span>{
+    <span class="hljs-keyword">for</span> (SizeReadyCallback cb : <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(cbs)) {
+        cb.onSizeReady(width, height);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;SizeReadyCallback&#x5BF9;&#x8C61;cb&#x7684;onSizeReady&#x65B9;&#x6CD5;</li>
+<li>&#x5176;&#x4E2D;SingleRequest&#x662F;SizeReadyCallback&#x7684;&#x662F;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x8C03;&#x7528;SingleRequest&#x7684;onSizeReady</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SingleRequest</span>&lt;<span class="hljs-title">R</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Request</span>, <span class="hljs-title">SizeReadyCallback</span>, <span class="hljs-title">ResourceCallback</span> </span>{
+    ......
+}
+</code></pre>
+<h4 id="37-singlerequestonsizeready">3.7 SingleRequest#onSizeReady</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSizeReady</span><span class="hljs-params">(<span class="hljs-keyword">int</span> width, <span class="hljs-keyword">int</span> height)</span> </span>{
+    stateVerifier.throwIfRecycled();
+    <span class="hljs-keyword">synchronized</span> (requestLock) {
+    ......
+          <span class="hljs-keyword">if</span> (status != Status.WAITING_FOR_SIZE) {
+            <span class="hljs-keyword">return</span>;
+          }
+        status = Status.RUNNING;
+
+          ......
+          loadStatus =engine.load(
+                          glideContext,
+                          model,
+                          requestOptions.getSignature(),
+                          <span class="hljs-keyword">this</span>.width,
+                          <span class="hljs-keyword">this</span>.height,
+                          requestOptions.getResourceClass(),
+                          transcodeClass,
+                          priority,
+                          requestOptions.getDiskCacheStrategy(),
+                          requestOptions.getTransformations(),
+                          requestOptions.isTransformationRequired(),
+                          requestOptions.isScaleOnlyOrNoTransform(),
+                          requestOptions.getOptions(),
+                          requestOptions.isMemoryCacheable(),
+                          requestOptions.getUseUnlimitedSourceGeneratorsPool(),
+                          requestOptions.getUseAnimationPool(),
+                          requestOptions.getOnlyRetrieveFromCache(),
+                          <span class="hljs-keyword">this</span>,
+                          callbackExecutor);
+        ......
+    }
+}
+</code></pre>
+<ul>
+<li>&#x4F1A;&#x5C06;status&#x4ECE;WAITING_FOR_SIZE&#x72B6;&#x6001;&#x5207;&#x6362;&#x4E3A;RUNNING&#x72B6;&#x6001;</li>
+<li>&#x7136;&#x540E;&#x8C03;&#x7528;engine&#x7684;load&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;engine&#x662F;Engine&#x5BF9;&#x8C61;</li>
+</ul>
+<h4 id="38-engineload">3.8 Engine#load</h4>
+<ul>
+<li>&#x81F3;&#x6B64;&#x5230;&#x8FBE;&#x4E86;Engine#load&#x65B9;&#x6CD5;</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;engineload&#x5230;decodejobrun">&#x56DB;&#x3001;Engine#load&#x5230;DecodeJob#run</h3>
+<h4 id="41-engineload">4.1 Engine#load</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> &lt;R&gt; <span class="hljs-function">LoadStatus <span class="hljs-title">load</span><span class="hljs-params">(
+      GlideContext glideContext,
+      Object model,
+      Key signature,
+      <span class="hljs-keyword">int</span> width,
+      <span class="hljs-keyword">int</span> height,
+      Class&lt;?&gt; resourceClass,
+      Class&lt;R&gt; transcodeClass,
+      Priority priority,
+      DiskCacheStrategy diskCacheStrategy,
+      Map&lt;Class&lt;?&gt;, Transformation&lt;?&gt;&gt; transformations,
+      <span class="hljs-keyword">boolean</span> isTransformationRequired,
+      <span class="hljs-keyword">boolean</span> isScaleOnlyOrNoTransform,
+      Options options,
+      <span class="hljs-keyword">boolean</span> isMemoryCacheable,
+      <span class="hljs-keyword">boolean</span> useUnlimitedSourceExecutorPool,
+      <span class="hljs-keyword">boolean</span> useAnimationPool,
+      <span class="hljs-keyword">boolean</span> onlyRetrieveFromCache,
+      ResourceCallback cb,
+      Executor callbackExecutor)</span> </span>{
+    <span class="hljs-keyword">long</span> startTime = VERBOSE_IS_LOGGABLE ? LogTime.getLogTime() : <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    EngineKey key =
+        keyFactory.buildKey(
+            model,
+            signature,
+            width,
+            height,
+            transformations,
+            resourceClass,
+            transcodeClass,
+            options);
+
+    EngineResource&lt;?&gt; memoryResource;
+    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) {
+        <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+      memoryResource = loadFromMemory(key, isMemoryCacheable, startTime);
+
+      <span class="hljs-keyword">if</span> (memoryResource == <span class="hljs-keyword">null</span>) {
+          <span class="hljs-comment">//&#x5206;&#x6790;3</span>
+            <span class="hljs-keyword">return</span> waitForExistingOrStartNewJob(
+                glideContext,
+                model,
+                signature,
+                width,
+                height,
+                resourceClass,
+                transcodeClass,
+                priority,
+                diskCacheStrategy,
+                transformations,
+                isTransformationRequired,
+                isScaleOnlyOrNoTransform,
+                options,
+                isMemoryCacheable,
+                useUnlimitedSourceExecutorPool,
+                useAnimationPool,
+                onlyRetrieveFromCache,
+                cb,
+                callbackExecutor,
+                key,
+                startTime);
+      }
+    }
+
+    <span class="hljs-comment">// Avoid calling back while holding the engine lock, doing so makes it easier for callers to</span>
+    <span class="hljs-comment">// deadlock.</span>
+    cb.onResourceReady(memoryResource, DataSource.MEMORY_CACHE);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x4F7F;&#x7528;EngineKeyFactory&#x7684;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;keyFactory&#x7684;buildKey&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E86;EngineKey&#x8D44;&#x6E90;&#x6807;&#x8BC6;&#x7B26;&#x5BF9;&#x8C61;key</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x4F7F;&#x7528;&#x6B64;key&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x901A;&#x8FC7;loadFromMemory&#x65B9;&#x6CD5;&#x53BB;&#x5185;&#x5B58;&#x4E2D;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x5230;&#x4E86;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x628A;&#x8D44;&#x6E90;&#x56DE;&#x4F20;&#x7ED9;Resource&#x5C31;&#x884C;</li>
+<li>&#x5206;&#x6790;3&#xFF1A;&#x5982;&#x679C;&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#x5230;&#x6570;&#x636E;&#xFF0C;Engine&#x5C31;&#x4F1A;&#x8C03;&#x7528;waitForExistingOrStartNewJob&#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x548C;&#x542F;&#x52A8;&#x65B0;&#x7684;EngineJob &#x548C;&#x89E3;&#x7801;&#x4EFB;&#x52A1; DecodeJob</li>
+</ul>
+<h4 id="42-enginekeyfactory">4.2 EngineKeyFactory</h4>
+<ul>
+<li><p>EngineKeyFactory &#x662F; Engine &#x4E2D;&#x4E00;&#x4E2A;&#x8D1F;&#x8D23;&#x751F;&#x4EA7; EngineKey &#x7684;&#x5DE5;&#x5382;&#xFF0C;EngineKey &#x662F;&#x5F15;&#x64CE;&#x4EFB;&#x52A1;&#x8D44;&#x6E90;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5173;&#x4E8E;&#x4EC0;&#x4E48;&#x662F; Key &#x540E;&#x9762;&#x8FDB;&#x4E00;&#x6B65;&#x8BB2;&#x3002;</p>
+</li>
+<li><p>&#x5728; Engine &#x542F;&#x52A8;&#x65B0;&#x7684;&#x4EFB;&#x52A1;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x524D;&#xFF0C;&#x4F1A;&#x5148;&#x901A;&#x8FC7; EngineKeyFactory &#x521B;&#x5EFA;&#x4E00;&#x4E2A; EngineKey&#xFF0C;&#x7136;&#x540E;&#x8BA9; DecodeJob &#x628A;&#x8D44;&#x6E90;&#x4E0E; EngineKey &#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;&#x8FD9;&#x91CC;&#x8BF4;&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x628A; model &#x653E;&#x5230; EngineKey &#x4E2D;&#x3002;</p>
+</li>
+</ul>
+<h4 id="43-enginewaitforexistingorstartnewjob">4.3 Engine#waitForExistingOrStartNewJob</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> &lt;R&gt; <span class="hljs-function">LoadStatus <span class="hljs-title">waitForExistingOrStartNewJob</span><span class="hljs-params">(
+    ......)</span> </span>{
+
+    EngineJob&lt;?&gt; current = jobs.get(key, onlyRetrieveFromCache);
+    <span class="hljs-keyword">if</span> (current != <span class="hljs-keyword">null</span>) {
+      current.addCallback(cb, callbackExecutor);
+      <span class="hljs-keyword">if</span> (VERBOSE_IS_LOGGABLE) {
+        logWithTimeAndKey(<span class="hljs-string">&quot;Added to existing load&quot;</span>, startTime, key);
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> LoadStatus(cb, current);
+    }
+
+    <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+    EngineJob&lt;R&gt; engineJob =
+        engineJobFactory.build(
+            key,
+            isMemoryCacheable,
+            useUnlimitedSourceExecutorPool,
+            useAnimationPool,
+            onlyRetrieveFromCache);
+
+    <span class="hljs-comment">//&#x5206;&#x6790;2</span>
+    DecodeJob&lt;R&gt; decodeJob =
+        decodeJobFactory.build(
+            glideContext,
+            model,
+            key,
+            signature,
+            width,
+            height,
+            resourceClass,
+            transcodeClass,
+            priority,
+            diskCacheStrategy,
+            transformations,
+            isTransformationRequired,
+            isScaleOnlyOrNoTransform,
+            onlyRetrieveFromCache,
+            options,
+            engineJob);
+
+    jobs.put(key, engineJob);
+
+    <span class="hljs-comment">//&#x5206;&#x6790;3</span>
+    engineJob.addCallback(cb, callbackExecutor);
+    engineJob.start(decodeJob);
+
+    <span class="hljs-keyword">if</span> (VERBOSE_IS_LOGGABLE) {
+      logWithTimeAndKey(<span class="hljs-string">&quot;Started new load&quot;</span>, startTime, key);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> LoadStatus(cb, engineJob);
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x521B;&#x5EFA;EngineJob#engineJob</li>
+<li>&#x5206;&#x6790;2&#xFF1A;&#x521B;&#x5EFA;DecodeJob#decodeJob</li>
+<li>&#x5206;&#x6790;3&#xFF1A;&#x8C03;&#x7528;engineJob&#x7684;start&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x628A;decodeJob&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x8FDB;&#x53BB;</li>
+</ul>
+<h4 id="44-decodejobstart">4.4 decodeJob#start</h4>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">(DecodeJob&lt;R&gt; decodeJob)</span> </span>{
+    <span class="hljs-keyword">this</span>.decodeJob = decodeJob;
+    GlideExecutor executor =
+        decodeJob.willDecodeFromCache() ? diskCacheExecutor : getActiveSourceExecutor();
+    executor.execute(decodeJob);
+  }
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;GlideExecutor&#x5BF9;&#x8C61;executor&#x7684;execute&#x65B9;&#x6CD5;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x6267;&#x884C;decodeJob&#x7684;run&#x65B9;&#x6CD5;</li>
+<li>DecodeJob&#x5B9E;&#x73B0;&#x4E86;Runnable</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;decodejobrun&#x5230;">&#x4E94;&#x3001;DecodeJob#run&#x5230;</h3>
+<h4 id="51-decodejobrun">5.1 DecodeJob#run</h4>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DecodeJob</span>&lt;<span class="hljs-title">R</span>&gt;
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">DataFetcherGenerator</span>.<span class="hljs-title">FetcherReadyCallback</span>,
+        <span class="hljs-title">Runnable</span>,
+        <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">DecodeJob</span>&lt;?&gt;&gt;,
+        <span class="hljs-title">Poolable</span> </span>{
+    <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+    GlideTrace.beginSectionFormat(<span class="hljs-string">&quot;DecodeJob#run(model=%s)&quot;</span>, model);
+    DataFetcher&lt;?&gt; localFetcher = currentFetcher;
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">if</span> (isCancelled) {
+        notifyFailed();
+        <span class="hljs-keyword">return</span>;
+      }
+        <span class="hljs-comment">//&#x5206;&#x6790;1</span>
+      runWrapped();
+    } <span class="hljs-keyword">catch</span> (CallbackException e) {
+      <span class="hljs-keyword">throw</span> e;
+    } <span class="hljs-keyword">catch</span> (Throwable t) {
+      ......
+      <span class="hljs-keyword">if</span> (stage != Stage.ENCODE) {
+        throwables.add(t);
+        notifyFailed();
+      }
+      <span class="hljs-keyword">if</span> (!isCancelled) {
+        <span class="hljs-keyword">throw</span> t;
+      }
+      <span class="hljs-keyword">throw</span> t;
+    } <span class="hljs-keyword">finally</span> {
+      <span class="hljs-keyword">if</span> (localFetcher != <span class="hljs-keyword">null</span>) {
+        localFetcher.cleanup();
+      }
+      GlideTrace.endSection();
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>&#x5206;&#x6790;1&#xFF1A;&#x8C03;&#x7528;runWrapped();&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="52-decodejobrunwrapped">5.2 DecodeJob#runWrapped</h4>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">runWrapped</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">switch</span> (runReason) {
+      <span class="hljs-keyword">case</span> INITIALIZE:
+        stage = getNextStage(Stage.INITIALIZE);
+        currentGenerator = getNextGenerator();
+        runGenerators();
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> SWITCH_TO_SOURCE_SERVICE:
+        runGenerators();
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> DECODE_DATA:
+        decodeFromRetrievedData();
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Unrecognized run reason: &quot;</span> + runReason);
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x5206;&#x522B;&#x662F;&#x5982;&#x4E0B;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x6570;&#x636E;</li>
+<li>&#x5F53; DecodeJob &#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x628A;&#x8FD0;&#x884C;&#x7406;&#x7531;&#x6539;&#x4E3A; SWITCH_TO_SOURCE_SERVICE &#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ECE;&#x6765;&#x6E90;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x6765;&#x6E90;&#x6570;&#x636E;&#x751F;&#x6210;&#x5668; SourceGenerator &#x3002;</li>
+<li>&#x5BF9;&#x4E8E;DECODE_DATA&#x76F4;&#x63A5;&#x8C03;&#x7528;decodeFromRetrievedData</li>
+<li>&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x800C;&#x8A00;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;getNextGenerator&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="53-decodejobrunreason">5.3 DecodeJob#RunReason</h4>
+<pre><code class="lang-java">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> RunReason {
+    <span class="hljs-comment">/** The first time we&apos;ve been submitted. */</span>
+    INITIALIZE,
+    <span class="hljs-comment">/** We want to switch from the disk cache service to the source executor. */</span>
+    SWITCH_TO_SOURCE_SERVICE,
+    <span class="hljs-comment">/**
+     * We retrieved some data on a thread we don&apos;t own and want to switch back to our thread to
+     * process the data.
+     */</span>
+    DECODE_DATA,
+  }
+</code></pre>
+<h5 id="531-initailize">5.3.1 INITAILIZE</h5>
+<ul>
+<li>&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x89E3;&#x7801;&#xFF1B;</li>
+</ul>
+<h5 id="532-switchtosourceservice">5.3.2 SWITCH_TO_SOURCE_SERVICE</h5>
+<ul>
+<li>&#x4ECE;&#x6765;&#x6E90;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF1B;</li>
+</ul>
+<h5 id="533-decodedata">5.3.3 DECODE_DATA</h5>
+<ul>
+<li>&#x5F53;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x7684;&#x7EBF;&#x7A0B;&#x4E0E; DecodeJob &#x7684;&#x7EBF;&#x7A0B;&#x4E0D;&#x540C;&#x65F6;&#xFF0C;&#x6BD4;&#x5982;&#x4F7F;&#x7528;&#x4E86; OkHttp-Integration &#x65F6;&#xFF0C;DecodeJob &#x4F1A;&#x76F4;&#x63A5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF1B;</li>
+</ul>
+<h4 id="54-decodejobgetnextgenerator">5.4 DecodeJob#getNextGenerator</h4>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">private</span> DataFetcherGenerator <span class="hljs-title">getNextGenerator</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">switch</span> (stage) {
+      <span class="hljs-keyword">case</span> RESOURCE_CACHE:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ResourceCacheGenerator(decodeHelper, <span class="hljs-keyword">this</span>);
+      <span class="hljs-keyword">case</span> DATA_CACHE:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DataCacheGenerator(decodeHelper, <span class="hljs-keyword">this</span>);
+      <span class="hljs-keyword">case</span> SOURCE:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SourceGenerator(decodeHelper, <span class="hljs-keyword">this</span>);
+      <span class="hljs-keyword">case</span> FINISHED:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Unrecognized stage: &quot;</span> + stage);
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x5207;&#x6362;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#x5BF9;&#x5E94;&#x7684;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x90FD;&#x5B9E;&#x73B0;&#x4E86;DataFetcherGenerator&#x63A5;&#x53E3;</li>
+<li>&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;ResourceCacheGeneratoron/DataCacheGenerator/SourceGenerator&#x53BB;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;onDataFetcherReady&#x65B9;&#x6CD5;&#x53BB;&#x8C03;&#x7528;decodeFromRetrievedData</li>
+</ul>
+<h4 id="55-resourcecachegenerator">5.5 ResourceCacheGenerator</h4>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x4E09;&#x79CD;&#xFF0C;&#x53D6;ResourceCacheGenerator&#x8FDB;&#x884C;&#x8BB2;&#x89E3;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCacheGenerator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DataFetcherGenerator</span>, <span class="hljs-title">DataFetcher</span>.<span class="hljs-title">DataCallback</span>&lt;<span class="hljs-title">Object</span>&gt; </span>{
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> FetcherReadyCallback cb;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> DecodeHelper&lt;?&gt; helper;
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> sourceIdIndex;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> resourceClassIndex = -<span class="hljs-number">1</span>;
+  <span class="hljs-keyword">private</span> Key sourceKey;
+  <span class="hljs-keyword">private</span> List&lt;ModelLoader&lt;File, ?&gt;&gt; modelLoaders;
+    ......
+}
+</code></pre>
+<ul>
+<li>&#x8FD9;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;ModelLoade&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;List<modelloader<file, ?="">&gt; modelLoaders</modelloader<file,></li>
+</ul>
+<h4 id="56-decodejobdecodefromretrieveddata">5.6 DecodeJob#decodeFromRetrievedData</h4>
+<ul>
+<li>&#x5BF9;&#x4E8E;DECODE_DATA&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;</li>
+<li>&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x800C;&#x8A00;&#x4F1A;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;ResourceCacheGeneratoron/DataCacheGenerator/SourceGenerator&#x53BB;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;onDataFetcherReady&#x65B9;&#x6CD5;&#x53BB;&#x8C03;&#x7528;decodeFromRetrievedData</li>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x7684;</li>
+</ul>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">decodeFromRetrievedData</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (Log.isLoggable(TAG, Log.VERBOSE)) {
+      logWithTimeAndKey(
+          <span class="hljs-string">&quot;Retrieved data&quot;</span>,
+          startFetchTime,
+          <span class="hljs-string">&quot;data: &quot;</span>
+              + currentData
+              + <span class="hljs-string">&quot;, cache key: &quot;</span>
+              + currentSourceKey
+              + <span class="hljs-string">&quot;, fetcher: &quot;</span>
+              + currentFetcher);
+    }
+    Resource&lt;R&gt; resource = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">try</span> {
+      resource = decodeFromData(currentFetcher, currentData, currentDataSource);
+    } <span class="hljs-keyword">catch</span> (GlideException e) {
+      e.setLoggingDetails(currentAttemptingKey, currentDataSource);
+      throwables.add(e);
+    }
+    <span class="hljs-keyword">if</span> (resource != <span class="hljs-keyword">null</span>) {
+      notifyEncodeAndRelease(resource, currentDataSource);
+    } <span class="hljs-keyword">else</span> {
+      runGenerators();
+    }
+  }
+</code></pre>
+<ul>
+<li>&#x81F3;&#x6B64;&#x5BF9;&#x4E8E;&#x5B9E;&#x4F8B;&#x7684;&#x89E3;&#x7801;&#x6D41;&#x7A0B;&#x5C31;&#x7ED3;&#x675F;&#x4E86;</li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x603B;&#x7ED3;">&#x516D;&#x3001;&#x603B;&#x7ED3;</h3>
+<h4 id="61-singlerequest&#x516D;&#x79CD;&#x72B6;&#x6001;&#x503C;">6.1 SingleRequest#&#x516D;&#x79CD;&#x72B6;&#x6001;&#x503C;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> Status {
+    <span class="hljs-comment">/** Created but not yet running. */</span>
+    PENDING,
+    <span class="hljs-comment">/** In the process of fetching media. */</span>
+    RUNNING,
+    <span class="hljs-comment">/** Waiting for a callback given to the Target to be called to determine target dimensions. */</span>
+    WAITING_FOR_SIZE,
+    <span class="hljs-comment">/** Finished loading media successfully. */</span>
+    COMPLETE,
+    <span class="hljs-comment">/** Failed to load media, may be restarted. */</span>
+    FAILED,
+    <span class="hljs-comment">/** Cleared by the user with a placeholder set, may be restarted. */</span>
+    CLEARED,
+}
+</code></pre>
+<h5 id="611-&#x5F85;&#x8FD0;&#x884C;pending">6.1.1 &#x5F85;&#x8FD0;&#x884C;PENDING</h5>
+<ul>
+<li>&#x5728;2.1&#x7684;&#x5206;&#x6790;1&#x4E2D;RequestBuilder#into()&#x65B9;&#x6CD5;&#x4E2D;&#x901A;&#x8FC7;buildRequest&#x521B;&#x5EFA;&#x4E86;SingleRequest &#x5BF9;&#x8C61;&#xFF0C;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x628A;status&#x7F6E;&#x4E3A;&#x4E86;PENDING&#x72B6;&#x6001;</li>
+</ul>
+<h5 id="612-&#x5F85;&#x6D4B;&#x91CF;waitingforsize">6.1.2 &#x5F85;&#x6D4B;&#x91CF;WAITING_FOR_SIZE</h5>
+<ul>
+<li>&#x5728;2.1&#x7684;&#x5206;&#x6790;2&#x4E2D;&#x8C03;&#x7528;&#x4E86;requestManager.track(target, request)&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;2.4&#x7684;&#x7684;begin&#x65B9;&#x6CD5;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;2.4&#x4E2D;&#x7684;&#x5206;&#x6790;1&#x628A;status&#x7F6E;&#x4E3A;WAITING_FOR_SIZE&#x3002;</li>
+</ul>
+<h5 id="613-&#x8FD0;&#x884C;&#x4E2D;running">6.1.3 &#x8FD0;&#x884C;&#x4E2D;RUNNING</h5>
+<ul>
+<li>&#x5728;SingleRequest &#x7684; begin()&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x4F1A;&#x8C03;&#x7528; Target &#x7684; getSize() &#x65B9;&#x6CD5;&#x83B7;&#x53D6; ImageView &#x7684;&#x5C3A;&#x5BF8;&#xFF0C;&#x83B7;&#x53D6;&#x5230;&#x5C3A;&#x5BF8;&#x540E;&#xFF0C;&#x901A;&#x8FC7;OnPreDrawListener&#x7684;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x4E86;onSizeReady&#xFF0C;onSizeReady&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x8C03;&#x7528; Engine &#x7684; load() &#x65B9;&#x6CD5;&#x542F;&#x52A8;&#x56FE;&#x7247;&#x52A0;&#x8F7D;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x628A;status&#x7F6E;&#x4E3A;Status.RUNNING&#x72B6;&#x6001;</li>
+</ul>
+<h5 id="614-&#x5DF2;&#x5B8C;&#x6210;complete">6.1.4 &#x5DF2;&#x5B8C;&#x6210;COMPLETE</h5>
+<ul>
+<li>&#x5F53; Engine &#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x52A0;&#x8F7D;&#x5230;&#x8D44;&#x6E90;&#xFF0C;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x89E3;&#x7801;&#x4EFB;&#x52A1;&#x52A0;&#x8F7D;&#x5230;&#x8D44;&#x6E90;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528; SingleRequest &#x7684; onResourceReady() &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x65F6; Request &#x5C31;&#x8FDB;&#x5165;&#x4E86;&#x5DF2;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<h5 id="615-&#x5931;&#x8D25;failed">6.1.5 &#x5931;&#x8D25;FAILED</h5>
+<ul>
+<li>&#x5F53;&#x89E3;&#x7801;&#x4EFB;&#x52A1; DecodeJob &#x5728;&#x5904;&#x7406;&#x56FE;&#x7247;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528; EngineJob &#x7684; onLoadFailed() &#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E; EngineJob &#x4F1A;&#x8C03;&#x7528; SingleRequest &#x7684; onLoadFailed() &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x65F6; SingleRequest &#x5C31;&#x8FDB;&#x5165;&#x4E86;&#x5931;&#x8D25;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<h5 id="616-&#x5DF2;&#x6E05;&#x9664;cleared">6.1.6 &#x5DF2;&#x6E05;&#x9664;CLEARED</h5>
+<ul>
+<li>&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x7528; into() &#x65B9;&#x6CD5;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x65F6;&#xFF0C;RequestManager &#x90FD;&#x4F1A;&#x5148;&#x770B;&#x4E0B;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684; Target &#x662F;&#x5426;&#x6709;&#x5BF9;&#x5E94;&#x7684; Request &#xFF0C;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x8BE5; Request &#x7684; clear() &#x65B9;&#x6CD5;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x8FD9;&#x65F6; Request &#x5C31;&#x8FDB;&#x5165;&#x4E86;&#x5DF2;&#x6E05;&#x9664;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="一、Fragment感知生命周期.html" class="navigation navigation-prev " aria-label="Previous page: 一、Fragment感知生命周期">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Glide缓存原理之BitmapPool.html" class="navigation navigation-next " aria-label="Next page: Glide缓存原理之BitmapPool">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"二、启动解码任务流程","level":"9.2.2.2","depth":3,"next":{"title":"Glide缓存原理之BitmapPool","level":"9.2.2.3","depth":3,"path":"设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.md","ref":"设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.md","articles":[]},"previous":{"title":"一、Fragment感知生命周期","level":"9.2.2.1","depth":3,"path":"设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.md","ref":"设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.md","mtime":"2020-11-30T13:43:45.901Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

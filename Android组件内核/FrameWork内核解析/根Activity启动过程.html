@@ -1,0 +1,3524 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>根Activity启动过程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ActivityThread解析.html" />
+    
+    
+    <link rel="prev" href="应用程序进程启动过程.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/并发原理/线程状态及基本操作.md">
+            
+                <span>
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性">
+            
+                <span>
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap(1.8">
+            
+                <span>
+            
+                    
+                    ConcurrentHashMap(1.8)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常见算法技巧和题型.md">
+            
+                <span>
+            
+                    
+                    常见算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="Android系统架构.html">
+            
+                <a href="Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="Android系统启动.html">
+            
+                <a href="Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="Zygote进程解析.html">
+            
+                <a href="Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="SystemServer进程解析.html">
+            
+                <a href="SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="应用程序进程启动过程.html">
+            
+                <a href="应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2.6" data-path="根Activity启动过程.html">
+            
+                <a href="根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="ActivityThread解析.html">
+            
+                <a href="ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程/ThreadLocal解析.md">
+            
+                <span>
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../跨进程通信IPC/Binder解析.html">
+            
+                <a href="../跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../高级UI/自定义View/View工作原理.md">
+            
+                <span>
+            
+                    
+                    View工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../高级UI/自定义View/View的事件分发机制.md">
+            
+                <span>
+            
+                    
+                    View的事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../高级UI/Webview/Webview.html">
+            
+                <a href="../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/计算机网络基础知识.md">
+            
+                <span>
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/http和https解析.md">
+            
+                <span>
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/DNS解析.md">
+            
+                <span>
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式md">
+            
+                <span>
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" >
+            
+                <span>
+            
+                    
+                    8.4 RxJava响应式编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2基本流程分析.md">
+            
+                <span>
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava响应式编程/RxJava2线程切换原理.md">
+            
+                <span>
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/Builder模式.md">
+            
+                <span>
+            
+                    
+                    Builder模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >根Activity启动过程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<ul>
+<li><!-- TOC -->
+<ul>
+<li><a href="#&#x6839;activity&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"> &#x6839;Activity&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#&#x4E00;&#x3001;&#x7B80;&#x4ECB;"> &#x4E00;&#x3001;&#x7B80;&#x4ECB;</a><ul>
+<li><a href="#11-&#x6982;&#x8FF0;"> 1.1 &#x6982;&#x8FF0;</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E8C;&#x3001;launcher&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;ams&#x8FC7;&#x7A0B;"> &#x4E8C;&#x3001;Launcher&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;AMS&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#21-startactivitysafely"> 2.1 startActivitySafely</a></li>
+<li><a href="#22-startactivity"> 2.2 startActivity</a></li>
+<li><a href="#23-startactivityforresult"> 2.3 startActivityForResult</a></li>
+<li><a href="#24-execstartactivity"> 2.4 execStartActivity</a></li>
+<li><a href="#25-getservice"> 2.5 getService</a></li>
+<li><a href="#26-startactivity"> 2.6 startActivity</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E09;&#x3001;-ams&#x5230;applicationthread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;"> &#x4E09;&#x3001; AMS&#x5230;ApplicationThread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#31-startactivity"> 3.1 startActivity</a></li>
+<li><a href="#32-startactivityasuser"> 3.2 startActivityAsUser</a></li>
+<li><a href="#33-startactivitymaywait"> 3.3 startActivityMayWait</a></li>
+<li><a href="#34-startactivitylocked"> 3.4 startActivityLocked</a></li>
+<li><a href="#35-startactivity"> 3.5 startActivity</a></li>
+<li><a href="#36-startactivity"> 3.6 startActivity</a></li>
+<li><a href="#37-startactivityunchecked"> 3.7 startActivityUnchecked</a></li>
+<li><a href="#38-resumefocusedstacktopactivitylocked"> 3.8 resumeFocusedStackTopActivityLocked</a></li>
+<li><a href="#39-resumetopactivityuncheckedlocked"> 3.9 resumeTopActivityUncheckedLocked</a></li>
+<li><a href="#310-resumetopactivityinnerlocked"> 3.10 resumeTopActivityInnerLocked</a></li>
+<li><a href="#311-startspecificactivitylocked"> 3.11 startSpecificActivityLocked</a></li>
+<li><a href="#312-realstartactivitylocked"> 3.12 realStartActivityLocked</a></li>
+<li><a href="#313-schedulelaunchactivity"> 3.13 scheduleLaunchActivity</a></li>
+<li><a href="#314-&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;"> 3.14 &#x8FDB;&#x7A0B;&#x5173;&#x7CFB;</a></li>
+</ul>
+</li>
+<li><a href="#&#x56DB;&#x3001;activitythread&#x542F;&#x52A8;activity&#x7684;&#x8FC7;&#x7A0B;"> &#x56DB;&#x3001;ActivityThread&#x542F;&#x52A8;Activity&#x7684;&#x8FC7;&#x7A0B;</a><ul>
+<li><a href="#41-schedulelaunchactivity"> 4.1 scheduleLaunchActivity</a></li>
+<li><a href="#42-sendmessage"> 4.2 sendMessage</a></li>
+<li><a href="#43-h"> 4.3 H</a></li>
+<li><a href="#44-handlelaunchactivity"> 4.4 handleLaunchActivity</a></li>
+<li><a href="#45-performlaunchactivity"> 4.5 performLaunchActivity</a></li>
+<li><a href="#46-callactivityoncreate"> 4.6 callActivityOnCreate</a></li>
+<li><a href="#47-performcreate"> 4.7 performCreate</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E94;&#x3001;&#x603B;&#x7ED3;"> &#x4E94;&#x3001;&#x603B;&#x7ED3;</a><ul>
+<li><a href="#51-&#x6839;activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;"> 5.1 &#x6839;Activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;</a><!-- /TOC -->
+<h2 id="&#x6839;activity&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;">&#x6839;Activity&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</h2>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x7B80;&#x4ECB;">&#x4E00;&#x3001;&#x7B80;&#x4ECB;</h3>
+<h4 id="11-&#x6982;&#x8FF0;">1.1 &#x6982;&#x8FF0;</h4>
+<ul>
+<li>&#x6839;Activity&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x4E5F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x8FC7;&#x7A0B;&#x6216;&#x8005;App&#x542F;&#x52A8;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x4E3B;&#x8981;&#x5206;&#x6210;&#x4E09;&#x90E8;&#x5206;<ul>
+<li>Launcher&#x8BF7;&#x6C42;AMS&#x8FC7;&#x7A0B;</li>
+<li>AMS&#x5230;ApplicationThread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;</li>
+<li>ActivityThread&#x542F;&#x52A8;Activity</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;launcher&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;ams&#x8FC7;&#x7A0B;">&#x4E8C;&#x3001;Launcher&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;AMS&#x8FC7;&#x7A0B;</h3>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/&#x56DB;&#x5927;&#x7EC4;&#x4EF6;/Activity/Launcher&#x8BF7;&#x6C42;AMS&#x8FC7;&#x7A0B;.png" alt="Launcher&#x8BF7;&#x6C42;AMS&#x8FC7;&#x7A0B;"></p>
+<h4 id="21-startactivitysafely">2.1 startActivitySafely</h4>
+<ul>
+<li>&#x684C;&#x9762;&#x70B9;&#x51FB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x56FE;&#x6807;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;startActivitySafely&#x65B9;&#x6CD5;</li>
+<li>packages\apps\Launcher3\src\com\android\launcher3\Launcher.java#startActivitySafely</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">startActivitySafely</span><span class="hljs-params">(View v, Intent intent, ItemInfo item)</span> </span>{
+    ......
+    <span class="hljs-comment">//&#x628A;&#x6839;Activity&#x7684;Flag&#x8BBE;&#x7F6E;&#x4E3A;NEW_TASK&#xFF0C;&#x5219;&#x4F1A;&#x5728;&#x65B0;&#x7684;&#x4EFB;&#x52A1;&#x6808;&#x4E2D;&#x542F;&#x52A8;</span>
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    <span class="hljs-keyword">if</span> (v != <span class="hljs-keyword">null</span>) {
+        intent.setSourceBounds(getViewBounds(v));
+    }
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">if</span> (Utilities.ATLEAST_MARSHMALLOW
+            &amp;&amp; (item <span class="hljs-keyword">instanceof</span> ShortcutInfo)
+            &amp;&amp; (item.itemType == Favorites.ITEM_TYPE_SHORTCUT
+            || item.itemType == Favorites.ITEM_TYPE_DEEP_SHORTCUT)
+            &amp;&amp; !((ShortcutInfo) item).isPromise()) {
+            startShortcutIntentSafely(intent, optsBundle, item);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (user == <span class="hljs-keyword">null</span> || user.equals(Process.myUserHandle())) {
+            <span class="hljs-comment">//&#x53BB;&#x542F;&#x52A8;&#x6839;Activity</span>
+            startActivity(intent, optsBundle);
+        } <span class="hljs-keyword">else</span> {
+            LauncherAppsCompat.getInstance(<span class="hljs-keyword">this</span>).startActivityForProfile(
+                intent.getComponent(), user, intent.getSourceBounds(), optsBundle);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    } <span class="hljs-keyword">catch</span>......
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;startActivity(intent, optsBundle);&#x53BB;&#x542F;&#x52A8;&#x6839;Activity</li>
+</ul>
+<h4 id="22-startactivity">2.2 startActivity</h4>
+<ul>
+<li>Activity.java#startActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startActivity</span><span class="hljs-params">(Intent intent, @Nullable Bundle options)</span> </span>{
+    <span class="hljs-keyword">if</span> (options != <span class="hljs-keyword">null</span>) {
+        startActivityForResult(intent, -<span class="hljs-number">1</span>, options);
+    } <span class="hljs-keyword">else</span> {
+        startActivityForResult(intent, -<span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;startActivityForResult&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="23-startactivityforresult">2.3 startActivityForResult</h4>
+<ul>
+<li>Activity.java#startActivityForResult</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startActivityForResult</span><span class="hljs-params">(@RequiresPermission Intent intent, <span class="hljs-keyword">int</span> requestCode,
+    @Nullable Bundle options)</span> </span>{
+    <span class="hljs-keyword">if</span> (mParent == <span class="hljs-keyword">null</span>) {
+        options = transferSpringboardActivityOptions(options);
+        Instrumentation.ActivityResult ar =
+            mInstrumentation.execStartActivity(
+                <span class="hljs-keyword">this</span>, mMainThread.getApplicationThread(), mToken, <span class="hljs-keyword">this</span>,
+                intent, requestCode, options);
+        ......
+    }<span class="hljs-keyword">else</span>{
+        .....
+    }
+}
+</code></pre>
+<ul>
+<li>mParent&#x662F;Activity&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x5F53;&#x524D;Activity&#x7684;&#x7236;&#x4EB2;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x80AF;&#x5B9A;&#x662F;null&#xFF0C;&#x56E0;&#x4E3A;&#x8FDE;&#x6839;Activity&#x90FD;&#x6CA1;&#x6709;&#x3002;</li>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;execStartActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="24-execstartactivity">2.4 execStartActivity</h4>
+<ul>
+<li>Instrumentation.java#execStartActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ActivityResult <span class="hljs-title">execStartActivity</span><span class="hljs-params">(
+    Context who, IBinder contextThread, IBinder token, Activity target,
+    Intent intent, <span class="hljs-keyword">int</span> requestCode, Bundle options)</span> </span>{
+    ......
+    <span class="hljs-keyword">try</span> {
+        intent.migrateExtraStreamToClipData();
+        intent.prepareToLeaveProcess(who);
+        <span class="hljs-comment">//&#x9996;&#x5148;&#x8C03;&#x7528;ActivityManager.getService()&#x6765;&#x83B7;&#x53D6;AMS&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;</span>
+        <span class="hljs-comment">//&#x7136;&#x540E;&#x8C03;&#x7528;AMS&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x7684;startActivity&#x65B9;&#x6CD5;</span>
+        <span class="hljs-keyword">int</span> result = ActivityManager.getService()
+            .startActivity(whoThread, who.getBasePackageName(), intent,
+                intent.resolveTypeIfNeeded(who.getContentResolver()),
+                token, target != <span class="hljs-keyword">null</span> ? target.mEmbeddedID : <span class="hljs-keyword">null</span>,
+                requestCode, <span class="hljs-number">0</span>, <span class="hljs-keyword">null</span>, options);
+        checkStartActivityResult(result, intent);
+    } <span class="hljs-keyword">catch</span> (RemoteException e) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;Failure from system&quot;</span>, e);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+}
+</code></pre>
+<h4 id="25-getservice">2.5 getService</h4>
+<ul>
+<li>ActivityManager.java#getService</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IActivityManager <span class="hljs-title">getService</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> IActivityManagerSingleton.get();
+}
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton&lt;IActivityManager&gt; IActivityManagerSingleton =
+    <span class="hljs-keyword">new</span> Singleton&lt;IActivityManager&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> IActivityManager <span class="hljs-title">create</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">final</span> IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE);
+            <span class="hljs-keyword">final</span> IActivityManager am = IActivityManager.Stub.asInterface(b);
+            <span class="hljs-keyword">return</span> am;
+        }
+    };
+</code></pre>
+<ul>
+<li>getService&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x4E86;IActivityManagerSingleton.get()&#x65B9;&#x6CD5;</li>
+<li>IActivityManagerSingleton&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</li>
+<li>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;Binder&#x673A;&#x5236;&#xFF0C;&#x901A;&#x8FC7;ServiceManager.getService(Context.ACTIVITY_SERVICE)&#x62FF;&#x5230;&#x4E86;IBinder&#x7C7B;&#x578B;&#x7684;AMS&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;IBinder&#x5E76;&#x8C03;&#x7528;IActivityManager.Stub.asInterface&#x628A;AMS&#x7684;Ibinder&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x6210;&#x4E86;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x3002;ActivityManagerService&#x5B9E;&#x73B0;&#x4E86;IActivityManager.Stub&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x6B21;&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;AMS(SystemServer&#x8FDB;&#x7A0B;)&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x8FDB;&#x7A0B;&#xFF0C;Launcher&#x8FDB;&#x7A0B;&#x5C31;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x7A0B;&#xFF0C;&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;AMS&#x7684;startActivity&#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ActivityManagerService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">IActivityManager</span>.<span class="hljs-title">Stub</span>
+</span></code></pre>
+<h4 id="26-startactivity">2.6 startActivity</h4>
+<ul>
+<li>ActivityManagerService.java#startActivity</li>
+<li>&#x901A;&#x8FC7;Binder&#x8DE8;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x7684;&#xFF0C;&#x5148;&#x62FF;&#x5230;AMS&#x7684;Ibinder&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x8F6C;&#x6362;&#x6210;&#x672C;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;&#x4E86;AMS&#x7684;startActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;-ams&#x5230;applicationthread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;">&#x4E09;&#x3001; AMS&#x5230;ApplicationThread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;</h3>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/&#x56DB;&#x5927;&#x7EC4;&#x4EF6;/Activity/AMS&#x5230;ApplicationThread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;.png" alt="AMS&#x5230;ApplicationThread&#x7684;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;"></p>
+<h4 id="31-startactivity">3.1 startActivity</h4>
+<ul>
+<li>ActivityManagerService.java#startActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivity</span><span class="hljs-params">(IApplicationThread caller, String callingPackage,
+                                Intent intent, String resolvedType, IBinder resultTo,                                     String resultWho, <span class="hljs-keyword">int</span> requestCode,<span class="hljs-keyword">int</span> startFlags,                                         ProfilerInfo profilerInfo, Bundle bOptions)</span> </span>{
+    <span class="hljs-keyword">return</span> startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
+        resultWho, requestCode, startFlags, profilerInfo, bOptions,
+        UserHandle.getCallingUserId());
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;&#x4E86;startActivityAsUser&#x65B9;&#x6CD5;&#xFF0C;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570;UserHandle.getCallingUserId()&#x6765;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x8005;&#x7684;UserId&#x3002;</li>
+</ul>
+<h4 id="32-startactivityasuser">3.2 startActivityAsUser</h4>
+<ul>
+<li>ActivityManagerService.java#startActivityAsUser</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivityAsUser</span><span class="hljs-params">(IApplicationThread caller, String callingPackage,
+        Intent intent, String resolvedType, IBinder resultTo, String resultWho,
+        <span class="hljs-keyword">int</span> requestCode,<span class="hljs-keyword">int</span> startFlags, ProfilerInfo profilerInfo, Bundle bOptions,
+        <span class="hljs-keyword">int</span> userId)</span> </span>{
+    <span class="hljs-comment">//&#x5224;&#x65AD;&#x8C03;&#x7528;&#x8005;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x88AB;&#x9694;&#x79BB; &#x88AB;&#x9694;&#x79BB;&#x629B;&#x51FA;SecurityException</span>
+    enforceNotIsolatedCaller(<span class="hljs-string">&quot;startActivity&quot;</span>);
+    <span class="hljs-comment">//&#x68C0;&#x67E5;&#x8C03;&#x7528;&#x8005;&#x6743;&#x9650; &#x6CA1;&#x6709;&#x6743;&#x9650;&#x4F1A;&#x629B;&#x51FA;SecurityException</span>
+    userId = mUserController.handleIncomingUser(Binder.getCallingPid(),                         Binder.getCallingUid(),userId, <span class="hljs-keyword">false</span>, ALLOW_FULL_ONLY, <span class="hljs-string">&quot;startActivity&quot;</span>, <span class="hljs-keyword">null</span>);
+    <span class="hljs-keyword">return</span> mActivityStarter.startActivityMayWait(caller, -<span class="hljs-number">1</span>, callingPackage, intent,
+        resolvedType, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, resultTo, resultWho, requestCode, startFlags,
+        profilerInfo, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, bOptions, <span class="hljs-keyword">false</span>, userId, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&quot;startActivityAsUser&quot;</span>);
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528;ActivityStarter&#x7684;startActivityMayWait&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="33-startactivitymaywait">3.3 startActivityMayWait</h4>
+<ul>
+<li>ActivityStarter.java#startActivityMayWait</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivityMayWait</span><span class="hljs-params">(IApplicationThread caller, <span class="hljs-keyword">int</span> callingUid,
+    String callingPackage, Intent intent, String resolvedType,
+    IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+    IBinder resultTo, String resultWho, <span class="hljs-keyword">int</span> requestCode, <span class="hljs-keyword">int</span> startFlags,
+    ProfilerInfo profilerInfo, WaitResult outResult,
+    Configuration globalConfig, Bundle bOptions, <span class="hljs-keyword">boolean</span> ignoreTargetSecurity,
+    <span class="hljs-keyword">int</span> userId , IActivityContainer iContainer, TaskRecord inTask, String reason)</span> </span>{
+    ...... 
+    <span class="hljs-keyword">int</span> res = startActivityLocked(caller, intent, ephemeralIntent, resolvedType,
+                aInfo, rInfo, voiceSession, voiceInteractor,
+                resultTo, resultWho, requestCode, callingPid,
+                callingUid, callingPackage, realCallingPid, realCallingUid, startFlags,
+                options, ignoreTargetSecurity, componentSpecified, outRecord, container,
+                inTask, reason);
+    ......
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<ul>
+<li>ActivityStarter&#x662F;&#x52A0;&#x8F7D;Activity&#x7684;&#x63A7;&#x5236;&#x7C7B;&#xFF0C;&#x4F1A;&#x6536;&#x96C6;&#x6240;&#x6709;&#x7684;&#x903B;&#x8F91;&#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x5C06;Intent&#x548C;Flags&#x8F6C;&#x6362;&#x4E3A;Activity&#xFF0C;&#x5E76;&#x5C06;Activity&#x548C;Task&#x4EE5;&#x53CA;Stack&#x76F8;&#x5173;&#x8054;</li>
+<li>&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x4E86;startActivityLocked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="34-startactivitylocked">3.4 startActivityLocked</h4>
+<ul>
+<li>ActivityStarter.java#startActivityLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">startActivityLocked</span><span class="hljs-params">(IApplicationThread caller, Intent intent, Intent ephemeralIntent,
+        String resolvedType, ActivityInfo aInfo, ResolveInfo rInfo,
+        IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+        IBinder resultTo, String resultWho, <span class="hljs-keyword">int</span> requestCode, <span class="hljs-keyword">int</span> callingPid, 
+        <span class="hljs-keyword">int</span> callingUid,String callingPackage, <span class="hljs-keyword">int</span> realCallingPid, <span class="hljs-keyword">int</span> realCallingUid,
+        <span class="hljs-keyword">int</span> startFlags,ActivityOptions options, <span class="hljs-keyword">boolean</span> ignoreTargetSecurity,
+        <span class="hljs-keyword">boolean</span> componentSpecified,ActivityRecord[] outActivity,         
+        ActivityStackSupervisor.ActivityContainer container,TaskRecord inTask, 
+        String reason)</span> </span>{
+    <span class="hljs-comment">//&#x5224;&#x65AD;&#x542F;&#x52A8;&#x7684;&#x7406;&#x7531;&#x4E0D;&#x4E3A;&#x7A7A;</span>
+    <span class="hljs-keyword">if</span> (TextUtils.isEmpty(reason)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Need to specify a reason.&quot;</span>);
+    }
+    mLastStartReason = reason;
+    mLastStartActivityTimeMs = System.currentTimeMillis();
+    mLastStartActivityRecord[<span class="hljs-number">0</span>] = <span class="hljs-keyword">null</span>;
+
+    mLastStartActivityResult = startActivity(caller, intent, ephemeralIntent, 
+        resolvedType,aInfo, rInfo, voiceSession, voiceInteractor, resultTo,
+        resultWho, requestCode,callingPid, callingUid, callingPackage, 
+        realCallingPid, realCallingUid, startFlags,options, 
+        ignoreTargetSecurity, componentSpecified, mLastStartActivityRecord,
+        container, inTask);
+    <span class="hljs-keyword">if</span> (outActivity != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">// mLastStartActivityRecord[0] is set in the call to startActivity above.</span>
+        outActivity[<span class="hljs-number">0</span>] = mLastStartActivityRecord[<span class="hljs-number">0</span>];
+    }
+    <span class="hljs-keyword">return</span> mLastStartActivityResult;
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x540E;&#x53C8;&#x8C03;&#x7528;&#x4E86;startActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="35-startactivity">3.5 startActivity</h4>
+<ul>
+<li>ActivityStarter.java#startActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivity</span><span class="hljs-params">(IApplicationThread caller, Intent intent, 
+        Intent ephemeralIntent,String resolvedType, ActivityInfo aInfo, 
+        ResolveInfo rInfo,IVoiceInteractionSession voiceSession,
+        IVoiceInteractor voiceInteractor,IBinder resultTo, String resultWho, 
+        <span class="hljs-keyword">int</span> requestCode, <span class="hljs-keyword">int</span> callingPid, <span class="hljs-keyword">int</span> callingUid,String callingPackage,
+        <span class="hljs-keyword">int</span> realCallingPid, <span class="hljs-keyword">int</span> realCallingUid, <span class="hljs-keyword">int</span> startFlags,
+        ActivityOptions options, <span class="hljs-keyword">boolean</span> ignoreTargetSecurity,
+        <span class="hljs-keyword">boolean</span> componentSpecified,ActivityRecord[] outActivity, 
+        ActivityStackSupervisor.ActivityContainer container,TaskRecord inTask)</span> </span>{
+    <span class="hljs-keyword">int</span> err = ActivityManager.START_SUCCESS;
+    <span class="hljs-keyword">final</span> Bundle verificationBundle
+        = options != <span class="hljs-keyword">null</span> ? options.popAppVerificationBundle() : <span class="hljs-keyword">null</span>;
+    ProcessRecord callerApp = <span class="hljs-keyword">null</span>;
+    <span class="hljs-comment">//IApplicationThread&#x5BF9;&#x8C61; &#x4E5F;&#x5C31;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684;ApplicationThread&#x5BF9;&#x8C61;</span>
+    <span class="hljs-comment">//&#x4F7F;&#x7528;&#x7684;Ibinder&#x673A;&#x5236;</span>
+    <span class="hljs-keyword">if</span> (caller != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//getRecordForAppLocked&#x83B7;&#x53D6;&#x4EE3;&#x8868;Launcher&#x8FDB;&#x7A0B;&#x7684;callApp&#x5BF9;&#x8C61;</span>
+        <span class="hljs-comment">//callApp&#x662F;ProcessRecord&#x7C7B;&#x578B; &#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;</span>
+        callerApp = mService.getRecordForAppLocked(caller);
+        <span class="hljs-keyword">if</span> (callerApp != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">//&#x83B7;&#x53D6;Launcher&#x8FDB;&#x7A0B;&#x7684;pid&#x548C;uid</span>
+            callingPid = callerApp.pid;
+            callingUid = callerApp.info.uid;
+        } <span class="hljs-keyword">else</span> {
+            Slog.w(TAG, <span class="hljs-string">&quot;Unable to find app for caller &quot;</span> + caller
+                    + <span class="hljs-string">&quot; (pid=&quot;</span> + callingPid + <span class="hljs-string">&quot;) when starting: &quot;</span>
+                    + intent.toString());
+            err = ActivityManager.START_PERMISSION_DENIED;
+        }
+    }
+
+    ......
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x5373;&#x5C06;&#x8981;&#x542F;&#x52A8;&#x7684;Activity&#x7684;&#x63CF;&#x8FF0;&#x7C7B;ActivityRecord</span>
+    <span class="hljs-comment">//ActivityRecord&#x8BB0;&#x5F55;&#x4E86;&#x4E00;&#x4E2A;Activity&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;</span>
+    ActivityRecord r = <span class="hljs-keyword">new</span> ActivityRecord(mService, callerApp, callingPid, callingUid,
+        callingPackage, intent, resolvedType, aInfo, mService.getGlobalConfiguration(),
+        resultRecord, resultWho, requestCode, componentSpecified, voiceSession != <span class="hljs-keyword">null</span>,
+        mSupervisor, container, options, sourceRecord);
+    <span class="hljs-keyword">if</span> (outActivity != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//&#x628A;&#x503C;&#x8D4B;&#x7ED9;outActivity[0] &#x63A5;&#x4E0B;&#x6765;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x4E0B;&#x53BB;</span>
+        outActivity[<span class="hljs-number">0</span>] = r;
+    }
+    ......
+    doPendingActivityLaunchesLocked(<span class="hljs-keyword">false</span>);
+
+    <span class="hljs-keyword">return</span> startActivity(r, sourceRecord, voiceSession, voiceInteractor, startFlags, 
+            <span class="hljs-keyword">true</span>,options, inTask, outActivity);
+    }
+</code></pre>
+<ul>
+<li>&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528;startActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="36-startactivity">3.6 startActivity</h4>
+<ul>
+<li>ActivityStarter.java#startActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivity</span><span class="hljs-params">(<span class="hljs-keyword">final</span> ActivityRecord r, ActivityRecord sourceRecord,
+        IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+        <span class="hljs-keyword">int</span> startFlags, <span class="hljs-keyword">boolean</span> doResume, ActivityOptions options, TaskRecord inTask,
+        ActivityRecord[] outActivity)</span> </span>{
+    <span class="hljs-keyword">int</span> result = START_CANCELED;
+    <span class="hljs-keyword">try</span> {
+        mService.mWindowManager.deferSurfaceLayout();
+        result = startActivityUnchecked(r, sourceRecord, voiceSession, voiceInteractor,
+                startFlags, doResume, options, inTask, outActivity);
+    }......
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x7D27;&#x63A5;&#x7740;&#x8C03;&#x7528;startActivityUnchecked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="37-startactivityunchecked">3.7 startActivityUnchecked</h4>
+<ul>
+<li>ActivityStarter.java#startActivityUnchecked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">startActivityUnchecked</span><span class="hljs-params">(<span class="hljs-keyword">final</span> ActivityRecord r, ActivityRecord sourceRecord,
+        IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+        <span class="hljs-keyword">int</span> startFlags, <span class="hljs-keyword">boolean</span> doResume, ActivityOptions options, TaskRecord inTask,
+        ActivityRecord[] outActivity)</span> </span>{
+    ......
+    <span class="hljs-keyword">if</span> (mStartActivity.resultTo == <span class="hljs-keyword">null</span> &amp;&amp; mInTask == <span class="hljs-keyword">null</span> &amp;&amp; !mAddingToTask
+            &amp;&amp; (mLaunchFlags &amp; FLAG_ACTIVITY_NEW_TASK) != <span class="hljs-number">0</span>) {
+        newTask = <span class="hljs-keyword">true</span>;
+        <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Activity&#x4EFB;&#x52A1;&#x6808;</span>
+        result = setTaskFromReuseOrCreateNewTask(
+                    taskToAffiliate, preferredLaunchStackId, topStack);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mSourceRecord != <span class="hljs-keyword">null</span>) {
+        result = setTaskFromSourceRecord();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mInTask != <span class="hljs-keyword">null</span>) {
+        result = setTaskFromInTask();
+    } <span class="hljs-keyword">else</span> {
+        setTaskToCurrentTopOrCreateNewTask();
+    }
+    ......
+    <span class="hljs-keyword">if</span> (mDoResume) {
+        <span class="hljs-keyword">final</span> ActivityRecord topTaskActivity =
+                mStartActivity.getTask().topRunningActivityLocked();
+        <span class="hljs-keyword">if</span> (!mTargetStack.isFocusable()
+                || (topTaskActivity != <span class="hljs-keyword">null</span> &amp;&amp; topTaskActivity.mTaskOverlay
+                &amp;&amp; mStartActivity != topTaskActivity)) {
+            ......
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (mTargetStack.isFocusable() 
+                    &amp;&amp; !mSupervisor.isFocusedStack(mTargetStack)) {
+                mTargetStack.moveToFront(<span class="hljs-string">&quot;startActivityUnchecked&quot;</span>);
+            }
+            mSupervisor.resumeFocusedStackTopActivityLocked(mTargetStack, mStartActivity,
+                    mOptions);
+        }
+    } <span class="hljs-keyword">else</span> {
+        mTargetStack.addRecentActivityLocked(mStartActivity);
+    }
+    ......
+}
+</code></pre>
+<ul>
+<li>startActivityUnchecked&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x5904;&#x7406;&#x4E0E;&#x6808;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x903B;&#x8F91;</li>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;ActivityStackSupervisor&#x7684;resumeFocusedStackTopActivityLocked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="38-resumefocusedstacktopactivitylocked">3.8 resumeFocusedStackTopActivityLocked</h4>
+<ul>
+<li>ActivityStackSupervisor.java#resumeFocusedStackTopActivityLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">resumeFocusedStackTopActivityLocked</span><span class="hljs-params">(
+        ActivityStack targetStack, ActivityRecord target, 
+        ActivityOptions targetOptions)</span> </span>{
+    <span class="hljs-keyword">if</span> (targetStack != <span class="hljs-keyword">null</span> &amp;&amp; isFocusedStack(targetStack)) {
+        <span class="hljs-keyword">return</span> targetStack.resumeTopActivityUncheckedLocked(target, targetOptions);
+    }
+    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x8981;&#x542F;&#x52A8;&#x7684;Activity&#x6240;&#x5728;&#x6808;&#x7684;&#x6808;&#x9876;&#x7684;&#x4E0D;&#x662F;&#x51FA;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x7684;ActivityRecord</span>
+    <span class="hljs-keyword">final</span> ActivityRecord r = mFocusedStack.topRunningActivityLocked();
+    <span class="hljs-keyword">if</span> (r == <span class="hljs-keyword">null</span> || r.state != RESUMED) {
+        mFocusedStack.resumeTopActivityUncheckedLocked(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (r.state == RESUMED) {
+        mFocusedStack.executeAppTransition(targetOptions);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528;ActivityStack&#x7684;resumeTopActivityUncheckedLocked</li>
+</ul>
+<h4 id="39-resumetopactivityuncheckedlocked">3.9 resumeTopActivityUncheckedLocked</h4>
+<ul>
+<li>ActivityStack.java#resumeTopActivityUncheckedLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">resumeTopActivityUncheckedLocked</span><span class="hljs-params">(ActivityRecord prev, ActivityOptions options)</span> </span>{
+    <span class="hljs-keyword">if</span> (mStackSupervisor.inResumeTopActivity) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">boolean</span> result = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">try</span> {
+        mStackSupervisor.inResumeTopActivity = <span class="hljs-keyword">true</span>;
+        result = resumeTopActivityInnerLocked(prev, options);
+    } <span class="hljs-keyword">finally</span> {
+        mStackSupervisor.inResumeTopActivity = <span class="hljs-keyword">false</span>;
+    }
+    mStackSupervisor.checkReadyForSleepLocked();
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;resumeTopActivityInnerLocked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="310-resumetopactivityinnerlocked">3.10 resumeTopActivityInnerLocked</h4>
+<ul>
+<li>ActivityStack.java#resumeTopActivityInnerLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">resumeTopActivityInnerLocked</span><span class="hljs-params">(ActivityRecord prev, ActivityOptions options)</span> </span>{        
+    ......
+        mStackSupervisor.startSpecificActivityLocked(next, <span class="hljs-keyword">true</span>, <span class="hljs-keyword">true</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (DEBUG_STACK) mStackSupervisor.validateTopActivitiesLocked();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;ActivityStackSupervisor&#x7684;startSpecificActivityLocked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="311-startspecificactivitylocked">3.11 startSpecificActivityLocked</h4>
+<ul>
+<li>ActivityStackSupervisor.java#startSpecificActivityLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">startSpecificActivityLocked</span><span class="hljs-params">(ActivityRecord r,
+        <span class="hljs-keyword">boolean</span> andResume, <span class="hljs-keyword">boolean</span> checkConfig)</span> </span>{
+    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x5373;&#x5C06;&#x542F;&#x52A8;&#x7684;Activity&#x6240;&#x5728;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;</span>
+    ProcessRecord app = mService.getProcessRecordLocked(r.processName,
+            r.info.applicationInfo.uid, <span class="hljs-keyword">true</span>);
+    r.getStack().setLaunchTime(r);
+
+    <span class="hljs-keyword">if</span> (app != <span class="hljs-keyword">null</span> &amp;&amp; app.thread != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> ((r.info.flags&amp;ActivityInfo.FLAG_MULTIPROCESS) == <span class="hljs-number">0</span>
+                    || !<span class="hljs-string">&quot;android&quot;</span>.equals(r.info.packageName)) {
+                app.addPackage(r.info.packageName, r.info.applicationInfo.versionCode,
+                        mService.mProcessStats);
+            }
+            realStartActivityLocked(r, app, andResume, checkConfig);
+            <span class="hljs-keyword">return</span>;
+        } <span class="hljs-keyword">catch</span> (RemoteException e) {
+            Slog.w(TAG, <span class="hljs-string">&quot;Exception when starting activity &quot;</span>
+                    + r.intent.getComponent().flattenToShortString(), e);
+        }
+    }
+    mService.startProcessLocked(r.processName, r.info.applicationInfo, <span class="hljs-keyword">true</span>, <span class="hljs-number">0</span>,
+            <span class="hljs-string">&quot;activity&quot;</span>, r.intent.getComponent(), <span class="hljs-keyword">false</span>, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">true</span>);
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;realStartActivityLocked&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="312-realstartactivitylocked">3.12 realStartActivityLocked</h4>
+<ul>
+<li>ActivityStackSupervisor.java#realStartActivityLocked</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">realStartActivityLocked</span><span class="hljs-params">(ActivityRecord r, ProcessRecord app,
+        <span class="hljs-keyword">boolean</span> andResume, <span class="hljs-keyword">boolean</span> checkConfig)</span> <span class="hljs-keyword">throws</span> RemoteException </span>{
+    ......
+    app.thread.scheduleLaunchActivity(<span class="hljs-keyword">new</span> Intent(r.intent), r.appToken,
+            System.identityHashCode(r), r.info,
+            mergedConfiguration.getGlobalConfiguration(),
+            mergedConfiguration.getOverrideConfiguration(), r.compat,
+            r.launchedFromPackage, task.voiceInteractor, app.repProcState, r.icicle,
+            r.persistentState, results, newIntents, !andResume,
+            mService.isNextTransitionForward(), profilerInfo);
+    ......
+    retrun <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<ul>
+<li>app.thread&#x6307;&#x7684;&#x662F;IApplicationThread&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x672C;&#x8FDB;&#x7A0B;&#x7528;&#x6765;&#x64CD;&#x4F5C;IApplicationThread&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;IApplicationThread&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;ActivityThread&#x7684;&#x5185;&#x90E8;&#x7C7B;ApplicationThread&#x3002;&#x6240;&#x4EE5;&#x901A;&#x8FC7;Binder&#x673A;&#x5236;&#xFF0C;AMS&#x6240;&#x5728;&#x7684;SystemServer&#x8FDB;&#x7A0B;&#x62FF;&#x5230;&#x4E86;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684;ApplicationThread&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;(&#x7C7B;&#x4F3C;AIDL&#x4E2D;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x64CD;&#x4F5C;ApplicationThread&#x7684;&#x65B9;&#x6CD5;)</li>
+<li>&#x8DE8;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#xFF1A;AMS&#x6240;&#x5728;&#x7684;SystemServer&#x8FDB;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7;Binder&#x673A;&#x5236;&#xFF0C;&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x7684;ApplicationThread&#x7684;scheduleLaunchActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">IApplicationThread</span>.<span class="hljs-title">Stub</span>
+</span></code></pre>
+<h4 id="313-schedulelaunchactivity">3.13 scheduleLaunchActivity</h4>
+<ul>
+<li>ActivityThread.java#ApplicationThread#scheduleLaunchActivity</li>
+</ul>
+<h4 id="314-&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;">3.14 &#x8FDB;&#x7A0B;&#x5173;&#x7CFB;</h4>
+<p> <img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/&#x56DB;&#x5927;&#x7EC4;&#x4EF6;/Activity/AMS&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;.png" alt="AMS&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;"></p>
+<ul>
+<li>SystemServer&#x8FDB;&#x7A0B;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7;Binder&#x673A;&#x5236;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;ApplicationThread&#x5C31;&#x662F;&#x90A3;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5177;&#x4F53;&#x7684;&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;activitythread&#x542F;&#x52A8;activity&#x7684;&#x8FC7;&#x7A0B;">&#x56DB;&#x3001;ActivityThread&#x542F;&#x52A8;Activity&#x7684;&#x8FC7;&#x7A0B;</h3>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/&#x56DB;&#x5927;&#x7EC4;&#x4EF6;/Activity/ActivityThread&#x542F;&#x52A8;Activity&#x8FC7;&#x7A0B;.png" alt="ActivityThread&#x542F;&#x52A8;Activity&#x8FC7;&#x7A0B;"></p>
+<h4 id="41-schedulelaunchactivity">4.1 scheduleLaunchActivity</h4>
+<ul>
+<li>ActivityThread.java#ApplicationThread#scheduleLaunchActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">scheduleLaunchActivity</span><span class="hljs-params">(Intent intent, IBinder token, <span class="hljs-keyword">int</span> ident,
+        ActivityInfo info, Configuration curConfig, Configuration overrideConfig,
+        CompatibilityInfo compatInfo, String referrer, IVoiceInteractor voiceInteractor,
+        <span class="hljs-keyword">int</span> procState, Bundle state, PersistableBundle persistentState,
+        List&lt;ResultInfo&gt; pendingResults, List&lt;ReferrerIntent&gt; pendingNewIntents,
+        <span class="hljs-keyword">boolean</span> notResumed, <span class="hljs-keyword">boolean</span> isForward, ProfilerInfo profilerInfo)</span> </span>{
+    updateProcessState(procState, <span class="hljs-keyword">false</span>);
+    ActivityClientRecord r = <span class="hljs-keyword">new</span> ActivityClientRecord();
+    r.token = token;
+    r.ident = ident;
+    r.intent = intent;
+    r.referrer = referrer;
+    ......
+    updatePendingConfiguration(curConfig);
+    sendMessage(H.LAUNCH_ACTIVITY, r);
+}
+</code></pre>
+<ul>
+<li>&#x5C06;Activity&#x53C2;&#x6570;&#x5C01;&#x88C5;&#x6210;ActivityClientRecord</li>
+<li>sendMessage&#x65B9;&#x6CD5;&#x5411;H&#x7C7B;&#x53D1;&#x9001;LAUNCH_ACTIVITY&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x5C06;ActivityClientRecord&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x8FC7;&#x53BB;</li>
+<li>sendMessage&#x6709;&#x5F88;&#x591A;&#x627F;&#x8F7D;&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;&#x5230;&#x5982;&#x4E0B;sendMessage&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="42-sendmessage">4.2 sendMessage</h4>
+<ul>
+<li>ActivityThread.java#sendMessage</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(<span class="hljs-keyword">int</span> what, Object obj, <span class="hljs-keyword">int</span> arg1, <span class="hljs-keyword">int</span> arg2, <span class="hljs-keyword">boolean</span> async)</span> </span>{
+    <span class="hljs-keyword">if</span> (DEBUG_MESSAGES) Slog.v(
+        TAG, <span class="hljs-string">&quot;SCHEDULE &quot;</span> + what + <span class="hljs-string">&quot; &quot;</span> + mH.codeToString(what)
+        + <span class="hljs-string">&quot;: &quot;</span> + arg1 + <span class="hljs-string">&quot; / &quot;</span> + obj);
+    Message msg = Message.obtain();
+    msg.what = what;
+    msg.obj = obj;
+    msg.arg1 = arg1;
+    msg.arg2 = arg2;
+    <span class="hljs-keyword">if</span> (async) {
+        msg.setAsynchronous(<span class="hljs-keyword">true</span>);
+    }
+    mH.sendMessage(msg);
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x8C03;&#x7528;mH.sendMessage(msg);</li>
+<li>mH&#x662F;H&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x662F;ActivityThread&#x7684;&#x5185;&#x90E8;&#x7C7B;&#x7EE7;&#x627F;&#x81EA;Handler&#xFF0C;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x4E2D;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x6D88;&#x606F;&#x7BA1;&#x7406;&#x7C7B;&#x3002;</li>
+<li>&#x56E0;&#x4E3A;ApplicationThread&#x662F;&#x4E00;&#x4E2A;Binder&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x903B;&#x8F91;&#x8FD0;&#x884C;&#x5728;Binder&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x5207;&#x6362;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;H&#x628A;&#x4EE3;&#x7801;&#x5207;&#x6362;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;</li>
+</ul>
+<h4 id="43-h">4.3 H</h4>
+<ul>
+<li>ActivityThread.java#H</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Handler</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> LAUNCH_ACTIVITY         = <span class="hljs-number">100</span>;
+    ......
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(Message msg)</span> </span>{
+        <span class="hljs-keyword">if</span> (DEBUG_MESSAGES) Slog.v(TAG, <span class="hljs-string">&quot;&gt;&gt;&gt; handling: &quot;</span> + codeToString(msg.what));
+        <span class="hljs-keyword">switch</span> (msg.what) {
+            <span class="hljs-keyword">case</span> LAUNCH_ACTIVITY: {
+                Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="hljs-string">&quot;activityStart&quot;</span>);
+                <span class="hljs-comment">//&#x628A;msg.obj&#x8F6C;&#x6362;&#x6210;ActivityClientRecord&#x5BF9;&#x8C61;</span>
+                <span class="hljs-keyword">final</span> ActivityClientRecord r = (ActivityClientRecord) msg.obj;
+                <span class="hljs-comment">//getPackageInfoNoCheck&#x83B7;&#x5F97;LoadedApk&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;</span>
+                <span class="hljs-comment">//&#x628A;&#x6B64;&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;ActivityClientRecord&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;packageInfo</span>
+                r.packageInfo = getPackageInfoNoCheck(
+                        r.activityInfo.applicationInfo, r.compatInfo);
+                handleLaunchActivity(r, <span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;LAUNCH_ACTIVITY&quot;</span>);
+                Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+            } <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span>......
+        }
+    }
+    ......
+}
+</code></pre>
+<ul>
+<li>Handler&#x548C;Message&#x548C;Looper&#x6D88;&#x606F;&#x673A;&#x5236;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x8FDB;&#x5165;H&#x7684;handleMessage&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;msg.what&#x7684;&#x503C;&#x4E3A;LAUNCH_ACTIVITY&#x3002;</li>
+<li>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;Activity&#x65F6;&#x9700;&#x8981;&#x5C06;&#x8BE5;Activity&#x6240;&#x5C5E;&#x7684;APK&#x52A0;&#x8F7D;&#x8FDB;&#x6765;&#xFF0C;&#x800C;LoadApk&#x5C31;&#x662F;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x5DF2;&#x52A0;&#x8F7D;&#x7684;APK&#x6587;&#x4EF6;&#x7684;</li>
+<li>&#x6700;&#x7EC8;&#x8C03;&#x7528;handleLaunchActivity&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="44-handlelaunchactivity">4.4 handleLaunchActivity</h4>
+<ul>
+<li>ActivityThread.java#handleLaunchActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleLaunchActivity</span><span class="hljs-params">(ActivityClientRecord r, Intent customIntent, String reason)</span> </span>{
+    ......
+    WindowManagerGlobal.initialize();
+    <span class="hljs-comment">//&#x542F;&#x52A8;Activity</span>
+    Activity a = performLaunchActivity(r, customIntent);
+    <span class="hljs-keyword">if</span> (a != <span class="hljs-keyword">null</span>) {
+        r.createdConfig = <span class="hljs-keyword">new</span> Configuration(mConfiguration);
+        reportSizeConfigurations(r);
+        Bundle oldState = r.state;
+        <span class="hljs-comment">//&#x5C06;Activity&#x7684;&#x72B6;&#x6001;&#x7F6E;&#x4E3A;resume</span>
+        handleResumeActivity(r.token, <span class="hljs-keyword">false</span>, r.isForward,
+                !r.activity.mFinished &amp;&amp; !r.startsNotResumed, r.lastProcessedSeq, reason);
+        <span class="hljs-keyword">if</span> (!r.activity.mFinished &amp;&amp; r.startsNotResumed) {
+            performPauseActivityIfNeeded(r, reason);
+            <span class="hljs-keyword">if</span> (r.isPreHoneycomb()) {
+                r.state = oldState;
+            }
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x505C;&#x6B62;Activity&#x542F;&#x52A8;</span>
+            ActivityManager.getService()
+                .finishActivity(r.token, Activity.RESULT_CANCELED, <span class="hljs-keyword">null</span>,
+                Activity.DONT_FINISH_TASK_WITH_ACTIVITY);
+        } <span class="hljs-keyword">catch</span> (RemoteException ex) {
+            <span class="hljs-keyword">throw</span> ex.rethrowFromSystemServer();
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;performLaunchActivity&#x6765;&#x542F;&#x52A8;Activity</li>
+</ul>
+<h4 id="45-performlaunchactivity">4.5 performLaunchActivity</h4>
+<ul>
+<li>ActivityThread.java#performLaunchActivity</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> Activity <span class="hljs-title">performLaunchActivity</span><span class="hljs-params">(ActivityClientRecord r, Intent customIntent)</span> </span>{
+    <span class="hljs-comment">//&#x83B7;&#x53D6;ActivityInfo&#x7C7B;</span>
+    ActivityInfo aInfo = r.activityInfo;
+    <span class="hljs-keyword">if</span> (r.packageInfo == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">//&#x83B7;&#x53D6;APK&#x6587;&#x4EF6;&#x7684;&#x63CF;&#x8FF0;&#x7C7B;LoadedApk</span>
+        r.packageInfo = getPackageInfo(aInfo.applicationInfo, r.compatInfo,
+                Context.CONTEXT_INCLUDE_CODE);
+    }
+    ComponentName component = r.intent.getComponent();
+    ......
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x8981;&#x542F;&#x52A8;Activity&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</span>
+    ContextImpl appContext = createBaseContextForActivity(r);
+    Activity activity = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">try</span> {
+        java.lang.ClassLoader cl = appContext.getClassLoader();
+        <span class="hljs-comment">//&#x7528;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6765;&#x521B;&#x5EFA;&#x8BE5;Activity&#x7684;&#x5B9E;&#x4F8B;</span>
+        activity = mInstrumentation.newActivity(
+                cl, component.getClassName(), r.intent);
+        ......
+    } <span class="hljs-keyword">catch</span> (Exception e) {
+        ......
+    }
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x521B;&#x5EFA;Application</span>
+        Application app = r.packageInfo.makeApplication(<span class="hljs-keyword">false</span>, mInstrumentation);
+        ......
+        <span class="hljs-keyword">if</span> (activity != <span class="hljs-keyword">null</span>) {
+            ......
+            <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;Activity</span>
+            activity.attach(appContext, <span class="hljs-keyword">this</span>, getInstrumentation(), r.token,
+                    r.ident, app, r.intent, r.activityInfo, title, r.parent,
+                    r.embeddedID, r.lastNonConfigurationInstances, config,
+                    r.referrer, r.voiceInteractor, window, r.configCallback);
+            ......
+
+            <span class="hljs-keyword">if</span> (r.isPersistable()) {
+                mInstrumentation.
+                    callActivityOnCreate(activity, r.state, r.persistentState);
+            } <span class="hljs-keyword">else</span> {
+                mInstrumentation.callActivityOnCreate(activity, r.state);
+            }
+            ......
+        }    
+        r.paused = <span class="hljs-keyword">true</span>;
+        mActivities.put(r.token, r);
+    } <span class="hljs-keyword">catch</span> (SuperNotCalledException e) {
+        <span class="hljs-keyword">throw</span> e;
+    } <span class="hljs-keyword">catch</span> (Exception e) {
+        ......
+    }
+    <span class="hljs-keyword">return</span> activity;
+}
+</code></pre>
+<ul>
+<li>makeApplication&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528;Application&#x7684;onCreate&#x65B9;&#x6CD5;</li>
+<li>attach&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;Activity&#xFF0C;&#x5728;attach&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x521B;&#x5EFA;Window&#x5BF9;&#x8C61;&#xFF08;PhoneWindow&#xFF09;&#x5E76;&#x4E8E;Activity&#x81EA;&#x8EAB;&#x5173;&#x8054;</li>
+<li>&#x6700;&#x540E;&#x4F7F;&#x7528;callActivityOnCreate&#x65B9;&#x6CD5;&#x6765;&#x542F;&#x52A8;Activity</li>
+</ul>
+<h4 id="46-callactivityoncreate">4.6 callActivityOnCreate</h4>
+<ul>
+<li>Instrumentation.java#callActivityOnCreate</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">callActivityOnCreate</span><span class="hljs-params">(Activity activity, Bundle icicle,
+        PersistableBundle persistentState)</span> </span>{
+    prePerformCreate(activity);
+    activity.performCreate(icicle, persistentState);
+    postPerformCreate(activity);
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;Activity&#x7684;performCreate&#x65B9;&#x6CD5;</li>
+</ul>
+<h4 id="47-performcreate">4.7 performCreate</h4>
+<ul>
+<li>Activity.java#performCreate</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">performCreate</span><span class="hljs-params">(Bundle icicle)</span> </span>{
+    restoreHasCurrentPermissionRequest(icicle);
+    onCreate(icicle);
+    mActivityTransitionState.readState(icicle);
+    performCreateCommon();
+}
+</code></pre>
+<ul>
+<li>&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;Activity&#x7684;onCreate&#x65B9;&#x6CD5;&#xFF0C;&#x5230;&#x6B64;&#x6839;Activity&#x5C31;&#x542F;&#x52A8;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E5F;&#x5C31;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#x4E86;&#x3002;</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;&#x603B;&#x7ED3;">&#x4E94;&#x3001;&#x603B;&#x7ED3;</h3>
+<h4 id="51-&#x6839;activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;">5.1 &#x6839;Activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;</h4>
+<p><img src="../../images/Android&#x7EC4;&#x4EF6;&#x5185;&#x6838;/&#x56DB;&#x5927;&#x7EC4;&#x4EF6;/Activity/&#x6839;Activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;.png" alt="&#x6839;Activity&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="应用程序进程启动过程.html" class="navigation navigation-prev " aria-label="Previous page: 应用程序进程启动过程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ActivityThread解析.html" class="navigation navigation-next " aria-label="Next page: ActivityThread解析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"根Activity启动过程","level":"5.2.6","depth":2,"next":{"title":"ActivityThread解析","level":"5.2.7","depth":2,"path":"Android组件内核/FrameWork内核解析/ActivityThread解析.md","ref":"Android组件内核/FrameWork内核解析/ActivityThread解析.md","articles":[]},"previous":{"title":"应用程序进程启动过程","level":"5.2.5","depth":2,"path":"Android组件内核/FrameWork内核解析/应用程序进程启动过程.md","ref":"Android组件内核/FrameWork内核解析/应用程序进程启动过程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android组件内核/FrameWork内核解析/根Activity启动过程.md","mtime":"2020-11-20T17:53:17.239Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T17:17:17.741Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
