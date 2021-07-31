@@ -1,0 +1,4237 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>四、PMS处理APK的安装 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="三、PackageInstall安装APK.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                <a href="../../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                    
+                    ConcurrentHashMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../../必备Java知识/JVM/Java虚拟机.html">
+            
+                <a href="../../../必备Java知识/JVM/Java虚拟机.html">
+            
+                    
+                    Java虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.2" data-path="../../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                    
+                    通过反射获得泛型实际类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../../必备Java知识/关键字/static.html">
+            
+                <a href="../../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../../必备Java知识/关键字/final.html">
+            
+                <a href="../../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    1.6 IO
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="../../../必备Java知识/IO/压缩解压缩.html">
+            
+                <a href="../../../必备Java知识/IO/压缩解压缩.html">
+            
+                    
+                    压缩解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    1.7 泛型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../../必备Java知识/泛型/泛型基本解析.html">
+            
+                <a href="../../../必备Java知识/泛型/泛型基本解析.html">
+            
+                    
+                    泛型基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                <a href="../../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                    
+                    常用算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" >
+            
+                <span>
+            
+                    
+                    3.4 类加载器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../../Android必备技能/类加载器/Android类加载.html">
+            
+                <a href="../../../Android必备技能/类加载器/Android类加载.html">
+            
+                    
+                    Android类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" >
+            
+                <span>
+            
+                    
+                    3.5 虚拟机
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                <a href="../../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                    
+                    JIT即时编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="../../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                <a href="../../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                    
+                    DVM和ART
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="../../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                <a href="../../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                    
+                    AOT和JIT的比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../Android系统架构.html">
+            
+                <a href="../Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../Android系统启动.html">
+            
+                <a href="../Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../Zygote进程解析.html">
+            
+                <a href="../Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../SystemServer进程解析.html">
+            
+                <a href="../SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../应用程序进程启动过程.html">
+            
+                <a href="../应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../根Activity启动过程.html">
+            
+                <a href="../根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../ActivityThread解析.html">
+            
+                <a href="../ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8" >
+            
+                <span>
+            
+                    
+                    包管理机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.8.1" data-path="一、PMS的基本使用.html">
+            
+                <a href="一、PMS的基本使用.html">
+            
+                    
+                    一、PMS的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.2" data-path="二、PackageInstall的初始化.html">
+            
+                <a href="二、PackageInstall的初始化.html">
+            
+                    
+                    二、PackageInstall的初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.3" data-path="三、PackageInstall安装APK.html">
+            
+                <a href="三、PackageInstall安装APK.html">
+            
+                    
+                    三、PackageInstall安装APK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2.8.4" data-path="四、PMS处理APK的安装.html">
+            
+                <a href="四、PMS处理APK的安装.html">
+            
+                    
+                    四、PMS处理APK的安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="../../Android消息机制/HashMap解析.html">
+            
+                <a href="../../Android消息机制/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="../../Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="../../跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                <a href="../../跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                    
+                    基于AIDL的Messenger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="../../跨进程通信IPC/ContentProvider.html">
+            
+                <a href="../../跨进程通信IPC/ContentProvider.html">
+            
+                    
+                    ContentProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.4" data-path="../../跨进程通信IPC/常见IPC方式比较.html">
+            
+                <a href="../../跨进程通信IPC/常见IPC方式比较.html">
+            
+                    
+                    常见IPC方式比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                <a href="../../../高级UI/系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                <a href="../../../高级UI/系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../../高级UI/自定义View/一、基础知识.html">
+            
+                <a href="../../../高级UI/自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                <a href="../../../高级UI/自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                <a href="../../../高级UI/自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                <a href="../../../高级UI/自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                <a href="../../../高级UI/自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../../高级UI/自定义View/自定义View.html">
+            
+                <a href="../../../高级UI/自定义View/自定义View.html">
+            
+                    
+                    自定义View
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../../../高级UI/自定义View/View事件分发机制.html">
+            
+                <a href="../../../高级UI/自定义View/View事件分发机制.html">
+            
+                    
+                    View事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                <a href="../../../高级UI/Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../../高级UI/Webview/Webview.html">
+            
+                <a href="../../../高级UI/Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+                <span>
+            
+                    
+                    5.4 Compose
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.4.1" data-path="../../../高级UI/Compose/Compose全面解析.html">
+            
+                <a href="../../../高级UI/Compose/Compose全面解析.html">
+            
+                    
+                    Compose全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.2" data-path="../../../高级UI/Compose/Compose基本使用.html">
+            
+                <a href="../../../高级UI/Compose/Compose基本使用.html">
+            
+                    
+                    Compose基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3" data-path="../../../高级UI/Compose/Compose实现原理.html">
+            
+                <a href="../../../高级UI/Compose/Compose实现原理.html">
+            
+                    
+                    Compose实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" >
+            
+                <span>
+            
+                    
+                    5.5 ViewPager
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1" data-path="../../../高级UI/ViewPager/ViewPager解析.html">
+            
+                <a href="../../../高级UI/ViewPager/ViewPager解析.html">
+            
+                    
+                    ViewPager解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2" data-path="../../../高级UI/ViewPager/禁止预加载实现懒加载.html">
+            
+                <a href="../../../高级UI/ViewPager/禁止预加载实现懒加载.html">
+            
+                    
+                    禁止预加载实现懒加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.3" data-path="../../../高级UI/ViewPager/ViewPager2解析.html">
+            
+                <a href="../../../高级UI/ViewPager/ViewPager2解析.html">
+            
+                    
+                    ViewPager2解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" >
+            
+                <span>
+            
+                    
+                    5.6 列表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.6.1" data-path="../../../高级UI/列表/RecyclerView解析.html">
+            
+                <a href="../../../高级UI/列表/RecyclerView解析.html">
+            
+                    
+                    RecyclerView解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.7" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                    
+                    Glide缓存原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.8" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                    
+                    ModelLoader与Register机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.9" data-path="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                    
+                    Glide整体原理分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.3" >
+            
+                <span>
+            
+                    
+                    8.2.3 图片加载框架选型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.3.1" data-path="../../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                <a href="../../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                    
+                    图片加载框架比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.3" data-path="../../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                <a href="../../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                    
+                    OkHttp的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="../../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                <a href="../../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                    
+                    RxJava入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.3" data-path="../../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                <a href="../../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.4" data-path="../../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                <a href="../../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" >
+            
+                <span>
+            
+                    
+                    8.7 Jetpack
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../../架构能力/设计模式/建造者模式.html">
+            
+                <a href="../../../架构能力/设计模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../../架构能力/设计模式/工厂方法模式.html">
+            
+                <a href="../../../架构能力/设计模式/工厂方法模式.html">
+            
+                    
+                    工厂方法模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.3" data-path="../../../架构能力/设计模式/简单工厂模式.html">
+            
+                <a href="../../../架构能力/设计模式/简单工厂模式.html">
+            
+                    
+                    简单工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.4" data-path="../../../架构能力/设计模式/抽象工厂模式.html">
+            
+                <a href="../../../架构能力/设计模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.5" data-path="../../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.6" data-path="../../../架构能力/设计模式/外观模式.html">
+            
+                <a href="../../../架构能力/设计模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" >
+            
+                <span>
+            
+                    
+                    11.3 组件化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.3.1" data-path="../../../架构能力/组件化/组件化.html">
+            
+                <a href="../../../架构能力/组件化/组件化.html">
+            
+                    
+                    组件化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3.2" data-path="../../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                <a href="../../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                    
+                    一、ARouter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1" >
+            
+                <span>
+            
+                    
+                    官网学习
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1" >
+            
+                <span>
+            
+                    
+                    函数与Lambda表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1.1" data-path="../../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                <a href="../../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                    
+                    一、函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.2" data-path="../../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                <a href="../../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                    
+                    二、高阶函数与Lambda表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.3" data-path="../../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                <a href="../../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                    
+                    三、内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.2" >
+            
+                <span>
+            
+                    
+                    关键字解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.2.1" data-path="../../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                <a href="../../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                    
+                    委托之by
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 Jetpack和AndroidX</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第17章 鸿蒙</li>
+        
+        
+    
+        <li class="chapter " data-level="18.1" >
+            
+                <span>
+            
+                    
+                    17.1 官方课程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1.1" data-path="../../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                <a href="../../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                    
+                    HarmonyOS应用程序框架解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.2" data-path="../../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                <a href="../../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                    
+                    HarmonyOS分布式软总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.3" data-path="../../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                <a href="../../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                    
+                    HarmonyOS分布式数据管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第18章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >四、PMS处理APK的安装</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="pms&#x5904;&#x7406;apk&#x7684;&#x5B89;&#x88C5;">PMS&#x5904;&#x7406;APK&#x7684;&#x5B89;&#x88C5;</h2>
+<h4 id="&#x8F6C;&#x8F7D;">&#x8F6C;&#x8F7D;</h4>
+<ul>
+<li><a href="http://liuwangshu.cn/framework/pms/3-pms-install.html" target="_blank">Android&#x5305;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x4E09;&#xFF09;PMS&#x5904;&#x7406;APK&#x7684;&#x5B89;&#x88C5;</a></li>
+</ul>
+<h3 id="1&#x524D;&#x8A00;">1.&#x524D;&#x8A00;</h3>
+<ul>
+<li>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="http://liuwangshu.cn/framework/pms/2-packageinstaller-apk.html" target="_blank">Android&#x5305;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x4E8C;&#xFF09;PackageInstaller&#x5B89;&#x88C5;APK</a>&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;PackageInstaller&#x662F;&#x5982;&#x4F55;&#x5B89;&#x88C5;APK&#x7684;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x5C06;APK&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x7531;PMS&#x5904;&#x7406;&#x3002;&#x90A3;&#x4E48;PMS&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;&#x5462;&#xFF1F;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4F1A;&#x7ED9;&#x4F60;&#x7B54;&#x6848;&#x3002;</li>
+</ul>
+<h3 id="2packagehandler&#x5904;&#x7406;&#x5B89;&#x88C5;&#x6D88;&#x606F;">2.PackageHandler&#x5904;&#x7406;&#x5B89;&#x88C5;&#x6D88;&#x606F;</h3>
+<h4 id="21-&#x65F6;&#x5E8F;&#x56FE;">2.1 &#x65F6;&#x5E8F;&#x56FE;</h4>
+<ul>
+<li>APK&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x7531;PMS&#x540E;&#xFF0C;PMS&#x901A;&#x8FC7;&#x5411;PackageHandler&#x53D1;&#x9001;&#x6D88;&#x606F;&#x6765;&#x9A71;&#x52A8;APK&#x7684;&#x590D;&#x5236;&#x548C;&#x5B89;&#x88C5;&#x5DE5;&#x4F5C;&#x3002;</li>
+<li>&#x5148;&#x6765;&#x67E5;&#x770B;PackageHandler&#x5904;&#x7406;&#x5B89;&#x88C5;&#x6D88;&#x606F;&#x7684;&#x8C03;&#x7528;&#x65F6;&#x5E8F;&#x56FE;&#x3002;</li>
+</ul>
+<p><a href="https://s2.ax1x.com/2019/05/27/VeClRJ.png" target="_blank"><img src="https://s2.ax1x.com/2019/05/27/VeClRJ.png" alt="VeClRJ.png"></a></p>
+<h4 id="22-packagemanagerservicejavainstallstage">2.2 PackageManagerService.java#installStage</h4>
+<ul>
+<li><p>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</p>
+</li>
+<li><p>&#x63A5;&#x7740;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x6765;&#x67E5;&#x770B;PMS&#x7684;installStage&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">installStage</span><span class="hljs-params">(String packageName, File stagedDir, String stagedCid,
+           IPackageInstallObserver2 observer, PackageInstaller.SessionParams sessionParams,
+           String installerPackageName, <span class="hljs-keyword">int</span> installerUid, UserHandle user,
+           Certificate[][] certificates)</span> </span>{
+       ...
+       <span class="hljs-keyword">final</span> Message msg = mHandler.obtainMessage(INIT_COPY);<span class="hljs-comment">//1</span>
+       <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> installReason = fixUpInstallReason(installerPackageName, installerUid,
+               sessionParams.installReason);
+       <span class="hljs-keyword">final</span> InstallParams params = <span class="hljs-keyword">new</span> InstallParams(origin, <span class="hljs-keyword">null</span>, observer,
+               sessionParams.installFlags, installerPackageName, sessionParams.volumeUuid,
+               verificationInfo, user, sessionParams.abiOverride,
+               sessionParams.grantedRuntimePermissions, certificates, installReason);<span class="hljs-comment">//2</span>
+       params.setTraceMethod(<span class="hljs-string">&quot;installStage&quot;</span>).setTraceCookie(System.identityHashCode(params));
+       msg.obj = params;
+       ...
+       mHandler.sendMessage(msg);<span class="hljs-comment">//3</span>
+   }
+</code></pre>
+<ul>
+<li>&#x6CE8;&#x91CA;2&#x5904;&#x521B;&#x5EFA;InstallParams&#xFF0C;&#x5B83;&#x5BF9;&#x5E94;&#x4E8E;&#x5305;&#x7684;&#x5B89;&#x88C5;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x521B;&#x5EFA;&#x4E86;&#x7C7B;&#x578B;&#x4E3A;INIT_COPY&#x7684;&#x6D88;&#x606F;&#xFF0C;</li>
+<li>&#x5728;&#x6CE8;&#x91CA;3&#x5904;&#x5C06;InstallParams&#x901A;&#x8FC7;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x3002;</li>
+</ul>
+<h4 id="23-&#x5BF9;initcopy&#x7684;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;">2.3 &#x5BF9;INIT_COPY&#x7684;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;</h4>
+<h5 id="231-packagemanagerservicejavapackagehandler">2.3.1 PackageManagerService.java#PackageHandler</h5>
+<ul>
+<li>&#x5904;&#x7406;INIT_COPY&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;</li>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#PackageHandler</li>
+</ul>
+<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doHandleMessage</span><span class="hljs-params">(Message msg)</span> </span>{
+           <span class="hljs-keyword">switch</span> (msg.what) {
+               <span class="hljs-keyword">case</span> INIT_COPY: {
+                   HandlerParams params = (HandlerParams) msg.obj;
+                   <span class="hljs-keyword">int</span> idx = mPendingInstalls.size();
+                   <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.i(TAG, <span class="hljs-string">&quot;init_copy idx=&quot;</span> + idx + <span class="hljs-string">&quot;: &quot;</span> + params);
+                   <span class="hljs-comment">//mBound&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x662F;&#x5426;&#x7ED1;&#x5B9A;&#x4E86;&#x670D;&#x52A1;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;false</span>
+                   <span class="hljs-keyword">if</span> (!mBound) {<span class="hljs-comment">//1</span>
+                       Trace.asyncTraceBegin(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;bindingMCS&quot;</span>,
+                               System.identityHashCode(mHandler));
+                       <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#xFF0C;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#xFF0C;connectToService&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x5982;&#x679C;&#x7ED1;&#x5B9A;&#x6210;&#x529F;&#x4F1A;&#x5C06;mBound&#x7F6E;&#x4E3A;true</span>
+                       <span class="hljs-keyword">if</span> (!connectToService()) {<span class="hljs-comment">//2</span>
+                           Slog.e(TAG, <span class="hljs-string">&quot;Failed to bind to media container service&quot;</span>);
+                           params.serviceError();
+                           Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;bindingMCS&quot;</span>,
+                                   System.identityHashCode(mHandler));
+                           <span class="hljs-keyword">if</span> (params.traceMethod != <span class="hljs-keyword">null</span>) {
+                               Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER, params.traceMethod,
+                                       params.traceCookie);
+                           }
+                           <span class="hljs-comment">//&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#x5931;&#x8D25;&#x5219;return</span>
+                           <span class="hljs-keyword">return</span>;
+                       } <span class="hljs-keyword">else</span> {
+                           <span class="hljs-comment">//&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#x6210;&#x529F;&#xFF0C;&#x5C06;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x5230;ArrayList&#x7C7B;&#x578B;&#x7684;mPendingInstalls&#x4E2D;&#xFF0C;&#x7B49;&#x5F85;&#x5904;&#x7406;</span>
+                           mPendingInstalls.add(idx, params);
+                       }
+                   } <span class="hljs-keyword">else</span> {
+                   <span class="hljs-comment">//&#x5DF2;&#x7ECF;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;</span>
+                       mPendingInstalls.add(idx, params);
+                       <span class="hljs-keyword">if</span> (idx == <span class="hljs-number">0</span>) {
+                           mHandler.sendEmptyMessage(MCS_BOUND);<span class="hljs-comment">//3</span>
+                       }
+                   }
+                   <span class="hljs-keyword">break</span>;
+               }
+               ....
+               }
+   }
+}
+</code></pre>
+<ul>
+<li>PackageHandler&#x7EE7;&#x627F;&#x81EA;Handler&#xFF0C;&#x5B83;&#x88AB;&#x5B9A;&#x4E49;&#x5728;PMS&#x4E2D;&#xFF0C;doHandleMessage&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5404;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x6765;&#x67E5;&#x770B;&#x5BF9;INIT_COPY&#x7C7B;&#x578B;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;&#x3002;</li>
+<li><p>&#x6CE8;&#x91CA;1&#x5904;&#x7684;mBound&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x662F;&#x5426;&#x7ED1;&#x5B9A;&#x4E86;DefaultContainerService&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;false&#x3002;DefaultContainerService&#x662F;&#x7528;&#x4E8E;&#x68C0;&#x67E5;&#x548C;&#x590D;&#x5236;&#x53EF;&#x79FB;&#x52A8;&#x6587;&#x4EF6;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;DefaultContainerService&#x6CA1;&#x6709;&#x548C;PMS&#x8FD0;&#x884C;&#x5728;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x4E2D;&#xFF0C;&#x5B83;&#x8FD0;&#x884C;&#x5728;com.android.defcontainer&#x8FDB;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7;IMediaContainerService&#x548C;PMS&#x8FDB;&#x884C;IPC&#x901A;&#x4FE1;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;
+<a href="https://s2.ax1x.com/2019/05/27/VeCQG4.png" target="_blank"><img src="https://s2.ax1x.com/2019/05/27/VeCQG4.png" alt="VeCQG4.png"></a></p>
+</li>
+<li><p>&#x6CE8;&#x91CA;2&#x5904;&#x7684;connectToService&#x65B9;&#x6CD5;&#x7528;&#x6765;&#x7ED1;&#x5B9A;DefaultContainerService&#xFF0C;&#x6CE8;&#x91CA;3&#x5904;&#x53D1;&#x9001;MCS_BOUND&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x89E6;&#x53D1;&#x5904;&#x7406;&#x7B2C;&#x4E00;&#x4E2A;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x3002;</p>
+</li>
+<li><p>&#x67E5;&#x770B;&#x6CE8;&#x91CA;2&#x5904;&#x7684;connectToService&#x65B9;&#x6CD5;&#xFF1A;</p>
+</li>
+</ul>
+<h5 id="232-packagemanagerservicejavapackagehandlerconnecttoservice">2.3.2 PackageManagerService.java#PackageHandler#connectToService</h5>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#PackageHandler </li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">connectToService</span><span class="hljs-params">()</span> </span>{
+          <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG, <span class="hljs-string">&quot;Trying to bind to&quot;</span> +
+                  <span class="hljs-string">&quot; DefaultContainerService&quot;</span>);
+          Intent service = <span class="hljs-keyword">new</span> Intent().setComponent(DEFAULT_CONTAINER_COMPONENT);
+          Process.setThreadPriority(Process.THREAD_PRIORITY_DEFAULT);
+          <span class="hljs-keyword">if</span> (mContext.bindServiceAsUser(service, mDefContainerConn,
+                  Context.BIND_AUTO_CREATE, UserHandle.SYSTEM)) {<span class="hljs-comment">//1</span>
+              Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+              mBound = <span class="hljs-keyword">true</span>;<span class="hljs-comment">//2</span>
+              <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+          }
+          Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+      }
+</code></pre>
+<ul>
+<li>&#x6CE8;&#x91CA;2&#x5904;&#x5982;&#x679C;&#x7ED1;&#x5B9A;DefaultContainerService&#x6210;&#x529F;&#xFF0C;mBound&#x4F1A;&#x7F6E;&#x4E3A;ture &#x3002;</li>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x7684;bindServiceAsUser&#x65B9;&#x6CD5;&#x4F1A;&#x4F20;&#x5165;mDefContainerConn&#xFF0C;bindServiceAsUser&#x65B9;&#x6CD5;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x548C;&#x6211;&#x4EEC;&#x8C03;&#x7528;bindService&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x670D;&#x52A1;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;onServiceConnected&#x65B9;&#x6CD5;&#xFF1A;</li>
+</ul>
+<h5 id="233-packagemanagerservicedefaultcontainerconnection">2.3.3 PackageManagerService#DefaultContainerConnection</h5>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java </li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefaultContainerConnection</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ServiceConnection</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onServiceConnected</span><span class="hljs-params">(ComponentName name, IBinder service)</span> </span>{
+          <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG, <span class="hljs-string">&quot;onServiceConnected&quot;</span>);
+          <span class="hljs-keyword">final</span> IMediaContainerService imcs = IMediaContainerService.Stub
+                  .asInterface(Binder.allowBlocking(service));
+          mHandler.sendMessage(mHandler.obtainMessage(MCS_BOUND, Object));<span class="hljs-comment">//1</span>
+      }
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onServiceDisconnected</span><span class="hljs-params">(ComponentName name)</span> </span>{
+          <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG, <span class="hljs-string">&quot;onServiceDisconnected&quot;</span>);
+      }
+  }
+</code></pre>
+<ul>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x53D1;&#x9001;&#x4E86;MCS_BOUND&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x4E0E;<code>PackageHandler.doHandleMessage</code>&#x65B9;&#x6CD5;&#x7684;&#x6CE8;&#x91CA;3&#x5904;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x91CC;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5E26;&#x4E86;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x6765;&#x8FDB;&#x884C;&#x8BB2;&#x89E3;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x6D88;&#x606F;&#x4E0D;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x6D88;&#x606F;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x3002;</li>
+</ul>
+<h4 id="24-&#x5BF9;mcsbound&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;">2.4 &#x5BF9;MCS_BOUND&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;</h4>
+<h5 id="241-&#x6D88;&#x606F;&#x4E0D;&#x5E26;object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;">2.4.1 &#x6D88;&#x606F;&#x4E0D;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;</h5>
+<ul>
+<li>&#x67E5;&#x770B;&#x5BF9;MCS_BOUND&#x7C7B;&#x578B;&#x6D88;&#x606F;&#x7684;&#x5904;&#x7406;&#xFF1A;</li>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">case</span> MCS_BOUND: {
+            <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.i(TAG, <span class="hljs-string">&quot;mcs_bound&quot;</span>);
+            <span class="hljs-keyword">if</span> (msg.obj != <span class="hljs-keyword">null</span>) {<span class="hljs-comment">//1</span>
+                mContainerService = (IMediaContainerService) msg.obj;<span class="hljs-comment">//2</span>
+                Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;bindingMCS&quot;</span>,
+                        System.identityHashCode(mHandler));
+            }
+            <span class="hljs-keyword">if</span> (mContainerService == <span class="hljs-keyword">null</span>) {<span class="hljs-comment">//3</span>
+                <span class="hljs-keyword">if</span> (!mBound) {<span class="hljs-comment">//4</span>
+                      Slog.e(TAG, <span class="hljs-string">&quot;Cannot bind to media container service&quot;</span>);
+                      <span class="hljs-keyword">for</span> (HandlerParams params : mPendingInstalls) {
+                          params.serviceError();<span class="hljs-comment">//5</span>
+                          Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;queueInstall&quot;</span>,
+                                        System.identityHashCode(params));
+                          <span class="hljs-keyword">if</span> (params.traceMethod != <span class="hljs-keyword">null</span>) {
+                          Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER,
+                           params.traceMethod, params.traceCookie);
+                          }
+                          <span class="hljs-keyword">return</span>;
+                      }   
+                          <span class="hljs-comment">//&#x7ED1;&#x5B9A;&#x5931;&#x8D25;&#xFF0C;&#x6E05;&#x7A7A;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x961F;&#x5217;</span>
+                          mPendingInstalls.clear();
+                   } <span class="hljs-keyword">else</span> {
+                          <span class="hljs-comment">//&#x7EE7;&#x7EED;&#x7B49;&#x5F85;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;</span>
+                          Slog.w(TAG, <span class="hljs-string">&quot;Waiting to connect to media container service&quot;</span>);
+                   }
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mPendingInstalls.size() &gt; <span class="hljs-number">0</span>) {
+              ...
+              <span class="hljs-keyword">else</span> {
+                   Slog.w(TAG, <span class="hljs-string">&quot;Empty queue&quot;</span>);
+                   }
+            <span class="hljs-keyword">break</span>;
+        }
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x6D88;&#x606F;&#x4E0D;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x6CE8;&#x91CA;1&#x5904;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x6CE8;&#x91CA;2&#x5904;&#x7684;IMediaContainerService&#x7C7B;&#x578B;&#x7684;mContainerService&#x4E5F;&#x65E0;&#x6CD5;&#x88AB;&#x8D4B;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x6EE1;&#x8DB3;&#x4E86;&#x6CE8;&#x91CA;3&#x5904;&#x7684;&#x6761;&#x4EF6;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6EE1;&#x8DB3;&#x6CE8;&#x91CA;4&#x5904;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x8BF4;&#x660E;&#x8FD8;&#x6CA1;&#x6709;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x6B64;&#x524D;&#x5DF2;&#x7ECF;&#x5728;<code>PackageHandler.doHandleMessage</code>&#x65B9;&#x6CD5;&#x7684;&#x6CE8;&#x91CA;2&#x5904;&#x8C03;&#x7528;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#x7684;&#x65B9;&#x6CD5;&#x4E86;&#xFF0C;&#x8FD9;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x6B63;&#x5E38;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x6CE8;&#x91CA;5&#x5904;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x670D;&#x52A1;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x6EE1;&#x8DB3;&#x6CE8;&#x91CA;4&#x5904;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x8BF4;&#x660E;&#x5DF2;&#x7ECF;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#x4E86;&#xFF0C;&#x5C31;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x7CFB;&#x7EDF;log&#xFF0C;&#x544A;&#x77E5;&#x7528;&#x6237;&#x7B49;&#x5F85;&#x7CFB;&#x7EDF;&#x7ED1;&#x5B9A;&#x670D;&#x52A1;&#x3002;</li>
+</ul>
+<h5 id="242-&#x6D88;&#x606F;&#x5E26;object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;">2.4.2 &#x6D88;&#x606F;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;</h5>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">case</span> MCS_BOUND: {
+            <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.i(TAG, <span class="hljs-string">&quot;mcs_bound&quot;</span>);
+            <span class="hljs-keyword">if</span> (msg.obj != <span class="hljs-keyword">null</span>) {
+            ...
+            }
+            <span class="hljs-keyword">if</span> (mContainerService == <span class="hljs-keyword">null</span>) {<span class="hljs-comment">//1</span>
+             ...
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mPendingInstalls.size() &gt; <span class="hljs-number">0</span>) {<span class="hljs-comment">//2</span>
+                          HandlerParams params = mPendingInstalls.get(<span class="hljs-number">0</span>);<span class="hljs-comment">//3</span>
+                        <span class="hljs-keyword">if</span> (params != <span class="hljs-keyword">null</span>) {
+                            Trace.asyncTraceEnd(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;queueInstall&quot;</span>,
+                                    System.identityHashCode(params));
+                            Trace.traceBegin(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;startCopy&quot;</span>);
+                            <span class="hljs-keyword">if</span> (params.startCopy()) {<span class="hljs-comment">//4</span>
+                                <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG,
+                                        <span class="hljs-string">&quot;Checking for more work or unbind...&quot;</span>);
+                                 <span class="hljs-comment">//&#x5982;&#x679C;APK&#x5B89;&#x88C5;&#x6210;&#x529F;&#xFF0C;&#x5220;&#x9664;&#x672C;&#x6B21;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;</span>
+                                <span class="hljs-keyword">if</span> (mPendingInstalls.size() &gt; <span class="hljs-number">0</span>) {
+                                    mPendingInstalls.remove(<span class="hljs-number">0</span>);
+                                }
+                                <span class="hljs-keyword">if</span> (mPendingInstalls.size() == <span class="hljs-number">0</span>) {
+                                    <span class="hljs-keyword">if</span> (mBound) {
+                                    <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x4E86;&#xFF0C;&#x53D1;&#x9001;&#x89E3;&#x7ED1;&#x670D;&#x52A1;&#x7684;&#x8BF7;&#x6C42;</span>
+                                        <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG,
+                                                <span class="hljs-string">&quot;Posting delayed MCS_UNBIND&quot;</span>);
+                                        removeMessages(MCS_UNBIND);
+                                        Message ubmsg = obtainMessage(MCS_UNBIND);
+                                        sendMessageDelayed(ubmsg, <span class="hljs-number">10000</span>);
+                                    }
+                                } <span class="hljs-keyword">else</span> {
+                                    <span class="hljs-keyword">if</span> (DEBUG_SD_INSTALL) Log.i(TAG,
+                                            <span class="hljs-string">&quot;Posting MCS_BOUND for next work&quot;</span>);
+                                   <span class="hljs-comment">//&#x5982;&#x679C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#xFF0C;&#x63A5;&#x7740;&#x53D1;&#x9001;MCS_BOUND&#x6D88;&#x606F;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x5269;&#x4F59;&#x7684;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;       </span>
+                                    mHandler.sendEmptyMessage(MCS_BOUND);<span class="hljs-comment">//5</span>
+                                }
+                            }
+                            Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
+                        }<span class="hljs-keyword">else</span> {
+                        Slog.w(TAG, <span class="hljs-string">&quot;Empty queue&quot;</span>);<span class="hljs-comment">//6</span>
+                    }
+            <span class="hljs-keyword">break</span>;
+        }
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;MCS_BOUND&#x7C7B;&#x578B;&#x6D88;&#x606F;&#x5E26;Object&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6CE8;&#x91CA;1&#x5904;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x6CE8;&#x91CA;2&#x5904;&#x7684;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x6570;&#x4E0D;&#x5927;&#x4E8E;0&#x5C31;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x6CE8;&#x91CA;6&#x5904;&#x7684;log&#xFF0C;&#x8BF4;&#x660E;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x961F;&#x5217;&#x662F;&#x7A7A;&#x7684;&#x3002;</li>
+<li>&#x5B89;&#x88C5;&#x5B8C;&#x4E00;&#x4E2A;APK&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x5728;&#x6CE8;&#x91CA;5&#x5904;&#x53D1;&#x51FA;MSC_BOUND&#x6D88;&#x606F;&#xFF0C;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x5269;&#x4E0B;&#x7684;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x76F4;&#x5230;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;3&#x5904;&#x5F97;&#x5230;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x961F;&#x5217;&#x7B2C;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;HandlerParams &#xFF0C;&#x5982;&#x679C;HandlerParams &#x4E0D;&#x4E3A;null&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x6CE8;&#x91CA;4&#x5904;&#x7684;HandlerParams&#x7684;startCopy&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5F00;&#x59CB;&#x590D;&#x5236;APK&#x7684;&#x6D41;&#x7A0B;&#x3002;</li>
+</ul>
+<h3 id="3&#x590D;&#x5236;apk">3.&#x590D;&#x5236;APK</h3>
+<h4 id="31-&#x65F6;&#x5E8F;&#x56FE;">3.1 &#x65F6;&#x5E8F;&#x56FE;</h4>
+<ul>
+<li>&#x5148;&#x6765;&#x67E5;&#x770B;&#x590D;&#x5236;APK&#x7684;&#x65F6;&#x5E8F;&#x56FE;&#x3002;</li>
+</ul>
+<p><a href="https://s2.ax1x.com/2019/05/27/VeCuIU.png" target="_blank"><img src="https://s2.ax1x.com/2019/05/27/VeCuIU.png" alt="VeCuIU.png"></a></p>
+<h4 id="32-handlerparamsstartcopy">3.2 HandlerParams#startCopy</h4>
+<ul>
+<li>HandlerParams&#x662F;PMS&#x4E2D;&#x7684;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x4E3A;PMS&#x7684;&#x5185;&#x90E8;&#x7C7B;InstallParams&#x3002;HandlerParams&#x7684;startCopy&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;</li>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#HandlerParams</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">startCopy</span><span class="hljs-params">()</span> </span>{
+           <span class="hljs-keyword">boolean</span> res;
+           <span class="hljs-keyword">try</span> {
+               <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.i(TAG, <span class="hljs-string">&quot;startCopy &quot;</span> + mUser + <span class="hljs-string">&quot;: &quot;</span> + <span class="hljs-keyword">this</span>);
+               <span class="hljs-comment">//startCopy&#x65B9;&#x6CD5;&#x5C1D;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x8D85;&#x8FC7;&#x4E86;4&#x6B21;&#xFF0C;&#x5C31;&#x653E;&#x5F03;&#x8FD9;&#x4E2A;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;</span>
+               <span class="hljs-keyword">if</span> (++mRetries &gt; MAX_RETRIES) {<span class="hljs-comment">//1</span>
+                   Slog.w(TAG, <span class="hljs-string">&quot;Failed to invoke remote methods on default container service. Giving up&quot;</span>);
+                   mHandler.sendEmptyMessage(MCS_GIVE_UP);<span class="hljs-comment">//2</span>
+                   handleServiceError();
+                   <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+               } <span class="hljs-keyword">else</span> {
+                   handleStartCopy();<span class="hljs-comment">//3</span>
+                   res = <span class="hljs-keyword">true</span>;
+               }
+           } <span class="hljs-keyword">catch</span> (RemoteException e) {
+               <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.i(TAG, <span class="hljs-string">&quot;Posting install MCS_RECONNECT&quot;</span>);
+               mHandler.sendEmptyMessage(MCS_RECONNECT);
+               res = <span class="hljs-keyword">false</span>;
+           }
+           handleReturnCode();<span class="hljs-comment">//4</span>
+           <span class="hljs-keyword">return</span> res;
+       }
+</code></pre>
+<ul>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x7684;mRetries&#x7528;&#x4E8E;&#x8BB0;&#x5F55;startCopy&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x8C03;&#x7528;startCopy&#x65B9;&#x6CD5;&#x65F6;&#x4F1A;&#x5148;&#x81EA;&#x52A8;&#x52A0;1&#xFF0C;&#x5982;&#x679C;&#x6B21;&#x6570;&#x5927;&#x4E8E;4&#x6B21;&#x5C31;&#x653E;&#x5F03;&#x8FD9;&#x4E2A;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#xFF1A;</li>
+<li>&#x5728;&#x6CE8;&#x91CA;2&#x5904;&#x53D1;&#x9001;MCS_GIVE_UP&#x7C7B;&#x578B;&#x6D88;&#x606F;&#xFF0C;&#x5C06;&#x7B2C;&#x4E00;&#x4E2A;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#xFF08;&#x672C;&#x6B21;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#xFF09;&#x4ECE;&#x5B89;&#x88C5;&#x8BF7;&#x6C42;&#x961F;&#x5217;mPendingInstalls&#x4E2D;&#x79FB;&#x9664;&#x6389;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;4&#x5904;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x590D;&#x5236;APK&#x540E;&#x7684;&#x5B89;&#x88C5;APK&#x903B;&#x8F91;&#xFF0C;&#x7B2C;3&#x5C0F;&#x8282;&#x4E2D;&#x4F1A;&#x518D;&#x6B21;&#x63D0;&#x5230;&#x5B83;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;3&#x5904;&#x8C03;&#x7528;&#x4E86;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;handleStartCopy&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x5728;InstallParams&#x4E2D;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</li>
+</ul>
+<h4 id="33packagemanagerservicejavainstallparamshandlestartcopy">3.3PackageManagerService.java#InstallParams#handleStartCopy</h4>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#InstallParams</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleStartCopy</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> RemoteException </span>{
+       ...
+       <span class="hljs-comment">//&#x786E;&#x5B9A;APK&#x7684;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;&#x3002;onSd&#xFF1A;&#x5B89;&#x88C5;&#x5230;SD&#x5361;&#xFF0C; onInt&#xFF1A;&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x5373;Data&#x5206;&#x533A;&#xFF0C;ephemeral&#xFF1A;&#x5B89;&#x88C5;&#x5230;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#xFF08;Instant Apps&#x5B89;&#x88C5;&#xFF09;            </span>
+       <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> onSd = (installFlags &amp; PackageManager.INSTALL_EXTERNAL) != <span class="hljs-number">0</span>;
+       <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> onInt = (installFlags &amp; PackageManager.INSTALL_INTERNAL) != <span class="hljs-number">0</span>;
+       <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> ephemeral = (installFlags &amp; PackageManager.INSTALL_INSTANT_APP) != <span class="hljs-number">0</span>;
+       PackageInfoLite pkgLite = <span class="hljs-keyword">null</span>;
+       <span class="hljs-keyword">if</span> (onInt &amp;&amp; onSd) {
+         <span class="hljs-comment">// APK&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x5B89;&#x88C5;&#x5728;SD&#x5361;&#x548C;Data&#x5206;&#x533A;</span>
+           Slog.w(TAG, <span class="hljs-string">&quot;Conflicting flags specified for installing on both internal and external&quot;</span>);
+           ret = PackageManager.INSTALL_FAILED_INVALID_INSTALL_LOCATION;
+         <span class="hljs-comment">//&#x5B89;&#x88C5;&#x6807;&#x5FD7;&#x51B2;&#x7A81;&#xFF0C;Instant Apps&#x4E0D;&#x80FD;&#x5B89;&#x88C5;&#x5230;SD&#x5361;&#x4E2D;</span>
+       } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (onSd &amp;&amp; ephemeral) {
+           Slog.w(TAG,  <span class="hljs-string">&quot;Conflicting flags specified for installing ephemeral on external&quot;</span>);
+           ret = PackageManager.INSTALL_FAILED_INVALID_INSTALL_LOCATION;
+       } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//&#x83B7;&#x53D6;APK&#x7684;&#x5C11;&#x91CF;&#x7684;&#x4FE1;&#x606F;</span>
+           pkgLite = mContainerService.getMinimalPackageInfo(origin.resolvedPath, installFlags,
+                   packageAbiOverride);<span class="hljs-comment">//1</span>
+           <span class="hljs-keyword">if</span> (DEBUG_EPHEMERAL &amp;&amp; ephemeral) {
+               Slog.v(TAG, <span class="hljs-string">&quot;pkgLite for install: &quot;</span> + pkgLite);
+           }
+       ...
+       <span class="hljs-keyword">if</span> (ret == PackageManager.INSTALL_SUCCEEDED) {
+            <span class="hljs-comment">//&#x5224;&#x65AD;&#x5B89;&#x88C5;&#x7684;&#x4F4D;&#x7F6E;</span>
+           <span class="hljs-keyword">int</span> loc = pkgLite.recommendedInstallLocation;
+           <span class="hljs-keyword">if</span> (loc == PackageHelper.RECOMMEND_FAILED_INVALID_LOCATION) {
+               ret = PackageManager.INSTALL_FAILED_INVALID_INSTALL_LOCATION;
+           } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (loc == PackageHelper.RECOMMEND_FAILED_ALREADY_EXISTS) {
+               ret = PackageManager.INSTALL_FAILED_ALREADY_EXISTS;
+           } 
+           ...
+           }<span class="hljs-keyword">else</span>{
+             loc = installLocationPolicy(pkgLite);<span class="hljs-comment">//2</span>
+             ...
+           }
+       }
+       <span class="hljs-comment">//&#x6839;&#x636E;InstallParams&#x521B;&#x5EFA;InstallArgs&#x5BF9;&#x8C61;</span>
+       <span class="hljs-keyword">final</span> InstallArgs args = createInstallArgs(<span class="hljs-keyword">this</span>);<span class="hljs-comment">//3</span>
+       mArgs = args;
+       <span class="hljs-keyword">if</span> (ret == PackageManager.INSTALL_SUCCEEDED) {
+              ...
+           <span class="hljs-keyword">if</span> (!origin.existing &amp;&amp; requiredUid != -<span class="hljs-number">1</span>
+                   &amp;&amp; isVerificationEnabled(
+                         verifierUser.getIdentifier(), installFlags, installerUid)) {
+                 ...
+           } <span class="hljs-keyword">else</span>{
+               ret = args.copyApk(mContainerService, <span class="hljs-keyword">true</span>);<span class="hljs-comment">//4</span>
+           }
+       }
+       mRet = ret;
+   }
+</code></pre>
+<ul>
+<li>handleStartCopy&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x5F88;&#x591A;&#xFF0C;&#x8FD9;&#x91CC;&#x622A;&#x53D6;&#x5173;&#x952E;&#x7684;&#x90E8;&#x5206;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x901A;&#x8FC7;IMediaContainerService&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;DefaultContainerService&#x7684;getMinimalPackageInfo&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x8F7B;&#x91CF;&#x89E3;&#x6790;APK&#x5E76;&#x5F97;&#x5230;APK&#x7684;&#x5C11;&#x91CF;&#x4FE1;&#x606F;&#xFF0C;&#x8F7B;&#x91CF;&#x89E3;&#x6790;&#x7684;&#x539F;&#x56E0;&#x662F;&#x8FD9;&#x91CC;&#x4E0D;&#x9700;&#x8981;&#x5F97;&#x5230;APK&#x7684;&#x5168;&#x90E8;&#x4FE1;&#x606F;&#xFF0C;APK&#x7684;&#x5C11;&#x91CF;&#x4FE1;&#x606F;&#x4F1A;&#x5C01;&#x88C5;&#x5230;PackageInfoLite&#x4E2D;&#x3002;</li>
+<li>&#x63A5;&#x7740;&#x5728;&#x6CE8;&#x91CA;2&#x5904;&#x786E;&#x5B9A;APK&#x7684;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;3&#x5904;&#x521B;&#x5EFA;&#x4E86;InstallArgs&#xFF0C;InstallArgs &#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;APK&#x7684;&#x5B89;&#x88C5;&#x903B;&#x8F91;&#xFF0C;&#x6BD4;&#x5982;&#x590D;&#x5236;&#x548C;&#x91CD;&#x547D;&#x540D;APK&#x7B49;&#xFF0C;&#x5B83;&#x6709;3&#x4E2A;&#x5B50;&#x7C7B;&#xFF0C;&#x90FD;&#x88AB;&#x5B9A;&#x4E49;&#x5728;PMS&#x4E2D;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;
+<a href="https://s2.ax1x.com/2019/05/27/VeCMiF.png" target="_blank"><img src="https://s2.ax1x.com/2019/05/27/VeCMiF.png" alt="VeCMiF.png"></a></li>
+<li>&#x5176;&#x4E2D;FileInstallArgs&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5B89;&#x88C5;&#x5230;&#x975E;ASEC&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x7684;APK&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF08;Data&#x5206;&#x533A;&#xFF09;&#xFF0C;AsecInstallArgs&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5B89;&#x88C5;&#x5230;ASEC&#x4E2D;&#xFF08;mnt/asec&#xFF09;&#x5373;SD&#x5361;&#x4E2D;&#x7684;APK&#x3002;MoveInstallArgs&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5DF2;&#x5B89;&#x88C5;APK&#x7684;&#x79FB;&#x52A8;&#x7684;&#x903B;&#x8F91;&#x3002;</li>
+<li>&#x5BF9;APK&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x540E;&#x5C31;&#x4F1A;&#x5728;&#x6CE8;&#x91CA;4&#x5904;&#x8C03;&#x7528;InstallArgs&#x7684;copyApk&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;</li>
+<li>&#x4E0D;&#x540C;&#x7684;InstallArgs&#x5B50;&#x7C7B;&#x4F1A;&#x6709;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;FileInstallArgs&#x4E3A;&#x4F8B;&#x3002;FileInstallArgs&#x7684;copyApk&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x76F4;&#x63A5;return FileInstallArgs&#x7684;doCopyApk&#x65B9;&#x6CD5;&#xFF1A;</li>
+</ul>
+<h4 id="34-packagemanagerservicejavafileinstallargsdocopyapk">3.4 PackageManagerService.java#FileInstallArgs#doCopyApk</h4>
+<ul>
+<li><p>&#x4E0D;&#x540C;&#x7684;InstallArgs&#x5B50;&#x7C7B;&#x4F1A;&#x6709;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;FileInstallArgs&#x4E3A;&#x4F8B;&#x3002;FileInstallArgs&#x7684;copyApk&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x76F4;&#x63A5;return FileInstallArgs&#x7684;doCopyApk&#x65B9;&#x6CD5;&#xFF1A;</p>
+</li>
+<li><p>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#FileInstallArgs</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">doCopyApk</span><span class="hljs-params">(IMediaContainerService imcs, <span class="hljs-keyword">boolean</span> temp)</span> <span class="hljs-keyword">throws</span> RemoteException </span>{
+        ...
+         <span class="hljs-keyword">try</span> {
+             <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> isEphemeral = (installFlags &amp; PackageManager.INSTALL_INSTANT_APP) != <span class="hljs-number">0</span>;
+             <span class="hljs-comment">//&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x5B58;&#x50A8;&#x76EE;&#x5F55;</span>
+             <span class="hljs-keyword">final</span> File tempDir =
+                     mInstallerService.allocateStageDirLegacy(volumeUuid, isEphemeral);<span class="hljs-comment">//1</span>
+             codeFile = tempDir;
+             resourceFile = tempDir;
+         } <span class="hljs-keyword">catch</span> (IOException e) {
+             Slog.w(TAG, <span class="hljs-string">&quot;Failed to create copy file: &quot;</span> + e);
+             <span class="hljs-keyword">return</span> PackageManager.INSTALL_FAILED_INSUFFICIENT_STORAGE;
+         }
+         ...
+         <span class="hljs-keyword">int</span> ret = PackageManager.INSTALL_SUCCEEDED;
+         ret = imcs.copyPackage(origin.file.getAbsolutePath(), target);<span class="hljs-comment">//2</span>
+         ...
+         <span class="hljs-keyword">return</span> ret;
+     }
+</code></pre>
+<ul>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x76EE;&#x5F55;&#xFF0C;&#x6BD4;&#x5982;/data/app/vmdl18300388.tmp&#xFF0C;&#x5176;&#x4E2D;18300388&#x662F;&#x5B89;&#x88C5;&#x7684;sessionId&#x3002;</li>
+<li>&#x6CE8;&#x91CA;2&#x5904;&#x901A;&#x8FC7;IMediaContainerService&#x8DE8;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;DefaultContainerService&#x7684;copyPackage&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x5728;DefaultContainerService&#x6240;&#x5728;&#x7684;&#x8FDB;&#x7A0B;&#x4E2D;&#x5C06;APK&#x590D;&#x5236;&#x5230;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x76EE;&#x5F55;&#xFF0C;&#x6BD4;&#x5982;/data/app/vmdl18300388.tmp/base.apk&#x3002;&#x76EE;&#x524D;&#x4E3A;&#x6B62;APK&#x7684;&#x590D;&#x5236;&#x5DE5;&#x4F5C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;APK&#x7684;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E86;&#x3002;</li>
+</ul>
+<h3 id="4&#x5B89;&#x88C5;apk">4.&#x5B89;&#x88C5;APK</h3>
+<h4 id="41-&#x65F6;&#x5E8F;&#x56FE;">4.1 &#x65F6;&#x5E8F;&#x56FE;</h4>
+<ul>
+<li>&#x7167;&#x4F8B;&#x5148;&#x6765;&#x67E5;&#x770B;&#x5B89;&#x88C5;APK&#x7684;&#x65F6;&#x5E8F;&#x56FE;&#x3002;
+<a href="https://s2.ax1x.com/2019/05/27/VeCnaT.png" target="_blank"><img src="https://s2.ax1x.com/2019/05/27/VeCnaT.png" alt="VeCnaT.png"></a></li>
+<li>&#x6211;&#x4EEC;&#x56DE;&#x5230;APK&#x7684;&#x590D;&#x5236;&#x8C03;&#x7528;&#x94FE;&#x7684;&#x5934;&#x90E8;&#x65B9;&#x6CD5;&#xFF1A;HandlerParams&#x7684;startCopy&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x6CE8;&#x91CA;4&#x5904;&#x4F1A;&#x8C03;&#x7528;handleReturnCode&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x5728;InstallParams&#x4E2D;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</li>
+</ul>
+<h4 id="42-installparamshandlereturncode">4.2 InstallParams#handleReturnCode</h4>
+<ul>
+<li><p>HandlerParams&#x662F;PMS&#x4E2D;&#x7684;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x4E3A;PMS&#x7684;&#x5185;&#x90E8;&#x7C7B;InstallParams&#x3002;</p>
+</li>
+<li><p>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java#InstallParams</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handleReturnCode</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (mArgs != <span class="hljs-keyword">null</span>) {
+        processPendingInstall(mArgs, mRet);
+    }
+}
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processPendingInstall</span><span class="hljs-params">(<span class="hljs-keyword">final</span> InstallArgs args, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> currentStatus)</span> </span>{
+        mHandler.post(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                mHandler.removeCallbacks(<span class="hljs-keyword">this</span>);
+                PackageInstalledInfo res = <span class="hljs-keyword">new</span> PackageInstalledInfo();
+                res.setReturnCode(currentStatus);
+                res.uid = -<span class="hljs-number">1</span>;
+                res.pkg = <span class="hljs-keyword">null</span>;
+                res.removedInfo = <span class="hljs-keyword">null</span>;
+                <span class="hljs-keyword">if</span> (res.returnCode == PackageManager.INSTALL_SUCCEEDED) {
+                    <span class="hljs-comment">//&#x5B89;&#x88C5;&#x524D;&#x5904;&#x7406;</span>
+                    args.doPreInstall(res.returnCode);<span class="hljs-comment">//1</span>
+                    <span class="hljs-keyword">synchronized</span> (mInstallLock) {
+                        installPackageTracedLI(args, res);<span class="hljs-comment">//2</span>
+                    }
+                    <span class="hljs-comment">//&#x5B89;&#x88C5;&#x540E;&#x6536;&#x5C3E;</span>
+                    args.doPostInstall(res.returnCode, res.uid);<span class="hljs-comment">//3</span>
+                }
+              ...
+            }
+        });
+    }
+</code></pre>
+<ul>
+<li>handleReturnCode&#x65B9;&#x6CD5;&#x4E2D;&#x53EA;&#x8C03;&#x7528;&#x4E86;processPendingInstall&#x65B9;&#x6CD5;</li>
+<li>&#x6CE8;&#x91CA;1&#x5904;&#x7528;&#x4E8E;&#x68C0;&#x67E5;APK&#x7684;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x5728;&#x5B89;&#x88C5;&#x524D;&#x786E;&#x4FDD;&#x5B89;&#x88C5;&#x73AF;&#x5883;&#x7684;&#x53EF;&#x9760;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x53EF;&#x9760;&#x4F1A;&#x6E05;&#x9664;&#x590D;&#x5236;&#x7684;APK&#x6587;&#x4EF6;&#xFF0C;</li>
+<li>&#x6CE8;&#x91CA;3&#x5904;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5B89;&#x88C5;&#x540E;&#x7684;&#x6536;&#x5C3E;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x4E0D;&#x6210;&#x529F;&#xFF0C;&#x5220;&#x9664;&#x6389;&#x5B89;&#x88C5;&#x76F8;&#x5173;&#x7684;&#x76EE;&#x5F55;&#x4E0E;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x4E3B;&#x8981;&#x6765;&#x770B;&#x6CE8;&#x91CA;2&#x5904;&#x7684;installPackageTracedLI&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528;PMS&#x7684;installPackageLI&#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<h4 id="43-packagemanagerservicejavainstallpackageli">4.3 PackageManagerService.java#installPackageLI</h4>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">installPackageLI</span><span class="hljs-params">(InstallArgs args, PackageInstalledInfo res)</span> </span>{
+    ...
+    PackageParser pp = <span class="hljs-keyword">new</span> PackageParser();
+    pp.setSeparateProcesses(mSeparateProcesses);
+    pp.setDisplayMetrics(mMetrics);
+    pp.setCallback(mPackageParserCallback);
+    Trace.traceBegin(TRACE_TAG_PACKAGE_MANAGER, <span class="hljs-string">&quot;parsePackage&quot;</span>);
+    <span class="hljs-keyword">final</span> PackageParser.Package pkg;
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//&#x89E3;&#x6790;APK</span>
+        pkg = pp.parsePackage(tmpPackageFile, parseFlags);<span class="hljs-comment">//1</span>
+    } <span class="hljs-keyword">catch</span> (PackageParserException e) {
+        res.setError(<span class="hljs-string">&quot;Failed parse during installPackageLI&quot;</span>, e);
+        <span class="hljs-keyword">return</span>;
+    } <span class="hljs-keyword">finally</span> {
+        Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
+    }
+    ...
+    pp = <span class="hljs-keyword">null</span>;
+    String oldCodePath = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">boolean</span> systemApp = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">synchronized</span> (mPackages) {
+        <span class="hljs-comment">// &#x68C0;&#x67E5;APK&#x662F;&#x5426;&#x5B58;&#x5728;</span>
+        <span class="hljs-keyword">if</span> ((installFlags &amp; PackageManager.INSTALL_REPLACE_EXISTING) != <span class="hljs-number">0</span>) {
+            String oldName = mSettings.getRenamedPackageLPr(pkgName);<span class="hljs-comment">//&#x83B7;&#x53D6;&#x6CA1;&#x88AB;&#x6539;&#x540D;&#x524D;&#x7684;&#x5305;&#x540D;</span>
+            <span class="hljs-keyword">if</span> (pkg.mOriginalPackages != <span class="hljs-keyword">null</span>
+                    &amp;&amp; pkg.mOriginalPackages.contains(oldName)
+                    &amp;&amp; mPackages.containsKey(oldName)) {
+                pkg.setPackageName(oldName);<span class="hljs-comment">//2</span>
+                pkgName = pkg.packageName;
+                replace = <span class="hljs-keyword">true</span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x6807;&#x5FD7;&#x4F4D;&#x8868;&#x793A;&#x662F;&#x66FF;&#x6362;&#x5B89;&#x88C5;</span>
+                <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.d(TAG, <span class="hljs-string">&quot;Replacing existing renamed package: oldName=&quot;</span>
+                        + oldName + <span class="hljs-string">&quot; pkgName=&quot;</span> + pkgName);
+            } 
+            ...
+        }
+        PackageSetting ps = mSettings.mPackages.get(pkgName);
+        <span class="hljs-comment">//&#x67E5;&#x770B;Settings&#x4E2D;&#x662F;&#x5426;&#x5B58;&#x6709;&#x8981;&#x5B89;&#x88C5;&#x7684;APK&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x83B7;&#x53D6;&#x7B7E;&#x540D;&#x4FE1;&#x606F;</span>
+        <span class="hljs-keyword">if</span> (ps != <span class="hljs-keyword">null</span>) {<span class="hljs-comment">//3</span>
+            <span class="hljs-keyword">if</span> (DEBUG_INSTALL) Slog.d(TAG, <span class="hljs-string">&quot;Existing package: &quot;</span> + ps);
+            PackageSetting signatureCheckPs = ps;
+            <span class="hljs-keyword">if</span> (pkg.applicationInfo.isStaticSharedLibrary()) {
+                SharedLibraryEntry libraryEntry = getLatestSharedLibraVersionLPr(pkg);
+                <span class="hljs-keyword">if</span> (libraryEntry != <span class="hljs-keyword">null</span>) {
+                    signatureCheckPs = mSettings.getPackageLPr(libraryEntry.apk);
+                }
+            }
+            <span class="hljs-comment">//&#x68C0;&#x67E5;&#x7B7E;&#x540D;&#x7684;&#x6B63;&#x786E;&#x6027;</span>
+            <span class="hljs-keyword">if</span> (shouldCheckUpgradeKeySetLP(signatureCheckPs, scanFlags)) {
+                <span class="hljs-keyword">if</span> (!checkUpgradeKeySetLP(signatureCheckPs, pkg)) {
+                    res.setError(INSTALL_FAILED_UPDATE_INCOMPATIBLE, <span class="hljs-string">&quot;Package &quot;</span>
+                            + pkg.packageName + <span class="hljs-string">&quot; upgrade keys do not match the &quot;</span>
+                            + <span class="hljs-string">&quot;previously installed version&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+            } 
+            ...
+        }
+
+        <span class="hljs-keyword">int</span> N = pkg.permissions.size();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = N-<span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+           <span class="hljs-comment">//&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x6743;&#x9650;&#xFF0C;&#x5BF9;&#x6743;&#x9650;&#x8FDB;&#x884C;&#x5904;&#x7406;</span>
+            PackageParser.Permission perm = pkg.permissions.get(i);
+            BasePermission bp = mSettings.mPermissions.get(perm.info.name);
+
+            }
+        }
+    }
+    <span class="hljs-keyword">if</span> (systemApp) {
+        <span class="hljs-keyword">if</span> (onExternal) {
+            <span class="hljs-comment">//&#x7CFB;&#x7EDF;APP&#x4E0D;&#x80FD;&#x5728;SD&#x5361;&#x4E0A;&#x66FF;&#x6362;&#x5B89;&#x88C5;</span>
+            res.setError(INSTALL_FAILED_INVALID_INSTALL_LOCATION,
+                    <span class="hljs-string">&quot;Cannot install updates to system apps on sdcard&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (instantApp) {
+            <span class="hljs-comment">//&#x7CFB;&#x7EDF;APP&#x4E0D;&#x80FD;&#x88AB;Instant App&#x66FF;&#x6362;</span>
+            res.setError(INSTALL_FAILED_INSTANT_APP_INVALID,
+                    <span class="hljs-string">&quot;Cannot update a system app with an instant app&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+    }
+    ...
+    <span class="hljs-comment">//&#x91CD;&#x547D;&#x540D;&#x4E34;&#x65F6;&#x6587;&#x4EF6;</span>
+    <span class="hljs-keyword">if</span> (!args.doRename(res.returnCode, pkg, oldCodePath)) {<span class="hljs-comment">//4</span>
+        res.setError(INSTALL_FAILED_INSUFFICIENT_STORAGE, <span class="hljs-string">&quot;Failed rename&quot;</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    startIntentFilterVerifications(args.user.getIdentifier(), replace, pkg);
+
+    <span class="hljs-keyword">try</span> (PackageFreezer freezer = freezePackageForInstall(pkgName, installFlags,
+            <span class="hljs-string">&quot;installPackageLI&quot;</span>)) {
+
+        <span class="hljs-keyword">if</span> (replace) {<span class="hljs-comment">//5</span>
+         <span class="hljs-comment">//&#x66FF;&#x6362;&#x5B89;&#x88C5;   </span>
+           ...
+            replacePackageLIF(pkg, parseFlags, scanFlags | SCAN_REPLACING, args.user,
+                    installerPackageName, res, args.installReason);
+        } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">//&#x5B89;&#x88C5;&#x65B0;&#x7684;APK</span>
+            installNewPackageLIF(pkg, parseFlags, scanFlags | SCAN_DELETE_DATA_ON_FAILURES,
+                    args.user, installerPackageName, volumeUuid, res, args.installReason);
+        }
+    }
+
+    <span class="hljs-keyword">synchronized</span> (mPackages) {
+        <span class="hljs-keyword">final</span> PackageSetting ps = mSettings.mPackages.get(pkgName);
+        <span class="hljs-keyword">if</span> (ps != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">//&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x5C5E;&#x7684;&#x7528;&#x6237;</span>
+            res.newUsers = ps.queryInstalledUsers(sUserManager.getUserIds(), <span class="hljs-keyword">true</span>);
+            ps.setUpdateAvailable(<span class="hljs-keyword">false</span> <span class="hljs-comment">/*updateAvailable*/</span>);
+        }
+        ...
+    }
+}
+</code></pre>
+<ul>
+<li><p>installPackageLI&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x6709;&#x5C06;&#x8FD1;500&#x884C;&#xFF0C;&#x8FD9;&#x91CC;&#x622A;&#x53D6;&#x4E3B;&#x8981;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4E3B;&#x8981;&#x505A;&#x4E86;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+</li>
+<li><p>&#x521B;&#x5EFA;PackageParser&#x89E3;&#x6790;APK&#x3002;</p>
+</li>
+<li>&#x68C0;&#x67E5;APK&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x5C31;&#x83B7;&#x53D6;&#x6B64;&#x524D;&#x6CA1;&#x88AB;&#x6539;&#x540D;&#x524D;&#x7684;&#x5305;&#x540D;&#x5E76;&#x5728;&#x6CE8;&#x91CA;1&#x5904;&#x8D4B;&#x503C;&#x7ED9;PackageParser.Package&#x7C7B;&#x578B;&#x7684;pkg&#xFF0C;&#x5728;&#x6CE8;&#x91CA;3&#x5904;&#x5C06;&#x6807;&#x5FD7;&#x4F4D;replace&#x7F6E;&#x4E3A;true&#x8868;&#x793A;&#x662F;&#x66FF;&#x6362;&#x5B89;&#x88C5;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;3&#x5904;&#xFF0C;&#x5982;&#x679C;Settings&#x4E2D;&#x4FDD;&#x5B58;&#x6709;&#x8981;&#x5B89;&#x88C5;&#x7684;APK&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8BF4;&#x660E;&#x6B64;&#x524D;&#x5B89;&#x88C5;&#x8FC7;&#x8BE5;APK&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6821;&#x9A8C;APK&#x7684;&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#xFF0C;&#x786E;&#x4FDD;&#x5B89;&#x5168;&#x7684;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;</li>
+<li>&#x5728;&#x6CE8;&#x91CA;4&#x5904;&#x5C06;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x91CD;&#x65B0;&#x547D;&#x540D;&#xFF0C;&#x6BD4;&#x5982;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;/data/app/vmdl18300388.tmp/base.apk&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;/data/app/&#x5305;&#x540D;-1/base.apk&#x3002;&#x8FD9;&#x4E2A;&#x65B0;&#x547D;&#x540D;&#x7684;&#x5305;&#x540D;&#x4F1A;&#x5E26;&#x4E0A;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x540E;&#x7F00;1&#xFF0C;&#x6BCF;&#x6B21;&#x5347;&#x7EA7;&#x4E00;&#x4E2A;&#x5DF2;&#x6709;&#x7684;App&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x5B57;&#x4F1A;&#x4E0D;&#x65AD;&#x7684;&#x7D2F;&#x52A0;&#x3002;</li>
+<li>&#x7CFB;&#x7EDF;APP&#x7684;&#x66F4;&#x65B0;&#x5B89;&#x88C5;&#x4F1A;&#x6709;&#x4E24;&#x4E2A;&#x9650;&#x5236;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x7CFB;&#x7EDF;APP&#x4E0D;&#x80FD;&#x5728;SD&#x5361;&#x4E0A;&#x66FF;&#x6362;&#x5B89;&#x88C5;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x7CFB;&#x7EDF;APP&#x4E0D;&#x80FD;&#x88AB;Instant App&#x66FF;&#x6362;&#x3002;</li>
+<li><p>&#x6CE8;&#x91CA;5&#x5904;&#x6839;&#x636E;replace&#x6765;&#x505A;&#x533A;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x66FF;&#x6362;&#x5B89;&#x88C5;&#x5C31;&#x4F1A;&#x8C03;&#x7528;replacePackageLIF&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x8FD8;&#x4F1A;&#x5BF9;&#x7CFB;&#x7EDF;APP&#x548C;&#x975E;&#x7CFB;&#x7EDF;APP&#x8FDB;&#x884C;&#x533A;&#x5206;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x65B0;&#x5B89;&#x88C5;APK&#x4F1A;&#x8C03;&#x7528;installNewPackageLIF&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4EE5;&#x65B0;&#x5B89;&#x88C5;APK&#x4E3A;&#x4F8B;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;PMS&#x7684;installNewPackageLIF&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+</ul>
+<h4 id="44-packagemanagerservicejavainstallnewpackagelif">4.4 PackageManagerService.java#installNewPackageLIF</h4>
+<ul>
+<li>frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">installNewPackageLIF</span><span class="hljs-params">(PackageParser.Package pkg, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> policyFlags,
+           <span class="hljs-keyword">int</span> scanFlags, UserHandle user, String installerPackageName, String volumeUuid,
+           PackageInstalledInfo res, <span class="hljs-keyword">int</span> installReason)</span> </span>{
+       ...
+       <span class="hljs-keyword">try</span> {
+           <span class="hljs-comment">//&#x626B;&#x63CF;APK</span>
+           PackageParser.Package newPackage = scanPackageTracedLI(pkg, policyFlags, scanFlags,
+                   System.currentTimeMillis(), user);
+           <span class="hljs-comment">//&#x66F4;&#x65B0;Settings&#x4FE1;&#x606F;</span>
+           updateSettingsLI(newPackage, installerPackageName, <span class="hljs-keyword">null</span>, res, user, installReason);
+           <span class="hljs-keyword">if</span> (res.returnCode == PackageManager.INSTALL_SUCCEEDED) {
+               <span class="hljs-comment">//&#x5B89;&#x88C5;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x4E3A;&#x65B0;&#x5B89;&#x88C5;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x51C6;&#x5907;&#x6570;&#x636E;</span>
+               prepareAppDataAfterInstallLIF(newPackage);
+
+           } <span class="hljs-keyword">else</span> {
+               <span class="hljs-comment">//&#x5B89;&#x88C5;&#x5931;&#x8D25;&#x5219;&#x5220;&#x9664;APK</span>
+               deletePackageLIF(pkgName, UserHandle.ALL, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">null</span>,
+                       PackageManager.DELETE_KEEP_DATA, res.removedInfo, <span class="hljs-keyword">true</span>, <span class="hljs-keyword">null</span>);
+           }
+       } <span class="hljs-keyword">catch</span> (PackageManagerException e) {
+           res.setError(<span class="hljs-string">&quot;Package couldn&apos;t be installed in &quot;</span> + pkg.codePath, e);
+       }
+       Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
+   }
+</code></pre>
+<ul>
+<li><p>installNewPackageLIF&#x4E3B;&#x8981;&#x505A;&#x4E86;&#x4EE5;&#x4E0B;3&#x4EF6;&#x4E8B;&#xFF1A;</p>
+</li>
+<li><p>&#x626B;&#x63CF;APK&#xFF0C;&#x5C06;APK&#x7684;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5728;PackageParser.Package&#x7C7B;&#x578B;&#x7684;newPackage&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;Package&#x7684;&#x4FE1;&#x606F;&#x5305;&#x542B;&#x4E86;1&#x4E2A;base APK&#x4EE5;&#x53CA;0&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;split APK&#x3002;</p>
+</li>
+<li>&#x66F4;&#x65B0;&#x8BE5;APK&#x5BF9;&#x5E94;&#x7684;Settings&#x4FE1;&#x606F;&#xFF0C;Settings&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x5305;&#x7684;&#x52A8;&#x6001;&#x8BBE;&#x7F6E;&#x3002;</li>
+<li><p>&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x5C31;&#x4E3A;&#x65B0;&#x5B89;&#x88C5;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x51C6;&#x5907;&#x6570;&#x636E;&#xFF0C;&#x5B89;&#x88C5;&#x5931;&#x8D25;&#x5C31;&#x5220;&#x9664;APK&#x3002;</p>
+</li>
+<li><p>&#x5B89;&#x88C5;APK&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x8BB2;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5C31;&#x4E0D;&#x518D;&#x5F80;&#x4E0B;&#x5206;&#x6790;&#x4E0B;&#x53BB;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x63A5;&#x7740;&#x6DF1;&#x6316;&#x3002;</p>
+</li>
+</ul>
+<h3 id="5&#x603B;&#x7ED3;">5.&#x603B;&#x7ED3;</h3>
+<ul>
+<li><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x8BB2;&#x89E3;&#x4E86;PMS&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;APK&#x5B89;&#x88C5;&#x7684;&#xFF0C;&#x4E3B;&#x8981;&#x6709;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+</li>
+<li><p>PackageInstaller&#x5B89;&#x88C5;APK&#x65F6;&#x4F1A;&#x5C06;APK&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x7531;PMS&#x5904;&#x7406;&#xFF0C;PMS&#x901A;&#x8FC7;&#x5411;PackageHandler&#x53D1;&#x9001;&#x6D88;&#x606F;&#x6765;&#x9A71;&#x52A8;APK&#x7684;&#x590D;&#x5236;&#x548C;&#x5B89;&#x88C5;&#x5DE5;&#x4F5C;&#x3002;</p>
+</li>
+<li>PMS&#x53D1;&#x9001;INIT_COPY&#x548C;MCS_BOUND&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x63A7;&#x5236;PackageHandler&#x6765;&#x7ED1;&#x5B9A;DefaultContainerService&#xFF0C;&#x5B8C;&#x6210;&#x590D;&#x5236;APK&#x7B49;&#x5DE5;&#x4F5C;&#x3002;</li>
+<li>&#x590D;&#x5236;APK&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F1A;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x5B89;&#x88C5;APK&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x5305;&#x62EC;&#x5B89;&#x88C5;&#x524D;&#x7684;&#x68C0;&#x67E5;&#x3001;&#x5B89;&#x88C5;APK&#x548C;&#x5B89;&#x88C5;&#x540E;&#x7684;&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="三、PackageInstall安装APK.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 三、PackageInstall安装APK">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"四、PMS处理APK的安装","level":"5.2.8.4","depth":3,"next":{"title":"4.3 Android消息机制","level":"5.3","depth":1,"ref":"","articles":[{"title":"ThreadLocal解析","level":"5.3.1","depth":2,"path":"必备Java知识/并发编程/线程相关类/ThreadLocal解析.md","ref":"必备Java知识/并发编程/线程相关类/ThreadLocal解析.md","articles":[]},{"title":"Handler和Message和MessageQueue和Looper","level":"5.3.2","depth":2,"path":"Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.md","ref":"Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.md","articles":[]},{"title":"HashMap解析","level":"5.3.3","depth":2,"path":"Android组件内核/Android消息机制/HashMap解析.md","ref":"Android组件内核/Android消息机制/HashMap解析.md","articles":[]},{"title":"强引用、软引用、弱引用、虚引用","level":"5.3.4","depth":2,"path":"Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.md","ref":"Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.md","articles":[]}]},"previous":{"title":"三、PackageInstall安装APK","level":"5.2.8.3","depth":3,"path":"Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.md","ref":"Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android组件内核/FrameWork内核解析/包管理机制/四、PMS处理APK的安装.md","mtime":"2021-07-30T12:39:53.303Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-31T17:18:23.968Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

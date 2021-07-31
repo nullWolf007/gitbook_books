@@ -1,0 +1,4432 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>View事件分发机制 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="自定义View.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                <a href="../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                    
+                    ConcurrentHashMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../必备Java知识/JVM/Java虚拟机.html">
+            
+                <a href="../../必备Java知识/JVM/Java虚拟机.html">
+            
+                    
+                    Java虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.2" data-path="../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                    
+                    通过反射获得泛型实际类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    1.6 IO
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="../../必备Java知识/IO/压缩解压缩.html">
+            
+                <a href="../../必备Java知识/IO/压缩解压缩.html">
+            
+                    
+                    压缩解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    1.7 泛型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../必备Java知识/泛型/泛型基本解析.html">
+            
+                <a href="../../必备Java知识/泛型/泛型基本解析.html">
+            
+                    
+                    泛型基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                <a href="../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                    
+                    常用算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" >
+            
+                <span>
+            
+                    
+                    3.4 类加载器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../Android必备技能/类加载器/Android类加载.html">
+            
+                <a href="../../Android必备技能/类加载器/Android类加载.html">
+            
+                    
+                    Android类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" >
+            
+                <span>
+            
+                    
+                    3.5 虚拟机
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                <a href="../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                    
+                    JIT即时编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                <a href="../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                    
+                    DVM和ART
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                <a href="../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                    
+                    AOT和JIT的比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8" >
+            
+                <span>
+            
+                    
+                    包管理机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.8.1" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/一、PMS的基本使用.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/一、PMS的基本使用.html">
+            
+                    
+                    一、PMS的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.2" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/二、PackageInstall的初始化.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/二、PackageInstall的初始化.html">
+            
+                    
+                    二、PackageInstall的初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.3" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.html">
+            
+                    
+                    三、PackageInstall安装APK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.4" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/四、PMS处理APK的安装.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/四、PMS处理APK的安装.html">
+            
+                    
+                    四、PMS处理APK的安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="../../Android组件内核/Android消息机制/HashMap解析.html">
+            
+                <a href="../../Android组件内核/Android消息机制/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="../../Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="../../Android组件内核/跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                    
+                    基于AIDL的Messenger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="../../Android组件内核/跨进程通信IPC/ContentProvider.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/ContentProvider.html">
+            
+                    
+                    ContentProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.4" data-path="../../Android组件内核/跨进程通信IPC/常见IPC方式比较.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/常见IPC方式比较.html">
+            
+                    
+                    常见IPC方式比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../系统布局/ConstraintLayout.html">
+            
+                <a href="../系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../系统布局/RemoteViews解析.html">
+            
+                <a href="../系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="一、基础知识.html">
+            
+                <a href="一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="三、Measure过程.html">
+            
+                <a href="三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="四、Layout过程.html">
+            
+                <a href="四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="五、Draw过程.html">
+            
+                <a href="五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="六、自定义View实例.html">
+            
+                <a href="六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="自定义View.html">
+            
+                <a href="自定义View.html">
+            
+                    
+                    自定义View
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.2.8" data-path="View事件分发机制.html">
+            
+                <a href="View事件分发机制.html">
+            
+                    
+                    View事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../Webview/Webview与JS交互.html">
+            
+                <a href="../Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../Webview/Webview.html">
+            
+                <a href="../Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+                <span>
+            
+                    
+                    5.4 Compose
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.4.1" data-path="../Compose/Compose全面解析.html">
+            
+                <a href="../Compose/Compose全面解析.html">
+            
+                    
+                    Compose全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.2" data-path="../Compose/Compose基本使用.html">
+            
+                <a href="../Compose/Compose基本使用.html">
+            
+                    
+                    Compose基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3" data-path="../Compose/Compose实现原理.html">
+            
+                <a href="../Compose/Compose实现原理.html">
+            
+                    
+                    Compose实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" >
+            
+                <span>
+            
+                    
+                    5.5 ViewPager
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1" data-path="../ViewPager/ViewPager解析.html">
+            
+                <a href="../ViewPager/ViewPager解析.html">
+            
+                    
+                    ViewPager解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2" data-path="../ViewPager/禁止预加载实现懒加载.html">
+            
+                <a href="../ViewPager/禁止预加载实现懒加载.html">
+            
+                    
+                    禁止预加载实现懒加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.3" data-path="../ViewPager/ViewPager2解析.html">
+            
+                <a href="../ViewPager/ViewPager2解析.html">
+            
+                    
+                    ViewPager2解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" >
+            
+                <span>
+            
+                    
+                    5.6 列表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.6.1" data-path="../列表/RecyclerView解析.html">
+            
+                <a href="../列表/RecyclerView解析.html">
+            
+                    
+                    RecyclerView解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.7" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                    
+                    Glide缓存原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.8" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                    
+                    ModelLoader与Register机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.9" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                    
+                    Glide整体原理分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.3" >
+            
+                <span>
+            
+                    
+                    8.2.3 图片加载框架选型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.3.1" data-path="../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                    
+                    图片加载框架比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.3" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                    
+                    OkHttp的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                    
+                    RxJava入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.3" data-path="../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.4" data-path="../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" >
+            
+                <span>
+            
+                    
+                    8.7 Jetpack
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/建造者模式.html">
+            
+                <a href="../../架构能力/设计模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/工厂方法模式.html">
+            
+                <a href="../../架构能力/设计模式/工厂方法模式.html">
+            
+                    
+                    工厂方法模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.3" data-path="../../架构能力/设计模式/简单工厂模式.html">
+            
+                <a href="../../架构能力/设计模式/简单工厂模式.html">
+            
+                    
+                    简单工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.4" data-path="../../架构能力/设计模式/抽象工厂模式.html">
+            
+                <a href="../../架构能力/设计模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.5" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.6" data-path="../../架构能力/设计模式/外观模式.html">
+            
+                <a href="../../架构能力/设计模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" >
+            
+                <span>
+            
+                    
+                    11.3 组件化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.3.1" data-path="../../架构能力/组件化/组件化.html">
+            
+                <a href="../../架构能力/组件化/组件化.html">
+            
+                    
+                    组件化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3.2" data-path="../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                <a href="../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                    
+                    一、ARouter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1" >
+            
+                <span>
+            
+                    
+                    官网学习
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1" >
+            
+                <span>
+            
+                    
+                    函数与Lambda表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1.1" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                    
+                    一、函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.2" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                    
+                    二、高阶函数与Lambda表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.3" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                    
+                    三、内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.2" >
+            
+                <span>
+            
+                    
+                    关键字解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.2.1" data-path="../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                <a href="../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                    
+                    委托之by
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 Jetpack和AndroidX</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第17章 鸿蒙</li>
+        
+        
+    
+        <li class="chapter " data-level="18.1" >
+            
+                <span>
+            
+                    
+                    17.1 官方课程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1.1" data-path="../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                    
+                    HarmonyOS应用程序框架解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.2" data-path="../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                    
+                    HarmonyOS分布式软总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.3" data-path="../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                    
+                    HarmonyOS分布式数据管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第18章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >View事件分发机制</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="view&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;">View&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;</h2>
+<h4 id="&#x53C2;&#x8003;&#x94FE;&#x63A5;">&#x53C2;&#x8003;&#x94FE;&#x63A5;</h4>
+<ul>
+<li><a href="https://book.douban.com/subject/26599538/" target="_blank"><strong>Android&#x5F00;&#x53D1;&#x827A;&#x672F;&#x63A2;&#x7D22;</strong></a></li>
+<li><a href="https://blog.csdn.net/carson_ho/article/details/54136311" target="_blank">Android&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236; &#x8BE6;&#x89E3;&#x653B;&#x7565;&#xFF0C;&#x60A8;&#x503C;&#x5F97;&#x62E5;&#x6709;</a></li>
+</ul>
+<h4 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h4>
+<ul>
+<li>&#x57FA;&#x4E8E;Android8.0</li>
+</ul>
+<h3 id="&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x4E00;&#x3001;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="11-&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x4E2D;&#x4E8B;&#x4EF6;&#x6307;&#x7684;&#x662F;&#xFF1F;">1.1 &#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x4E2D;&#x4E8B;&#x4EF6;&#x6307;&#x7684;&#x662F;&#xFF1F;</h4>
+<ul>
+<li><strong>&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;(Touch&#x4E8B;&#x4EF6;)</strong><ul>
+<li>&#x5F53;&#x7528;&#x6237;&#x89E6;&#x6478;&#x5C4F;&#x5E55;&#x65F6;&#xFF08;<code>View</code> &#x6216; <code>ViewGroup</code>&#x6D3E;&#x751F;&#x7684;&#x63A7;&#x4EF6;&#xFF09;&#xFF0C;&#x5C06;&#x4EA7;&#x751F;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF08;<code>Touch</code>&#x4E8B;&#x4EF6;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-&#x540C;&#x4E00;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;">1.2 &#x540C;&#x4E00;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;</h4>
+<ul>
+<li>&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x6307;&#x7684;&#x662F;&#x4ECE;&#x624B;&#x6307;&#x63A5;&#x89E6;&#x5230;&#x5C4F;&#x5E55;&#x8D77;&#xFF0C;&#x5230;&#x624B;&#x6307;&#x79BB;&#x5F00;&#x5C4F;&#x5E55;&#x7ED3;&#x675F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x4E8B;&#x4EF6;&#x3002;&#x4ECE;<code>down</code>&#x5F00;&#x59CB;&#xFF0C;&#x591A;&#x4E2A;<code>move</code>&#xFF0C;<code>up</code>&#x7ED3;&#x675F;&#x3002;</li>
+</ul>
+<h4 id="13-&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x7684;&#x672C;&#x8D28;">1.3 &#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x7684;&#x672C;&#x8D28;</h4>
+<ul>
+<li><strong>&#x5C06;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF08;MotionEvent&#xFF09;&#x4F20;&#x9012;&#x5230;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7684;<code>View</code> &amp; &#x5904;&#x7406;&#x7684;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;</strong></li>
+</ul>
+<h4 id="14-&#x4E8B;&#x4EF6;&#x5728;&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x4F20;&#x9012;&#xFF1F;">1.4 &#x4E8B;&#x4EF6;&#x5728;&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x4F20;&#x9012;&#xFF1F;</h4>
+<ul>
+<li><strong>Activity&#x3001;ViewGroup&#x3001;View</strong></li>
+<li><code>Android</code>&#x7684;<code>UI</code>&#x754C;&#x9762;&#x7531;<code>Activity</code>&#x3001;<code>ViewGroup</code>&#x3001;<code>View</code> &#x53CA;&#x5176;&#x6D3E;&#x751F;&#x7C7B;&#x7EC4;&#x6210;</li>
+</ul>
+<p><img src="../../images/&#x81EA;&#x5B9A;&#x4E49;UI/&#x81EA;&#x5B9A;&#x4E49;View/Activity,View,ViewGroup.png" alt=""></p>
+<h4 id="15-&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x6838;&#x5FC3;&#x65B9;&#x6CD5;">1.5 &#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x6838;&#x5FC3;&#x65B9;&#x6CD5;</h4>
+<p><strong>public boolean dispatchTouchEvent(MotionEvent ev)</strong></p>
+<ul>
+<li>&#x7528;&#x6765;&#x8FDB;&#x884C;&#x4E8B;&#x4EF6;&#x7684;&#x5206;&#x53D1;&#x3002;&#x5982;&#x679C;&#x4E8B;&#x4EF6;&#x80FD;&#x591F;&#x4F20;&#x9012;&#x7ED9;&#x5F53;&#x524D;View&#xFF0C;&#x90A3;&#x4E48;&#x6B64;&#x65B9;&#x6CD5;&#x5C31;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x53D7;&#x5F53;&#x524D;View&#x7684;onTouchEvent&#x548C;&#x4E0B;&#x7EA7;View&#x7684;dispatchTouchEvent&#x65B9;&#x6CD5;&#x5F71;&#x54CD;&#xFF0C;&#x8868;&#x793A;&#x662F;&#x5426;&#x6D88;&#x8017;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;</li>
+</ul>
+<p><strong>public boolean onInterceptTouchEvent(MotionEvent event)</strong></p>
+<ul>
+<li>&#x5728;dispatchTouchEvent&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x8C03;&#x7528;&#xFF0C;&#x7528;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x62E6;&#x622A;&#x67D0;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;View&#x62E6;&#x622A;&#x4E86;&#x67D0;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x4E2D;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x518D;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x8868;&#x793A;&#x662F;&#x5426;&#x62E6;&#x622A;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;</li>
+<li>&#x53EA;&#x5B58;&#x5728;ViewGroup&#x4E2D;&#xFF0C;&#x666E;&#x901A;&#x7684;View&#x65E0;&#x8BE5;&#x65B9;&#x6CD5;</li>
+</ul>
+<p><strong>public boolean onTouchEvent(MotionEvent event)</strong></p>
+<ul>
+<li>&#x5728;dispatchTouchEvent&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#xFF0C;&#x7528;&#x6765;&#x5904;&#x7406;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x8868;&#x793A;&#x662F;&#x5426;&#x6D88;&#x8017;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6D88;&#x8017;&#xFF0C;&#x5219;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x4E2D;&#xFF0C;&#x5F53;&#x524D;View&#x65E0;&#x6CD5;&#x518D;&#x6B21;&#x63A5;&#x6536;&#x5230;&#x4E8B;&#x4EF6;</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;">&#x4E8C;&#x3001;&#x6E90;&#x7801;&#x89E3;&#x6790;</h3>
+<ul>
+<li><code>Android</code>&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x6D41;&#x7A0B; = <strong>Activity -&gt; ViewGroup -&gt; View</strong></li>
+<li>&#x8981;&#x60F3;&#x5145;&#x5206;&#x7406;&#x89E3;Android&#x5206;&#x53D1;&#x673A;&#x5236;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x8981;&#x7406;&#x89E3;&#xFF1A;<ul>
+<li><code>Activity</code>&#x5BF9;&#x4E8B;&#x4EF6;&#x7684;&#x5206;&#x53D1;&#x673A;&#x5236;</li>
+<li><code>ViewGroup</code>&#x5BF9;&#x4E8B;&#x4EF6;&#x7684;&#x5206;&#x53D1;&#x673A;&#x5236;</li>
+<li><code>View</code>&#x5BF9;&#x4E8B;&#x4EF6;&#x7684;&#x5206;&#x53D1;&#x673A;&#x5236;</li>
+</ul>
+</li>
+</ul>
+<h4 id="21-activity&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;">2.1 Activity&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;</h4>
+<h5 id="211-dispatchtouchevent">2.1.1 dispatchTouchEvent</h5>
+<ul>
+<li>Activity.java#dispatchTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+    <span class="hljs-keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) {
+        onUserInteraction();<span class="hljs-comment">//1</span>
+    }
+    <span class="hljs-keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) {<span class="hljs-comment">//2</span>
+        <span class="hljs-comment">//&#x5982;&#x679C;Activity&#x5C06;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x7ED9;&#x5B83;&#x6240;&#x5305;&#x542B;&#x7684;&#x89C6;&#x56FE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x89C6;&#x56FE;&#x62E6;&#x622A;&#x6216;&#x6D88;&#x8D39;&#x4E86;&#x8BE5;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x8F6E;&#x5230;Activity&#x6765;&#x5904;&#x7406;&#x8BE5;&#x4E8B;&#x4EF6;&#x4E86;&#xFF1B;&#x5373;&#xFF0C;&#x4E0D;&#x4F1A;&#x6267;&#x884C;Activity&#x7684;onTouchEvent()&#x4E86;&#x3002;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+    <span class="hljs-keyword">return</span> onTouchEvent(ev);<span class="hljs-comment">//3</span>
+}
+</code></pre>
+<ul>
+<li>&#x5728;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5206;&#x522B;&#x8C03;&#x7528;&#x4E86;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x5C06;&#x4E00;&#x4E00;&#x8BB2;&#x89E3;</li>
+</ul>
+<h5 id="212-onuserinteraction">2.1.2 onUserInteraction</h5>
+<ul>
+<li>Activity.java#onUserInteraction</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onUserInteraction</span><span class="hljs-params">()</span> </span>{
+}
+</code></pre>
+<ul>
+<li>&#x8BE5;&#x65B9;&#x6CD5;&#x4E3A;&#x4E00;&#x4E2A;&#x7A7A;&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;Activity&#x5728;&#x6808;&#x9876;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89E6;&#x5C4F;&#x70B9;&#x51FB;&#xFF0C;&#x6309;Home&#xFF0C;back&#xFF0C;menu&#x90FD;&#x4F1A;&#x89E6;&#x53D1;&#x6B64;&#x65B9;&#x6CD5;</li>
+<li>&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5B9E;&#x73B0;&#x7528;&#x6237;&#x64CD;&#x4F5C;&#x65F6;&#x7684;&#x4EA4;&#x4E92;&#x6548;&#x679C;</li>
+</ul>
+<h5 id="213-getwindowsuperdispatchtouchevent">2.1.3 getWindow().superDispatchTouchEvent</h5>
+<ul>
+<li>getWindow&#x83B7;&#x53D6;&#x7684;&#x662F;Window&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x800C;Window&#x7C7B;&#x662F;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x627E;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x800C;PhoneWindow&#x662F;&#x5176;&#x552F;&#x4E00;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x7684;&#x5C31;&#x662F;PhoneWindow&#x7684;superDispatchTouchEvent</li>
+<li>PhoneWindow.java#superDispatchTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">superDispatchTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> </span>{
+    <span class="hljs-keyword">return</span> mDecor.superDispatchTouchEvent(event);
+}
+</code></pre>
+<ul>
+<li>mDecor&#x662F;DecorView(&#x9876;&#x5C42;View)&#x5BF9;&#x8C61;&#xFF0C;&#x8C03;&#x7528;&#x4E86;&#x5176;superDispatchTouchEvent&#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="214-superdispatchtouchevent">2.1.4 superDispatchTouchEvent</h5>
+<ul>
+<li>DecorView.java#superDispatchTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">superDispatchTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.dispatchTouchEvent(event);
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DecorView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FrameLayout</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RootViewSurfaceTaker</span>, <span class="hljs-title">WindowCallbacks</span> </span>{
+</code></pre>
+<ul>
+<li>DecorView&#x7EE7;&#x627F;&#x81EA;FrameLayout&#xFF0C;&#x662F;&#x5BF9;FrameLayout&#x7684;&#x6269;&#x5C55;&#xFF0C;&#x662F;&#x6240;&#x6709;&#x754C;&#x9762;&#x7684;&#x6839;View&#x5373;&#x9876;&#x7EA7;View</li>
+</ul>
+<p><img src="../../images/&#x81EA;&#x5B9A;&#x4E49;UI/&#x81EA;&#x5B9A;&#x4E49;View/&#x754C;&#x9762;&#x5173;&#x7CFB;.png" alt="&#x754C;&#x9762;&#x5173;&#x7CFB;"></p>
+<ul>
+<li>&#x8C03;&#x7528;&#x4E86;super&#x7684;dispatchTouchEvent&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x8FD9;&#x91CC;&#x6307;&#x7684;&#x5C31;&#x662F;FrameLayout&#xFF0C;FrameLayout&#x53C8;&#x7EE7;&#x627F;&#x81EA;ViewGroup&#xFF0C;&#x53C8;&#x6CA1;&#x6709;&#x91CD;&#x5199;&#x6B64;&#x65B9;&#x6CD5;&#xFF0C;&#x6545;&#x800C;&#x503C;&#x5F97;&#x662F;ViewGroup&#x7684;dispatchTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FrameLayout</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewGroup</span> </span>{
+</code></pre>
+<h5 id="215-dispatchtouchevent">2.1.5 dispatchTouchEvent</h5>
+<ul>
+<li><p>ViewGroup.java#ViewGroup</p>
+</li>
+<li><p>&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;ViewGroup&#x5BF9;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x4F1A;&#x8BE6;&#x7EC6;&#x8BB2;&#x89E3;</p>
+</li>
+</ul>
+<h5 id="216-ontouchevent">2.1.6 onTouchEvent</h5>
+<ul>
+<li>Activity.java#onTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> </span>{
+    <span class="hljs-keyword">if</span> (mWindow.shouldCloseOnTouch(<span class="hljs-keyword">this</span>, event)) {
+        finish();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li>&#x540C;&#x7406;&#x53EF;&#x5F97;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x662F;PhoneWindow&#x7684;shouldCloseOnTouch&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x800C;shouldCloseOnTouch&#x4E0D;&#x662F;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x91CD;&#x5199;&#xFF0C;&#x6240;&#x4EE5;&#x6307;&#x7684;&#x5B9E;&#x9645;&#x4E0A;&#x662F;Window&#x7684;shouldCloseOnTouch</li>
+</ul>
+<h5 id="217-shouldcloseontouch">2.1.7 shouldCloseOnTouch</h5>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldCloseOnTouch</span><span class="hljs-params">(Context context, MotionEvent event)</span> </span>{
+    <span class="hljs-keyword">if</span> (mCloseOnTouchOutside &amp;&amp; event.getAction() == MotionEvent.ACTION_DOWN
+            &amp;&amp; isOutOfBounds(context, event) &amp;&amp; peekDecorView() != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li>android:windowCloseOnTouchOutside&#x5C5E;&#x6027;&#x4E3A;true&#xFF0C;&#x5219;mCloseOnTouchOutside&#x4E3A;true</li>
+<li>isOutOfBounds(context, event)&#x662F;&#x5224;&#x65AD;&#x8BE5;event&#x7684;&#x5750;&#x6807;&#x662F;&#x5426;&#x5728;context(&#x5BF9;&#x4E8E;&#x672C;&#x6587;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7684;Activity)&#x4E4B;&#x5916;&#x3002;&#x662F;&#x7684;&#x8BDD;&#xFF0C;&#x8FD4;&#x56DE;true</li>
+<li>peekDecorView()&#x5219;&#x662F;&#x8FD4;&#x56DE;PhoneWindow&#x7684;mDecor&#x3002;</li>
+<li>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;android:windowCloseOnTouchOutside&#x5C5E;&#x6027;&#x4E3A;true&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x662F;ACTION_DOWN&#xFF0C;&#x800C;&#x4E14;&#x70B9;&#x51FB;&#x53D1;&#x751F;&#x5728;Activity&#x4E4B;&#x5916;&#xFF0C;&#x540C;&#x65F6;Activity&#x8FD8;&#x5305;&#x542B;&#x89C6;&#x56FE;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;true&#xFF1B;&#x5219;Activity&#x7684;onTouchEvent&#x65B9;&#x6CD5;&#x4F1A;&#x8C03;&#x7528;finish&#x65B9;&#x6CD5;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4F1A;&#x5BFC;&#x81F4;Activity&#x7684;&#x7ED3;&#x675F;&#x3002;</li>
+<li>&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;false</li>
+</ul>
+<h5 id="218-&#x603B;&#x7ED3;">2.1.8 &#x603B;&#x7ED3;</h5>
+<p><img src="../../images/&#x9AD8;&#x7EA7;UI/&#x81EA;&#x5B9A;&#x4E49;View/Activity&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;.png" alt="Activity&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;"></p>
+<h4 id="22-viewgroup&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;">2.2 ViewGroup&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;</h4>
+<h5 id="221-dispatchtouchevent">2.2.1 dispatchTouchEvent</h5>
+<ul>
+<li>ViewGroup.java#dispatchTouchEvent</li>
+<li><strong>mFirstTouchTarget</strong>&#xFF1A;&#x6B64;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x5B58;&#x50A8;&#x8FD9;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;ACTION_DOWN&#x3001;ACTION_MOVE...&#x3001;ACTION_UP&#xFF09;&#x53D1;&#x751F;&#x65F6;&#x6240;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x5B50;View&#xFF0C;&#x56E0;&#x6B64;&#x89E6;&#x6478;&#x4E8B;&#x4EF6; ACTION_DOWN &#x53D1;&#x751F;&#x540E;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x4E3A;null&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8868;&#x793A; ViewGroup &#x6CA1;&#x6709;&#x5C06;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x5230;&#x5B50;View&#x3002;</li>
+<li><strong>mGroupFlags</strong>&#xFF1A;mGroupFlags &#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5F88;&#x591A;&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;&#x7684;&#x7EC4;&#x5408;&#x3002;mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT != 0 &#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;&#x7EC4;&#x5408;&#x5185;&#x6709;&#x300C;&#x4E0D;&#x5141;&#x8BB8;&#x62E6;&#x622A;&#x4E8B;&#x4EF6;&#x300D;&#x8FD9;&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+    <span class="hljs-keyword">if</span> (mInputEventConsistencyVerifier != <span class="hljs-keyword">null</span>) {
+        mInputEventConsistencyVerifier.onTouchEvent(ev, <span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (ev.isTargetAccessibilityFocus() &amp;&amp; isAccessibilityFocusedViewOrHost()) {
+        ev.setTargetAccessibilityFocus(<span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-keyword">boolean</span> handled = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (onFilterTouchEventForSecurity(ev)) {
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> action = ev.getAction();
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> actionMasked = action &amp; MotionEvent.ACTION_MASK;
+
+        <span class="hljs-comment">//&#x5F53;ACTION_DOWN&#x4E8B;&#x4EF6;&#x6765;&#x4E34;&#x7684;&#x65F6;&#x5019;</span>
+        <span class="hljs-keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN) {
+            <span class="hljs-comment">//&#x8868;&#x793A;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217; &#x9700;&#x8981;&#x91CD;&#x7F6E;&#x624B;&#x52BF;&#x3001;&#x89E6;&#x6478;&#x72B6;&#x6001;&#x7B49; &#x5F00;&#x59CB;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;</span>
+            cancelAndClearTouchTargets(ev);
+            resetTouchState();
+        }
+
+        <span class="hljs-comment">//&#x6B64;&#x6807;&#x5FD7;&#x4F4D;&#x4EE3;&#x8868;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x8981;&#x62E6;&#x622A;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;</span>
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> intercepted;
+        <span class="hljs-keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN
+                || mFirstTouchTarget != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x8FDB;&#x884C;&#x62E6;&#x622A;</span>
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">if</span> (!disallowIntercept) {
+                <span class="hljs-comment">//&#x8C03;&#x7528;onInterceptTouchEvent&#x65B9;&#x6CD5;</span>
+                <span class="hljs-comment">//onInterceptTouchEvent&#x57FA;&#x672C;&#x8FD4;&#x56DE;false &#x4EE3;&#x8868;&#x4E0D;&#x62E6;&#x622A;</span>
+                <span class="hljs-comment">//&#x5F53;&#x7136;&#x81EA;&#x5B9A;&#x4E49;&#x7684;ViewGroup&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x62E6;&#x622A; &#x8FD4;&#x56DE;true</span>
+                intercepted = onInterceptTouchEvent(ev);
+                ev.setAction(action); <span class="hljs-comment">// restore action in case it was changed</span>
+            } <span class="hljs-keyword">else</span> {
+                intercepted = <span class="hljs-keyword">false</span>;
+            }
+        } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// There are no touch targets and this action is not an initial down</span>
+                <span class="hljs-comment">// so this view group continues to intercept touches.</span>
+                intercepted = <span class="hljs-keyword">true</span>;
+        }
+
+            <span class="hljs-comment">// If intercepted, start normal event dispatch. Also if there is already</span>
+            <span class="hljs-comment">// a view that is handling the gesture, do normal event dispatch.</span>
+        <span class="hljs-keyword">if</span> (intercepted || mFirstTouchTarget != <span class="hljs-keyword">null</span>) {
+            ev.setTargetAccessibilityFocus(<span class="hljs-keyword">false</span>);
+        }
+
+        <span class="hljs-comment">// Check for cancelation.</span>
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> canceled = resetCancelNextUpFlag(<span class="hljs-keyword">this</span>)
+                || actionMasked == MotionEvent.ACTION_CANCEL;
+
+        <span class="hljs-comment">// Update list of touch targets for pointer down, if needed.</span>
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> split = (mGroupFlags &amp; FLAG_SPLIT_MOTION_EVENTS) != <span class="hljs-number">0</span>;
+        TouchTarget newTouchTarget = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">boolean</span> alreadyDispatchedToNewTouchTarget = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">if</span> (!canceled &amp;&amp; !intercepted) {
+
+            <span class="hljs-comment">// If the event is targeting accessiiblity focus we give it to the</span>
+            <span class="hljs-comment">// view that has accessibility focus and if it does not handle it</span>
+            <span class="hljs-comment">// we clear the flag and dispatch the event to all children as usual.</span>
+            <span class="hljs-comment">// We are looking up the accessibility focused host to avoid keeping</span>
+            <span class="hljs-comment">// state since these events are very rare.</span>
+            View childWithAccessibilityFocus = ev.isTargetAccessibilityFocus()
+                    ? findChildWithAccessibilityFocus() : <span class="hljs-keyword">null</span>;
+
+            <span class="hljs-keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN
+                    || (split &amp;&amp; actionMasked == MotionEvent.ACTION_POINTER_DOWN)
+                    || actionMasked == MotionEvent.ACTION_HOVER_MOVE) {
+                <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> actionIndex = ev.getActionIndex(); <span class="hljs-comment">// always 0 for down</span>
+                <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> idBitsToAssign = split ? <span class="hljs-number">1</span> &lt;&lt; ev.getPointerId(actionIndex)
+                    : TouchTarget.ALL_POINTER_IDS;
+
+                <span class="hljs-comment">// Clean up earlier touch targets for this pointer id in case they</span>
+                <span class="hljs-comment">// have become out of sync.</span>
+                removePointersFromTouchTargets(idBitsToAssign);
+
+                <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> childrenCount = mChildrenCount;
+                <span class="hljs-keyword">if</span> (newTouchTarget == <span class="hljs-keyword">null</span> &amp;&amp; childrenCount != <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> x = ev.getX(actionIndex);
+                    <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> y = ev.getY(actionIndex);
+                    <span class="hljs-comment">// Find a child that can receive the event.</span>
+                    <span class="hljs-comment">// Scan children from front to back.</span>
+                    <span class="hljs-keyword">final</span> ArrayList&lt;View&gt; preorderedList = buildTouchDispatchChildList();
+                    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> customOrder = preorderedList == <span class="hljs-keyword">null</span>
+                        &amp;&amp; isChildrenDrawingOrderEnabled();
+                    <span class="hljs-comment">//&#x904D;&#x5386;ViewGroup&#x7684;&#x6240;&#x6709;&#x5B50;View</span>
+                    <span class="hljs-keyword">final</span> View[] children = mChildren;
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = childrenCount - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+                        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> childIndex = getAndVerifyPreorderedIndex(
+                                childrenCount, i, customOrder);
+                        <span class="hljs-keyword">final</span> View child = getAndVerifyPreorderedView(
+                                preorderedList, children, childIndex);
+
+                        <span class="hljs-comment">// If there is a view that has accessibility focus we want it</span>
+                        <span class="hljs-comment">// to get the event first and if not handled we will perform a</span>
+                        <span class="hljs-comment">// normal dispatch. We may do a double iteration but this is</span>
+                        <span class="hljs-comment">// safer given the timeframe.</span>
+                        <span class="hljs-keyword">if</span> (childWithAccessibilityFocus != <span class="hljs-keyword">null</span>) {
+                            <span class="hljs-keyword">if</span> (childWithAccessibilityFocus != child) {
+                                <span class="hljs-keyword">continue</span>;
+                            }
+                            childWithAccessibilityFocus = <span class="hljs-keyword">null</span>;
+                            i = childrenCount - <span class="hljs-number">1</span>;
+                        }
+
+                        <span class="hljs-comment">//&#x901A;&#x8FC7;canViewReceivePointerEvents&#x548C;isTransformedTouchPointInView</span>
+                        <span class="hljs-comment">//&#x6765;&#x5224;&#x65AD;&#x70B9;&#x51FB;&#x65F6;&#x5750;&#x6807;&#x843D;&#x5728;&#x54EA;&#x4E00;&#x4E2A;&#x5B50;View&#x4E0A;</span>
+                        <span class="hljs-keyword">if</span> (!canViewReceivePointerEvents(child)
+                                || !isTransformedTouchPointInView(x, y, child, <span class="hljs-keyword">null</span>)) {
+                            ev.setTargetAccessibilityFocus(<span class="hljs-keyword">false</span>);
+                            <span class="hljs-keyword">continue</span>;
+                        }
+
+                        <span class="hljs-comment">//</span>
+                        newTouchTarget = getTouchTarget(child);
+                        <span class="hljs-keyword">if</span> (newTouchTarget != <span class="hljs-keyword">null</span>) {
+                            <span class="hljs-comment">// Child is already receiving touch within its bounds.</span>
+                            <span class="hljs-comment">// Give it the new pointer in addition to the ones it is handling.</span>
+                            newTouchTarget.pointerIdBits |= idBitsToAssign;
+                            <span class="hljs-keyword">break</span>;
+                        }
+
+                        resetCancelNextUpFlag(child);
+                        <span class="hljs-keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="hljs-keyword">false</span>, child, idBitsToAssign)) {
+                            <span class="hljs-comment">//&#x8BB0;&#x5F55;&#x627E;&#x5230;&#x7684;&#x5B50;View&#xFF0C;&#x4EE5;&#x4FBF;&#x4E4B;&#x540E;&#x7684;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x76EE;&#x6807;View</span>
+                            mLastTouchDownTime = ev.getDownTime();
+                            <span class="hljs-keyword">if</span> (preorderedList != <span class="hljs-keyword">null</span>) {
+                                <span class="hljs-comment">// childIndex points into presorted list, find original index</span>
+                                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; childrenCount; j++) {
+                                    <span class="hljs-keyword">if</span> (children[childIndex] == mChildren[j]) {
+                                        mLastTouchDownIndex = j;
+                                        <span class="hljs-keyword">break</span>;
+                                    }
+                                }
+                            } <span class="hljs-keyword">else</span> {
+                                mLastTouchDownIndex = childIndex;
+                            }
+                            mLastTouchDownX = ev.getX();
+                            mLastTouchDownY = ev.getY();
+                            newTouchTarget = addTouchTarget(child, idBitsToAssign);
+                            alreadyDispatchedToNewTouchTarget = <span class="hljs-keyword">true</span>;
+                            <span class="hljs-keyword">break</span>;
+                        }
+
+                        <span class="hljs-comment">// The accessibility focus didn&apos;t handle the event, so clear</span>
+                        <span class="hljs-comment">// the flag and do a normal dispatch to all children.</span>
+                        ev.setTargetAccessibilityFocus(<span class="hljs-keyword">false</span>);
+                    }
+                    <span class="hljs-keyword">if</span> (preorderedList != <span class="hljs-keyword">null</span>) preorderedList.clear();
+                }
+
+                <span class="hljs-keyword">if</span> (newTouchTarget == <span class="hljs-keyword">null</span> &amp;&amp; mFirstTouchTarget != <span class="hljs-keyword">null</span>) {
+                    <span class="hljs-comment">// Did not find a child to receive the event.</span>
+                    <span class="hljs-comment">// Assign the pointer to the least recently added target.</span>
+                    newTouchTarget = mFirstTouchTarget;
+                    <span class="hljs-keyword">while</span> (newTouchTarget.next != <span class="hljs-keyword">null</span>) {
+                        newTouchTarget = newTouchTarget.next;
+                    }
+                    newTouchTarget.pointerIdBits |= idBitsToAssign;
+                }
+            }
+        }
+
+        <span class="hljs-comment">//&#x89E6;&#x6478;&#x4E8B;&#x4EF6;ACTION_DOWN&#x53D1;&#x751F;&#x540E;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x4E3A;null</span>
+        <span class="hljs-comment">//&#x90A3;&#x4E48;&#x5C31;&#x8868;&#x793A; ViewGroup &#x6CA1;&#x6709;&#x5C06;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x5230;&#x5B50;View</span>
+        <span class="hljs-comment">//&#x6240;&#x4EE5;&#x8981;&#x63A5;&#x7740;&#x6267;&#x884C;&#x5176;&#x4ED6;&#x52A8;&#x4F5C;(&#x6ED1;&#x52A8;&#x7B49;)&#x7684;&#x5904;&#x7406;</span>
+        <span class="hljs-keyword">if</span> (mFirstTouchTarget == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">// No touch targets so treat this as an ordinary view.</span>
+            handled = dispatchTransformedTouchEvent(ev, canceled, <span class="hljs-keyword">null</span>,
+                    TouchTarget.ALL_POINTER_IDS);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// Dispatch to touch targets, excluding the new touch target if we already</span>
+            <span class="hljs-comment">// dispatched to it.  Cancel touch targets if necessary.</span>
+            TouchTarget predecessor = <span class="hljs-keyword">null</span>;
+            TouchTarget target = mFirstTouchTarget;
+            <span class="hljs-keyword">while</span> (target != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">final</span> TouchTarget next = target.next;
+                <span class="hljs-keyword">if</span> (alreadyDispatchedToNewTouchTarget &amp;&amp; target == newTouchTarget) {
+                    handled = <span class="hljs-keyword">true</span>;
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> cancelChild = resetCancelNextUpFlag(target.child)
+                            || intercepted;
+                    <span class="hljs-keyword">if</span> (dispatchTransformedTouchEvent(ev, cancelChild,
+                            target.child, target.pointerIdBits)) {
+                        handled = <span class="hljs-keyword">true</span>;
+                    }
+                    <span class="hljs-keyword">if</span> (cancelChild) {
+                        <span class="hljs-keyword">if</span> (predecessor == <span class="hljs-keyword">null</span>) {
+                            mFirstTouchTarget = next;
+                        } <span class="hljs-keyword">else</span> {
+                            predecessor.next = next;
+                        }
+                        target.recycle();
+                        target = next;
+                        <span class="hljs-keyword">continue</span>;
+                    }
+                }
+                predecessor = target;
+                target = next;
+            }
+        }
+
+        <span class="hljs-comment">// Update list of touch targets for pointer up or cancel, if needed.</span>
+        <span class="hljs-keyword">if</span> (canceled
+                || actionMasked == MotionEvent.ACTION_UP
+                || actionMasked == MotionEvent.ACTION_HOVER_MOVE) {
+            resetTouchState();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (split &amp;&amp; actionMasked == MotionEvent.ACTION_POINTER_UP) {
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> actionIndex = ev.getActionIndex();
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> idBitsToRemove = <span class="hljs-number">1</span> &lt;&lt; ev.getPointerId(actionIndex);
+            removePointersFromTouchTargets(idBitsToRemove);
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (!handled &amp;&amp; mInputEventConsistencyVerifier != <span class="hljs-keyword">null</span>) {
+        mInputEventConsistencyVerifier.onUnhandledEvent(ev, <span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">return</span> handled;
+}
+</code></pre>
+<ul>
+<li>&#x6574;&#x4F53;&#x603B;&#x7ED3;&#xFF1A;&#x9996;&#x5148;&#x5224;&#x65AD;&#x62E6;&#x622A;&#x4E0E;&#x5426;&#xFF0C;&#x4E0D;&#x62E6;&#x622A;&#x7684;&#x8BDD;&#x904D;&#x5386;ViewGroup&#x7684;&#x6240;&#x6709;&#x5B50;View&#xFF0C;&#x627E;&#x5230;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x843D;&#x5728;&#x7684;&#x5B50;View&#xFF0C;&#x8C03;&#x7528;&#x5B50;View&#x7684;dispatchTransformedTouchEvent&#x65B9;&#x6CD5;,&#xFF0C;&#x8FDB;&#x800C;&#x8C03;&#x7528;View&#x7684;dispatchTouchEvent</li>
+</ul>
+<h5 id="222-dispatchtransformedtouchevent">2.2.2 dispatchTransformedTouchEvent</h5>
+<ul>
+<li>ViewGroup.java#dispatchTransformedTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTransformedTouchEvent</span><span class="hljs-params">(MotionEvent event, <span class="hljs-keyword">boolean</span> cancel,
+        View child, <span class="hljs-keyword">int</span> desiredPointerIdBits)</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> handled;
+
+    <span class="hljs-comment">// Canceling motions is a special case.  We don&apos;t need to perform any transformations</span>
+    <span class="hljs-comment">// or filtering.  The important part is the action, not the contents.</span>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> oldAction = event.getAction();
+    <span class="hljs-keyword">if</span> (cancel || oldAction == MotionEvent.ACTION_CANCEL) {
+        event.setAction(MotionEvent.ACTION_CANCEL);
+        <span class="hljs-keyword">if</span> (child == <span class="hljs-keyword">null</span>) {
+            handled = <span class="hljs-keyword">super</span>.dispatchTouchEvent(event);
+        } <span class="hljs-keyword">else</span> {
+            handled = child.dispatchTouchEvent(event);
+        }
+        event.setAction(oldAction);
+        <span class="hljs-keyword">return</span> handled;
+    }
+
+    <span class="hljs-comment">// Calculate the number of pointers to deliver.</span>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> oldPointerIdBits = event.getPointerIdBits();
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> newPointerIdBits = oldPointerIdBits &amp; desiredPointerIdBits;
+
+    <span class="hljs-comment">// If for some reason we ended up in an inconsistent state where it looks like we</span>
+    <span class="hljs-comment">// might produce a motion event with no pointers in it, then drop the event.</span>
+    <span class="hljs-keyword">if</span> (newPointerIdBits == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-comment">// If the number of pointers is the same and we don&apos;t need to perform any fancy</span>
+    <span class="hljs-comment">// irreversible transformations, then we can reuse the motion event for this</span>
+    <span class="hljs-comment">// dispatch as long as we are careful to revert any changes we make.</span>
+    <span class="hljs-comment">// Otherwise we need to make a copy.</span>
+    <span class="hljs-keyword">final</span> MotionEvent transformedEvent;
+    <span class="hljs-keyword">if</span> (newPointerIdBits == oldPointerIdBits) {
+        <span class="hljs-keyword">if</span> (child == <span class="hljs-keyword">null</span> || child.hasIdentityMatrix()) {
+            <span class="hljs-keyword">if</span> (child == <span class="hljs-keyword">null</span>) {
+                <span class="hljs-comment">//View&#x6765;&#x5904;&#x7406;&#x4E8B;&#x4EF6;</span>
+                handled = <span class="hljs-keyword">super</span>.dispatchTouchEvent(event);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">//&#x5C06;&#x89E6;&#x6478;&#x70B9;&#x7684;&#x5750;&#x6807;&#x8F6C;&#x6362;&#x6210;&#x5B50;&#x89C6;&#x56FE;&#x7684;&#x5750;&#x6807;</span>
+                <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> offsetX = mScrollX - child.mLeft;
+                <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> offsetY = mScrollY - child.mTop;
+
+                event.offsetLocation(offsetX, offsetY);
+                <span class="hljs-comment">//&#x5B50;View&#x5904;&#x7406;&#x4E8B;&#x4EF6;</span>
+                handled = child.dispatchTouchEvent(event);
+                <span class="hljs-comment">//&#x53C8;&#x5C06;&#x89E6;&#x6478;&#x5750;&#x6807;&#x8FD8;&#x539F;&#xFF0C;&#x4E4B;&#x524D;&#x8F6C;&#x6362;&#x7684;&#x5750;&#x6807;&#x53EA;&#x9002;&#x5408;&#x90A3;&#x4E2A;&#x5B50;&#x89C6;&#x56FE;</span>
+                event.offsetLocation(-offsetX, -offsetY);
+            }
+            <span class="hljs-keyword">return</span> handled;
+        }
+        transformedEvent = MotionEvent.obtain(event);
+    } <span class="hljs-keyword">else</span> {
+        transformedEvent = event.split(newPointerIdBits);
+    }
+
+    <span class="hljs-comment">// Perform any necessary transformations and dispatch.</span>
+    <span class="hljs-keyword">if</span> (child == <span class="hljs-keyword">null</span>) {
+        handled = <span class="hljs-keyword">super</span>.dispatchTouchEvent(transformedEvent);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> offsetX = mScrollX - child.mLeft;
+        <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> offsetY = mScrollY - child.mTop;
+        transformedEvent.offsetLocation(offsetX, offsetY);
+        <span class="hljs-keyword">if</span> (! child.hasIdentityMatrix()) {
+            transformedEvent.transform(child.getInverseMatrix());
+        }
+
+        handled = child.dispatchTouchEvent(transformedEvent);
+    }
+
+    <span class="hljs-comment">// Done.</span>
+    transformedEvent.recycle();
+    <span class="hljs-keyword">return</span> handled;
+}
+</code></pre>
+<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;View&#x7684;dispatchTouchEvent&#x6216;&#x8005;&#x5B50;View&#x7684;dispatchTouchEvent</li>
+</ul>
+<h5 id="223-dispatchtouchevent">2.2.3 dispatchTouchEvent</h5>
+<ul>
+<li>View.java#dispatchTouchEvent &#x6216;&#x8005; &#x5B50;View&#x7684;dispatchTouchEvent </li>
+</ul>
+<p><img src="../../images/&#x9AD8;&#x7EA7;UI/&#x81EA;&#x5B9A;&#x4E49;View/ViewGroup&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;.png" alt="ViewGroup&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;"></p>
+<h4 id="23-view&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;">2.3 View&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;</h4>
+<h5 id="231-dispatchtouchevent">2.3.1 dispatchTouchEvent</h5>
+<ul>
+<li>View.java#dispatchTouchEvent </li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> </span>{
+    <span class="hljs-comment">// If the event should be handled by accessibility focus first.</span>
+    <span class="hljs-keyword">if</span> (event.isTargetAccessibilityFocus()) {
+        <span class="hljs-comment">// We don&apos;t have focus or no virtual descendant has it, do not handle the event.</span>
+        <span class="hljs-keyword">if</span> (!isAccessibilityFocusedViewOrHost()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-comment">// We have focus and got the event, then use normal event dispatch.</span>
+        event.setTargetAccessibilityFocus(<span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-keyword">boolean</span> result = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-keyword">if</span> (mInputEventConsistencyVerifier != <span class="hljs-keyword">null</span>) {
+        mInputEventConsistencyVerifier.onTouchEvent(event, <span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> actionMasked = event.getActionMasked();
+    <span class="hljs-keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN) {
+        <span class="hljs-comment">// Defensive cleanup for new gesture</span>
+        stopNestedScroll();
+    }
+
+    <span class="hljs-keyword">if</span> (onFilterTouchEventForSecurity(event)) {
+        <span class="hljs-keyword">if</span> ((mViewFlags &amp; ENABLED_MASK) == ENABLED &amp;&amp; handleScrollBarDragging(event)) {
+            result = <span class="hljs-keyword">true</span>;
+        }
+        <span class="hljs-comment">//&#x9996;&#x5148;&#x5224;&#x65AD; OnTouchListener &#x662F;&#x5426;&#x4E3A;&#x7A7A;</span>
+        <span class="hljs-comment">//&#x518D;&#x5224;&#x65AD;&#x8FD9;&#x4E2A; View &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x7528;&#xFF08;&#x5373;setEnable&#x5C5E;&#x6027;&#xFF0C;&#x9ED8;&#x8BA4;&#x90FD;&#x662F;true&#xFF09;</span>
+        <span class="hljs-comment">//&#x7136;&#x540E;&#x8C03;&#x7528; OnTouchListener.onTouch &#x65B9;&#x6CD5;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x89E6;&#x6478;&#x64CD;&#x4F5C;</span>
+        <span class="hljs-comment">//&#x5982;&#x679C;&#x6B64;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE; true, &#x5219;&#x4EE3;&#x8868;&#x4E8B;&#x4EF6;&#x88AB;&#x6D88;&#x8D39;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C; onTouchEvent</span>
+        ListenerInfo li = mListenerInfo;
+        <span class="hljs-keyword">if</span> (li != <span class="hljs-keyword">null</span> &amp;&amp; li.mOnTouchListener != <span class="hljs-keyword">null</span>
+                &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED
+                &amp;&amp; li.mOnTouchListener.onTouch(<span class="hljs-keyword">this</span>, event)) {
+            result = <span class="hljs-keyword">true</span>;
+        }
+
+        <span class="hljs-comment">//&#x6211;&#x4EEC;&#x4F7F;&#x5176;&#x8FD4;&#x56DE; false, &#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x4F20;&#x9012;&#x7ED9; onTouchEvent &#x53BB;&#x6D88;&#x8D39;</span>
+        <span class="hljs-keyword">if</span> (!result &amp;&amp; onTouchEvent(event)) {
+            result = <span class="hljs-keyword">true</span>;
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (!result &amp;&amp; mInputEventConsistencyVerifier != <span class="hljs-keyword">null</span>) {
+        mInputEventConsistencyVerifier.onUnhandledEvent(event, <span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-comment">// Clean up after nested scrolls if this is the end of a gesture;</span>
+    <span class="hljs-comment">// also cancel it if we tried an ACTION_DOWN but we didn&apos;t want the rest</span>
+    <span class="hljs-comment">// of the gesture.</span>
+    <span class="hljs-keyword">if</span> (actionMasked == MotionEvent.ACTION_UP ||
+            actionMasked == MotionEvent.ACTION_CANCEL ||
+            (actionMasked == MotionEvent.ACTION_DOWN &amp;&amp; !result)) {
+        stopNestedScroll();
+    }
+
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x5173;&#x952E;&#x90E8;&#x5206;&#x5DF2;&#x7ECF;&#x505A;&#x4E86;&#x6CE8;&#x91CA;&#x89E3;&#x91CA;&#xFF0C;&#x5982;&#x679C;&#x4E8B;&#x4EF6;&#x4E0D;&#x88AB;&#x6D88;&#x8D39;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528;onTouchEvent</li>
+</ul>
+<h5 id="232-ontouchevent">2.3.2 onTouchEvent</h5>
+<ul>
+<li>View.java#onTouchEvent</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> x = event.getX();
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> y = event.getY();
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> viewFlags = mViewFlags;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> action = event.getAction();
+
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> clickable = ((viewFlags &amp; CLICKABLE) == CLICKABLE
+            || (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE)
+            || (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE;
+
+    <span class="hljs-keyword">if</span> ((viewFlags &amp; ENABLED_MASK) == DISABLED) {
+        <span class="hljs-keyword">if</span> (action == MotionEvent.ACTION_UP &amp;&amp; (mPrivateFlags &amp; PFLAG_PRESSED) != <span class="hljs-number">0</span>) {
+            setPressed(<span class="hljs-keyword">false</span>);
+        }
+        mPrivateFlags3 &amp;= ~PFLAG3_FINGER_DOWN;
+        <span class="hljs-comment">// A disabled view that is clickable still consumes the touch</span>
+        <span class="hljs-comment">// events, it just doesn&apos;t respond to them.</span>
+        <span class="hljs-keyword">return</span> clickable;
+    }
+    <span class="hljs-keyword">if</span> (mTouchDelegate != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">if</span> (mTouchDelegate.onTouchEvent(event)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (clickable || (viewFlags &amp; TOOLTIP) == TOOLTIP) {
+        <span class="hljs-keyword">switch</span> (action) {
+            <span class="hljs-keyword">case</span> MotionEvent.ACTION_UP:
+                mPrivateFlags3 &amp;= ~PFLAG3_FINGER_DOWN;
+                <span class="hljs-keyword">if</span> ((viewFlags &amp; TOOLTIP) == TOOLTIP) {
+                    handleTooltipUp();
+                }
+                <span class="hljs-keyword">if</span> (!clickable) {
+                    removeTapCallback();
+                    removeLongPressCallback();
+                    mInContextButtonPress = <span class="hljs-keyword">false</span>;
+                    mHasPerformedLongPress = <span class="hljs-keyword">false</span>;
+                    mIgnoreNextUpEvent = <span class="hljs-keyword">false</span>;
+                    <span class="hljs-keyword">break</span>;
+                }
+                <span class="hljs-keyword">boolean</span> prepressed = (mPrivateFlags &amp; PFLAG_PREPRESSED) != <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">if</span> ((mPrivateFlags &amp; PFLAG_PRESSED) != <span class="hljs-number">0</span> || prepressed) {
+                    <span class="hljs-comment">// take focus if we don&apos;t have it already and we should in</span>
+                    <span class="hljs-comment">// touch mode.</span>
+                    <span class="hljs-keyword">boolean</span> focusTaken = <span class="hljs-keyword">false</span>;
+                    <span class="hljs-keyword">if</span> (isFocusable() &amp;&amp; isFocusableInTouchMode() &amp;&amp; !isFocused()) {
+                        focusTaken = requestFocus();
+                    }
+
+                    <span class="hljs-keyword">if</span> (prepressed) {
+                        <span class="hljs-comment">// The button is being released before we actually</span>
+                        <span class="hljs-comment">// showed it as pressed.  Make it show the pressed</span>
+                        <span class="hljs-comment">// state now (before scheduling the click) to ensure</span>
+                        <span class="hljs-comment">// the user sees it.</span>
+                        setPressed(<span class="hljs-keyword">true</span>, x, y);
+                    }
+
+                    <span class="hljs-keyword">if</span> (!mHasPerformedLongPress &amp;&amp; !mIgnoreNextUpEvent) {
+                        <span class="hljs-comment">// This is a tap, so remove the longpress check</span>
+                        removeLongPressCallback();
+
+                        <span class="hljs-comment">// Only perform take click actions if we were in the pressed state</span>
+                        <span class="hljs-keyword">if</span> (!focusTaken) {
+                            <span class="hljs-comment">// Use a Runnable and post this rather than calling</span>
+                            <span class="hljs-comment">// performClick directly. This lets other visual state</span>
+                            <span class="hljs-comment">// of the view update before click actions start.</span>
+                            <span class="hljs-keyword">if</span> (mPerformClick == <span class="hljs-keyword">null</span>) {
+                                mPerformClick = <span class="hljs-keyword">new</span> PerformClick();
+                            }
+                            <span class="hljs-keyword">if</span> (!post(mPerformClick)) {
+                                performClick();
+                            }
+                        }
+                    }
+
+                    <span class="hljs-keyword">if</span> (mUnsetPressedState == <span class="hljs-keyword">null</span>) {
+                        mUnsetPressedState = <span class="hljs-keyword">new</span> UnsetPressedState();
+                    }
+
+                    <span class="hljs-keyword">if</span> (prepressed) {
+                        postDelayed(mUnsetPressedState,
+                                ViewConfiguration.getPressedStateDuration());
+                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!post(mUnsetPressedState)) {
+                        <span class="hljs-comment">// If the post failed, unpress right now</span>
+                        mUnsetPressedState.run();
+                    }
+
+                    removeTapCallback();
+                }
+                mIgnoreNextUpEvent = <span class="hljs-keyword">false</span>;
+                <span class="hljs-keyword">break</span>;
+                .....
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li>&#x5176;&#x4E2D;&#x6700;&#x5173;&#x952E;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6700;&#x5E38;&#x7528;&#x7684; click &#x4E8B;&#x4EF6;&#xFF0C;&#x4E00;&#x4E9B;&#x957F;&#x6309;&#x7B49;&#x4E8B;&#x4EF6;&#x7684;&#x903B;&#x8F91;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x518D;&#x5206;&#x6790;&#x3002;&#x901A;&#x8FC7;&#x5C5E;&#x6027;&#x5224;&#x65AD; View &#x662F;&#x5426;&#x53EF;&#x70B9;&#x51FB;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x624B;&#x6307;&#x62AC;&#x8D77;&#x65F6;&#x5373; ACTION_UP &#x6267;&#x884C; performClick &#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x5C31;&#x662F;&#x5224;&#x65AD;&#x7528;&#x6237;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x4E86; OnClickListener &#x76D1;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5219;&#x8C03;&#x7528; onClick &#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<h5 id="233-performclick">2.3.3 performClick</h5>
+<ul>
+<li>PerformClick.java#performClick </li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">performClick</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> result;
+    <span class="hljs-keyword">final</span> ListenerInfo li = mListenerInfo;
+    <span class="hljs-keyword">if</span> (li != <span class="hljs-keyword">null</span> &amp;&amp; li.mOnClickListener != <span class="hljs-keyword">null</span>) {
+        playSoundEffect(SoundEffectConstants.CLICK);
+        li.mOnClickListener.onClick(<span class="hljs-keyword">this</span>);
+        result = <span class="hljs-keyword">true</span>;
+    } <span class="hljs-keyword">else</span> {
+        result = <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x6709;&#x5C31;&#x4F1A;&#x6267;&#x884C; OnClickListener.onClick &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x5E38;&#x89C1;&#x7684;new OnClickListener&#x4E2D;&#x81EA;&#x5DF1;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x7684;onClick &#x65B9;&#x6CD5;</li>
+</ul>
+<h5 id="234-&#x603B;&#x7ED3;">2.3.4 &#x603B;&#x7ED3;</h5>
+<ul>
+<li>&#x5982;&#x679C;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x4E86; OnTouchListener, &#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528; onTouch &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x679C; onTouch &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;true, &#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x4F1A;&#x6267;&#x884C; onTouchEvent &#x4E86;&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x4F1A;&#x6267;&#x884C; onClick &#x4E86;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x6765;&#x5230; onTouchEvent &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x6267;&#x884C;performClick&#xFF0C;&#x8FDB;&#x800C;&#x6709;&#x673A;&#x4F1A;&#x53BB;&#x6267;&#x884C; OnClickListener.onClick &#x65B9;&#x6CD5;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x6267;&#x884C;&#x4E86;&#x957F;&#x6309;&#x4E4B;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;&#xFF1B;</li>
+<li>&#x6700;&#x540E;&#x56DE;&#x8C03;&#x5230; onClick&#xFF1B;</li>
+</ul>
+<p><img src="../../images/&#x9AD8;&#x7EA7;UI/&#x81EA;&#x5B9A;&#x4E49;View/View&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;.png" alt="View&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#x6D41;&#x7A0B;&#x56FE;"></p>
+<h3 id="&#x4E09;&#x3001;&#x603B;&#x7ED3;">&#x4E09;&#x3001;&#x603B;&#x7ED3;</h3>
+<h4 id="31--&#x4F2A;&#x4EE3;&#x7801;&#x89E3;&#x6790;">3.1  &#x4F2A;&#x4EE3;&#x7801;&#x89E3;&#x6790;</h4>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * &#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4EA7;&#x751F;&#x540E;
+*/</span> 
+<span class="hljs-comment">// &#x6B65;&#x9AA4;1&#xFF1A;&#x8C03;&#x7528;dispatchTouchEvent&#xFF08;&#xFF09;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+
+    <span class="hljs-keyword">boolean</span> consume = <span class="hljs-keyword">false</span>; <span class="hljs-comment">//&#x4EE3;&#x8868; &#x662F;&#x5426;&#x4F1A;&#x6D88;&#x8D39;&#x4E8B;&#x4EF6;</span>
+
+    <span class="hljs-comment">// &#x6B65;&#x9AA4;2&#xFF1A;&#x5224;&#x65AD;&#x662F;&#x5426;&#x62E6;&#x622A;&#x4E8B;&#x4EF6;</span>
+    <span class="hljs-keyword">if</span> (onInterceptTouchEvent(ev)) {
+          <span class="hljs-comment">// a. &#x82E5;&#x62E6;&#x622A;&#xFF0C;&#x5219;&#x5C06;&#x8BE5;&#x4E8B;&#x4EF6;&#x4EA4;&#x7ED9;&#x5F53;&#x524D;View&#x8FDB;&#x884C;&#x5904;&#x7406;</span>
+          <span class="hljs-comment">// &#x5373;&#x8C03;&#x7528;onTouchEvent (&#xFF09;&#x65B9;&#x6CD5;&#x53BB;&#x5904;&#x7406;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span>
+        consume = onTouchEvent (ev) ;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// b. &#x82E5;&#x4E0D;&#x62E6;&#x622A;&#xFF0C;&#x5219;&#x5C06;&#x8BE5;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x5230;&#x4E0B;&#x5C42;</span>
+      <span class="hljs-comment">// &#x5373; &#x4E0B;&#x5C42;&#x5143;&#x7D20;&#x7684;dispatchTouchEvent&#xFF08;&#xFF09;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x91CD;&#x590D;&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;</span>
+      <span class="hljs-comment">// &#x76F4;&#x5230;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x88AB;&#x6700;&#x7EC8;&#x5904;&#x7406;&#x4E3A;&#x6B62;</span>
+      consume = child.dispatchTouchEvent (ev) ;
+    }
+    <span class="hljs-comment">// &#x6B65;&#x9AA4;3&#xFF1A;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x901A;&#x77E5; &#x8BE5;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x88AB;&#x6D88;&#x8D39;&#xFF08;&#x63A5;&#x6536; &amp; &#x5904;&#x7406;&#xFF09;</span>
+    <span class="hljs-keyword">return</span> consume;
+}
+</code></pre>
+<ul>
+<li><p>&#x5BF9;&#x4E8E;&#x6839;<code>ViewGroup</code>&#x800C;&#x8A00;&#xFF0C;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4EA7;&#x751F;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x7684;<code>dispatchTouchEvent</code>&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x6B64;&#x65F6;&#x5224;&#x65AD;&#x6839;<code>ViewGroup</code>&#x7684;<code>onInterceptTouchEvent</code>&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;<code>true</code>&#xFF0C;&#x62E6;&#x622A;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x5C31;&#x4F1A;&#x4EA4;&#x7ED9;&#x6839;<code>ViewGroup</code>&#xFF0C;&#x5373;&#x5B83;&#x7684;<code>onTouchEvent</code>&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;<code>false</code>&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x4F20;&#x9012;&#x7ED9;&#x5B83;&#x7684;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x6B64;&#x65F6;&#x5B50;&#x5143;&#x7D20;&#x7684;<code>dispatchTouchEvent</code>&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x53CD;&#x590D;&#x4E0B;&#x53BB;&#x76F4;&#x5230;&#x88AB;&#x5904;&#x7406;&#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x4E00;&#x4E2A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4EA7;&#x751F;&#x540E;&#xFF0C;&#x5B83;&#x7684;&#x4F20;&#x9012;&#x8FC7;&#x7A0B;&#x9075;&#x5FAA;&#x5982;&#x4E0B;&#x987A;&#x5E8F;&#xFF1A;<code>Activity----Window----View</code>&#x3002;&#x5982;&#x679C;&#x8BE5;View&#x4E0B;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x4E0D;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF08;<code>onTouchEvent&#x4E3A;false</code>&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x4F20;&#x9012;&#x7ED9;&#x4E0A;&#x5C42;&#x7684;<code>View</code>&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x76F4;&#x90FD;&#x4E0D;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x4EA4;&#x7ED9;<code>Activity</code>&#xFF0C;&#x6B64;&#x65F6;<code>Activity</code>&#x7684;<code>onTouchEvent</code>&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+</ul>
+<h4 id="32-&#x7ED3;&#x8BBA;&#xFF1A;">3.2 &#x7ED3;&#x8BBA;&#xFF1A;</h4>
+<ul>
+<li><p>&#x9664;&#x53BB;&#x7279;&#x6B8A;&#x624B;&#x6BB5;&#x5904;&#x7406;&#xFF0C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x53EA;&#x80FD;&#x88AB;&#x4E00;&#x4E2A;<code>View</code>&#x62E6;&#x622A;&#x5E76;&#x6D88;&#x8017;&#x3002;</p>
+</li>
+<li><p>&#x67D0;&#x4E2A;<code>View</code>&#x4E00;&#x65E6;&#x51B3;&#x5B9A;&#x62E6;&#x622A;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x90FD;&#x53EA;&#x80FD;&#x7531;&#x5B83;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x7684;<code>onInterceptTouchEvent</code>&#x4E0D;&#x4F1A;&#x518D;&#x88AB;&#x8C03;(&#x56E0;&#x4E3A;&#x518D;&#x88AB;&#x8C03;&#x7528;&#x4E5F;&#x5931;&#x53BB;&#x4E86;&#x610F;&#x4E49;)&#x3002;</p>
+</li>
+<li><p>&#x67D0;&#x4E2A;<code>View</code>&#x4E00;&#x65E6;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x4ED6;&#x4E0D;&#x6D88;&#x8017;<code>ACTION_DOWN</code>&#x4E8B;&#x4EF6;&#xFF08;<code>onTouchEvent</code>&#x8FD4;&#x56DE;&#x4E86;<code>false</code>&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x540C;&#x4E00;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#x90FD;&#x4E0D;&#x4F1A;&#x7ED9;&#x4ED6;&#x5904;&#x7406;&#x3002;&#x5E76;&#x4E14;&#x4E8B;&#x4EF6;&#x4F1A;&#x91CD;&#x65B0;&#x4EA4;&#x7ED9;&#x5B83;&#x7684;&#x7236;&#x5143;&#x7D20;&#x5904;&#x7406;&#xFF0C;&#x5373;&#x7236;&#x5143;&#x7D20;&#x7684;onTouchEvent&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;<code>View</code>&#x4E0D;&#x6D88;&#x8017;&#x9664;<code>ACTION_DOWN</code>&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4F1A;&#x6D88;&#x5931;&#xFF0C;&#x6B64;&#x65F6;&#x7236;&#x5143;&#x7D20;&#x7684;<code>onTouchEvent</code>&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;<code>View</code>&#x53EF;&#x4EE5;&#x6301;&#x7EED;&#x6536;&#x5230;&#x540E;&#x7EED;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x6700;&#x7EC8;&#x8FD9;&#x4E9B;&#x6D88;&#x5931;&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4F1A;&#x4F20;&#x9012;&#x7ED9;<code>Activity</code>&#x5904;&#x7406;&#x3002;</p>
+</li>
+<li><p><code>ViewGroup</code>&#x9ED8;&#x8BA4;&#x4E0D;&#x62E6;&#x622A;&#x4EFB;&#x4F55;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+<li><p><code>View</code>&#x6CA1;&#x6709;<code>onInterceptTouchEvent</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x65E6;&#x6709;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x7ED9;&#x4ED6;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;<code>onTouchEvent</code>&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+<li><p><code>View</code>&#x7684;<code>onTouchEvent</code>&#x9ED8;&#x8BA4;&#x90FD;&#x4F1A;&#x6D88;&#x8017;&#x4E8B;&#x4EF6;&#xFF08;&#x8FD4;&#x56DE;<code>true</code>&#xFF09;&#xFF0C;&#x9664;&#x975E;&#x5B83;&#x662F;&#x4E0D;&#x53EF;&#x70B9;&#x51FB;&#x7684;(<code>clickable</code>&#x548C;<code>longClickable</code>&#x540C;&#x65F6;&#x4E3A;<code>false</code>)&#x3002;<code>View</code>&#x7684;<code>longClickable</code>&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x4E3A;<code>false</code>&#xFF0C;<code>clickable</code>&#x5C5E;&#x6027;&#x8981;&#x5206;&#x60C5;&#x51B5;&#xFF0C;<code>Button</code>&#x4E3A;<code>true</code>&#xFF0C;<code>TextView</code>&#x4E3A;<code>false</code>&#x3002;</p>
+</li>
+<li><p><code>View</code>&#x7684;<code>enable</code>&#x5C5E;&#x6027;&#x4E0D;&#x5F71;&#x54CD;<code>onTouchEvent</code>&#x7684;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+</li>
+<li><p><code>onClick</code>&#x4F1A;&#x53D1;&#x751F;&#x7684;&#x524D;&#x63D0;&#x662F;&#x5F53;&#x524D;<code>View</code>&#x662F;&#x53EF;&#x70B9;&#x51FB;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x6536;&#x5230;&#x4E86;<code>down</code>&#x548C;<code>up</code>&#x7684;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x8FC7;&#x7A0B;&#x662F;&#x7531;&#x5916;&#x5411;&#x5185;&#x7684;&#xFF0C;&#x5373;&#x4E8B;&#x4EF6;&#x603B;&#x662F;&#x4F20;&#x9012;&#x7ED9;&#x7236;&#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6709;&#x7236;&#x5143;&#x7D20;&#x5206;&#x53D1;&#x7ED9;&#x5B50;<code>View</code>&#xFF0C;&#x901A;&#x8FC7;<code>requestDisallowInterceptTouchEven</code>t&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x5B50;&#x5143;&#x7D20;&#x4E2D;&#x5E72;&#x9884;&#x7236;&#x5143;&#x7D20;&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x8FC7;&#x7A0B;&#xFF0C;&#x9664;&#x4E86;<code>ACTION_DOWN</code>&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+</ul>
+<h3 id="&#x56DB;&#x3001;view&#x7684;&#x6ED1;&#x52A8;&#x51B2;&#x7A81;">&#x56DB;&#x3001;View&#x7684;&#x6ED1;&#x52A8;&#x51B2;&#x7A81;</h3>
+<h4 id="41-&#x5904;&#x7406;&#x89C4;&#x5219;">4.1 &#x5904;&#x7406;&#x89C4;&#x5219;</h4>
+<ul>
+<li>&#x6839;&#x636E;&#x60C5;&#x51B5;&#xFF0C;&#x8BA9;&#x7279;&#x5B9A;&#x7684;<code>View</code>&#x62E6;&#x622A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</li>
+</ul>
+<h4 id="42-&#x6ED1;&#x52A8;&#x51B2;&#x7A81;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x5F0F;">4.2 &#x6ED1;&#x52A8;&#x51B2;&#x7A81;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x5F0F;</h4>
+<h5 id="421-&#x5916;&#x90E8;&#x62E6;&#x622A;&#x6CD5;---&#x63A8;&#x8350;">4.2.1 &#x5916;&#x90E8;&#x62E6;&#x622A;&#x6CD5;---&#x63A8;&#x8350;</h5>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x7236;&#x7C7B;&#x8FDB;&#x884C;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x7684;&#x62E6;&#x622A;---&#x91CD;&#x5199;&#x7236;&#x5BB9;&#x5668;&#x7684;onInterceptTouchEvent&#x65B9;&#x6CD5;  </span>
+<span class="hljs-comment">//&#x901A;&#x8FC7;x&#x548C;y&#x7684;&#x6ED1;&#x52A8;&#x8DDD;&#x79BB;&#x6765;&#x5224;&#x65AD;&#x662F;&#x4E0A;&#x4E0B;&#x6ED1;&#x52A8;&#x8FD8;&#x662F;&#x5DE6;&#x53F3;&#x6ED1;&#x52A8;</span>
+<span class="hljs-comment">//&#x5982;&#x679C;&#x7236;&#x5BB9;&#x5668;&#x9700;&#x8981;&#x5F53;&#x524D;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;true&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x5F80;&#x4E0B;&#x4F20;&#x9012;</span>
+<span class="hljs-comment">//DOWN&#x548C;UP&#x90FD;&#x8FD4;&#x56DE;false </span>
+<span class="hljs-meta">@Override</span>    
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onInterceptTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+    <span class="hljs-keyword">boolean</span> intercepted = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">int</span> x = (<span class="hljs-keyword">int</span>) ev.getX();
+    <span class="hljs-keyword">int</span> y = (<span class="hljs-keyword">int</span>) ev.getY();
+    <span class="hljs-keyword">switch</span> (ev.getAction()) {
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_DOWN:
+            intercepted = <span class="hljs-keyword">false</span>;
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_MOVE:
+            <span class="hljs-keyword">if</span> (&#x7236;&#x5BB9;&#x5668;&#x9700;&#x8981;&#x5F53;&#x524D;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;) {
+                intercepted = <span class="hljs-keyword">true</span>;
+            } <span class="hljs-keyword">else</span> {
+                intercepted = <span class="hljs-keyword">false</span>;
+            }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_UP:
+            intercepted = <span class="hljs-keyword">false</span>;
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-keyword">return</span> intercepted;
+}
+</code></pre>
+<h5 id="422-&#x5185;&#x90E8;&#x62E6;&#x622A;&#x6CD5;">4.2.2 &#x5185;&#x90E8;&#x62E6;&#x622A;&#x6CD5;</h5>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x5B50;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x4E0D;&#x6D88;&#x8017;&#x5C31;&#x4EA4;&#x7ED9;&#x7236;&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x5904;&#x7406;----&#x91CD;&#x5199;&#x5B50;&#x5143;&#x7D20;&#x7684;dispatchTouchEvent&#x65B9;&#x6CD5;</span>
+<span class="hljs-comment">//&#x7236;&#x5BB9;&#x5668;&#x4E0D;&#x62E6;&#x622A;ACTION_DOWN&#x4E8B;&#x4EF6;&#xFF0C;&#x5B50;&#x5143;&#x7D20;&#x901A;&#x8FC7;requestDisallowInterceptTouchEvent(true)&#x65B9;&#x6CD5;&#x8BA9;&#x7236;&#x5143;&#x7D20;&#x4E0D;&#x518D;&#x62E6;&#x622A;&#x5176;&#x4ED6;&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+    <span class="hljs-keyword">int</span> x = (<span class="hljs-keyword">int</span>) ev.getX();
+    <span class="hljs-keyword">int</span> y = (<span class="hljs-keyword">int</span>) ev.getY();
+
+    <span class="hljs-keyword">switch</span> (ev.getAction()) {
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_DOWN:
+            <span class="hljs-comment">//&#x4E00;&#x65E6;&#x8BBE;&#x7F6E;  &#x7236;&#x5BB9;&#x5668;&#x65E0;&#x6CD5;&#x62E6;&#x622A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF08;&#x9664;&#x4E86;ACTION_DOWN&#xFF09;</span>
+            getParent().requestDisallowInterceptTouchEvent(<span class="hljs-keyword">true</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_MOVE:
+            <span class="hljs-keyword">if</span> (&#x7236;&#x5BB9;&#x5668;&#x9700;&#x8981;&#x5F53;&#x524D;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;) {
+                getParent().requestDisallowInterceptTouchEvent(<span class="hljs-keyword">false</span>);
+            }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> MotionEvent.ACTION_UP:
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.dispatchTouchEvent(ev);
+}
+</code></pre>
+<pre><code class="lang-java">    <span class="hljs-comment">//&#x7236;&#x5BB9;&#x5668;&#x4E0D;&#x62E6;&#x622A;ACTION_DOWN&#x4E8B;&#x4EF6;&#xFF0C;&#x91CD;&#x5199;&#x7236;&#x5BB9;&#x5668;&#x7684;onInterceptTouchEvent</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onInterceptTouchEvent</span><span class="hljs-params">(MotionEvent ev)</span> </span>{
+        <span class="hljs-keyword">int</span> action = ev.getAction();
+        <span class="hljs-keyword">if</span> (action == MotionEvent.ACTION_DOWN) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+    }
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="自定义View.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 自定义View">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"View事件分发机制","level":"6.2.8","depth":2,"next":{"title":"5.3 Webview","level":"6.3","depth":1,"ref":"","articles":[{"title":"Webview与JS交互","level":"6.3.1","depth":2,"path":"高级UI/Webview/Webview与JS交互.md","ref":"高级UI/Webview/Webview与JS交互.md","articles":[]},{"title":"Webview","level":"6.3.2","depth":2,"path":"高级UI/Webview/Webview.md","ref":"高级UI/Webview/Webview.md","articles":[]}]},"previous":{"title":"自定义View","level":"6.2.7","depth":2,"path":"高级UI/自定义View/自定义View.md","ref":"高级UI/自定义View/自定义View.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"高级UI/自定义View/View事件分发机制.md","mtime":"2021-07-30T12:42:43.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-31T17:18:23.968Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

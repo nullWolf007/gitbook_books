@@ -1,0 +1,3799 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>禁止预加载实现懒加载 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ViewPager2解析.html" />
+    
+    
+    <link rel="prev" href="ViewPager解析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">零、引言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一章 必备Java知识</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    1.1 并发编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    1.1.1 基础知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                <a href="../../必备Java知识/并发编程/基础知识/线程状态及基本操作.html">
+            
+                    
+                    线程状态及基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    1.1.2 并发原理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.html">
+            
+                    
+                    Java内存模型以及happens-before
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                <a href="../../必备Java知识/并发编程/并发原理/原子性,有序性,可见性.html">
+            
+                    
+                    原子性,有序性,可见性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    1.1.3 并发关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之Synchronized.html">
+            
+                    
+                    线程同步之Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                <a href="../../必备Java知识/并发编程/并发关键字/线程同步之volatile.html">
+            
+                    
+                    线程同步之volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    1.1.4 Lock
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/线程同步之Lock.html">
+            
+                    
+                    线程同步之Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                <a href="../../必备Java知识/并发编程/Lock/ReentrantLock.html">
+            
+                    
+                    ReentrantLock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    1.1.5 原子操作类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                <a href="../../必备Java知识/并发编程/原子操作类/原子操作类.html">
+            
+                    
+                    原子操作类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    1.1.6 线程协作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                <a href="../../必备Java知识/并发编程/线程协作/线程间协作.html">
+            
+                    
+                    线程间协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" >
+            
+                <span>
+            
+                    
+                    1.1.7 线程池
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.7.1" data-path="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/线程池基本解析.html">
+            
+                    
+                    线程池基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7.2" data-path="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                <a href="../../必备Java知识/并发编程/线程池/Callable,Future和FutureTask.html">
+            
+                    
+                    Callable,Future和FutureTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" >
+            
+                <span>
+            
+                    
+                    1.1.8 线程相关类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.8.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" >
+            
+                <span>
+            
+                    
+                    1.1.9 死锁
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1" data-path="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                <a href="../../必备Java知识/并发编程/死锁/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" >
+            
+                <span>
+            
+                    
+                    1.1.10 并发容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.10.1" data-path="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/BlockingQueue.html">
+            
+                    
+                    BlockingQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10.2" data-path="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                <a href="../../必备Java知识/并发编程/并发容器/ConcurrentHashMap.html">
+            
+                    
+                    ConcurrentHashMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../必备Java知识/并发编程/多线程解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程解析.html">
+            
+                    
+                    多线程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                <a href="../../必备Java知识/并发编程/多线程同步解析.html">
+            
+                    
+                    多线程同步解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                <a href="../../必备Java知识/并发编程/并发常见面试题.html">
+            
+                    
+                    并发常见面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    1.2 JVM
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" >
+            
+                <span>
+            
+                    
+                    1.2.1GC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../必备Java知识/JVM/GC/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                <a href="../../必备Java知识/JVM/GC/垃圾回收GC.html">
+            
+                    
+                    垃圾回收GC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../必备Java知识/JVM/Java内存区域.html">
+            
+                <a href="../../必备Java知识/JVM/Java内存区域.html">
+            
+                    
+                    Java内存区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../必备Java知识/JVM/Java虚拟机.html">
+            
+                <a href="../../必备Java知识/JVM/Java虚拟机.html">
+            
+                    
+                    Java虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    1.3 反射与类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" >
+            
+                <span>
+            
+                    
+                    1.3.1 类
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类/内部类详解.html">
+            
+                    
+                    内部类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" >
+            
+                <span>
+            
+                    
+                    1.3.2 反射
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/Java反射机制.html">
+            
+                    
+                    Java反射机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.2" data-path="../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                <a href="../../必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.html">
+            
+                    
+                    通过反射获得泛型实际类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" >
+            
+                <span>
+            
+                    
+                    1.3.3 类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.3.1" data-path="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                <a href="../../必备Java知识/反射与类加载/类加载/Java类加载.html">
+            
+                    
+                    Java类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    1.4 关键字
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../必备Java知识/关键字/static.html">
+            
+                <a href="../../必备Java知识/关键字/static.html">
+            
+                    
+                    static
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../必备Java知识/关键字/final.html">
+            
+                <a href="../../必备Java知识/关键字/final.html">
+            
+                    
+                    final
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    1.5 注解
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../必备Java知识/注解/Java注解.html">
+            
+                <a href="../../必备Java知识/注解/Java注解.html">
+            
+                    
+                    Java注解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    1.6 IO
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="../../必备Java知识/IO/压缩解压缩.html">
+            
+                <a href="../../必备Java知识/IO/压缩解压缩.html">
+            
+                    
+                    压缩解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    1.7 泛型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../必备Java知识/泛型/泛型基本解析.html">
+            
+                <a href="../../必备Java知识/泛型/泛型基本解析.html">
+            
+                    
+                    泛型基本解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第2章 数据结构及算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" >
+            
+                <span>
+            
+                    
+                    2.1.1 线性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    2.1.2 链表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" >
+            
+                <span>
+            
+                    
+                    2.1.3 栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    2.1.4 队列
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" >
+            
+                <span>
+            
+                    
+                    2.1.5 树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                <a href="../../数据结构及算法/数据结构/树/二叉树排序.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" >
+            
+                <span>
+            
+                    
+                    2.1.6 图
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" >
+            
+                <span>
+            
+                    
+                    2.1.7 Hash
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                <a href="../../数据结构及算法/数据结构/Hash/LinkedHashMap解析.html">
+            
+                    
+                    LinkedHashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 排序算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                <a href="../../数据结构及算法/排序算法/常见排序算法.html">
+            
+                    
+                    常见排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../数据结构及算法/排序算法/线性排序.html">
+            
+                <a href="../../数据结构及算法/排序算法/线性排序.html">
+            
+                    
+                    线性排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 查找算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <span>
+            
+                    
+                    2.4 算法思想和技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                <a href="../../数据结构及算法/算法思想和技巧/五大算法思想.html">
+            
+                    
+                    五大算法思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <span>
+            
+                    
+                    2.5 常见问题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                <a href="../../数据结构及算法/常见问题/字符串匹配.html">
+            
+                    
+                    字符串匹配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                <a href="../../数据结构及算法/常见问题/常用算法技巧和题型.html">
+            
+                    
+                    常用算法技巧和题型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第3章 Android必备技能</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    3.1 数据传输及序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                <a href="../../Android必备技能/数据传输及序列化/Serializable和Parcelable比较.html">
+            
+                    
+                    Serializable和Parcelable比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    3.2 并发
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../Android必备技能/并发/AsyncTask.html">
+            
+                <a href="../../Android必备技能/并发/AsyncTask.html">
+            
+                    
+                    AsyncTask
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    3.3 Hook
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../Android必备技能/Hook/代理模式.html">
+            
+                <a href="../../Android必备技能/Hook/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../Android必备技能/Hook/Hook.html">
+            
+                <a href="../../Android必备技能/Hook/Hook.html">
+            
+                    
+                    Hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" >
+            
+                <span>
+            
+                    
+                    3.4 类加载器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../Android必备技能/类加载器/Android类加载.html">
+            
+                <a href="../../Android必备技能/类加载器/Android类加载.html">
+            
+                    
+                    Android类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" >
+            
+                <span>
+            
+                    
+                    3.5 虚拟机
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                <a href="../../Android必备技能/虚拟机/JIT即时编译.html">
+            
+                    
+                    JIT即时编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                <a href="../../Android必备技能/虚拟机/DVM和ART.html">
+            
+                    
+                    DVM和ART
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                <a href="../../Android必备技能/虚拟机/AOT和JIT的比较.html">
+            
+                    
+                    AOT和JIT的比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第4章 Android组件内核</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    4.1 四大组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" >
+            
+                <span>
+            
+                    
+                    4.1.1 Activity
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <span>
+            
+                    
+                    4.1.2 Service
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    4.1.3 BroadcastReceiver
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" >
+            
+                <span>
+            
+                    
+                    4.1.4 ContentProvider
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    4.2 FrameWork内核解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统架构.html">
+            
+                    
+                    Android系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Android系统启动.html">
+            
+                    
+                    Android系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/Zygote进程解析.html">
+            
+                    
+                    Zygote进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/SystemServer进程解析.html">
+            
+                    
+                    SystemServer进程解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/应用程序进程启动过程.html">
+            
+                    
+                    应用程序进程启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/根Activity启动过程.html">
+            
+                    
+                    根Activity启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/ActivityThread解析.html">
+            
+                    
+                    ActivityThread解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8" >
+            
+                <span>
+            
+                    
+                    包管理机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.8.1" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/一、PMS的基本使用.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/一、PMS的基本使用.html">
+            
+                    
+                    一、PMS的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.2" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/二、PackageInstall的初始化.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/二、PackageInstall的初始化.html">
+            
+                    
+                    二、PackageInstall的初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.3" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/三、PackageInstall安装APK.html">
+            
+                    
+                    三、PackageInstall安装APK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.8.4" data-path="../../Android组件内核/FrameWork内核解析/包管理机制/四、PMS处理APK的安装.html">
+            
+                <a href="../../Android组件内核/FrameWork内核解析/包管理机制/四、PMS处理APK的安装.html">
+            
+                    
+                    四、PMS处理APK的安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" >
+            
+                <span>
+            
+                    
+                    4.3 Android消息机制
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                <a href="../../必备Java知识/并发编程/线程相关类/ThreadLocal解析.html">
+            
+                    
+                    ThreadLocal解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                <a href="../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.html">
+            
+                    
+                    Handler和Message和MessageQueue和Looper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="../../Android组件内核/Android消息机制/HashMap解析.html">
+            
+                <a href="../../Android组件内核/Android消息机制/HashMap解析.html">
+            
+                    
+                    HashMap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="../../Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                <a href="../../Android组件内核/Android消息机制/强引用、软引用、弱引用、虚引用.html">
+            
+                    
+                    强引用、软引用、弱引用、虚引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <span>
+            
+                    
+                    4.4 跨进程通信IPC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/Binder解析.html">
+            
+                    
+                    Binder解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="../../Android组件内核/跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/基于AIDL的Messenger.html">
+            
+                    
+                    基于AIDL的Messenger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="../../Android组件内核/跨进程通信IPC/ContentProvider.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/ContentProvider.html">
+            
+                    
+                    ContentProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.4" data-path="../../Android组件内核/跨进程通信IPC/常见IPC方式比较.html">
+            
+                <a href="../../Android组件内核/跨进程通信IPC/常见IPC方式比较.html">
+            
+                    
+                    常见IPC方式比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" >
+            
+                <span>
+            
+                    
+                    4.5 Intent
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第5章 高级UI</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    5.1 系统布局
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../系统布局/ConstraintLayout.html">
+            
+                <a href="../系统布局/ConstraintLayout.html">
+            
+                    
+                    ConstraintLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../系统布局/RemoteViews解析.html">
+            
+                <a href="../系统布局/RemoteViews解析.html">
+            
+                    
+                    RemoteViews解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    5.2 自定义View
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../自定义View/一、基础知识.html">
+            
+                <a href="../自定义View/一、基础知识.html">
+            
+                    
+                    一、基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                <a href="../自定义View/二、绘制前的准备：DecorView创建和显示.html">
+            
+                    
+                    二、绘制前的准备：DecorView创建和显示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../自定义View/三、Measure过程.html">
+            
+                <a href="../自定义View/三、Measure过程.html">
+            
+                    
+                    三、Measure过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../自定义View/四、Layout过程.html">
+            
+                <a href="../自定义View/四、Layout过程.html">
+            
+                    
+                    四、Layout过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../自定义View/五、Draw过程.html">
+            
+                <a href="../自定义View/五、Draw过程.html">
+            
+                    
+                    五、Draw过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../自定义View/六、自定义View实例.html">
+            
+                <a href="../自定义View/六、自定义View实例.html">
+            
+                    
+                    六、自定义View实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../自定义View/自定义View.html">
+            
+                <a href="../自定义View/自定义View.html">
+            
+                    
+                    自定义View
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.8" data-path="../自定义View/View事件分发机制.html">
+            
+                <a href="../自定义View/View事件分发机制.html">
+            
+                    
+                    View事件分发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                    5.3 Webview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../Webview/Webview与JS交互.html">
+            
+                <a href="../Webview/Webview与JS交互.html">
+            
+                    
+                    Webview与JS交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../Webview/Webview.html">
+            
+                <a href="../Webview/Webview.html">
+            
+                    
+                    Webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+                <span>
+            
+                    
+                    5.4 Compose
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.4.1" data-path="../Compose/Compose全面解析.html">
+            
+                <a href="../Compose/Compose全面解析.html">
+            
+                    
+                    Compose全面解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.2" data-path="../Compose/Compose基本使用.html">
+            
+                <a href="../Compose/Compose基本使用.html">
+            
+                    
+                    Compose基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3" data-path="../Compose/Compose实现原理.html">
+            
+                <a href="../Compose/Compose实现原理.html">
+            
+                    
+                    Compose实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" >
+            
+                <span>
+            
+                    
+                    5.5 ViewPager
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1" data-path="ViewPager解析.html">
+            
+                <a href="ViewPager解析.html">
+            
+                    
+                    ViewPager解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.5.2" data-path="禁止预加载实现懒加载.html">
+            
+                <a href="禁止预加载实现懒加载.html">
+            
+                    
+                    禁止预加载实现懒加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.3" data-path="ViewPager2解析.html">
+            
+                <a href="ViewPager2解析.html">
+            
+                    
+                    ViewPager2解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" >
+            
+                <span>
+            
+                    
+                    5.6 列表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.6.1" data-path="../列表/RecyclerView解析.html">
+            
+                <a href="../列表/RecyclerView解析.html">
+            
+                    
+                    RecyclerView解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第6章 数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    6.1 文件存储
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    6.2 轻量级KV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    6.3 SharedPreference
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" >
+            
+                <span>
+            
+                    
+                    6.4 MMKV
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" >
+            
+                <span>
+            
+                    
+                    6.5 Sqlite
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第7章 常见机制</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第8章 设计思想解读开源库框架</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    8.1 热修复
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    8.2 图片加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" >
+            
+                <span>
+            
+                    
+                    8.2.1 Bitmap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1.1" data-path="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.html">
+            
+                    
+                    Bitmap解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" >
+            
+                <span>
+            
+                    
+                    8.2.2 Glide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.2.1" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.html">
+            
+                    
+                    一、Fragment感知生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.2" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.html">
+            
+                    
+                    二、启动解码任务流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.3" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.html">
+            
+                    
+                    Glide缓存原理之BitmapPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.4" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之ActiveResources.html">
+            
+                    
+                    Glide缓存原理之ActiveResources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.5" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之LruCache.html">
+            
+                    
+                    Glide缓存原理之LruCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.6" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide原理分析之磁盘缓存.html">
+            
+                    
+                    Glide原理分析之磁盘缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.7" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理.html">
+            
+                    
+                    Glide缓存原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.8" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/ModelLoader与Register机制.html">
+            
+                    
+                    ModelLoader与Register机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2.9" data-path="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.html">
+            
+                    
+                    Glide整体原理分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.3" >
+            
+                <span>
+            
+                    
+                    8.2.3 图片加载框架选型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.3.1" data-path="../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                <a href="../../设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.html">
+            
+                    
+                    图片加载框架比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    8.3 网络访问框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" >
+            
+                <span>
+            
+                    
+                    8.3.1 网络基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1.1" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/计算机网络基础知识.html">
+            
+                    
+                    计算机网络基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.2" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/http和https解析.html">
+            
+                    
+                    http和https解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.3" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/DNS解析.html">
+            
+                    
+                    DNS解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.4" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Socket解析.html">
+            
+                    
+                    Socket解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.5" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/SOCKS代理和HTTP普通代理隧道代理.html">
+            
+                    
+                    SOCKS代理和HTTP普通代理隧道代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.1.6" data-path="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/网络基础/Android四种网络请求方式.html">
+            
+                    
+                    Android四种网络请求方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" >
+            
+                <span>
+            
+                    
+                    8.3.2 OkHttp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.2.1" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.html">
+            
+                    
+                    一、OkHttp大体流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.2" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.html">
+            
+                    
+                    二、OkHttp连接池复用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2.3" data-path="../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.html">
+            
+                    
+                    OkHttp的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" >
+            
+                <span>
+            
+                    
+                    8.3.3 Retrofit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit的使用.html">
+            
+                    
+                    Retrofit的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                <a href="../../设计思想解读开源框架库/Retrofit/Retrofit源码解析.html">
+            
+                    
+                    Retrofit源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.5.1" data-path="../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava入门.html">
+            
+                    
+                    RxJava入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.2" data-path="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava.html">
+            
+                    
+                    RxJava
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.3" data-path="../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava2基本流程分析.html">
+            
+                    
+                    RxJava2基本流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5.4" data-path="../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                <a href="../../设计思想解读开源框架库/RxJava/RxJava2线程切换原理.html">
+            
+                    
+                    RxJava2线程切换原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" >
+            
+                <span>
+            
+                    
+                    8.5 IOC框架设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.6.1" >
+            
+                <span>
+            
+                    
+                    8.5.1 AOP和IOC
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6.2" >
+            
+                <span>
+            
+                    
+                    8.5.2 ButterKnife
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" >
+            
+                <span>
+            
+                    
+                    8.6 屏幕适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.7.1" data-path="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.html">
+            
+                    
+                    屏幕适配基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.2" data-path="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/宽高限定符适配.html">
+            
+                    
+                    宽高限定符适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.3" data-path="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/今日头条适配方案.html">
+            
+                    
+                    今日头条适配方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7.4" data-path="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                <a href="../../设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.html">
+            
+                    
+                    基于头条适配的AndroidAutoSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" >
+            
+                <span>
+            
+                    
+                    8.7 Jetpack
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第9章 性能优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <span>
+            
+                    
+                    OOM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第10章 NDK开发</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第11章 架构能力</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <span>
+            
+                    
+                    11.1 架构设计
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="../../架构能力/架构设计/Android的架构模式.html">
+            
+                <a href="../../架构能力/架构设计/Android的架构模式.html">
+            
+                    
+                    Android的架构模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <span>
+            
+                    
+                    11.2 设计模式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="../../架构能力/设计模式/建造者模式.html">
+            
+                <a href="../../架构能力/设计模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="../../架构能力/设计模式/工厂方法模式.html">
+            
+                <a href="../../架构能力/设计模式/工厂方法模式.html">
+            
+                    
+                    工厂方法模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.3" data-path="../../架构能力/设计模式/简单工厂模式.html">
+            
+                <a href="../../架构能力/设计模式/简单工厂模式.html">
+            
+                    
+                    简单工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.4" data-path="../../架构能力/设计模式/抽象工厂模式.html">
+            
+                <a href="../../架构能力/设计模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.5" data-path="../../架构能力/设计模式/责任链模式.html">
+            
+                <a href="../../架构能力/设计模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.6" data-path="../../架构能力/设计模式/外观模式.html">
+            
+                <a href="../../架构能力/设计模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" >
+            
+                <span>
+            
+                    
+                    11.3 组件化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.3.1" data-path="../../架构能力/组件化/组件化.html">
+            
+                <a href="../../架构能力/组件化/组件化.html">
+            
+                    
+                    组件化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3.2" data-path="../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                <a href="../../架构能力/组件化/一、ARouter基本使用.html">
+            
+                    
+                    一、ARouter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第12章 提高开发效率工具</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" >
+            
+                <span>
+            
+                    
+                    12.1 Groovy
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" >
+            
+                <span>
+            
+                    
+                    12.2 Gradle
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" >
+            
+                <span>
+            
+                    
+                    12.3 Transform
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" >
+            
+                <span>
+            
+                    
+                    12.4 自定义插件开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" >
+            
+                <span>
+            
+                    
+                    12.5 插件实战
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第13章 功能开发</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" >
+            
+                <span>
+            
+                    
+                    13.1 即时通讯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" >
+            
+                <span>
+            
+                    
+                    13.2 串口开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第14章 工具使用</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    14.1 Android Studio
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" >
+            
+                <span>
+            
+                    
+                    14.2 Git
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第15章 语言</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" >
+            
+                <span>
+            
+                    
+                    15.1 Kotlin
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1" >
+            
+                <span>
+            
+                    
+                    官网学习
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1" >
+            
+                <span>
+            
+                    
+                    函数与Lambda表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.1.1.1" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/一、函数.html">
+            
+                    
+                    一、函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.2" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/二、高阶函数与Lambda表达式.html">
+            
+                    
+                    二、高阶函数与Lambda表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.1.1.3" data-path="../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                <a href="../../语言/Kotlin/官网学习/函数与Lambda表达式/三、内联函数.html">
+            
+                    
+                    三、内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16.1.2" >
+            
+                <span>
+            
+                    
+                    关键字解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1.2.1" data-path="../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                <a href="../../语言/Kotlin/关键字解析/委托之by.html">
+            
+                    
+                    委托之by
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第16章 Jetpack和AndroidX</li>
+        
+        
+    
+
+    
+        
+        <li class="header">第17章 鸿蒙</li>
+        
+        
+    
+        <li class="chapter " data-level="18.1" >
+            
+                <span>
+            
+                    
+                    17.1 官方课程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1.1" data-path="../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS应用程序框架解密.html">
+            
+                    
+                    HarmonyOS应用程序框架解密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.2" data-path="../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS分布式软总线.html">
+            
+                    
+                    HarmonyOS分布式软总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="18.1.3" data-path="../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                <a href="../../鸿蒙/官方课程/HarmonyOS分布式数据管理.html">
+            
+                    
+                    HarmonyOS分布式数据管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第18章 面试</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >禁止预加载实现懒加载</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]</p>
+<h2 id="&#x7981;&#x6B62;&#x9884;&#x52A0;&#x8F7D;&#x5B9E;&#x73B0;&#x61D2;&#x52A0;&#x8F7D;">&#x7981;&#x6B62;&#x9884;&#x52A0;&#x8F7D;&#x5B9E;&#x73B0;&#x61D2;&#x52A0;&#x8F7D;</h2>
+<h4 id="&#x8F6C;&#x8F7D;">&#x8F6C;&#x8F7D;</h4>
+<ul>
+<li><a href="https://juejin.cn/post/6844903895790157838#heading-0" target="_blank">ViewPager&#x61D2;&#x52A0;&#x8F7D;&#x6781;&#x81F4;&#x4F18;&#x5316;</a></li>
+</ul>
+<h4 id="viewpager&#x9884;&#x52A0;&#x8F7D;">ViewPager&#x9884;&#x52A0;&#x8F7D;</h4>
+<ul>
+<li><p>ViewPager&#x7684;&#x9884;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4E0D;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;ViewPager&#x7684;&#x9884;&#x52A0;&#x8F7D;&#x4E3A;0&#xFF0C;&#x4E0D;&#x5C31;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x4E86;&#x5417;&#xFF1F;&#x4E5F;&#x5C31;&#x662F;&#x4EE3;&#x7801;&#x8FD9;&#x6837;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>vp.setOffscreenPageLimit(0);
+</code></pre></li>
+<li><p>&#x7136;&#x540E;&#x770B;&#x4E00;&#x4E0B;&#x6E90;&#x7801;</p>
+<ul>
+<li>&#x5373;&#x4F7F;&#x4F60;&#x8BBE;&#x7F6E;&#x4E3A;0&#xFF0C;&#x90A3;&#x4E48;&#x8FD8;&#x662F;&#x4F1A;&#x5728;&#x91CC;&#x9762;&#x5224;&#x65AD;&#x540E;&#x8BBE;&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;1&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x884C;&#x4E0D;&#x901A;&#x7684;&#x3002;</li>
+</ul>
+<pre><code>public void setOffscreenPageLimit(int limit) {
+    if (limit &lt; 1) {
+        Log.w(&quot;ViewPager&quot;, &quot;Requested offscreen page limit &quot; + limit + &quot; too small; defaulting to &quot; + 1);
+        limit = 1;
+    }
+
+    if (limit != this.mOffscreenPageLimit) {
+        this.mOffscreenPageLimit = limit;
+        this.populate();
+    }
+
+}
+</code></pre></li>
+<li><p>ViewPager&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x52A0;&#x8F7D;&#xFF0C;&#x5F53;&#x5207;&#x6362;&#x5230;&#x5F53;&#x524D;&#x9875;&#x9762;&#x65F6;&#xFF0C;&#x4F1A;&#x9ED8;&#x8BA4;&#x9884;&#x52A0;&#x8F7D;&#x5DE6;&#x53F3;&#x4E24;&#x4FA7;&#x7684;&#x5E03;&#x5C40;&#x5230;ViewPager&#x4E2D;&#xFF0C;&#x5C3D;&#x7BA1;&#x4E24;&#x4FA7;&#x7684;View&#x5E76;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x53EB;&#x9884;&#x52A0;&#x8F7D;&#xFF1B;&#x7531;&#x4E8E;ViewPager&#x5BF9;offscreenPageLimit&#x8BBE;&#x7F6E;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x9875;&#x9762;&#x7684;&#x9884;&#x52A0;&#x8F7D;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x2026;&#x2026;</p>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x7F13;&#x5B58;&#xFF08;mOffscreenPageLimit == 1&#xFF09;</p>
+<ul>
+<li><p>&#x5F53;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x663E;&#x793A;&#x9875;&#x9762;&#x662F;&#x7B2C;0&#x9875;&#xFF1B;mOffscreenPageLimit&#x4E3A;1&#xFF0C;&#x6240;&#x4EE5;&#x9884;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x4E3A;&#x7B2C;1&#x9875;&#xFF0C;&#x518D;&#x5F80;&#x540E;&#x7684;&#x9875;&#x9762;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x4E86;&#xFF08;&#x8FD9;&#x91CC;&#x7684;2&#xFF0C; 3&#xFF0C; 4&#x9875;&#xFF09;</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/7/24/16c21b4c9310d8cc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image"></p>
+</li>
+</ul>
+</li>
+<li><p>&#x4E2D;&#x95F4;&#x9875;&#x9762;&#x7F13;&#x5B58;&#xFF08;mOffscreenPageLimit == 1&#xFF09;</p>
+<ul>
+<li><p>&#x5F53;&#x5411;&#x53F3;&#x6ED1;&#x52A8;&#x5230;&#x7B2C;2&#x9875;&#x65F6;&#xFF0C;&#x5DE6;&#x53F3;&#x5206;&#x522B;&#x9700;&#x8981;&#x7F13;&#x5B58;&#x4E00;&#x9875;&#xFF0C;&#x7B2C;0&#x9875;&#x5C31;&#x9700;&#x8981;&#x9500;&#x6BC1;&#x6389;&#xFF0C;&#x7B2C;3&#x9875;&#x9700;&#x8981;&#x9884;&#x52A0;&#x8F7D;&#xFF0C;&#x7B2C;4&#x9875;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x8F7D;</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/7/24/16c21b4c94d65f5d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x61D2;&#x52A0;&#x8F7D;&#x65B9;&#x6848;">&#x61D2;&#x52A0;&#x8F7D;&#x65B9;&#x6848;</h4>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * &lt;pre&gt;
+ *     <span class="hljs-doctag">@author</span> yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2017/7/22
+ *     desc  : &#x61D2;&#x52A0;&#x8F7D;
+ *     revise: &#x61D2;&#x52A0;&#x8F7D;&#x65F6;&#x673A;&#xFF1A;onCreateView()&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#x6BD5; + setUserVisibleHint()&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;true
+ * &lt;/pre&gt;
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseLazyFragment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseFragment</span> </span>{
+
+    <span class="hljs-comment">/*
+     * &#x9884;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x56DE;&#x8C03;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x6D41;&#x7A0B;&#xFF1A;
+     * setUserVisibleHint() --&gt;onAttach() --&gt; onCreate()--&gt;onCreateView()--&gt;
+     *              onActivityCreate() --&gt; onStart() --&gt; onResume()
+     */</span>
+
+    <span class="hljs-comment">/**
+     * &#x61D2;&#x52A0;&#x8F7D;&#x8FC7;
+     */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> isLazyLoaded = <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">/**
+     * Fragment&#x7684;View&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x7684;&#x6807;&#x8BB0;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> isPrepared = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">/**
+     * &#x7B2C;&#x4E00;&#x6B65;,&#x6539;&#x53D8;isPrepared&#x6807;&#x8BB0;
+     * &#x5F53;onViewCreated()&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x65F6;,&#x8868;&#x660E;View&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;,&#x6B64;&#x65F6;&#x6539;&#x53D8;isPrepared&#x6807;&#x8BB0;&#x4E3A;true,&#x5E76;&#x8C03;&#x7528;lazyLoad()&#x65B9;&#x6CD5;
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onActivityCreated</span><span class="hljs-params">(@Nullable Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onActivityCreated(savedInstanceState);
+        isPrepared = <span class="hljs-keyword">true</span>;
+        <span class="hljs-comment">//&#x53EA;&#x6709;Fragment onCreateView&#x597D;&#x4E86;</span>
+        <span class="hljs-comment">//&#x53E6;&#x5916;&#x8FD9;&#x91CC;&#x8C03;&#x7528;&#x4E00;&#x6B21;lazyLoad(&#xFF09;</span>
+        lazyLoad();
+    }
+
+
+    <span class="hljs-comment">/**
+     * &#x7B2C;&#x4E8C;&#x6B65;
+     * &#x6B64;&#x65B9;&#x6CD5;&#x4F1A;&#x5728;onCreateView(&#xFF09;&#x4E4B;&#x524D;&#x6267;&#x884C;
+     * &#x5F53;viewPager&#x4E2D;fragment&#x6539;&#x53D8;&#x53EF;&#x89C1;&#x72B6;&#x6001;&#x65F6;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;
+     * &#x5F53;fragment &#x4ECE;&#x53EF;&#x89C1;&#x5230;&#x4E0D;&#x89C1;&#xFF0C;&#x6216;&#x8005;&#x4ECE;&#x4E0D;&#x53EF;&#x89C1;&#x5207;&#x6362;&#x5230;&#x53EF;&#x89C1;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;
+     * true&#x8868;&#x793A;&#x5F53;&#x524D;&#x9875;&#x9762;&#x53EF;&#x89C1;&#xFF0C;false&#x8868;&#x793A;&#x4E0D;&#x53EF;&#x89C1;
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUserVisibleHint</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> isVisibleToUser)</span> </span>{
+        <span class="hljs-keyword">super</span>.setUserVisibleHint(isVisibleToUser);
+        LogUtil.d(<span class="hljs-string">&quot;setUserVisibleHint---&quot;</span>+isVisibleToUser);
+        <span class="hljs-comment">//&#x53EA;&#x6709;&#x5F53;fragment&#x53EF;&#x89C1;&#x65F6;&#xFF0C;&#x624D;&#x8FDB;&#x884C;&#x52A0;&#x8F7D;&#x6570;&#x636E;</span>
+        <span class="hljs-keyword">if</span> (isVisibleToUser){
+            lazyLoad();
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * &#x8C03;&#x7528;&#x61D2;&#x52A0;&#x8F7D;
+     * &#x7B2C;&#x4E09;&#x6B65;:&#x5728;lazyLoad()&#x65B9;&#x6CD5;&#x4E2D;&#x8FDB;&#x884C;&#x53CC;&#x91CD;&#x6807;&#x8BB0;&#x5224;&#x65AD;,&#x901A;&#x8FC7;&#x540E;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x52A0;&#x8F7D;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lazyLoad</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (getUserVisibleHint() &amp;&amp; isPrepared &amp;&amp; !isLazyLoaded) {
+            showFirstLoading();
+            onLazyLoad();
+            isLazyLoaded = <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//&#x5F53;&#x89C6;&#x56FE;&#x5DF2;&#x7ECF;&#x5BF9;&#x7528;&#x6237;&#x4E0D;&#x53EF;&#x89C1;&#x5E76;&#x4E14;&#x52A0;&#x8F7D;&#x8FC7;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;&#x9875;&#x9762;&#x65F6;&#x505C;&#x6B62;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x8986;&#x5199;&#x6B64;&#x65B9;&#x6CD5;</span>
+            <span class="hljs-keyword">if</span> (isLazyLoaded) {
+                stopLoad();
+            }
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * &#x89C6;&#x56FE;&#x9500;&#x6BC1;&#x7684;&#x65F6;&#x5019;&#x8BB2;Fragment&#x662F;&#x5426;&#x521D;&#x59CB;&#x5316;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x4E3A;false
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroyView</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onDestroyView();
+        isLazyLoaded = <span class="hljs-keyword">false</span>;
+        isPrepared = <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * &#x7B2C;&#x4E00;&#x6B21;&#x53EF;&#x89C1;&#x65F6;&#xFF0C;&#x64CD;&#x4F5C;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;showLoading&#x64CD;&#x4F5C;&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x662F;&#x5168;&#x5C40;&#x52A0;&#x8F7D;loading
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showFirstLoading</span><span class="hljs-params">()</span> </span>{
+        LogUtil.i(<span class="hljs-string">&quot;&#x7B2C;&#x4E00;&#x6B21;&#x53EF;&#x89C1;&#x65F6;show&#x5168;&#x5C40;loading&quot;</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * &#x505C;&#x6B62;&#x52A0;&#x8F7D;
+     * &#x5F53;&#x89C6;&#x56FE;&#x5DF2;&#x7ECF;&#x5BF9;&#x7528;&#x6237;&#x4E0D;&#x53EF;&#x89C1;&#x5E76;&#x4E14;&#x52A0;&#x8F7D;&#x8FC7;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#x5B8C;&#xFF0C;&#x800C;&#x53EA;&#x662F;&#x52A0;&#x8F7D;loading&#x3002;
+     * &#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;&#x9875;&#x9762;&#x65F6;&#x505C;&#x6B62;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x8986;&#x5199;&#x6B64;&#x65B9;&#x6CD5;&#x3002;
+     * &#x5B58;&#x5728;&#x95EE;&#x9898;&#xFF0C;&#x5982;&#x4F55;&#x505C;&#x6B62;&#x52A0;&#x8F7D;&#x7F51;&#x7EDC;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stopLoad</span><span class="hljs-params">()</span></span>{
+
+    }
+
+    <span class="hljs-comment">/**
+     * &#x7B2C;&#x56DB;&#x6B65;:&#x5B9A;&#x4E49;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;onLazyLoad(),&#x5177;&#x4F53;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x7684;&#x5DE5;&#x4F5C;,&#x4EA4;&#x7ED9;&#x5B50;&#x7C7B;&#x53BB;&#x5B8C;&#x6210;
+     */</span>
+    <span class="hljs-meta">@UiThread</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLazyLoad</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p>onLazyLoad()&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x6761;&#x4EF6;</p>
+<ul>
+<li>getUserVisibleHint()&#x4F1A;&#x8FD4;&#x56DE;&#x662F;&#x5426;&#x53EF;&#x89C1;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x662F;fragment&#x5B9E;&#x73B0;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x5173;&#x952E;,&#x53EA;&#x6709;fragment &#x53EF;&#x89C1;&#x624D;&#x4F1A;&#x8C03;&#x7528;onLazyLoad() &#x52A0;&#x8F7D;&#x6570;&#x636E;&#x3002;</li>
+<li>isPrepared&#x53C2;&#x6570;&#x5728;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;onActivityCreated&#x65F6;&#x8BBE;&#x7F6E;&#x4E3A;true,&#x8FD9;&#x65F6;onCreateView&#x65B9;&#x6CD5;&#x5DF2;&#x8C03;&#x7528;&#x5B8C;&#x6BD5;(&#x4E00;&#x822C;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x65B9;&#x6CD5;&#x91CC;&#x6267;&#x884C;findviewbyid&#x7B49;&#x65B9;&#x6CD5;),&#x786E;&#x4FDD; onLazyLoad()&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x62A5;&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;&#x3002;</li>
+<li>isLazyLoaded&#x786E;&#x4FDD;ViewPager&#x6765;&#x56DE;&#x5207;&#x6362;&#x65F6;BaseFragment&#x7684;initData&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x91CD;&#x590D;&#x8C03;&#x7528;&#xFF0C;onLazyLoad&#x5728;&#x8BE5;Fragment&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;,&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;onLazyLoad()&#x65B9;&#x6CD5;&#x540E;&#x9A6C;&#x4E0A;&#x6267;&#x884C; isLazyLoaded = true&#x3002;</li>
+<li>&#x7136;&#x540E;&#x518D;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;BaseLazyFragment&#x5B9E;&#x73B0;onLazyLoad() &#x65B9;&#x6CD5;&#x5C31;&#x884C;&#x3002;&#x4ED6;&#x4F1A;&#x81EA;&#x52A8;&#x63A7;&#x5236;&#x5F53;fragment &#x5C55;&#x73B0;&#x51FA;&#x6765;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x52A0;&#x8F7D;&#x6570;&#x636E;</li>
+</ul>
+<p>&#x8FD8;&#x6709;&#x51E0;&#x4E2A;&#x7EC6;&#x8282;&#x9700;&#x8981;&#x4F18;&#x5316;&#x4E00;&#x4E0B;</p>
+<ul>
+<li>&#x5F53;&#x89C6;&#x56FE;&#x5DF2;&#x7ECF;&#x5BF9;&#x7528;&#x6237;&#x4E0D;&#x53EF;&#x89C1;&#x5E76;&#x4E14;&#x52A0;&#x8F7D;&#x8FC7;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;&#x9875;&#x9762;&#x65F6;&#x505C;&#x6B62;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x8986;&#x5199;&#x6B64;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;stopLoad</li>
+<li>&#x89C6;&#x56FE;&#x9500;&#x6BC1;&#x7684;&#x65F6;&#x5019;&#x8BB2;Fragment&#x662F;&#x5426;&#x521D;&#x59CB;&#x5316;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x4E3A;false&#xFF0C;&#x8FD9;&#x4E2A;&#x4E5F;&#x9700;&#x8981;&#x5904;&#x7406;&#x4E00;&#x4E0B;</li>
+<li>&#x7B2C;&#x4E00;&#x6B21;&#x53EF;&#x89C1;&#x65F6;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;showFirstLoading&#x65B9;&#x6CD5;&#xFF0C;&#x64CD;&#x4F5C;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;Loading&#x52A0;&#x8F7D;&#x64CD;&#x4F5C;&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x662F;&#x5168;&#x5C40;&#x52A0;&#x8F7D;loading&#xFF0C;&#x548C;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x6570;&#x636E;&#x6216;&#x8005;&#x5C40;&#x90E8;&#x5237;&#x65B0;&#x7684;loading&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x3002;&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x5F00;&#x53D1;app&#xFF0C;&#x6CA1;&#x6709;&#x5C06;loading&#x5206;&#x7684;&#x8FD9;&#x4E48;&#x7EC6;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ViewPager解析.html" class="navigation navigation-prev " aria-label="Previous page: ViewPager解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ViewPager2解析.html" class="navigation navigation-next " aria-label="Next page: ViewPager2解析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"禁止预加载实现懒加载","level":"6.5.2","depth":2,"next":{"title":"ViewPager2解析","level":"6.5.3","depth":2,"path":"高级UI/ViewPager/ViewPager2解析.md","ref":"高级UI/ViewPager/ViewPager2解析.md","articles":[]},"previous":{"title":"ViewPager解析","level":"6.5.1","depth":2,"path":"高级UI/ViewPager/ViewPager解析.md","ref":"高级UI/ViewPager/ViewPager解析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"高级UI/ViewPager/禁止预加载实现懒加载.md","mtime":"2020-12-10T13:04:05.584Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-31T17:18:23.968Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
