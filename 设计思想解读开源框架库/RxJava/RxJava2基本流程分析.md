@@ -342,7 +342,7 @@ implements ObservableEmitter<T>, Disposable {
 ```
 
 * 分析1：isDisposed用来判断是否取消了，没有取消的话调用observer.onNext(t)方法
-* 分析2：上买那我们已经讲解了observer就是MapObserver对象，所以observer.onNext(t);等同于MapObserver#onNext对象
+* 分析2：上面我们已经讲解了observer就是MapObserver对象，所以observer.onNext(t);等同于MapObserver#onNext对象
 
 ##### 2.12.3 MapObserver#onNext
 

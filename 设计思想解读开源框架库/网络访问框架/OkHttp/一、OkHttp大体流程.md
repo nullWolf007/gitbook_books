@@ -827,7 +827,7 @@ public Response proceed(Request request, StreamAllocation streamAllocation,
 
 <img src="..\..\..\images\设计思想解读开源框架库\网络访问框架\OkHttp\OkHttp责任链流程图.png" alt="OkHttp责任链流程图" style="zoom:80%;" />
 
-* 更正：应该是先ConnectInterceptor后是NetworkInterceptors。对于3.9版本而言
+* **更正：应该是先ConnectInterceptor后是NetworkInterceptors。对于3.9版本而言**
 
 ```java
   Response getResponseWithInterceptorChain() throws IOException {

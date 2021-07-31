@@ -207,11 +207,10 @@ protected ViewGroup generateLayout(DecorView decor) {
 #### 1.7 总结
 
 * mDecor是DecorView对象，对应的是最外层的顶层View
-
 * mContentParent是ViewGroup对象，是content部分的顶层View。
 * mDecor包括了mContentParent。
 
-![img](https:////upload-images.jianshu.io/upload_images/944365-e451602c76fead54.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+![DecorView的创建总结](..\..\images\高级UI\自定义View\DecorView的创建总结.png)
 
 * 此时，顶层`View`（`DecorView`对象mDecor）已创建
 * 同时mDecor内部的mContentParent已经加载进了Activity中设置的布局文件
@@ -491,7 +490,7 @@ void doTraversal() {
 
 #### 3.1 源码分析流程图
 
-![img](https:////upload-images.jianshu.io/upload_images/944365-7628f5c6bdc57a0c.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+![绘制前准备源码分析流程图](..\..\images\高级UI\自定义View\绘制前准备源码分析流程图.png)
 
 
 

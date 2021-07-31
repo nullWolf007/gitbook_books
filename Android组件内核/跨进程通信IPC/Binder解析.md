@@ -143,7 +143,7 @@
 
 ##### 2.3.2 稳定性
 
-* Binder 基于 C/S 架构，客户端（Client）有什么需求就丢给服务端（Server）去完成，架构清晰、职责明确又相互独立，自然稳定性更好。共享内存虽然无需拷贝，但是控制负责，难以使用。从稳定性的角度讲，Binder 机制是优于内存共享的。
+* Binder 基于 C/S 架构，客户端（Client）有什么需求就丢给服务端（Server）去完成，架构清晰、职责明确又相互独立，自然稳定性更好。共享内存虽然无需拷贝，但是控制复杂，难以使用。从稳定性的角度讲，Binder 机制是优于内存共享的。
 
 ##### 2.3.3 安全性
 
@@ -412,7 +412,7 @@ public abstract class Stub extends Binder implements IPersonManager {
 
 #### 5.8 Proxy
 
-* 远程代理类Proxy，里面主要工作时打把数据，真正进行发送使用的是transact方法
+* 远程代理类Proxy，里面主要工作时打包数据，真正进行发送使用的是transact方法
 * transact调用的是server端的binder对象的transact方法，会根据code值进行判断具体是什么方法，然后调用相对应的方法，如addPerson方法。由于Stub是抽象类，并没有实现addPerson方法，所以最后会找到对应的实现类的addPerson方法。
 * transact会挂起当前线程
 * reply返回数据
