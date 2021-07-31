@@ -44,11 +44,11 @@
 
 #### Java内存区域
 
-![Java内存区域.png](..\..\..\images\必备Java知识\JVM\GC\Java内存区域.png)
+![Java内存区域.png](..\..\images\必备Java知识\JVM\GC\Java内存区域.png)
 
 #### Java对象创建过程
 
-![Java对象创建过程.png](..\..\..\images\必备Java知识\JVM\GC\Java对象创建过程.png)
+![Java对象创建过程.png](..\..\images\必备Java知识\JVM\GC\Java对象创建过程.png)
 
 ## 写在前面 (常见面试题)
 
