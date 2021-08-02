@@ -101,6 +101,14 @@
   * [JIT即时编译](Android必备技能/虚拟机/JIT即时编译.md)
   * [DVM和ART](Android必备技能/虚拟机/DVM和ART.md)
   * [AOT和JIT的比较](Android必备技能/虚拟机/AOT和JIT的比较.md)
+* 3.6 插桩
+  * [字节码插桩](Android必备技能/插桩/字节码插桩.md)
+* 3.7 注解
+  * [Android注解框架解析](Android必备技能/注解/Android注解框架解析.md)
+  * [APT解析](Android必备技能/注解/APT解析.md)
+* 3.8 测试
+  * 官方文档
+    * 
 
 ## 第4章 Android组件内核
 
@@ -240,7 +248,6 @@
   * [今日头条适配方案](设计思想解读开源框架库\屏幕适配\今日头条适配方案.md)
   * [基于头条适配的AndroidAutoSize](设计思想解读开源框架库\屏幕适配\基于头条适配的AndroidAutoSize.md)
   
-* 8.7 Jetpack
 
 ## 第9章 性能优化
 
@@ -296,7 +303,21 @@
   * 关键字解析
     * [委托之by](语言\Kotlin\关键字解析\委托之by.md)
 
-## 第16章 Jetpack和AndroidX
+## 第16章 Jetpack
+
+* 16.1 架构组件
+  * 官方文档
+    * Room
+      * [一、概述](Jetpack\架构组件\官方文档\Room\一、概述.md)
+      * [二、使用实体定义数据Entity.md](Jetpack\架构组件\官方文档\Room\二、使用实体定义数据Entity.md.md)
+      * [三、使用DAO访问数据](Jetpack\架构组件\官方文档\Room\三、使用DAO访问数据.md)
+      * [四、定义对象之间的关系](Jetpack\架构组件\官方文档\Room\四、定义对象之间的关系.md)
+      * [五、编写异步DAO查询](Jetpack\架构组件\官方文档\Room\五、编写异步DAO查询.md)
+      * [六、在数据库中创建视图](Jetpack\架构组件\官方文档\Room\六、在数据库中创建视图.md)
+      * [七、预填充数据库](Jetpack\架构组件\官方文档\Room\七、预填充数据库.md)
+      * [八、迁移数据库](Jetpack\架构组件\官方文档\Room\八、迁移数据库.md)
+      * [九、测试和调试数据库](Jetpack\架构组件\官方文档\Room\九、测试和调试数据库.md)
+      * [十、引用复杂数据](Jetpack\架构组件\官方文档\Room\十、引用复杂数据.md)
 
 ## 第17章 鸿蒙
 

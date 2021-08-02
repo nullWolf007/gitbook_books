@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "tbfed-pagefooter",
+    "code",
+    "back-to-top-button",
+    "pageview-count",
+    "popup"
+  ],
+  "pluginsConfig": {
+    "search": {
+        "maxIndexSize": 100000
+   },
+   "tbfed-pagefooter": {
+          "copyright":"Copyright &copy nullWolf 2021",
+          "modify_label": "文件修订时间：",
+          "modify_format": "YYYY-MM-DD HH:mm:ss"
+      }
+  },
+  "title": "Android笔记",
+  "author" : "nullWolf",
+  "description" : "【Android学习+面试指南】 一份涵盖大部分Android程序员所需要掌握的核心知识"
+}
+
