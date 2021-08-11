@@ -197,7 +197,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-#### 四 also函数
+### 四 also函数
 
 #### 1 作用 & 应用场景
 

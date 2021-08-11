@@ -9,7 +9,6 @@
 * 1.1 并发编程
 
   * 1.1.1 基础知识
-    
     * [线程状态及基本操作](必备Java知识/并发编程/基础知识/线程状态及基本操作.md)
   * 1.1.2 并发原理
     * [Java内存模型以及happens-before](必备Java知识/并发编程/并发原理/Java内存模型以及happens-before.md)
@@ -252,7 +251,9 @@
 ## 第9章 性能优化
 
 * OOM
-  * 
+  * [内存泄漏](性能优化\OOM\内存泄漏.md)
+* 布局优化
+  * [ViewStub](性能优化\OOM\ViewStub.md)
 
 ## 第10章 NDK开发
 
@@ -300,6 +301,16 @@
       * [一、函数](语言\Kotlin\官网学习\函数与Lambda表达式\一、函数.md)
       * [二、高阶函数与Lambda表达式](语言\Kotlin\官网学习\函数与Lambda表达式\二、高阶函数与Lambda表达式.md)
       * [三、内联函数](语言\Kotlin\官网学习\函数与Lambda表达式\三、内联函数.md)
+    * 协程
+      * [一、基础](语言\Kotlin\官网学习\协程\一、基础.md)
+      * [二、取消和超时](语言\Kotlin\官网学习\协程\二、取消和超时.md)
+      * [三、组合挂起函数](语言\Kotlin\官网学习\协程\三、组合挂起函数.md)
+      * [四、协程上下文与调度器](语言\Kotlin\官网学习\协程\四、协程上下文与调度器.md)
+      * [五、异步流Flow](语言\Kotlin\官网学习\协程\五、异步流Flow.md)
+      * [六、通道](语言\Kotlin\官网学习\协程\六、通道.md)
+      * [七、异常处理和监督](语言\Kotlin\官网学习\协程\七、异常处理和监督.md)
+      * [八、共享的可变状态和并发](语言\Kotlin\官网学习\协程\八、共享的可变状态和并发.md)
+      * [九、Select表达式](语言\Kotlin\官网学习\协程\九、Select表达式.md)
   * 关键字解析
     * [委托之by](语言\Kotlin\关键字解析\委托之by.md)
 
@@ -307,7 +318,36 @@
 
 * 16.1 架构组件
   * 官方文档
+    * ViewBinding
+      * [一、概览](Jetpack\架构组件\官方文档\ViewBinding\一、概览.md)
+      * [二、从Kotlin迁移到ViewBinding](Jetpack\架构组件\官方文档\ViewBinding\二、从Kotlin迁移到ViewBinding.md)
+    * DataBinding
+      * [一、概述](Jetpack\架构组件\官方文档\DataBinding\一、概述.md)
+      * [二、使用入门](Jetpack\架构组件\官方文档\DataBinding\二、使用入门.md)
+      * [三、布局和绑定表达式](Jetpack\架构组件\官方文档\DataBinding\三、布局和绑定表达式.md)
+      * [四、使用可观察的数据对象](Jetpack\架构组件\官方文档\DataBinding\四、使用可观察的数据对象.md)
+      * [五、生存的绑定类](Jetpack\架构组件\官方文档\DataBinding\五、生存的绑定类.md)
+      * [六、绑定适配器](Jetpack\架构组件\官方文档\DataBinding\六、绑定适配器.md)
+      * [七、将布局视图绑定到架构组件](Jetpack\架构组件\官方文档\DataBinding\七、将布局视图绑定到架构组件.md)
+      * [八、双向数据绑定](Jetpack\架构组件\官方文档\DataBinding\八、双向数据绑定.md)
+    * LiveData
+      * [LiveData](Jetpack\架构组件\官方文档\LiveData\LiveData.md)
+    * ViewModel
+      * [ViewModel](Jetpack\架构组件\官方文档\ViewModel\ViewModel.md)
+    * Lifecycle
+      * [Lifecycle处理生命周期](Jetpack\架构组件\官方文档\Lifecycle\Lifecycle处理生命周期.md)
+    * Paging
+      * [一、概览](Jetpack\架构组件\官方文档\Paging\一、概览.md)
+      * [二、显示分页列表](Jetpack\架构组件\官方文档\Paging\二、显示分页列表.md)
+      * [三、加载分页数据](Jetpack\架构组件\官方文档\Paging\三、加载分页数据.md)
+    * Paging3
+      * [一、概览](Jetpack\架构组件\官方文档\Paging3\一、概览.md)
+      * [二、加载并显示分页数据](Jetpack\架构组件\官方文档\Paging3\二、加载并显示分页数据.md)
+      * [三、从网络和数据库加载页面](Jetpack\架构组件\官方文档\Paging3\三、从网络和数据库加载页面.md)
+      * [四、转换数据流](Jetpack\架构组件\官方文档\Paging3\四、转换数据流.md)
+      * [五、迁移到Paging3](Jetpack\架构组件\官方文档\Paging3\五、迁移到Paging3.md)
     * Room
+      
       * [一、概述](Jetpack\架构组件\官方文档\Room\一、概述.md)
       * [二、使用实体定义数据Entity.md](Jetpack\架构组件\官方文档\Room\二、使用实体定义数据Entity.md.md)
       * [三、使用DAO访问数据](Jetpack\架构组件\官方文档\Room\三、使用DAO访问数据.md)
@@ -318,6 +358,33 @@
       * [八、迁移数据库](Jetpack\架构组件\官方文档\Room\八、迁移数据库.md)
       * [九、测试和调试数据库](Jetpack\架构组件\官方文档\Room\九、测试和调试数据库.md)
       * [十、引用复杂数据](Jetpack\架构组件\官方文档\Room\十、引用复杂数据.md)
+* 16.2 导航组件Navigation
+  * 官方文档
+    * [一、概览](Jetpack\导航组件Navigation\官方文档\一、概览.md)
+    * [二、导航原则](Jetpack\导航组件Navigation\官方文档\二、导航原则.md)
+    * [一、概览](Jetpack\导航组件Navigation\官方文档\一、概览.md)
+    * [三、使用入门](Jetpack\导航组件Navigation\官方文档\三、使用入门.md)
+    * [四、创建目的地](Jetpack\导航组件Navigation\官方文档\四、创建目的地.md)
+    * [五、针对不同设备类型的设计](Jetpack\导航组件Navigation\官方文档\五、针对不同设备类型的设计.md)
+    * [六、设计导航图](Jetpack\导航组件Navigation\官方文档\六、设计导航图.md)
+    * [七、嵌套图](Jetpack\导航组件Navigation\官方文档\七、嵌套图.md)
+    * [八、全局操作](Jetpack\导航组件Navigation\官方文档\八、全局操作.md)
+    * [九、转到目的地](Jetpack\导航组件Navigation\官方文档\九、转到目的地.md)
+    * [十、条件导航](Jetpack\导航组件Navigation\官方文档\十、条件导航.md)
+    * [十一、在目的地之间传递数据](Jetpack\导航组件Navigation\官方文档\十一、在目的地之间传递数据.md)
+    * [十二、为目的地创建深层链接](Jetpack\导航组件Navigation\官方文档\十二、为目的地创建深层链接.md)
+    * [十三、在目的地之间添加动画过渡效果](Jetpack\导航组件Navigation\官方文档\十三、在目的地之间添加动画过渡效果.md)
+    * [十四、使用NavigationUI更新界面组件](Jetpack\导航组件Navigation\官方文档\十四、使用NavigationUI更新界面组件.md)
+    * [十五、Kotlin DSL](Jetpack\导航组件Navigation\官方文档\十五、Kotlin DSL.md)
+    * [十六、使用ViewPager创建包含标签页的滑动视图](Jetpack\导航组件Navigation\官方文档\十六、使用ViewPager创建包含标签页的滑动视图.md)
+    * [十七、使用ViewPager2创建包含标签的滑动视图](Jetpack\导航组件Navigation\官方文档\十七、使用ViewPager2创建包含标签的滑动视图.md)
+    * [十八、以编程方式与导航组件交互](Jetpack\导航组件Navigation\官方文档\十八、以编程方式与导航组件交互.md)
+    * [十九、使用功能模块进行导航](Jetpack\导航组件Navigation\官方文档\十九、使用功能模块进行导航.md)
+    * [二十、测试导航](Jetpack\导航组件Navigation\官方文档\二十、测试导航.md)
+    * [二十一、处理配置更改](Jetpack\导航组件Navigation\官方文档\二十一、处理配置更改.md)
+    * [二十二、添加对新的目的地类型的支持](Jetpack\导航组件Navigation\官方文档\二十二、添加对新的目的地类型的支持.md)
+    * [二十三、提供自定义返回导航](Jetpack\导航组件Navigation\官方文档\二十三、提供自定义返回导航.md)
+    * [二十四、迁移到导航组件](Jetpack\导航组件Navigation\官方文档\二十四、迁移到导航组件.md)
 
 ## 第17章 鸿蒙
 

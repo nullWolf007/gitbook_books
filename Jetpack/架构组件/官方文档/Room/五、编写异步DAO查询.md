@@ -122,4 +122,3 @@ public interface UserDao {
 ```
 
 * 注意：Room中的可观察查询有一个重要限制：无论表中的任何行是否更新，无论该行是否在结果集中，该查询都会重新运行。通过从相应的库（Flow，RxJava或LiveData）应用distinctUntilChanged（）运算符，可以确保只有在实际查询结果发生更改时才会通知UI。
-  
