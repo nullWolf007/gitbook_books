@@ -357,6 +357,22 @@
       * [八、迁移数据库](Jetpack/架构组件/官方文档/Room/八、迁移数据库.md)
       * [九、测试和调试数据库](Jetpack/架构组件/官方文档/Room/九、测试和调试数据库.md)
       * [十、引用复杂数据](Jetpack/架构组件/官方文档/Room/十、引用复杂数据.md)
+    * WorkManager
+      * [一、概览](Jetpack/架构组件/官方文档/WorkManager/一、概览.md)
+      * [二、使用入门](Jetpack/架构组件/官方文档/WorkManager/二、使用入门.md)
+      * 三、方法指南
+        * [一、定义你的WorkRequest](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/一、定义你的WorkRequest.md)
+        * [二、工作状态](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/二、工作状态.md)
+        * [三、管理工作](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/三、管理工作.md)
+        * [四、观察工作器中间进度](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/四、观察工作器中间进度.md)
+        * [五、将工作链接在一起](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/五、将工作链接在一起.md)
+        * [六、测试Worker实现](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/六、测试Worker实现.md)
+        * [七、使用WorkManager进行集成测试](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/七、使用WorkManager进行集成测试.md)
+        * [八、调试WorkManager](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/八、调试WorkManager.md)
+      * 四、高级概念
+        * [一、配置和初始化](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/一、配置和初始化.md)
+        * [二、WorkManager的线程处理](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/二、WorkManager的线程处理.md)
+        * [三、支持长时间运行的工作器](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/三、支持长时间运行的工作器.md)
 * 16.2 导航组件Navigation
   * 官方文档
     * [一、概览](Jetpack/导航组件Navigation/官方文档/一、概览.md)
@@ -394,3 +410,5 @@
 
 
 ## 第18章 面试
+
+
