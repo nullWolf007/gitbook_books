@@ -49,7 +49,7 @@
   * 1.3.2 反射
     * [Java反射机制](必备Java知识/反射与类加载/反射/Java反射机制.md)
     * [通过反射获得泛型实际类型](必备Java知识/反射与类加载/反射/通过反射获得泛型实际类型.md)
-
+    
   * 1.3.3 类加载
     * [Java类加载](必备Java知识/反射与类加载/类加载/Java类加载.md)
 * 1.4 关键字
@@ -112,13 +112,13 @@
 ## 第4章 Android组件内核
 
 * 4.1 四大组件
-  * 4.1.1 Activity
+    * 4.1.1 Activity
 
-  * 4.1.2 Service
-
-  * 4.1.3 BroadcastReceiver
-
-  * 4.1.4 ContentProvider
+    * 4.1.2 Service
+      
+    * 4.1.3 BroadcastReceiver
+      
+    * 4.1.4 ContentProvider
 * 4.2 FrameWork内核解析
   * [Android系统架构](Android组件内核/FrameWork内核解析/Android系统架构.md)
   * [Android系统启动](Android组件内核/FrameWork内核解析/Android系统启动.md)
@@ -143,7 +143,7 @@
   * [ContentProvider](Android组件内核/跨进程通信IPC/ContentProvider.md)
   * [常见IPC方式比较](Android组件内核/跨进程通信IPC/常见IPC方式比较.md)
 * 4.5 Intent
-  * 
+    * 
 
 ## 第5章 高级UI
 
@@ -151,7 +151,7 @@
   * [ConstraintLayout](高级UI/系统布局/ConstraintLayout.md)
   * [RemoteViews解析](高级UI/系统布局/RemoteViews解析.md)
 * 5.2 自定义View
-
+  
   * [一、基础知识](高级UI/自定义View/一、基础知识.md)
   * [二、绘制前的准备：DecorView创建和显示](高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.md)
   * [三、Measure过程](高级UI/自定义View/三、Measure过程.md)
@@ -180,9 +180,9 @@
 
 * 6.2 轻量级KV
 * 6.3 SharedPreference
-
+	
 * 6.4 MMKV
-
+	
 * 6.5 Sqlite
 
 ## 第7章 常见机制
@@ -194,10 +194,10 @@
 * 8.2 图片加载
 
   * 8.2.1 Bitmap
-
+    
     * [Bitmap解析](设计思想解读开源框架库/图片加载/Bitmap/Bitmap解析.md)
   * 8.2.2 Glide
-
+  
     * [一、Fragment感知生命周期](设计思想解读开源框架库/图片加载/Glide原理分析/一、Fragment感知生命周期.md)
     * [二、启动解码任务流程](设计思想解读开源框架库/图片加载/Glide原理分析/二、启动解码任务流程.md)
     * [Glide缓存原理之BitmapPool](设计思想解读开源框架库/图片加载/Glide原理分析/Glide缓存原理之BitmapPool.md)
@@ -209,7 +209,7 @@
     * [Glide整体原理分析](设计思想解读开源框架库/图片加载/Glide原理分析/Glide整体原理分析.md)
   * 8.2.3 图片加载框架选型
     * [图片加载框架比较](设计思想解读开源框架库/图片加载/图片加载框架选型/图片加载框架比较.md)
-
+  
 * 8.3 网络访问框架
 
   * 8.3.1 网络基础
@@ -224,11 +224,11 @@
     * [一、OkHttp大体流程](设计思想解读开源框架库/网络访问框架/OkHttp/一、OkHttp大体流程.md)
     * [二、OkHttp连接池复用](设计思想解读开源框架库/网络访问框架/OkHttp/二、OkHttp连接池复用.md)
     * [OkHttp的使用](设计思想解读开源框架库/网络访问框架/OkHttp/OkHttp的使用.md)
-
+  
 * 8.3.3 Retrofit
   * [Retrofit的使用](设计思想解读开源框架库/Retrofit/Retrofit的使用.md)
   * [Retrofit源码解析](设计思想解读开源框架库/Retrofit/Retrofit源码解析.md)
-
+  
 * 8.4 RxJava响应式编程
 
   * [RxJava入门](设计思想解读开源框架库/RxJava/RxJava入门.md)
@@ -240,12 +240,13 @@
 * 8.5 IOC框架设计
   * 8.5.1 AOP和IOC
   * 8.5.2 ButterKnife
-
+  
 * 8.6 屏幕适配
   * [屏幕适配基础知识](设计思想解读开源框架库/屏幕适配/屏幕适配基础知识.md)
   * [宽高限定符适配](设计思想解读开源框架库/屏幕适配/宽高限定符适配.md)
   * [今日头条适配方案](设计思想解读开源框架库/屏幕适配/今日头条适配方案.md)
   * [基于头条适配的AndroidAutoSize](设计思想解读开源框架库/屏幕适配/基于头条适配的AndroidAutoSize.md)
+  
 
 ## 第9章 性能优化
 
@@ -346,7 +347,7 @@
       * [四、转换数据流](Jetpack/架构组件/官方文档/Paging3/四、转换数据流.md)
       * [五、迁移到Paging3](Jetpack/架构组件/官方文档/Paging3/五、迁移到Paging3.md)
     * Room
-
+      
       * [一、概述](Jetpack/架构组件/官方文档/Room/一、概述.md)
       * [二、使用实体定义数据Entity.md](Jetpack/架构组件/官方文档/Room/二、使用实体定义数据Entity.md.md)
       * [三、使用DAO访问数据](Jetpack/架构组件/官方文档/Room/三、使用DAO访问数据.md)
@@ -357,6 +358,22 @@
       * [八、迁移数据库](Jetpack/架构组件/官方文档/Room/八、迁移数据库.md)
       * [九、测试和调试数据库](Jetpack/架构组件/官方文档/Room/九、测试和调试数据库.md)
       * [十、引用复杂数据](Jetpack/架构组件/官方文档/Room/十、引用复杂数据.md)
+    * WorkManager
+      * [一、概览](Jetpack/架构组件/官方文档/WorkManager/一、概览.md)
+      * [二、使用入门](Jetpack/架构组件/官方文档/WorkManager/二、使用入门.md)
+      * 三、方法指南
+        * [一、定义你的WorkRequest](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/一、定义你的WorkRequest.md)
+        * [二、工作状态](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/二、工作状态.md)
+        * [三、管理工作](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/三、管理工作.md)
+        * [四、观察工作器中间进度](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/四、观察工作器中间进度.md)
+        * [五、将工作链接在一起](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/五、将工作链接在一起.md)
+        * [六、测试Worker实现](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/六、测试Worker实现.md)
+        * [七、使用WorkManager进行集成测试](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/七、使用WorkManager进行集成测试.md)
+        * [八、调试WorkManager](Jetpack/架构组件/官方文档/WorkManager/三、方法指南/八、调试WorkManager.md)
+      * 四、高级概念
+        * [一、配置和初始化](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/一、配置和初始化.md)
+        * [二、WorkManager的线程处理](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/二、WorkManager的线程处理.md)
+        * [三、支持长时间运行的工作器](Jetpack/架构组件/官方文档/WorkManager/四、高级概念/三、支持长时间运行的工作器.md)
 * 16.2 导航组件Navigation
   * 官方文档
     * [一、概览](Jetpack/导航组件Navigation/官方文档/一、概览.md)
@@ -394,3 +411,12 @@
 
 
 ## 第18章 面试
+
+
+
+
+
+
+
+
+
