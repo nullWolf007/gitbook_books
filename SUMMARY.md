@@ -207,7 +207,12 @@
         * [四、固有特性测量](高级UI/Compose/官方文档/设计/一、布局/四、固有特性测量.md)
         * [五、ConstraintLayout](高级UI/Compose/官方文档/设计/一、布局/五、ConstraintLayout.md)
       * [二、主题](高级UI/Compose/官方文档/设计/二、主题.md)
-
+      * [三、列表](高级UI/Compose/官方文档/设计/三、列表.md)
+      * [四、文字](高级UI/Compose/官方文档/设计/四、文字.md)
+      * [五、图形](高级UI/Compose/官方文档/设计/五、图形.md)
+      * [六、动画](高级UI/Compose/官方文档/设计/六、动画.md)
+      * [七、手势](高级UI/Compose/官方文档/设计/七、手势.md)
+    
   * [Compose全面解析](高级UI/Compose/Compose全面解析.md)
   * [Compose基本使用](高级UI/Compose/Compose基本使用.md)
   * [Compose实现原理](高级UI/Compose/Compose实现原理.md)
