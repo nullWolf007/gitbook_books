@@ -1,57 +1,4 @@
 [TOC]
-- <!-- TOC -->
-  - [ Binder](#binder)
-    - [ 参考文章](#参考文章)
-    - [ 一、前提知识](#一、前提知识)
-      - [ 1.1 内核空间和用户空间](#11-内核空间和用户空间)
-        - [ 1.1.1 内核空间](#111-内核空间)
-        - [ 1.1.2 用户空间](#112-用户空间)
-      - [ 1.2 进程隔离](#12-进程隔离)
-        - [ 1.2.1 含义](#121-含义)
-        - [ 1.2.2 结论](#122-结论)
-      - [ 1.3 传统跨进程通信——管道队列模式](#13-传统跨进程通信——管道队列模式)
-      - [ 1.4 内存映射](#14-内存映射)
-        - [ 1.4.1 定义](#141-定义)
-        - [ 1.4.2 mmap()](#142-mmap)
-        - [ 1.4.3 作用](#143-作用)
-    - [ 二、Binder简介](#二、binder简介)
-      - [ 2.1 介绍](#21-介绍)
-      - [ 2.2 概述](#22-概述)
-      - [ 2.3 Android为什么选择Binder?](#23-android为什么选择binder)
-        - [ 2.3.1 性能](#231-性能)
-        - [ 2.3.2 稳定性](#232-稳定性)
-        - [ 2.3.3 安全性](#233-安全性)
-      - [ 2.4 Binder IPC原理](#24-binder-ipc原理)
-        - [ 2.4.1 概述](#241-概述)
-        - [ 2.4.2 总结](#242-总结)
-    - [ 三、Binder架构](#三、binder架构)
-      - [ 3.1 Binder通信模型](#31-binder通信模型)
-        - [ 3.1.1 Client进程](#311-client进程)
-        - [ 3.1.2 Server进程](#312-server进程)
-        - [ 3.1.3 Binder驱动](#313-binder驱动)
-        - [ 3.1.4 ServiceManager](#314-servicemanager)
-        - [ 3.1.5 总结](#315-总结)
-      - [ 3.2 通讯流程](#32-通讯流程)
-      - [ 3.4 模型通讯原理](#34-模型通讯原理)
-      - [ 3.5 Java层的Binder](#35-java层的binder)
-    - [ 四、 Binder整体概述图](#四、-binder整体概述图)
-    - [ 五、手写AIDL实例](#五、手写aidl实例)
-      - [ 5.1 AIDL定义](#51-aidl定义)
-      - [ 5.2 Android开发之AIDL](#52-android开发之aidl)
-      - [ 5.3 AIDL支持的数据类型](#53-aidl支持的数据类型)
-      - [ 5.4 函数说明](#54-函数说明)
-        - [ 5.4.1 DESCRIPTION](#541-description)
-        - [ 5.4.2 asInterface()](#542-asinterface)
-        - [ 5.4.3 asBinder](#543-asbinder)
-        - [ 5.4.4 onTransact()](#544-ontransact)
-      - [ 5.5 Person](#55-person)
-      - [ 5.6 IPersonManager](#56-ipersonmanager)
-      - [ 5.7 Stub](#57-stub)
-      - [ 5.8 Proxy](#58-proxy)
-      - [ 5.9 RemoteService](#59-remoteservice)
-      - [ 5.10 ClientActivity](#510-clientactivity)
-      - [ 5.11 AndroidManifest.xml](#511-androidmanifestxml)
-  <!-- /TOC -->
 ## Binder解析
 
 ### 参考文章
@@ -525,7 +472,24 @@ public class RemoteService extends Service {
 #### 5.10 ClientActivity
 
 * 通过Service的方式建立连接，然后获取到了Server端的binder对象，当然了如果是同一个进程那就是Stub对象，不在同一个进程的话就是proxy代理对象。然后对其使用方法，最终就会调用到Server端的实现方法。如上解释。
-* 比如不在同一个进程，然后iPersonManager就是一个代理对象proxy，iPersonManager#addPerson就会调用proxy的addPerson，接着调用Stub的transact方法，接着调用实现类服务端的addPerson。
+* 比如不在同一个进程，然后iPersonManager就是一个代理对象proxy，iPersonManager#addPerson就会调用proxy的addPerson，接着调用服务端Binder的transact方法，接着调用onTransact方法，接着调用Stub的实现类服务端的addPerson。
+* Binder的transact方法
+
+```java
+public final boolean transact(int code, Parcel data, Parcel reply,
+            int flags) throws RemoteException {
+        if (false) Log.v("Binder", "Transact: " + code + " to " + this);
+
+        if (data != null) {
+            data.setDataPosition(0);
+        }
+        boolean r = onTransact(code, data, reply, flags);
+        if (reply != null) {
+            reply.setDataPosition(0);
+        }
+        return r;
+}
+```
 
 ```java
 public class ClientActivity extends AppCompatActivity {
@@ -562,6 +526,9 @@ public class ClientActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.e("ClientActivity:", "onServiceConnected");
+            //asInterface
+            //将服务端的Binder对象转换成客户端所需的AIDL接口类型的对象；
+            //如果客户端和服务端位于同一进程，返回的是服务端的Stub对象本身；如果不在同一进程，返回的是系统封装后的Stub.proxy对象
             iPersonManager = Stub.asInterface(service);
         }
 

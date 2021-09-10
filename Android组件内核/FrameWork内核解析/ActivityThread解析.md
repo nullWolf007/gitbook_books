@@ -86,7 +86,7 @@ public static void main(String[] args) {
 }
 ```
 
-* 首先通过了Looper.prepareMainLooper();为主线程创建了Looper，然后thread.getHandler()保存了主线程的Handler，最后Looper.loop()进入消息循环。请点击查看[Handler和Message和MessageQueue和Looper](https://github.com/nullWolf007/Android/blob/master/%E8%BF%9B%E9%98%B6/Handler%E5%92%8CMessage%E5%92%8CMessageQueue%E5%92%8CLooper.md)
+* 首先通过了Looper.prepareMainLooper();为主线程创建了Looper，然后thread.getHandler()保存了主线程的Handler，最后Looper.loop()进入消息循环。请点击查看[Handler和Message和MessageQueue和Looper](../../Android组件内核/Android消息机制/Handler和Message和MessageQueue和Looper.md)
 * 最后看下thread.attach(false)
 
 ```java
@@ -178,21 +178,21 @@ private void attach(boolean system) {
 
 * 对于system值为false的情况，上述代码主要完成两件事情。
 
-  * 1.调用RuntimeInit.setApplicationObject(mAppThread.asBinder());方法，把对象mAppThread的Binder放到了RuntimeInit类中的静态变量mApplicationObject中。mAppThread就是ApplicationThread对象
-  
+  * 调用RuntimeInit.setApplicationObject(mAppThread.asBinder());方法，把对象mAppThread的Binder放到了RuntimeInit类中的静态变量mApplicationObject中。mAppThread就是ApplicationThread对象
+
     ```java
     public static final void setApplicationObject(IBinder app) {
     	mApplicationObject = app;
     }
     ```
-  
-  * 2.调用**ActivityManagerService**的attachApplication()方法，将mAppThread 作为参数传入ActivityManagerService，这样ActivityManagerService就可以调用**ApplicaitonThread**的接口了，这样就把AMS和ActivityThread通过Binder联系起来了
+
+  * 调用**ActivityManagerService**的attachApplication()方法，将mAppThread 作为参数传入ActivityManagerService，这样ActivityManagerService就可以调用**ApplicaitonThread**的接口了，这样就把AMS和ActivityThread通过Binder联系起来了
 
 ### 三、ActivityThread关联时机
 
 #### 3.1 APP的启动过程
 
-* 可以点击查看[APP的启动过程](https://github.com/nullWolf007/Android/blob/master/进阶/启动相关(Context%EF%BC%8C跨进程等)/APP的启动过程.md)
+* 可以点击查看[APP的启动过程](../../Android组件内核/FrameWork内核解析/APP的启动过程.md)
 
 #### 3.2 ActivityThread中的handlerMessage
 
@@ -526,7 +526,7 @@ private void attach(boolean system) {
               }
           }
      }
-
+     
      // LoadedApk.java
      public Application makeApplication(boolean forceDefaultAppClass,
               Instrumentation instrumentation) {
@@ -583,7 +583,7 @@ private void attach(boolean system) {
           }
           ...
        }
-
+    
       private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
           ...    
           Activity activity = null;
@@ -634,7 +634,7 @@ private void attach(boolean system) {
       
           return activity;
       }
-
+    
       private Context createBaseContextForActivity(ActivityClientRecord r,
               final Activity activity) {
           ContextImpl appContext = new ContextImpl();  // 创建ContextImpl实例

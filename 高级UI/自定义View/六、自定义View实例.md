@@ -27,7 +27,7 @@
 #### 3.1 支持特殊属性
 
 - 支持wrap_content
-  *  如果不在`onMeasure（）`中对`wrap_content`作特殊处理，那么`wrap_content`属性将失效
+  *  如果不在`onMeasure()`中对`wrap_content`作特殊处理，那么`wrap_content`属性将失效
 
 > 具体原因请看文章：[为什么你的自定义View wrap_content不起作用？](https://www.jianshu.com/p/ca118d704b5e)
 
@@ -47,8 +47,8 @@
 
 > 启动或停止线程/ 动画的方式：
 >
-> 1. 启动线程/ 动画：使用`view.onAttachedToWindow（）`，因为该方法调用的时机是当包含View的Activity启动的时刻
-> 2. 停止线程/ 动画：使用`view.onDetachedFromWindow（）`，因为该方法调用的时机是当包含View的Activity退出或当前View被remove的时刻
+> 1. 启动线程/ 动画：使用`view.onAttachedToWindow()`，该方法调用的时机是当包含View的Activity启动的时刻
+> 2. 停止线程/ 动画：使用`view.onDetachedFromWindow()`，该方法调用的时机是当包含View的Activity退出或当前View被remove的时刻
 
 #### 3.4 处理好滑动冲突
 

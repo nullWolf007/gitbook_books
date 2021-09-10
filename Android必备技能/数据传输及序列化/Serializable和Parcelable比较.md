@@ -314,7 +314,7 @@ static jint android_os_Parcel_create(JNIEnv* env, jclass clazz)
 
 * 这是一个jni的实现，首先调用了native的初始化，并且，返回操作这个对象的指针。接下来继续看到C++层的实现。
 
-```
+```c++
 Parcel::Parcel()
 {
     initState();
@@ -345,7 +345,7 @@ void Parcel::initState()
 
 * 以writeInt为例
 
-```
+```java
 public final void writeInt(int val) {
     nativeWriteInt(mNativePtr, val);
 }
@@ -357,9 +357,9 @@ public final void writeInt(int val) {
 
 * nativeWriteInt对应的是android_os_Parcel_writeInt
 
-```
+```c++
 static void android_os_Parcel_writeInt(JNIEnv* env, jclass clazz, jint nativePtr, jint val) {
-    // 指针实际上是一个整型地址值，所以这里使用强转将int值转化为parcel类型的指针，然后使用这个指针来操作		   native的parcel对象
+    // 指针实际上是一个整型地址值，所以这里使用强转将int值转化为parcel类型的指针，然后使用这个指针来操作native的parcel对象
     Parcel* parcel = reinterpret_cast<Parcel*>(nativePtr);
     const status_t err = parcel->writeInt32(val);
     if (err != NO_ERROR) {
@@ -372,13 +372,13 @@ static void android_os_Parcel_writeInt(JNIEnv* env, jclass clazz, jint nativePtr
 
 ##### 4.3.7 writeInt32
 
-```
+```c++
 status_t Parcel::writeInt32(int32_t val)
 {
     return writeAligned(val);
 }
 ```
-```
+```c++
 template<class T>
 status_t Parcel::writeAligned(T val) {
     COMPILE_TIME_ASSERT_FUNCTION_SCOPE(PAD_SIZE(sizeof(T)) == sizeof(T));

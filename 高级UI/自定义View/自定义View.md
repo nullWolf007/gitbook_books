@@ -13,7 +13,7 @@
 
 #### 1.1 自定义View基础
 
-* 了解自定义View流程前，需了解一定的自定义View基础，具体请看文章：[一、基础知识](高级UI/自定义View/一、基础知识.md)
+* 了解自定义View流程前，需了解一定的自定义View基础，具体请看文章：[一、基础知识](../../高级UI/自定义View/一、基础知识.md)
 
 #### 1.2 ViewRoot
 
@@ -57,7 +57,7 @@ root.setView(view,wparams,panelParentView)
 
 ![示意图](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS00OTIzYjYzNzdiMDMyMjU2LnBuZw)
 
-* 在`Activity`中通过 `setContentView（）`所设置的布局文件其实是被加到内容栏之中的，成为其唯一子View = id为content的`FrameLayout`中
+* 在`Activity`中通过 `setContentView()`所设置的布局文件其实是被加到内容栏之中的，成为其唯一子View = id为content的`FrameLayout`中
 
 ```java
 // 在代码中可通过content得到对应加载的布局
@@ -83,7 +83,7 @@ ViewGroup rootView = (ViewGroup) content.getChildAt(0);
 
 #### 2.1 DecorView的创建和显示
 
-* [二、绘制前的准备：DecorView创建和显示](高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.md)
+* [二、绘制前的准备：DecorView创建和显示](../../高级UI/自定义View/二、绘制前的准备：DecorView创建和显示.md)
 
 ### 三、绘制流程概述
 
@@ -121,15 +121,15 @@ private void performTraversals() {
 
 ### 四、Measure过程
 
-* 详情请查看[三、Measure过程](高级UI/自定义View/三、Measure过程.md)
+* 详情请查看[三、Measure过程](../../高级UI/自定义View/三、Measure过程.md)
 
 ### 五、Layout过程
 
-* 详情请查看[四、Layout过程](高级UI/自定义View/四、Layout过程.md)
+* 详情请查看[四、Layout过程](../../高级UI/自定义View/四、Layout过程.md)
 
 ### 六、Draw过程
 
-* 详情请查看[五、Draw过程](高级UI/自定义View/五、Draw过程.md)
+* 详情请查看[五、Draw过程](../../高级UI/自定义View/五、Draw过程.md)
 
 ### 七、自定义View的步骤
 
@@ -148,4 +148,4 @@ private void performTraversals() {
 
 ### 八、自定义View实例
 
-* 详情请查看[六、自定义View实例](高级UI/自定义View/六、自定义View实例.md)
+* 详情请查看[六、自定义View实例](../../高级UI/自定义View/六、自定义View实例.md)

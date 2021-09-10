@@ -31,7 +31,7 @@
 * **Activity、ViewGroup、View**
 * `Android`的`UI`界面由`Activity`、`ViewGroup`、`View` 及其派生类组成
 
-![](..\..\images\自定义UI\自定义View\Activity,View,ViewGroup.png)
+![](..\..\images\高级UI\自定义View\Activity,View,ViewGroup.png)
 
 #### 1.5 事件分发核心方法
 
@@ -119,9 +119,9 @@ public class DecorView extends FrameLayout implements RootViewSurfaceTaker, Wind
 
 * DecorView继承自FrameLayout，是对FrameLayout的扩展，是所有界面的根View即顶级View
 
-![界面关系](..\..\images\自定义UI\自定义View\界面关系.png)
+![界面关系](..\..\images\高级UI\自定义View\界面关系.png)
 
-* 调用了super的dispatchTouchEvent，那么在这里指的就是FrameLayout，FrameLayout又继承自ViewGroup，又没有重写此方法，故而值得是ViewGroup的dispatchTouchEvent
+* 调用了super的dispatchTouchEvent，那么在这里指的就是FrameLayout，FrameLayout又继承自ViewGroup，而且没有重写此方法，故指的是ViewGroup的dispatchTouchEvent
 
 ```java
 public class FrameLayout extends ViewGroup {
@@ -755,7 +755,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 
 * `onClick`会发生的前提是当前`View`是可点击的，并且它收到了`down`和`up`的事件。
 
-* 事件传递过程是由外向内的，即事件总是传递给父元素，然后再有父元素分发给子`View`，通过`requestDisallowInterceptTouchEven`t方法可以在子元素中干预父元素的事件分发过程，除了`ACTION_DOWN`事件。
+* 事件传递过程是由外向内的，即事件总是传递给父元素，然后再有父元素分发给子`View`，通过`requestDisallowInterceptTouchEvent`方法可以在子元素中干预父元素的事件分发过程，除了`ACTION_DOWN`事件。
 
 
 ### 四、View的滑动冲突

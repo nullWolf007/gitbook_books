@@ -222,7 +222,7 @@ protected ViewGroup generateLayout(DecorView decor) {
 ![根Activity启动过程中涉及的进程之间的关系](..\..\images\Android组件内核\四大组件\Activity\根Activity启动过程中涉及的进程之间的关系.png)
 
 * 通过上面的步骤，最终会调用ActivityThread.java#handleLaunchActivity中调用ActivityThread.java#handleResumeActivity
-* 详细情况可查看[根Activity启动过程](Android组件内核/FrameWork内核解析/根Activity启动过程.md)
+* 详细情况可查看[根Activity启动过程](../../Android组件内核/FrameWork内核解析/根Activity启动过程.md)
 * ActivityThread.java#handleResumeActivity主要部分代码如下所示
 
 ~~~java

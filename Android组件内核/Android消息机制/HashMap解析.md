@@ -8,7 +8,7 @@
 
 ## 一、HashMap结构
 
-HashMap底层采用的是数组+链表+红黑树的结构。如果链表大小大于阈值，链表会转换成红黑树；如果红黑树小于阈值，红黑树会转换成链表。
+* HashMap底层采用的是数组+链表+红黑树的结构。如果链表大小大于阈值，链表会转换成红黑树；如果红黑树小于阈值，红黑树会转换成链表。
 
 ## 二、源码分析
 
@@ -150,7 +150,7 @@ static final int UNTREEIFY_THRESHOLD = 6;
 static final int MIN_TREEIFY_CAPACITY = 64;
 ```
 
-在HashMap中有一个threshold变量，threshold=数组大小*加载因子。当集合中的结点个数大于threshold时，会进行数组扩容。
+* 在HashMap中有一个threshold变量，threshold=数组大小*加载因子。当集合中的结点个数大于threshold时，会进行数组扩容。
 
 ### 2.5 put方法
 
@@ -209,6 +209,8 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,boolean evict) {
 ```
 
 ### 2.6 resize方法
+
+* 数组扩容
 
 * 源码
 

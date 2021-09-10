@@ -52,7 +52,7 @@
 android:layout_height="wrap_content"   //自适应大小  
 android:layout_height="match_parent"   //与父视图等高  
 android:layout_height="fill_parent"    //与父视图等高  
-android:layout_height="100dp"         //精确设置高度值为 100dp  
+android:layout_height="100dp"          //精确设置高度值为 100dp  
 ```
 
 ##### 2.1.4 构造函数
@@ -82,7 +82,7 @@ public CarsonView(Context context, AttributeSet attrs, int defStyleAttr) {
 // 不会自动调用
 // 一般是在第二个构造函数里主动调用
 // 如View有style属性时
-public  CarsonView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+public CarsonView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 	super(context, attrs, defStyleAttr, defStyleRes);
 }
 ```
@@ -121,7 +121,7 @@ int specMode = MeasureSpec.getMode(measureSpec)
 int specSize = MeasureSpec.getSize(measureSpec)
 
 // 3. 通过Mode 和 Size 生成新的SpecMode
-int measureSpec=MeasureSpec.makeMeasureSpec(size, mode);
+int measureSpec = MeasureSpec.makeMeasureSpec(size, mode);
 ```
 
 - 源码分析
@@ -512,7 +512,7 @@ public int getMinimumWidth() {
 #### 5.6 源码
 
 * 若需进行自定义`ViewGroup`，则需重写`onMeasure()`
-* 入口 = `measure（）`
+* 入口 = `measure()`
 
 ##### 5.6.1 View#measure
 
@@ -573,11 +573,11 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
 ##### 5.6.3 ViewGroup和View的onMeasure区别
 
-* **ViewGroup无法对onMeasure（）作统一实现。这个也是单一View的measure过程与ViewGroup过程最大的不同。**
+* **ViewGroup无法对onMeasure()作统一实现。这个也是单一View的measure过程与ViewGroup过程最大的不同。**
 
-* 单一`View measure`过程的`onMeasure（）`具有统一实现，而`ViewGroup`则没有
+* 单一`View measure`过程的`onMeasure()`具有统一实现，而`ViewGroup`则没有
 
-* 其实，在单一`View measure`过程中，`getDefaultSize()`只是简单的测量了宽高值，在实际使用时有时需更精细的测量。所以有时候也需重写`onMeasure（）`
+* 其实，在单一`View measure`过程中，`getDefaultSize()`只是简单的测量了宽高值，在实际使用时有时需更精细的测量。所以有时候也需重写`onMeasure()`
 
 ##### 5.6.4 重写onMeasure
 
@@ -615,7 +615,7 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
 * 步骤
 
-  1.遍历所有子View & 测量：measureChildren（）
+  1.遍历所有子View & 测量：measureChildren()
 
   2.合并所有子View的尺寸大小,最终得到ViewGroup父视图的测量值（自身实现）
 
@@ -733,7 +733,6 @@ void measureVertical(int widthMeasureSpec, int heightMeasureSpec) {
             // 同时标记skippedMeasure属性为true，后面会根据该属性决定是否进行第二次measure
             // 若LinearLayout的子View设置了weight，会进行两次measure计算，比较耗时
             // 这就是为什么LinearLayout的子View需要使用weight属性时候，最好替换成RelativeLayout布局
-                
             final int totalLength = mTotalLength;
             mTotalLength = Math.max(totalLength, totalLength + lp.topMargin + lp.bottomMargin);
             skippedMeasure = true;
@@ -741,7 +740,7 @@ void measureVertical(int widthMeasureSpec, int heightMeasureSpec) {
         	int oldHeight = Integer.MIN_VALUE;
 			
             //步骤1 遍历调用measureChildren
-            //注：该方法内部，最终会调用measureChildren（），从而 遍历所有子View & 测量
+            //注：该方法内部，最终会调用measureChildren()，从而 遍历所有子View & 测量
             measureChildBeforeLayout(
                    child, i, widthMeasureSpec, 0, heightMeasureSpec,
                    totalWeight == 0 ? mTotalLength : 0);

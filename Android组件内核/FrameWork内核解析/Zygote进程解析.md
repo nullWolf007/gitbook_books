@@ -37,7 +37,7 @@
 * ZygoteInit.java的startSystemServer的方法创建了SystemServer进程
 * ZygoteInit.java的runSelectLoop等待AMS请求来创建新的应用程序进程
 
-### 三、源码记忆
+### 三、源码解析
 
 #### 3.1 ZygoteInit#main
 
@@ -229,7 +229,7 @@ void runSelectLoop(String abiList) throws Zygote.MethodAndArgsCaller {
             	continue;
 			}
 
-            ////等于0表示服务器端Socket与客户端连接上了
+            //等于0表示服务器端Socket与客户端连接上了
             if (i == 0) {
                 //获取ZygoteConnection实例 并添加到Socket连接列表peers中
             	ZygoteConnection newPeer = acceptCommandPeer(abiList);

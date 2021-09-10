@@ -32,7 +32,7 @@
   - [ 五、实例](#五、实例)
     - [ 5.1 代码](#51-代码)
     - [ 5.2 说明](#52-说明)
-  <!-- /TOC -->
+    <!-- /TOC -->
 # ThreadLocal解析
 
 ### 参考链接
@@ -96,7 +96,7 @@ void createMap(Thread t, T firstValue) {
 
 * 调用的`ThreadLocalMap`的`set`方法
 
-#### 3.2 注意点
+#### 3.1.2 注意点
 
 * 上述代码中的`this`代表的是`ThreadLocal`实例本身，而不是`Thread`对象。
 
@@ -181,7 +181,8 @@ public class ThreadLocal<T> {
 
             Entry(ThreadLocal<?> k, Object v) {
                 super(k);
-            value = v;
+            	value = v;
+            }
         }
             
 		private Entry[] table;//用来保存Entry
@@ -281,7 +282,13 @@ private void set(ThreadLocal<?> key, Object value) {
 * `replaceStaleEntry`方法：使用当前的key和value替代过期的key和value
 * `cleanSomeSlots`方法：查找过期的实体并清除
 * `rehash`方法：扩容
-* 大体流程就是：先计算出`index`，然后对`index`进行判断。如果当前的`Entry`存在且`key`相同的话，直接覆盖就行。如果当前`Entry`存在且`key==null`的话，说明当前的`Entry`是过期的，则替换就行。如果当前的`Entry`都存在且`key!=null`且`key`不相等的话，则放入新的`Entry`。
+* 大体流程就是：先计算出`index`，然后对`index`进行判断。如果当前的`Entry`存在且`key`相同的话，直接覆盖就行。如果当前`Entry`存在且`key==null`的话，说明当前的`Entry`是过期的，则替换就行。如果当前的`Entry`都存在且`key!=null`且`key`不相等的话，则在nextIndex(i, len)的位置放入新的`Entry`。
+
+```java
+private static int nextIndex(int i, int len) {
+	return ((i + 1 < len) ? i + 1 : 0);
+}
+```
 
 #### 3.4.4 remove方法
 

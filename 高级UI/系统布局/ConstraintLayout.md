@@ -10,6 +10,8 @@
 
 ### 1.1 优点：
 
+* 简化操作
+
 * 避免过度绘制
 * 自适应布局
 
@@ -52,15 +54,15 @@
 
 * spread(默认)：元素被分散开来
 
-![spread](..\..\images\自定义UI\系统布局\ConstraintLayout\spread.jpg)
+![spread](..\..\images\高级UI\系统布局\ConstraintLayout\spread.jpg)
 
 * spread_inside：与spread类似，但是链条两边的端点不会分散
 
-![spread_inside](..\..\images\自定义UI\系统布局\ConstraintLayout\spread_inside.jpg)
+![spread_inside](..\..\images\高级UI\系统布局\ConstraintLayout\spread_inside.jpg)
 
 * packed：链条的元素将被捆在一起
 
-![packed](..\..\images\自定义UI\系统布局\ConstraintLayout\packed.jpg)
+![packed](..\..\images\高级UI\系统布局\ConstraintLayout\packed.jpg)
 
 
 
@@ -131,9 +133,15 @@
 
 ### 2.12 PlaceHolder
 
-## 三、实例
+## 三、高级使用
 
-### 3.1 按比例缩放
+### 3.1 动画使用
+
+
+
+## 四、实例
+
+### 4.1 按比例缩放
 
 * 代码
 
@@ -172,4 +180,4 @@
 
 * 效果图
 
-  ![demo1](..\..\images\自定义UI\系统布局\ConstraintLayout\deno1.gif)
+  ![demo1](..\..\images\高级UI\系统布局\ConstraintLayout\deno1.gif)

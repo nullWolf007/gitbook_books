@@ -1,3 +1,5 @@
+[TOC]
+
 ## 五、Draw过程
 
 #### 转载
@@ -50,7 +52,7 @@
 
 ```java
 /**
-  * 源码分析：draw（）
+  * 源码分析：draw()
   * 作用：根据给定的 Canvas 自动渲染 View（包括其所有子 View）。
   * 绘制过程：
   *   1. 绘制view背景
@@ -59,7 +61,7 @@
   *   4. 绘制装饰（渐变框，滑动条等等）
   * 注：
   *    a. 在调用该方法之前必须要完成 layout 过程
-  *    b. 所有的视图最终都是调用 View 的 draw （）绘制视图（ ViewGroup 没有复写此方法）
+  *    b. 所有的视图最终都是调用 View 的 draw() 绘制视图（ViewGroup 没有复写此方法）
   *    c. 在自定义View时，不应该复写该方法，而是复写 onDraw(Canvas) 方法进行绘制
   *    d. 若自定义的视图确实要复写该方法，那么需先调用 super.draw(canvas)完成系统的绘制，然后再进行自定义的绘制
   */ 
@@ -95,7 +97,7 @@ public void draw(Canvas canvas) {
 }
 ```
 
-* 上述主要调用了4个方法`drawBackground（）`、 `onDraw()`、`dispatchDraw()`、`onDrawScrollBars()`，接下来会一一讲解
+* 上述主要调用了4个方法`drawBackground()`、 `onDraw()`、`dispatchDraw()`、`onDrawScrollBars()`，接下来会一一讲解
 
 ##### 2.5.2 View#drawBackground
 
@@ -143,7 +145,7 @@ private void drawBackground(Canvas canvas) {
   * 注：
   *   a. 由于 View 的内容各不相同，所以该方法是一个空实现
   *   b. 在自定义绘制过程中，需由子类去实现复写该方法，从而绘制自身的内容
-  *   c. 谨记：自定义View中 必须 且 只需复写onDraw（）
+  *   c. 谨记：自定义View中 必须 且 只需复写onDraw()
   */
 protected void onDraw(Canvas canvas) {
 	... // 复写从而实现绘制逻辑
@@ -235,7 +237,7 @@ public void onDrawForeground(Canvas canvas) {
 
 #### 3.6 源码分析
 
-* `ViewGroup#draw`过程的入口 = `ViewGroup#draw（）`
+* `ViewGroup#draw`过程的入口 = `ViewGroup#draw()`
 
 ##### 3.6.1 ViewGroup#draw
 
@@ -245,7 +247,7 @@ public void onDrawForeground(Canvas canvas) {
 
 ```java
 /**
-  * 源码分析：draw（）
+  * 源码分析：draw()
   * 作用：根据给定的 Canvas 自动渲染 View（包括其所有子 View）。
   * 绘制过程：
   *   1. 绘制view背景
@@ -254,7 +256,7 @@ public void onDrawForeground(Canvas canvas) {
   *   4. 绘制装饰（渐变框，滑动条等等）
   * 注：
   *    a. 在调用该方法之前必须要完成 layout 过程
-  *    b. 所有的视图最终都是调用 View 的 draw （）绘制视图（ ViewGroup 没有复写此方法）
+  *    b. 所有的视图最终都是调用 View 的 draw()绘制视图（ViewGroup 没有复写此方法）
   *    c. 在自定义View时，不应该复写该方法，而是复写 onDraw(Canvas) 方法进行绘制
   *    d. 若自定义的视图确实要复写该方法，那么需先调用 super.draw(canvas)完成系统的绘制，然后再进行自定义的绘制
   */ 
@@ -299,7 +301,7 @@ public void draw(Canvas canvas) {
 
 ```java
 /**
-  * 源码分析：dispatchDraw（）
+  * 源码分析：dispatchDraw()
   * 作用：遍历子View & 绘制子View
   * 注：
   *   a. ViewGroup中：由于系统为我们实现了该方法，故不需重写该方法
@@ -329,11 +331,11 @@ protected void dispatchDraw(Canvas canvas) {
 
 ```java
 /**
-  * 分析1：drawChild（）
+  * 分析1：drawChild()
   * 作用：绘制子View
 */
 protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-	// 最终还是调用了子 View 的 draw （）进行子View的绘制
+	// 最终还是调用了子 View 的 draw ()）进行子View的绘制
     return child.draw(canvas, this, drawingTime);
 }
 ```

@@ -10,7 +10,7 @@
 
 #### 1.1 Layout作用
 
-* 计算视图`（View）`的位置
+* 计算视图`View`的位置
 * 计算`View`的四个顶点位置：`Left`、`Top`、`Right` 和 `Bottom`
 
 #### 1.2 Layout流程的分类
@@ -45,7 +45,7 @@
 
 ```java
 /**
-* 源码分析：layout（）
+* 源码分析：layout()
 * 作用：确定View本身的位置，即设置View本身的四个顶点位置
 */ 
 public void layout(int l, int t, int r, int b) {  
@@ -56,18 +56,18 @@ public void layout(int l, int t, int r, int b) {
     int oldB = mBottom;  
     int oldR = mRight;  
       
-    // 1. 确定View的位置：setFrame（） / setOpticalFrame（）
+    // 1. 确定View的位置：setFrame() / setOpticalFrame()
     // 即初始化四个顶点的值、判断当前View大小和位置是否发生了变化 & 返回 
     // ->>分析1、分析2
     boolean changed = isLayoutModeOptical(mParent) ?
             setOpticalFrame(l, t, r, b) : setFrame(l, t, r, b);
 
     // 2. 若视图的大小 & 位置发生变化
-    // 会重新确定该View所有的子View在父容器的位置：onLayout（）
+    // 会重新确定该View所有的子View在父容器的位置：onLayout()
     if (changed || (mPrivateFlags & PFLAG_LAYOUT_REQUIRED) == PFLAG_LAYOUT_REQUIRED) {  
 
-        // 对于单一View的laytou过程：由于单一View是没有子View的，故onLayout（）是一个空实现->>分析3
-        // 对于ViewGroup的laytou过程：由于确定位置与具体布局有关，所以onLayout（）在ViewGroup为1个抽象方法，需重写实现（后面会详细说）
+        // 对于单一View的laytou过程：由于单一View是没有子View的，故onLayout()是一个空实现->>分析3
+        // 对于ViewGroup的laytou过程：由于确定位置与具体布局有关，所以onLayout()在ViewGroup为1个抽象方法，需重写实现（后面会详细说）
         onLayout(changed, l, t, r, b);  
         ......
     }   
@@ -83,7 +83,7 @@ public void layout(int l, int t, int r, int b) {
 
 ```java
 /**
-  * 分析1：setFrame（）
+  * 分析1：setFrame()
   * 作用：根据传入的4个位置值，设置View本身的四个顶点位置
   * 即：最终确定View本身的位置
 */ 
@@ -114,7 +114,7 @@ private boolean setOpticalFrame(int left, int top, int right, int bottom) {
 
 	Insets childInsets = getOpticalInsets();
 
-    // 内部实际上是调用setFrame（）
+    // 内部实际上是调用setFrame()
     return setFrame(
     			left   + parentInsets.left - childInsets.left,
                 top    + parentInsets.top  - childInsets.top,
@@ -129,10 +129,10 @@ private boolean setOpticalFrame(int left, int top, int right, int bottom) {
 
 ```java
 /**
-  * 分析3：onLayout（）
+  * 分析3：onLayout()
   * 注：对于单一View的laytou过程
-  *    a. 由于单一View是没有子View的，故onLayout（）是一个空实现
-  *    b. 由于在layout（）中已经对自身View进行了位置计算，所以单一View的layout过程在layout（）后就已完成了
+  *    a. 由于单一View是没有子View的，故onLayout()是一个空实现
+  *    b. 由于在layout()中已经对自身View进行了位置计算，所以单一View的layout过程在layout()后就已完成了
   */ 
  protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 
@@ -169,10 +169,10 @@ private boolean setOpticalFrame(int left, int top, int right, int bottom) {
 
 #### 3.4 原理（步骤）
 
-- 计算自身`ViewGroup`的位置：`layout（）`
-- 遍历子`View` & 确定自身子View在`ViewGroup`的位置（调用子`View` 的 `layout（）`->`onLayout（）`)
+- 计算自身`ViewGroup`的位置：`layout()`
+- 遍历子`View` & 确定自身子View在`ViewGroup`的位置（调用子`View` 的 `layout()`->`onLayout()`)
   * 步骤2 类似于 单一`View`的`layout`过程
-  * 自上而下、一层层地传递下去，直到完成整个`View`树的`layout（）`过程
+  * 自上而下、一层层地传递下去，直到完成整个`View`树的`layout()`过程
 
 ![img](https:////upload-images.jianshu.io/upload_images/944365-7133935cb1e56190.png?imageMogr2/auto-orient/strip|imageView2/2/w/661/format/webp)
 
@@ -182,11 +182,10 @@ private boolean setOpticalFrame(int left, int top, int right, int bottom) {
 
 
 
-* ` ViewGroup` 和 `View` 同样拥有`layout（）`和`onLayout()`，但二者不同的：
-
-  * 一开始计算`ViewGroup`位置时，调用的是`ViewGroup`的`layout（）`和`onLayout()`；
-
-  * 当开始遍历子`View` & 计算子`View`位置时，调用的是子`View`的`layout（）`和`onLayout()`
+* ` ViewGroup` 和 `View` 同样拥有`layout()`和`onLayout()`，但二者不同的：
+* 一开始计算`ViewGroup`位置时，调用的是`ViewGroup`的`layout()`和`onLayout()`；
+  
+* 当开始遍历子`View` & 计算子`View`位置时，调用的是子`View`的`layout()`和`onLayout()`
 
 - 下面我将一个个方法进行详细分析：`layout`过程入口为`ViewGroup#layout()`
 
@@ -235,8 +234,8 @@ protected abstract void onLayout(boolean changed,
 ```java
 
 /**
-  * 分析3：onLayout（）
-  * 作用：计算该ViewGroup包含所有的子View在父容器的位置（）
+  * 分析3：onLayout()
+  * 作用：计算该ViewGroup包含所有的子View在父容器的位置()
   */ 
 // 参数说明
 // changed 当前View的大小和位置改变了 
@@ -261,7 +260,7 @@ protected void onLayout(boolean changed, int left, int top, int right, int botto
         // 3. 根据上述4个位置的计算值，设置子View的4个顶点：调用子view的layout() & 传递计算过的参数
         // 即确定了子View在父容器的位置
         child.layout(mLeft, mTop, mRight, mBottom);
-        // 该过程类似于单一View的layout过程中的layout（）和onLayout（），此处不作过多描述
+        // 该过程类似于单一View的layout过程中的layout()和onLayout()，此处不作过多描述
 	}
 }
 ```
@@ -272,7 +271,7 @@ protected void onLayout(boolean changed, int left, int top, int right, int botto
 
 ### 四、实例1（LinearLayout）
 
-* 为了更好理解`ViewGroup`的`layout`过程（特别是复写`onLayout（）`），我们通过实例去加深
+* 为了更好理解`ViewGroup`的`layout`过程（特别是复写`onLayout()`），我们通过实例去加深
 
 #### 4.1 原理
 
@@ -356,16 +355,16 @@ void layoutVertical(int left, int top, int right, int bottom) {
 */
 private void setChildFrame( View child, int left, int top, int width, int height){
         
-	// setChildFrame（）仅仅只是调用了子View的layout（）而已
+	// setChildFrame()仅仅只是调用了子View的layout()而已
     child.layout(left, top, left ++ width, top + height);
 }
-// 在子View的layout（）又通过调用setFrame（）确定View的四个顶点，即确定了子View的位置
+// 在子View的layout()又通过调用setFrame()确定View的四个顶点，即确定了子View的位置
 // 如此不断循环确定所有子View的位置，最终确定ViewGroup的位置
 ```
 
 ### 五、常见问题
 
-#### 5.1 getWidth() （ getHeight()）与 getMeasuredWidth() （getMeasuredHeight()）获取的宽 （高）有什么区别？
+#### 5.1 getWidth() /getHeight()与 getMeasuredWidth() /getMeasuredHeight()获取的宽 /高有什么区别？
 
 - `getWidth()` / `getHeight()`：获得`View`最终的宽 / 高
 - `getMeasuredWidth()` / `getMeasuredHeight()`：获得 `View`测量的宽 / 高
