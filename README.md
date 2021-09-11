@@ -4,7 +4,7 @@
 * 同时基于gitbook进行书写，可以下载下来，采用gitbook的方式进行打开。
 * 文章目录如下所示，仍在完善中，将会持续进行更新。
 
-## 第一章 必备Java知识
+## 第1章 必备Java知识
 
 * 1.1 并发编程
 
@@ -35,7 +35,6 @@
     * [线程间协作](必备Java知识/并发编程/线程协作/线程间协作.md)
 
   * 1.1.7 线程池
-
     * [线程池基本解析](必备Java知识/并发编程/线程池/线程池基本解析.md)
     * [Callable,Future和FutureTask](必备Java知识/并发编程/线程池/Callable,Future和FutureTask.md)
 
@@ -224,8 +223,6 @@
   * [ViewPager2解析](高级UI/ViewPager/ViewPager2解析.md)
 * 5.6 列表
   * [RecyclerView解析](高级UI/列表/RecyclerView解析.md)
-* 5.7 UI优化
-  * [UI原理和UI优化](高级UI/UI优化/UI原理和UI优化.md)
 
 ## 第6章 数据存储
 
@@ -307,6 +304,8 @@
   * [内存泄漏](性能优化/OOM/内存泄漏.md)
 * 布局优化
   * [ViewStub](性能优化/OOM/ViewStub.md)
+  * [UI原理和UI优化](性能优化/布局优化/UI原理和UI优化.md)
+* [性能优化总结](性能优化/性能优化总结.md)
 
 ## 第10章 NDK开发
 
@@ -341,8 +340,8 @@
 
 ## 第14章 工具使用
 
-* 14.1 Android Studio
-
+* 14.1 AS自带工具
+  * [Profiler的使用](工具使用/AS自带工具/Profiler的使用.md)
 * 14.2 Git
 
 ## 第15章 语言
@@ -510,3 +509,7 @@
 
 
 ## 第18章 面试
+
+* 面试题
+  * [Android Context上下文](面试/面试题/Android Context上下文.md)
+* [Android面试指南](面试/Android面试指南.md)
