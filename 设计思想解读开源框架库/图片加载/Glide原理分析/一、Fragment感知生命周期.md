@@ -158,7 +158,7 @@ public SupportRequestManagerFragment(@NonNull ActivityFragmentLifecycle lifecycl
 * 在3.4中调用了factory的build方法
 
 ```java
-requestManager =factory.build(glide, current.getGlideLifecycle(), 
+requestManager = factory.build(glide, current.getGlideLifecycle(), 
                                       current.getRequestManagerTreeNode(), context);
 ```
 

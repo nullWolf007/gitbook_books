@@ -4,7 +4,7 @@
 
 #### 转载
 
-* [探索 Glide 原理](https://juejin.cn/post/6882536990400020494#heading-87)
+* [探索 Glide 原理](https://juejin.cn/post/6882536990400020494)
 
 ![img](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eef35148bc364510b979eee27abb1ef6~tplv-k3u1fbpfcp-watermark.webp)
 

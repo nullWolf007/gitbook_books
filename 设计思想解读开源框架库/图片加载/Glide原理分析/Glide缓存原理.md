@@ -11,7 +11,7 @@
 
 #### 1.1 Glide启动解码任务流程
 
-* 详情请查看[二、启动解码任务流程](设计思想解读开源框架库\图片加载\Glide原理分析\二、启动解码任务流程.md)
+* 详情请查看[二、启动解码任务流程](..\..\..\设计思想解读开源框架库\图片加载\Glide原理分析\二、启动解码任务流程.md)
 
 #### 1.2 Engine
 
@@ -508,15 +508,13 @@ Glide build(@NonNull Context context) {
 * 主要就是MemorySizeCalculator/BitmapPool/MemoryCache/DiskCache.Factory对象实例
 * 这部分会在接下来作详细的解释
 
-#### 3.9 总结
-
-* 
-
 ### 四、MemorySizeCalculator
+
+* 详情请查看[三、Glide缓存原理之BitmapPool](..\..\..\设计思想解读开源框架库\图片加载\Glide原理分析\三、Glide缓存原理之BitmapPool.md)第六部分
 
 ### 五、BitmapPool
 
-* 详情请查看[Glide缓存原理之BitmapPool](设计思想解读开源框架库\图片加载\Glide原理分析\Glide缓存原理之BitmapPool)
+* 详情请查看[三、Glide缓存原理之BitmapPool](..\..\..\设计思想解读开源框架库\图片加载\Glide原理分析\三、Glide缓存原理之BitmapPool.md)
 
 ### 六、ActiveResources
 
@@ -527,3 +525,5 @@ Glide build(@NonNull Context context) {
 * 详情请点击查看[Glide缓存原理之LruCache](设计思想解读开源框架库\图片加载\Glide原理分析\Glide缓存原理之LruCache)
 
 ### 八、DiskCache
+
+* 详情请点击查看[Glide缓存原理之LruCache](设计思想解读开源框架库\图片加载\Glide原理分析\Glide缓存原理之LruCache)

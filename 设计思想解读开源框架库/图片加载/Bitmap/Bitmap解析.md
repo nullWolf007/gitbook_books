@@ -1,38 +1,3 @@
-- <!-- TOC -->
-- [ Bitmap解析](#bitmap解析)
-  - [ 参考链接](#参考链接)
-  - [ 一、前言](#一、前言)
-    - [ 1.1 基础知识](#11-基础知识)
-      - [ 1.1.1 px](#111-px)
-      - [ 1.1.2 ppi](#112-ppi)
-      - [ 1.1.3 dpi](#113-dpi)
-      - [ 1.1.4 dp](#114-dp)
-  - [ 二、Bitmap占用内存大小](#二、bitmap占用内存大小)
-    - [ 2.1 DisplayMetrics类](#21-displaymetrics类)
-      - [ 2.1.1 density](#211-density)
-      - [ 2.1.2 densityDpi](#212-densitydpi)
-    - [ 2.2 Bitmap格式](#22-bitmap格式)
-      - [ 2.2.1 Bitmap.Config源码](#221-bitmapconfig源码)
-      - [ 2.2.2 格式说明](#222-格式说明)
-    - [ 2.3 drawable/mipmap文件夹](#23-drawablemipmap文件夹)
-      - [ 2.3.1 源码](#231-源码)
-      - [ 2.3.2 实例](#232-实例)
-    - [ 2.4 Bitmap占用的内存](#24-bitmap占用的内存)
-      - [ 2.4.1 计算](#241-计算)
-      - [ 2.4.2 实例](#242-实例)
-  - [ 三、ImageView设置图片](#三、imageview设置图片)
-    - [ 3.1 setImageResource](#31-setimageresource)
-    - [ 3.2 setImageBitmap](#32-setimagebitmap)
-    - [ 3.3 setImageDrawable](#33-setimagedrawable)
-  - [ 四、Bitmap的创建和高效加载](#四、bitmap的创建和高效加载)
-    - [ 4.1 Bitmap创建流程](#41-bitmap创建流程)
-      - [ 4.1.1 三种常用方法](#411-三种常用方法)
-      - [ 4.1.2 源码](#412-源码)
-    - [ 4.2 BitmapFactory类](#42-bitmapfactory类)
-      - [ 4.2.1 重要参数](#421-重要参数)
-    - [ 4.3 Bitmap的高效加载](#43-bitmap的高效加载)
-      - [ 4.3.1 采样率方式](#431-采样率方式)
-  <!-- /TOC -->
 [TOC]
 
 # Bitmap解析
@@ -193,8 +158,8 @@ public enum Config {
 #### 2.3.2 实例
 
 * 采取上述举例的小米9se，小米9se的dpi为480，应该属于xxhdpi。假设有一张180*240px照片。
-* 照片放入xxhdpi的话，则是正确的，依旧是180*240
-* 照片放入xhdpi的话，`public static final int DENSITY_XHIGH = 320;`可知xhdpi的`density`为320。所以根据上面的公式。`scale=480/320`。所以`scaledWidth=180*(480/320)+0.5f=270`；`scaledHeight=240*(480/320)+0.5f=360`。所以结果是270*360。
+* 照片**放入**xxhdpi的话，则是正确的，依旧是180*240
+* 照片**放入**xhdpi的话，`public static final int DENSITY_XHIGH = 320;`可知xhdpi的`density`为320。所以根据上面的公式。`scale=480/320`。所以`scaledWidth=180*(480/320)+0.5f=270`；`scaledHeight=240*(480/320)+0.5f=360`。所以结果是270*360。
 * 照片放入hdpi的话，就是`scaledWidth=180*(480/240)+0.5f=360`；`scaledHeight=240*(480/240)+0.5f=480`，所以结果是360*480。
 
 ### 2.4 Bitmap占用的内存
@@ -206,9 +171,9 @@ public enum Config {
 #### 2.4.2 实例
 
 * 对于Android中，Bitmap默认格式为ARGB_8888，每像素为4字节。所以上述例子中，不同的文件夹内存大小如下
-* xxhdpi的内存大小：`180*240*4=172,800‬字节`。
-* xhdpi的内存大小：`270*360*4=388,800‬字节`。
-* hdpi的内存大小：`360*480*4=691,200‬字节`。
+* xxhdpi的内存大小：`180*240*4=172800‬字节`。
+* xhdpi的内存大小：`270*360*4=388800‬字节`。
+* hdpi的内存大小：`360*480*4=691200‬字节`。
 
 ## 三、ImageView设置图片
 
@@ -256,7 +221,7 @@ public enum Config {
 
 * **decodeResourceStream**主要做了两件事：一是对 opts.inDensity 赋值，没有设置默认值 160；二是对 opts.inTargetDensity 赋值，没有赋值为当前设备 densityDpi；
 * **decodeStream**主要也做了两件事：一是调用 native 方法解析 Bitmap；二是对解析得到的 Bitmap 调用 setDensityFraomOptions(bmp, opts) 进行设置；
-* **setDensityFraomOptions(bmp, opts)**：当opts.inDensity != opts.inTargetDensity || opts.inDensity != opts.inScreenDensity && (inScaled = true || isNinePatch) 时，将设置 outputBitmap.mDensity = inTargetDensity；
+* **setDensityFromOptions(bmp, opts)**：当opts.inDensity != opts.inTargetDensity || opts.inDensity != opts.inScreenDensity && (inScaled = true || isNinePatch) 时，将设置 outputBitmap.mDensity = inTargetDensity；
 
 #### 4.1.2 源码
 
@@ -363,6 +328,3 @@ public enum Config {
   ```
 
   
-
-
-

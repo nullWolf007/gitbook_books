@@ -6,8 +6,6 @@
 
 * [Glide开发之旅2-ModelLoader以及注册机制](https://www.jianshu.com/p/108309c2065a)
 
-
-
 ### 一、ModelLoader
 
 ModelLoader 是一个接口，负责创建 LoadData ，它有两个泛型参数 Model 和 Data。
